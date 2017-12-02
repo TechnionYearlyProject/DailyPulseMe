@@ -1,6 +1,6 @@
-package BackEnd.Repository;
+package backend.repository;
 
-import BackEnd.Entity.User;
+import backend.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 

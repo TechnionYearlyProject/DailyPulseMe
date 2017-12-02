@@ -1,74 +1,49 @@
-package BackEnd.Controller;
+package backend.controller;
 
+import backend.entity.User;
+import backend.entity.UserRegistration;
+import backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import BackEnd.Entity.User;
-import BackEnd.Entity.security.Role;
-import BackEnd.Entity.security.UserRole;
-import BackEnd.Repository.UserRepository;
-import BackEnd.Service.UserService;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @RestController
 public class UserController {
-
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserService userService;
-
-    @RequestMapping("/signup")
-    public void signupUser(@RequestBody User user) {
-        System.out.println(user);
-        Set<UserRole> userRoles = new HashSet<>();
-        Role role = new Role();
-        role.setName("ROLE_USER");
-        userRoles.add(new UserRole(user, role));
-        userService.addUser(user);
+    UserService userService;
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    public static boolean validateEmail(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        return matcher.find();
     }
 
-    @RequestMapping("/login")
-    public String login() {
-        return "login...";
+    @GetMapping(value="/")
+    public String index(){
+        return "index";
     }
-
-    @RequestMapping("/tokenValidation")
-    public ResponseEntity tokenValidation(@Param("token") String token, @Param("email") String email) throws IOException {
-        HttpStatus httpStatus = userService.validateToken(token);
-
-        if (httpStatus.is2xxSuccessful()) {
-            User user = userRepository.findByEmail(email);
-            Map<String, String> entity = new HashMap<>();
-            entity.put("email", email);
-
-            if (user != null) {
-                userService.setUserSession(user.getUsername());
-                entity.put("username", user.getUsername());
-
-                return new ResponseEntity<>(entity, httpStatus);
-            } else {
-                entity.put("username", "");
-
-                return new ResponseEntity<>(entity, httpStatus);
-            }
+    @GetMapping(value="/users")
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
+    }
+    @PostMapping(value="/register")
+    public String registerUser(@RequestBody UserRegistration userRegistration){
+        if(!userRegistration.getPassword().equals(userRegistration.getPasswordConfirm()))
+            return "Error the two passwords do not match";
+        else if(userService.getUser(userRegistration.getEmail()) != null)
+            return "Error this email already exists";
+        else if(!validateEmail(userRegistration.getEmail()))
+            return "Error email format is not correct";
+        else{
+            userService.addUser(new User(userRegistration.getEmail(),userRegistration.getName(),userRegistration.getPassword()));
+            return "Success user registered";
         }
-
-        return new ResponseEntity<>(httpStatus);
     }
 }
 
