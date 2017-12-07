@@ -1,6 +1,8 @@
 package backend.entity;
 
 import org.springframework.data.annotation.Id;
+
+//import javax.persistence.Entity;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 

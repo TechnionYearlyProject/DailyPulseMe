@@ -2,12 +2,15 @@ package backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
+//import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+//import javax.persistence.Entity;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Document
@@ -17,22 +20,21 @@ public class User{
     private String id;
     private String name;
     private String email;
+    private List<Role> roles;
     @JsonIgnore
     private String password;
 
-    public Set<Role> getUserRoles() {
-        return userRoles;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setUserRoles(Set<Role> userRoles) {
-        this.userRoles = userRoles;
+    public void setRoles(List<Role> userRoles) {
+        this.roles = userRoles;
     }
 
-    private Set<Role> userRoles = new HashSet<>();
-
-    public User(String email, String name, String password) {
+    public User(String email, String name, String password, List<Role> roles) {
         this.password = password;
-        //this.roles = roles;
+        this.roles = roles;
         this.email = email;
         this.name = name;
     }
