@@ -2,6 +2,7 @@ package backend.config;
 
 import java.security.SecureRandom;
 
+import backend.service.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +19,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//	@Autowired
-//	private UserSecurityService userSecurityService;
+
+	@Autowired
+	private UserSecurityService userSecurityService;
 
 	private static final String SALT = "salt"; // Salt should be protected
 	// carefully
@@ -29,22 +31,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
 	}
 
-	private static final String[] PUBLIC_MATCHERS = {"/message/**", "/signup", "/tokenValidation"};
+	private static final String[] PUBLIC_MATCHERS = { "/register", "/tokenValidation","/login"};
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().
 				// antMatchers("/**").
-						antMatchers("/register").permitAll().anyRequest().authenticated();
+						antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated();
 
 		http.csrf().disable().cors().disable().formLogin().defaultSuccessUrl("/").loginPage("/login")
 				.failureHandler(new AuthFailureHandler()).permitAll().and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout")
 				.deleteCookies("remember-me").permitAll().and().rememberMe();
 	}
-}
-/*	@Autowired
+
+	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 //    	 auth.inMemoryAuthentication().withUser("user").password("password").roles("USER"); //This is in-memory authentication
         auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
     }
-}*/
+}

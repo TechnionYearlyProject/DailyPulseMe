@@ -1,5 +1,7 @@
 package backend.entity;
 
+import backend.entity.security.Authority;
+import backend.entity.security.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 //import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,56 +16,83 @@ import java.util.List;
 import java.util.Set;
 
 @Document
-public class User{
+public class User implements UserDetails {
 
     @Id
     private String id;
-    private String name;
-    private String email;
-    private List<Role> roles;
-    @JsonIgnore
     private String password;
+    private String email;
 
-    public List<Role> getRoles() {
-        return roles;
+    private Set<UserRole> userRoles = new HashSet<>();
+
+    public String getId() {
+        return id;
     }
-
-    public void setRoles(List<Role> userRoles) {
-        this.roles = userRoles;
-    }
-
-    public User(String email, String name, String password, List<Role> roles) {
-        this.password = password;
-        this.roles = roles;
-        this.email = email;
-        this.name = name;
-    }
-
-    User() {}
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPassword() {
         return password;
     }
+    public void setUsername(String email) {
+        this.email = email;
+    }
+
+
+    @Override
+    public String getUsername() {
+        return email ; //TODO
+    }
 
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
-    public String getName() {
-        return name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", password=" + password + ", email=" + email + "]";
+    }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
+        return authorities;
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+
 }

@@ -1,14 +1,17 @@
 package backend.controller;
 
-import backend.entity.Role;
+import backend.entity.security.Role;
 import backend.entity.User;
 import backend.entity.UserRegistration;
+import backend.entity.security.UserRole;
 import backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,12 +38,24 @@ public class UserController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-    @RequestMapping(value="/register")
-    public boolean registerUser(UserRegistration userRegistration){
-        if(userService.getUser(userRegistration.getEmail()) != null)
+    @PostMapping("/login")
+    public String login() {
+        return "login...";
+    }
+
+    @PostMapping(value="/register")
+    public boolean registerUser(@RequestBody User user){
+
+        if(userService.getUser(user.getEmail()) != null) {
             return false;
-            userService.addUser(new User(userRegistration.getEmail(),userRegistration.getName(),userRegistration.getPassword(),new ArrayList<Role>()));
-            return true;
+        }
+
+        Set<UserRole> userRoles = new HashSet<>();
+        Role role = new Role();
+        role.setName("ROLE_USER");
+        userRoles.add(new UserRole(user, role));
+        userService.createUser(user, userRoles);
+        return true;
     }
 }
 
