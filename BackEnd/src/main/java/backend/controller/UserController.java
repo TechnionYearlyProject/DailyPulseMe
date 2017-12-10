@@ -5,6 +5,7 @@ import backend.entity.User;
 import backend.entity.UserRegistration;
 import backend.entity.security.UserRole;
 import backend.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,13 +39,13 @@ public class UserController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-    @PostMapping("/login")
-    public String login() {
-        return "login...";
+//    @PostMapping("/login")
+    @RequestMapping(value = "/login", method = { RequestMethod.GET, RequestMethod.POST })
+    public Boolean login() {
+        return true;
     }
-
     @PostMapping(value="/register")
-    public boolean registerUser(@RequestBody User user){
+    public boolean registerUser(User user){
 
         if(userService.getUser(user.getEmail()) != null) {
             return false;
@@ -57,5 +58,6 @@ public class UserController {
         userService.createUser(user, userRoles);
         return true;
     }
+
 }
 

@@ -1,8 +1,14 @@
 <template>
 <div class="container">
-        <div class="card card-container">
+		<div v-if="this.loggedIn">
+			Hello, This is {{ user.username }}
+            <button class="btn btn-lg btn-primary btn-block btn-signin" @click="logout" type="submit">Log out</button>
+
+		</div>
+        <div v-else class="card card-container">
             <img id="profile-img" class="profile-img-card" src="../images/logo.png"/>
-            <form class="form-signin">
+            <form class="form-signin" @submit.prevent="login">
+            	      <p v-if="authFailed">Invalid Username and Password</p>
                 <span id="reauth-email" class="reauth-email"></span>
                 <input class="form-control" v-model="user.username" type="email" placeholder="Email Address" id="inputEmail" required autofocus style="    text-align: center;"/>
                 <input type="password" id="inputPassword" v-model="user.password" class="form-control" placeholder="Password" required style="text-align: center;">
@@ -20,6 +26,7 @@
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
+            {{this.loggedIn}}
         </div><!-- /card-container -->
     </div>
 </template>
@@ -66,7 +73,7 @@
           location.reload();
 
         }, (err) => {
-          console.log(err);
+          console.log(err);	
           this.authFailed=true;
           // error callback
         });
