@@ -23,13 +23,15 @@
         </div><!-- /card-container -->
        <div v-else class="card card-container">
             <img id="profile-img" class="profile-img-card" src="../images/logo.png" />
-            <form class="form-signin" >
+            <form class="form-signin" @submit.prevent="register">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input v-model="user.email" class="form-control" type="email" placeholder="Email Address" id="inputEmail" required autofocus style="    text-align: center;"/>
                 <input v-model="user.name" class="form-control" type="text" placeholder="User Name" id="inputUsername" required autofocus style="    text-align: center;"/>
                 <input v-model="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required style="text-align: center;">
                 <input v-model="user.password_confirmation" type="password" id="inputPasswordAgain" class="form-control" placeholder="Password Again" required style="text-align: center;">
-                <button class="btn btn-lg btn-primary btn-block btn-signin" @click="register" type="submit">Sign Up</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
+                <!-- <button class="btn btn-lg btn-primary btn-block btn-signin" @click="register" type="submit">Sign Up</button> -->
+
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->
@@ -168,10 +170,10 @@ body, html {
 }
 
 .form-signin .form-control:focus {
-    border-color: rgb(104, 145, 162);
+  /*  border-color: rgb(104, 145, 162);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);*/
 }
 
 .btn.btn-signin {
