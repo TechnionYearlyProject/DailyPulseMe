@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class UserRole {
 
-    @org.springframework.data.annotation.Id
+    @Id
     private String Id;
 
     @DBRef

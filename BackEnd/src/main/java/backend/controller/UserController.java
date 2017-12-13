@@ -2,14 +2,10 @@ package backend.controller;
 
 import backend.entity.security.Role;
 import backend.entity.User;
-import backend.entity.UserRegistration;
 import backend.entity.security.UserRole;
 import backend.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,9 +41,9 @@ public class UserController {
         return true;
     }
     @PostMapping(value="/register")
-    public boolean registerUser(User user){
+    public boolean registerUser(@RequestBody User user){
 
-        if(userService.getUser(user.getEmail()) != null) {
+        if(userService.getUser(user.getUsername()) != null) {
             return false;
         }
 

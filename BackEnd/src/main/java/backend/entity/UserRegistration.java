@@ -1,18 +1,10 @@
 package backend.entity;
 
 public class UserRegistration {
-    private String email;
+    private String username;
     private String name;
     private String password;
     private String passwordConfirm;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getName() {
         return name;
@@ -36,5 +28,13 @@ public class UserRegistration {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

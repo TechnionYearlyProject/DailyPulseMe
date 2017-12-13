@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
 	}
 
-	private static final String[] PUBLIC_MATCHERS = { "/register", "/tokenValidation","/login"};
+	private static final String[] PUBLIC_MATCHERS = { "/","/register", "/tokenValidation","/login", "/users"};
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().

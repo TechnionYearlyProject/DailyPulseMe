@@ -49,12 +49,12 @@ public class UserService {
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
-    public User getUser(String email){
-        return userRepository.findByEmail(email);
+    public User getUser(String username){
+        return userRepository.findByUsername(username);
     }
     @Transactional
     public User createUser(User user, Set<UserRole> userRoles) {
-        User localUser = userRepository.findByEmail(user.getUsername());
+        User localUser = userRepository.findByUsername(user.getUsername());
 
         if (localUser != null) {
             LOG.info("User with username {} already exist. Nothing will be done. ", user.getUsername());
