@@ -71,9 +71,14 @@
           this.authFailed=false;
           console.log('success')
           location.reload();
-
+					res.json().then(json => {
+					 this.$store.commit(types.LOGIN_SUCCESS, {
+						 token: json.token,
+						 username: self.username
+					 })
+				 	})
         }, (err) => {
-          console.log(err);	
+          console.log(err);
           this.authFailed=true;
           // error callback
         });
@@ -85,6 +90,7 @@
             localStorage.setItem('loggedIn', 'false');
             localStorage.setItem('username', '');
             location.reload();
+						this.$store.dispatch(types.LOGOUT);
           });
         }
       }
