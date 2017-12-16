@@ -91,6 +91,8 @@
             localStorage.setItem('username', '');
             location.reload();
 						this.$store.dispatch(types.LOGOUT);
+						token: ''
+						username: ''
           });
         }
       }
