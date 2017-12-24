@@ -16,12 +16,30 @@ const hasToken = (to, from, next) => {
 }
 //store.getters.isLoggedIn
 const requireAuth = (to, from, next) => {
+  //if(from == 'Login' || from == '/login'){
+    if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
+      next()
+    } else {
+      router.push('/home');
+    }
+  /*} else {
+    if(from == '/home'){
+      if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
+        router.push('/');
+      } else {
+        next();
+      }
+    }
+  }*/
+}
+const requireAuth2 = (to, from, next) => {
   if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
     router.push('/');
   } else {
-    router.push('/home');
+    next();
   }
 }
+
 
 Vue.use(Router)
 
@@ -31,7 +49,8 @@ const router = new Router({
       path: '/',
       alias: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
+      beforeEnter: requireAuth
     },
     {
       path: '/register',
@@ -42,7 +61,7 @@ const router = new Router({
       path: '/home',
       name: 'Home',
       component: Home,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth2
     }
   ]
 })

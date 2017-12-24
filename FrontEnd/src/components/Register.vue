@@ -32,7 +32,8 @@
       register () {
         let url = 'http://localhost:8081/users/sign-up'
         this.$http.post(url, this.user,{credentials: true, headers: {'Content-Type': 'application/json'}}).then((res) => {
-          console.log('Success', res)
+          console.log('Success', res);
+          this.$router.push('/');
         }, (err) => {
           console.log('Error: ', err)
         })

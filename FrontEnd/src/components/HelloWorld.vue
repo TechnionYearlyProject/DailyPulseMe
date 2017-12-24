@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+
+<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" v-on:click="logout">logout</button>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -20,6 +22,7 @@
   </div>
 </template>
 
+
 <script>
 export default {
   name: 'HelloWorld',
@@ -27,6 +30,24 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods : {
+  logout () {
+    localStorage.setItem('loggedIn', 'false');
+    localStorage.setItem('username', '');
+    localStorage.setItem('token', 'false');
+    location.reload();
+    // let url = "http://localhost:8081/logout";
+    // this.$http.get(url).then((res) => {
+    //   localStorage.setItem('loggedIn', 'false');
+    //   localStorage.setItem('username', '');
+    // 	localStorage.setItem('token', 'false');
+    //   location.reload();
+    // 	this.$store.dispatch(types.LOGOUT);
+    // 	token: ''
+    // 	username: ''
+    // });
+  }
   }
 }
 </script>

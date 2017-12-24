@@ -73,7 +73,7 @@
           console.log('success');
 					console.log(res.headers);
 					// res.headers.set('Authorization','Bearer');
-          // location.reload();
+          location.reload();
 					localStorage.setItem('token', res.headers.get('authorization'));
         }, (err) => {
           console.log(err);
