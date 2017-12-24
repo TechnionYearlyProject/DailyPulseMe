@@ -15,10 +15,8 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
 
             </form><!-- /form -->
-            Not registered ?
               <router-link to="/register">Create an account
             </router-link>
-            <br>
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>

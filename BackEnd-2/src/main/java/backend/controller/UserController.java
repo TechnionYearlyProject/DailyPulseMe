@@ -105,9 +105,10 @@ public class UserController {
     public String privatee(){
         return "THIS IS PRIVATE!!";
     }
-    @GetMapping("/name")
-    public String getName(@RequestBody String username){
-        return appUserRepository.findByUsername(username).getName();
+    @GetMapping("/username")
+    public String getUsername(Authentication auth) {
+        return appUserRepository.findByUsername(auth.getName()).getName();
+//        AppUser user = ;
     }
 //    @PostMapping("/userPassword")
 //    public String getPassword(@RequestBody String username){

@@ -1,14 +1,26 @@
 <template>
   <div class="hello">
-    <Chart id="chart" style="width:50%; margin: auto;"></Chart>
-    Hello,{{ msg }}
-    <a href v-on:click="logout">Logout</a>
+    <!-- <h1 style="  margin-top:50px;">Good Evening,<b>{{ msg }}</b> (: </br></h1> -->
+   
+  </br>
+  </br>
+    <Chart id="chart" style="width:50%;   margin:  0 auto;
+  background-color: rgba(33,39,51,0.25);
+  border-radius: 25px;
+  width:50%;
+  height:20%;
+    "></Chart>
+      </br>
   </div>
 </template>
 
 
 <script>
 import Chart from './Chart'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueResource from 'vue-resource'
+import BootstrapVue from 'bootstrap-vue'
 export default {
   name: 'HelloWorld',
   components: { Chart },
@@ -23,7 +35,7 @@ export default {
         },
   methods : {
      getMessages () {
-            this.$http.get('http://localhost:8081/users/name',{headers: {'Content-Type': 'application/json',
+            this.$http.get('http://localhost:8081/users/username',{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token')}
             }).then((res) => {
               this.msg = res.bodyText;
@@ -70,3 +82,5 @@ a {
 }
 </style>
 <style src="../styles/Form.css"></style>
+<!-- <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script> -->
