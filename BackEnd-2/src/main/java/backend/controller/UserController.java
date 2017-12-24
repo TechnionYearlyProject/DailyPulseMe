@@ -1,6 +1,7 @@
 package backend.controller;
 
 import backend.entity.AppUser;
+import backend.entity.StringDummy;
 import backend.repository.UserRepository;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,12 +24,19 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public void signUp(@RequestBody AppUser user) {
+    public void signUp( AppUser user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         applicationUserRepository.save(user);
     }
     @GetMapping("/private")
     public String privatee(){
         return "THIS IS PRIVATE!!";
+    }
+    @PostMapping("/userPassword")
+    public String getPassword(@RequestBody String username){
+        System.out.println("----"+username+"----");
+        if(applicationUserRepository.findByUsername(username)==null){
+            return "DOES NOT EXIST";
+        } else return applicationUserRepository.findByUsername(username).getPassword();
     }
 }

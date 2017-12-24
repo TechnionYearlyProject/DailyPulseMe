@@ -1,10 +1,8 @@
-import Vue from 'vue'
+                           import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/HelloWorld'
 import Login from '../components/Login'
-import store from '../store'
 import Register from '../components/register'
-import * as types from '../store/mutation-types'
 
 const hasToken = (to, from, next) => {
   const token = localStorage.getItem('JWT')
@@ -16,12 +14,12 @@ const hasToken = (to, from, next) => {
     next()
   }
 }
-
+//store.getters.isLoggedIn
 const requireAuth = (to, from, next) => {
-  if (store.getters.isLoggedIn) {
-    next()
+  if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
+    router.push('/');
   } else {
-    router.push('/')
+    router.push('/home');
   }
 }
 
@@ -33,8 +31,7 @@ const router = new Router({
       path: '/',
       alias: '/login',
       name: 'Login',
-      component: Login,
-      beforeEnter: hasToken
+      component: Login
     },
     {
       path: '/register',
@@ -44,7 +41,8 @@ const router = new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Home
+      component: Home,
+      beforeEnter: requireAuth
     }
   ]
 })

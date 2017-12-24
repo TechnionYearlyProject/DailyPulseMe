@@ -1,11 +1,6 @@
 <template>
 <div class="container">
-		<div v-if="this.loggedIn">
-			Hello, This is {{ user.username }}
-            <button class="btn btn-lg btn-primary btn-block btn-signin" @click="logout" type="submit">Log out</button>
-
-		</div>
-        <div v-else class="card card-container">
+        <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="../images/logo.png"/>
             <form class="form-signin" @submit.prevent="login">
             	      <p v-if="authFailed">Invalid Username and Password</p>
@@ -18,7 +13,10 @@
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+
             </form><!-- /form -->
+						<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" v-on:click="logout">logout</button>
+
             Not registered ?
               <router-link to="/register">Create an account
             </router-link>
@@ -55,7 +53,10 @@
     methods : {
       login () {
         let url = "http://localhost:8081/login";
-        let params = 'username='+this.user.username+'&password='+this.user.password;
+        // let params = '"username"='+this.user.username+'&"password"='+this.user.password;
+				// let params = '\"username\": \"'+this.user.username+'","password": "'+this.user.password;
+				let params = {"username": this.user.username,"password": this.user.password};
+				params = JSON.stringify(params);
         // let headers = new Headers(
         // {
         //   'Content-Type': 'application/x-www-form-urlencoded'
@@ -63,20 +64,17 @@
         // this.$http.options.xhr = {withCredentials : true};
 
           // send post request
-          this.$http.post(url, params, {credentials: true, headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).then((res) => {
+          this.$http.post(url, params, {credentials: true, headers: {'Content-Type': 'application/json'}}).then((res) => {
           // success callback
           this.loggedIn=true;
           localStorage.setItem('loggedIn', 'true');
           localStorage.setItem('username', this.user.username);
           this.authFailed=false;
-          console.log('success')
-          location.reload();
-					res.json().then(json => {
-					 this.$store.commit(types.LOGIN_SUCCESS, {
-						 token: json.token,
-						 username: self.username
-					 })
-				 	})
+          console.log('success');
+					console.log(res.headers);
+					// res.headers.set('Authorization','Bearer');
+          // location.reload();
+					localStorage.setItem('token', res.headers.get('authorization'));
         }, (err) => {
           console.log(err);
           this.authFailed=true;
@@ -85,15 +83,20 @@
         },
 
         logout () {
-          let url = "http://localhost:8081/logout";
-          this.$http.get(url).then((res) => {
-            localStorage.setItem('loggedIn', 'false');
-            localStorage.setItem('username', '');
-            location.reload();
-						this.$store.dispatch(types.LOGOUT);
-						token: ''
-						username: ''
-          });
+					localStorage.setItem('loggedIn', 'false');
+					localStorage.setItem('username', '');
+					localStorage.setItem('token', 'false');
+					location.reload();
+          // let url = "http://localhost:8081/logout";
+          // this.$http.get(url).then((res) => {
+          //   localStorage.setItem('loggedIn', 'false');
+          //   localStorage.setItem('username', '');
+					// 	localStorage.setItem('token', 'false');
+          //   location.reload();
+					// 	this.$store.dispatch(types.LOGOUT);
+					// 	token: ''
+					// 	username: ''
+          // });
         }
       }
     }
