@@ -1,10 +1,10 @@
                            import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/HelloWorld'
+import Home from '../components/Home'
 import Login from '../components/Login'
 import Register from '../components/register'
 
-const hasToken = (to, from, next) => {
+/*const hasToken = (to, from, next) => {
   const token = localStorage.getItem('JWT')
   const username = localStorage.getItem('username')
   if (token) {
@@ -13,7 +13,7 @@ const hasToken = (to, from, next) => {
   } else {
     next()
   }
-}
+}*/
 //store.getters.isLoggedIn
 const requireAuth = (to, from, next) => {
   //if(from == 'Login' || from == '/login'){

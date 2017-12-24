@@ -15,8 +15,6 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
 
             </form><!-- /form -->
-						<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" v-on:click="logout">logout</button>
-
             Not registered ?
               <router-link to="/register">Create an account
             </router-link>
@@ -24,7 +22,7 @@
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
-            {{this.loggedIn}}
+            
         </div><!-- /card-container -->
     </div>
 </template>
