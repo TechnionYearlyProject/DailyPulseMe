@@ -6,11 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class AppUser {
 
+
     @Id
     private String id;
     private String username;
     private String password;
     private String name;
+    private String fitbitToken;
 
     public String getId() {
         return id;
@@ -42,5 +44,12 @@ public class AppUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    public String getFitbitToken() {
+        return fitbitToken;
+    }
+
+    public void setFitbitToken(String fitbitToken) {
+        this.fitbitToken = fitbitToken;
     }
 }
