@@ -1,7 +1,7 @@
 <template>
   <div>
         <div v-if="this.toShow()" id="nav">
- <b-navbar toggleable="md" type="dark" variant="info" >
+ <b-navbar toggleable="md"  style="background-color: rgba(44,144,205,0.6); box-shadow: 2px 2px 2px gray;">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -23,7 +23,7 @@
         <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
         <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
       </b-nav-form> -->
-        <b-nav-text style="color:white; font-size:17px;"> Good evening,{{ this.name }} (:</b-nav-text>
+        <b-nav-text style="font-size:17px;"> Good evening,{{ this.name }} (:</b-nav-text>
 
       <b-nav-item-dropdown right>
         <!-- Using button-content slot -->

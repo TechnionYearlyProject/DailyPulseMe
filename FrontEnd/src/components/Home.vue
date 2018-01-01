@@ -1,15 +1,28 @@
 <template>
   <div class="hello">
     <!-- <h1 style="  margin-top:50px;">Good Evening,<b>{{ msg }}</b> (: </br></h1> -->
-   
+   <div style=" width:70%; margin:auto; margin-top: 20px;">
+     <b-jumbotron style="background-color: rgba(44,144,205,0.4)" text-variant="white" border-variant="dark">
+  <template slot="header">
+    Welcome to DailyPulse!
+  </template>
+  <template slot="lead">
+    This webapp will help you track your heart rate within events.
+  </template>
+  <hr class="my-4">
+  <p>
+    It uses Google fit and Google calander in order to get your data.
+  </p>
+</b-jumbotron>
+   </div>
   </br>
   </br>
-    <Chart id="chart" style="width:50%;   margin:  0 auto;
+<!--     <Chart id="chart" style="width:50%;   margin:  0 auto;
   background-color: rgba(33,39,51,0.25);
   border-radius: 25px;
   width:50%;
   height:20%;
-    "></Chart>
+    "></Chart> -->
       </br>
   </div>
 </template>
