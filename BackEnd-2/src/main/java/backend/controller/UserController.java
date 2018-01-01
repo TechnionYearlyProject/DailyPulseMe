@@ -43,10 +43,13 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public void signUp( AppUser user) {
-
+    public boolean signUp( AppUser user) {
+        if(appUserRepository.findByUsername(user.getUsername()) == null){
+            return false;
+        }
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         appUserRepository.save(user);
+        return true;
     }
     @PostMapping("/fitbittoken")
     public void fitbitPutToken(Authentication auth, @RequestBody  String accessToken){
@@ -100,7 +103,12 @@ public class UserController {
 
     }
 
-
+    @GetMapping("/authenticateToken")
+    public Boolean authenticateToken()    {
+        //when calling this method with an invalid token, an error will be returned,
+        //else, nothing will be returned (another option is to changed it so it returnes boolean and then return true)
+        return true;
+    }
     @GetMapping("/private")
     public String privatee(){
         return "THIS IS PRIVATE!!";

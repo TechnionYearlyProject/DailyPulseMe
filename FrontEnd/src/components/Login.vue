@@ -38,61 +38,25 @@
         }
       }
     } ,
-    created : function () {
-      if (localStorage.getItem('loggedIn') && localStorage.getItem('username')) {
-        this.user.username=localStorage.getItem('username');
-        this.loggedIn=true;
-      } else {
-        this.loggedIn=false;
-      }
-    } ,
     methods : {
       login () {
         let url = "http://localhost:8081/login";
-        // let params = '"username"='+this.user.username+'&"password"='+this.user.password;
-				// let params = '\"username\": \"'+this.user.username+'","password": "'+this.user.password;
 				let params = {"username": this.user.username,"password": this.user.password};
 				params = JSON.stringify(params);
-        // let headers = new Headers(
-        // {
-        //   'Content-Type': 'application/x-www-form-urlencoded'
-        // });
-        // this.$http.options.xhr = {withCredentials : true};
-
           // send post request
           this.$http.post(url, params, {credentials: true, headers: {'Content-Type': 'application/json'}}).then((res) => {
           // success callback
-          this.loggedIn=true;
-          localStorage.setItem('loggedIn', 'true');
-          localStorage.setItem('username', this.user.username);
-          this.authFailed=false;
-          console.log('success');
-					console.log(res.headers);
-					// res.headers.set('Authorization','Bearer');
           location.reload();
 					localStorage.setItem('token', res.headers.get('authorization'));
         }, (err) => {
           console.log(err);
-          this.authFailed=true;
           // error callback
         });
         },
 
         logout () {
-					localStorage.setItem('loggedIn', 'false');
-					localStorage.setItem('username', '');
 					localStorage.setItem('token', 'false');
 					location.reload();
-          // let url = "http://localhost:8081/logout";
-          // this.$http.get(url).then((res) => {
-          //   localStorage.setItem('loggedIn', 'false');
-          //   localStorage.setItem('username', '');
-					// 	localStorage.setItem('token', 'false');
-          //   location.reload();
-					// 	this.$store.dispatch(types.LOGOUT);
-					// 	token: ''
-					// 	username: ''
-          // });
         }
       }
     }

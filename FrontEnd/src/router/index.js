@@ -1,56 +1,46 @@
-                           import Vue from 'vue'
+import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home'
 import Login from '../components/Login'
 import Register from '../components/register'
+import Profile from '../components/Profile'
 
-/*const hasToken = (to, from, next) => {
-  const token = localStorage.getItem('JWT')
-  const username = localStorage.getItem('username')
-  if (token) {
-    store.commit(types.LOGIN_SUCCESS, { token, username })
-    router.push('/home')
-  } else {
-    next()
-  }
-}*/
-//store.getters.isLoggedIn
 const requireAuth = (to, from, next) => {
-  //if(from == 'Login' || from == '/login'){
-    if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
-      next()
-    } else {
-      router.push('/home');
-    }
-  /*} else {
-    if(from == '/home'){
-      if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
-        router.push('/');
-      } else {
-        next();
-      }
-    }
-  }*/
-}
-const requireAuth2 = (to, from, next) => {
-  if (!(localStorage.getItem('token')) || localStorage.getItem('token') == 'false' ) {
-    router.push('/');
-  } else {
-    next();
-  }
-}
+ checkToken(function(){
+            next()
 
+    },function(){
+               router.push('/login');
+
+    });
+}
+const loginRedirect = (to, from, next) => {
+   checkToken(function(){
+    router.push('/');
+    },function(){
+    next()
+    });
+}
 
 Vue.use(Router)
-
+function checkToken(funcYes,funcNo){
+   var self = this;
+    Vue.http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}    
+         }).then((res) => {
+          funcYes()
+            }, (err) => {
+          funcNo()
+          })
+    }
 const router = new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/',
-      alias: '/login',
+      path: '/login',
       name: 'Login',
       component: Login,
-      beforeEnter: requireAuth
+      beforeEnter: loginRedirect
     },
     {
       path: '/register',
@@ -58,12 +48,22 @@ const router = new Router({
       component: Register
     },
     {
-      path: '/home',
+      path: '/',
+      alias: '/home',
       name: 'Home',
       component: Home,
-      beforeEnter: requireAuth2
+      beforeEnter: requireAuth
+    },
+     {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
+      beforeEnter: requireAuth
     }
   ]
 })
-
+router.beforeEach((to, from, next) => {
+  document.title = 'DailyPulse'
+  next()
+})
 export default router
