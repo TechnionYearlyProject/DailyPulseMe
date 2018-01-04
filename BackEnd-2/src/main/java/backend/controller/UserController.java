@@ -1,6 +1,7 @@
 package backend.controller;
 
 import backend.entity.AppUser;
+import backend.entity.Event;
 import backend.entity.StringDummy;
 import backend.fitbit.heartrate;
 import backend.repository.UserRepository;
@@ -23,6 +24,7 @@ import sun.net.www.protocol.http.AuthenticationInfo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -116,8 +118,21 @@ public class UserController {
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getName();
-//        AppUser user = ;
     }
+
+    @PostMapping("/addEvent")
+    public Boolean addEvent(Authentication auth, @RequestBody Event event){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        user.addEvent(event);
+        appUserRepository.save(user);
+        return true;
+    }
+    //testing method.
+    @GetMapping("/getAllEvents")
+    public ArrayList<Event> getAllEvents(Authentication auth){
+        return appUserRepository.findByUsername(auth.getName()).getEvents();
+    }
+
 //    @PostMapping("/userPassword")
 //    public String getPassword(@RequestBody String username){
 //        if(applicationUserRepository.findByUsername(username)==null){
