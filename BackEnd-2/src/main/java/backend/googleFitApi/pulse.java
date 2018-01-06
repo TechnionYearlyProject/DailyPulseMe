@@ -1,4 +1,4 @@
-package backend.fitbit;
+package backend.googleFitApi;
 
 import java.io.Serializable;
 

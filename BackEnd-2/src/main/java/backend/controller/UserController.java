@@ -1,35 +1,33 @@
 package backend.controller;
-
+import backend.googleFitApi.googleAuth;
 import backend.entity.AppUser;
 import backend.entity.Event;
-import backend.entity.StringDummy;
-import backend.fitbit.heartrate;
+import backend.googleFitApi.heartrate;
 import backend.repository.UserRepository;
+import com.google.api.client.auth.oauth2.Credential;
 import com.google.gson.Gson;
-import io.jsonwebtoken.Jwts;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.http.HttpResponse;
-import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import sun.net.www.protocol.http.AuthenticationInfo;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 
 import static backend.security.SecurityConstants.SECRET;
 import static backend.security.SecurityConstants.TOKEN_PREFIX;
+
 
 @RestController
 @RequestMapping("/users")
@@ -45,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public boolean signUp( AppUser user) {
+    public boolean signUp(@RequestBody AppUser user) {
         if(appUserRepository.findByUsername(user.getUsername()) == null){
             return false;
         }
@@ -53,20 +51,27 @@ public class UserController {
         appUserRepository.save(user);
         return true;
     }
-    @PostMapping("/fitbittoken")
-    public void fitbitPutToken(Authentication auth, @RequestBody  String accessToken){
-        AppUser tmp=appUserRepository.findByUsername(auth.getName());
-        tmp.setFitbitToken(accessToken);
+    @GetMapping("/getToken")
+    public void gettoken(Authentication auth){
+      AppUser tmp=appUserRepository.findByUsername(auth.getName());
+        googleAuth.setAccessToken(tmp);
         appUserRepository.save(tmp);
+    }
+    @GetMapping("/getPulse")
+    public void getPulse(Authentication auth){
+        AppUser tmp=appUserRepository.findByUsername(auth.getName());
+        googleAuth.getpulse(tmp);
+
     }
 
 
-    @GetMapping("/getpulse")
+
+    /*@GetMapping("/getpulse")
     public void getPulse(Authentication auth){
         String js;
         String accessToken=appUserRepository.findByUsername(auth.getName()).getFitbitToken();
         System.out.println(accessToken);
-        HttpGet get = new HttpGet("https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json");
+        HttpGet get = new HttpGet("https://api.googleFitApi.com/1/user/-/activities/heart/date/today/1d.json");
         get.addHeader("Authorization" , "Bearer "+accessToken);
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = null;
@@ -104,7 +109,7 @@ public class UserController {
 
 
     }
-
+*/
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken()    {
         //when calling this method with an invalid token, an error will be returned,

@@ -1,5 +1,6 @@
 package backend.entity;
 
+import com.google.api.client.auth.oauth2.Credential;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +13,7 @@ public class AppUser {
     private String username;
     private String password;
     private String name;
-    private String fitbitToken;
+    private Credential googleToken;
     private ArrayList<Event> events;
 
     public String getId() {
@@ -46,13 +47,6 @@ public class AppUser {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getFitbitToken() {
-        return fitbitToken;
-    }
-
-    public void setFitbitToken(String fitbitToken) {
-        this.fitbitToken = fitbitToken;
-    }
 
     public ArrayList<Event> getEvents() {
         return events;
@@ -65,5 +59,13 @@ public class AppUser {
     public void addEvent(Event event){
         //TODO: CHECK IF EVENT ALREADY EXITS
         events.add(event);
+    }
+
+    public Credential getGoogleToken() {
+        return googleToken;
+    }
+
+    public void setGoogleToken(Credential googleToken) {
+        this.googleToken = googleToken;
     }
 }
