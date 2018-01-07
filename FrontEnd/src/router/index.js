@@ -4,6 +4,7 @@ import Home from '../components/Home'
 import Login from '../components/Login'
 import Register from '../components/register'
 import Profile from '../components/Profile'
+import Addevent from '../components/Addevent'
 
 const requireAuth = (to, from, next) => {
  checkToken(function(){
@@ -26,7 +27,7 @@ Vue.use(Router)
 function checkToken(funcYes,funcNo){
    var self = this;
     Vue.http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')}    
+      'Authorization': localStorage.getItem('token')}
          }).then((res) => {
           funcYes()
             }, (err) => {
@@ -59,7 +60,13 @@ const router = new Router({
       name: 'Profile',
       component: Profile,
       beforeEnter: requireAuth
-    }
+    },
+    {
+     path: '/addevent',
+     name: 'Addevent',
+     component: Addevent,
+     beforeEnter: requireAuth
+   }
   ]
 })
 router.beforeEach((to, from, next) => {
