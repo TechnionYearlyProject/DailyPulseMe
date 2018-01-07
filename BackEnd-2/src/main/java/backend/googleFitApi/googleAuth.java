@@ -17,7 +17,7 @@ import com.google.api.services.fitness.model.BucketByActivity;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Tokeninfo;
 import com.google.api.services.oauth2.model.Userinfoplus;
-
+import com.google.api.services.fitness.Fitness;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
@@ -59,7 +59,7 @@ public class googleAuth {
 
     private static Credential authorize() throws Exception {
         httpTransport = GoogleNetHttpTransport.newTrustedTransport(); // i have to change the place of those two
-        dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
+//        dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
 
         // load client secrets
         clientSecrets = GoogleClientSecrets.load(JSON_FACTORY,
@@ -72,18 +72,21 @@ public class googleAuth {
         }
         // set up authorization code flow
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                httpTransport, JSON_FACTORY, clientSecrets, SCOPES).setDataStoreFactory(
-                dataStoreFactory).build();
+                httpTransport, JSON_FACTORY, clientSecrets, SCOPES).build();
 
         // authorize
         return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver.Builder().setPort(8080).build()).authorize("user");
+
     }
 
     public static void setAccessToken(AppUser user) {
         try {
             // authorization
+
+
             Credential credential = authorize();
-            user.setGoogleToken(credential);
+            httpTransport.shutdown();
+            user.setAccessToken(credential.getAccessToken());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         } catch (Throwable t) {
@@ -92,20 +95,21 @@ public class googleAuth {
 
     }
     public static void getpulse(AppUser user) {
-        try {
-            Fitness newRequest =new Fitness.Builder(httpTransport, JSON_FACTORY, user.getGoogleToken()).setApplicationName(
-                    APPLICATION_NAME).build();
-            AggregateRequest tmp=new AggregateRequest();
-            tmp.setBucketByActivityType(new BucketByActivity().setActivityDataSourceId("com.google.heart_rate.bpm").setMinDurationMillis((long)8640000));
-            tmp.setStartTimeMillis(System.currentTimeMillis()-30000000);
-            tmp.setEndTimeMillis(System.currentTimeMillis());
-            System.out.println(newRequest.users().dataset().aggregate("me",tmp).execute().toPrettyString());
 
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
+//        try {
+//            Fitness newRequest =new Fitness.Builder(httpTransport, JSON_FACTORY, user.getGoogleToken()).setApplicationName(
+//                    APPLICATION_NAME).build();
+//            AggregateRequest tmp=new AggregateRequest();
+//            tmp.setBucketByActivityType(new BucketByActivity().setActivityDataSourceId("com.google.heart_rate.bpm").setMinDurationMillis((long)8640000));
+//            tmp.setStartTimeMillis(System.currentTimeMillis()-30000000);
+//            tmp.setEndTimeMillis(System.currentTimeMillis());
+//            System.out.println(newRequest.users().dataset().aggregate("me",tmp).execute().toPrettyString());
+//
+//        } catch (IOException e) {
+//            System.err.println(e.getMessage());
+//        } catch (Throwable t) {
+//            t.printStackTrace();
+//        }
 
     }
 

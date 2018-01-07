@@ -13,7 +13,7 @@ public class AppUser {
     private String username;
     private String password;
     private String name;
-    private Credential googleToken;
+    private String accessToken;
     private ArrayList<Event> events;
 
     public String getId() {
@@ -61,11 +61,12 @@ public class AppUser {
         events.add(event);
     }
 
-    public Credential getGoogleToken() {
-        return googleToken;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setGoogleToken(Credential googleToken) {
-        this.googleToken = googleToken;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
+
 }
