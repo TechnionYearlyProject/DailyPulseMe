@@ -1,10 +1,14 @@
 package backend.entity;
 
-import com.google.api.client.auth.oauth2.Credential;
+import backend.repository.EventRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Document
 public class AppUser {
@@ -13,8 +17,9 @@ public class AppUser {
     private String username;
     private String password;
     private String name;
-    private String accessToken;
-    private ArrayList<Event> events;
+    private String googleFitAccessToken;
+    private String googleFitRefreshToken;
+    private List<Event> events;
 
     public String getId() {
         return id;
@@ -48,25 +53,46 @@ public class AppUser {
         this.username = username;
     }
 
-    public ArrayList<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(ArrayList<Event> events) {
-        this.events = events;
-    }
-
     public void addEvent(Event event){
         //TODO: CHECK IF EVENT ALREADY EXITS
+
         events.add(event);
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public String getGoogleFitAccessToken() {
+        return googleFitAccessToken;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public void setGoogleFitAccessToken(String googleFitAccessToken) {
+        this.googleFitAccessToken = googleFitAccessToken;
     }
 
+    public String getGoogleFitRefreshToken() {
+        return googleFitRefreshToken;
+    }
+
+    public void setGoogleFitRefreshToken(String googleFitRefreshToken) {
+        this.googleFitRefreshToken = googleFitRefreshToken;
+    }
+
+    public Event getEvent(String id) {
+       for(Event event : events){
+
+           if(event.getId().compareTo(id)==0){
+               return event;
+           }
+       }
+       return null;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+    public void saveAll(List<Event> e){
+        events.addAll(e);
+    }
+
+    public void setEvents(List<Event> e) {
+        events=e;
+    }
 }
