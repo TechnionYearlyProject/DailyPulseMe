@@ -31,6 +31,7 @@
           <em>Settings</em>
         </template>
         <b-dropdown-item href="profile">Profile</b-dropdown-item>
+        <b-dropdown-item href="addevent">Addevent</b-dropdown-item>
         <b-dropdown-item v-on:click="logout">Signout</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
@@ -58,7 +59,7 @@ export default {
   methods : {
   checkToken(){
     this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')}    
+      'Authorization': localStorage.getItem('token')}
          }).then((res) => {
           this.islogin = true
             }, (err) => {
@@ -87,4 +88,4 @@ export default {
   }
 	}
 }
-</script>	
+</script>
