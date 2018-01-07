@@ -4,7 +4,7 @@
       <b-form-group id="exampleInputGroup1"
                     label="Event Name:"
                     label-for="exampleInput1">
-        <b-form-input v-model="input.name"
+        <b-form-input v-model="name"
                       type="text"
                       required
                       placeholder="Enter name">
@@ -41,7 +41,7 @@
 
       <b-form-group label="Description:"
                     label-for="exampleInput2">
-        <b-form-input v-model="input.description"
+        <b-form-input v-model="description"
                       type="text"
                       required
                       placeholder="Enter description">
@@ -50,7 +50,7 @@
       <b-form-group id="exampleInputGroup3"
                     label="Tag:"
                     label-for="exampleInput3">
-        <b-form-input v-model="input.tag"
+        <b-form-input v-model="tag"
                       type="text"
                       required
                       placeholder="Enter tag">
@@ -69,19 +69,20 @@
         date: '',
         starttime: '',
         endtime: '',
-        input: {
-          name: '',
-          start: this.date + 'D' + this.starttime,
-          end: this.date + 'D' + this.endtime,
-          description: '',
-          tag: ''
-        }
+        name: '',
+        description: '',
+        tag: ''
       }
     },
     methods: {
       addevent() {
+        var sta = (this.date + ' ' + this.starttime);
+        var en = (this.date + ' ' + this.endtime);
+        let input = {"name": this.name, "start": sta,"end": en, "description": this.description, "tag": this.tag};
+        window.alert(input["start"]);
+        input = JSON.stringify(input);
         let url = 'http://localhost:8081/users/addEvent'
-        this.$http.post(url, this.input,{headers: {'Content-Type': 'application/json',
+        this.$http.post(url, input,{headers: {'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')}} ).then((res) => {
           console.log('Success', res);
           //this.$router.push('/');
