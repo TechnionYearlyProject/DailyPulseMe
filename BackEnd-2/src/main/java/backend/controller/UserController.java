@@ -13,7 +13,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -77,6 +79,9 @@ public class UserController {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         user.addEvent(event);
         event.setId(event.getStartTime());
+        if(user.getEvents().contains(event)){
+            return false;
+        }
         appUserRepository.save(user);
         return true;
     }
@@ -103,23 +108,23 @@ public class UserController {
         System.out.println(filter.size());
 
         ArrayList<Event> result = new ArrayList<Event>();
-        for(Event event:filter){
-            if(event.getPulses().size()==0) {
-
-                user.deleteEvent(event.getId());
-
+        for (Event event : filter) {
+            if (event.getPulses().size() == 0) {
                 List<Pulse> eventPulses = GoogleCallParser.parseCall(user, event.getStartTime(), event.getEndTime(), MinInMs);
 
                 event.saveAll(eventPulses);
 
                 event.setAverage();
-
-                user.addEvent(event);
             }
 
         }
         appUserRepository.save(user);
-        return filter;
+        return filter.stream().sorted(new Comparator<Event>() {
+            @Override
+            public int compare(Event r1, Event r2) {
+                return (r1.getId().compareTo(r2.getId()));
+            }
+        }).collect(Collectors.toList());
     }
 
     @GetMapping("/getEvent")

@@ -12,12 +12,17 @@ public class Event {
     private EventTag tag;
 
 
-
     private int pulseAverage;
     private List<Pulse> pulses;
     // private PulseRepository pulses;
 
-
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof Event)) return false;
+        return ((Event) other).getId()==(this.getId());
+    }
     public String getName() {
         return name;
     }
@@ -87,6 +92,10 @@ public class Event {
         int sum=0;
         for(Pulse pulse :pulses){
             sum+=pulse.getValue();
+        }
+        if(pulses.size() == 0){
+            System.out.println("size is zero in SetAvg");
+            return;
         }
         this.pulseAverage = sum /pulses.size();
 
