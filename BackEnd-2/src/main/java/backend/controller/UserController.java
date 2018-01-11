@@ -76,6 +76,7 @@ public class UserController {
     public Boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         user.addEvent(event);
+        event.setId(event.getStartTime());
         appUserRepository.save(user);
         return true;
     }
@@ -92,22 +93,32 @@ public class UserController {
         List<Event> events = user.getEvents();
         ArrayList<Event> filter = new ArrayList<Event>();
 
+        //getting all events within time period
         for (Event event : events) {
             if (event.getStartTime().compareTo(time.getFirst()) >= 0 && event.getEndTime().compareTo(time.getSecond()) <= 0) {
                 filter.add(event);
             }
         }
+        //filter contains the events in the given time
         System.out.println(filter.size());
 
+        ArrayList<Event> result = new ArrayList<Event>();
         for(Event event:filter){
             if(event.getPulses().size()==0) {
-                System.out.println("wohooo");
+
+                user.deleteEvent(event.getId());
+
                 List<Pulse> eventPulses = GoogleCallParser.parseCall(user, event.getStartTime(), event.getEndTime(), MinInMs);
+
                 event.saveAll(eventPulses);
+
+                event.setAverage();
+
+                user.addEvent(event);
             }
 
         }
-          user.saveAll(filter);
+        appUserRepository.save(user);
         return filter;
     }
 

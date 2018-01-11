@@ -1,28 +1,22 @@
 package backend.entity;
 
-import backend.repository.PulseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.annotation.Generated;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-@Document
+
 public class Event {
-    @Id
+
     private String id;
     private String name;
     private String startTime;
     private String endTime;
     private String description;
     private EventTag tag;
-    @DBRef
-     private List<Pulse> pulses;
+
+
+
+    private int pulseAverage;
+    private List<Pulse> pulses;
     // private PulseRepository pulses;
+
 
     public String getName() {
         return name;
@@ -89,4 +83,21 @@ public class Event {
         this.pulses=p;
     }
 
+    public void setAverage() {
+        int sum=0;
+        for(Pulse pulse :pulses){
+            sum+=pulse.getValue();
+        }
+        this.pulseAverage = sum /pulses.size();
+
+    }
+
+
+    public int getPulseAverage() {
+        return pulseAverage;
+    }
+
+    public void setPulseAverage(int pulseAverage) {
+        this.pulseAverage = pulseAverage;
+    }
 }

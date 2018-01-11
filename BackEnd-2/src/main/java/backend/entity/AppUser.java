@@ -92,6 +92,17 @@ public class AppUser {
         events.addAll(e);
     }
 
+    public void deleteEvent(String id){
+
+        for(Event event:events){
+            if(event.getId().compareTo(id) == 0){
+                events.remove(event);
+                return;
+            }
+
+        }
+    }
+
     public void setEvents(List<Event> e) {
         events=e;
     }
