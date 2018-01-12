@@ -3,6 +3,7 @@ package backend.controller;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
+import backend.entity.StringDummy;
 import backend.googleFitApi.GoogleCallParser;
 import backend.helperClasses.TwoStrings;
 import backend.repository.EventRepository;
@@ -50,13 +51,8 @@ public class UserController {
         appUserRepository.save(user);
     }
 
-    @GetMapping("/getPulse")
-    public List<Pulse> getPulse(Authentication auth, @RequestBody TwoStrings time) {
-        AppUser user = appUserRepository.findByUsername(auth.getName());
-        return GoogleCallParser.parseCall(user, time.getFirst(), time.getSecond(), MinInMs);
-    }
 
-
+    // Frontend Team requested this
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken() {
         //when calling this method with an invalid token, an error will be returned,
@@ -69,28 +65,62 @@ public class UserController {
         return "THIS IS PRIVATE!!";
     }
 
+
+    //Aux Testing Method
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getName();
     }
 
+
     @PostMapping("/addEvent")
     public Boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
+        /** checking whether the event interval intersects with existed event in the EventList that **/
+        long startTime=Long.parseLong(event.getStartTime());
+        long endTime=Long.parseLong(event.getEndTime());
+        int size= user.getEvents().stream().filter(x->((Long.parseLong(x.getStartTime())>=
+
+                startTime) && Long.parseLong(x.getStartTime())<=endTime )
+                || ((Long.parseLong(x.getStartTime())<=startTime) && Long.parseLong(x.getEndTime())>startTime )
+                || ((Long.parseLong(x.getStartTime())>=startTime) && Long.parseLong(x.getStartTime())<endTime )
+                || ((Long.parseLong(x.getStartTime())<startTime) && Long.parseLong(x.getEndTime())>startTime)
+                || ((Long.parseLong(x.getStartTime())>startTime) && Long.parseLong(x.getEndTime())<startTime)).collect(Collectors.toList()).size();
+        if(size>0){
+            return  false;
+        }
+        /***/
         user.addEvent(event);
         event.setId(event.getStartTime());
-        if(user.getEvents().contains(event)){
-            return false;
-        }
         appUserRepository.save(user);
         return true;
     }
 
-    //testing method.
+    //Aux Testing Method.
     @GetMapping("/getAllEvents")
     public List<Event> getAllEvents(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
+
+
+    @PostMapping("/deleteEvent")
+    public  Boolean deleteEvent(Authentication auth,@RequestBody StringDummy eventId){
+
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        Event event_=null;
+        List<Event> tmp=user.getEvents();
+        for(Event event : user.getEvents()){
+            if(event.getStartTime().equals(eventId.getStr())){
+                event_=event;
+                break;
+            }
+        }
+        tmp.remove(event_);
+        user.setEvents(tmp);
+        appUserRepository.save(user);
+        return true;
+    }
+
 
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
@@ -110,6 +140,7 @@ public class UserController {
         ArrayList<Event> result = new ArrayList<Event>();
         for (Event event : filter) {
             if (event.getPulses().size() == 0) {
+                //Todo : checking refresh token
                 List<Pulse> eventPulses = GoogleCallParser.parseCall(user, event.getStartTime(), event.getEndTime(), MinInMs);
 
                 event.saveAll(eventPulses);
@@ -127,7 +158,7 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/getEvent")
+    @PostMapping("/getEvent")
     public Event getEvent(Authentication auth,@RequestBody String id) {
         return appUserRepository.findByUsername(auth.getName()).getEvent(id);
     }
