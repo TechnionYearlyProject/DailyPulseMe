@@ -51,12 +51,11 @@ public class UserController {
         return true;
     }
 
-
     // Frontend Team requested this
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken() {
         //when calling this method with an invalid token, an error will be returned,
-        //else, nothing will be returned (another option is to changed it so it returnes boolean and then return true)
+        //else, nothing will be returned
         return true;
     }
 
@@ -65,14 +64,11 @@ public class UserController {
         return "THIS IS PRIVATE!!";
     }
 
-
     //Aux Testing Method
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getName();
     }
-
-
     @PostMapping("/addEvent")
     public Boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -89,23 +85,18 @@ public class UserController {
         if(size>0){
             return  false;
         }
-        /***/
         user.addEvent(event);
         event.setId(event.getStartTime());
         appUserRepository.save(user);
         return true;
     }
-
     //Aux Testing Method.
     @GetMapping("/getAllEvents")
     public List<Event> getAllEvents(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
-
-
     @PostMapping("/deleteEvent")
     public  Boolean deleteEvent(Authentication auth,@RequestBody StringDummy eventId){
-
         AppUser user = appUserRepository.findByUsername(auth.getName());
         Event event_=null;
         List<Event> tmp=user.getEvents();
@@ -120,8 +111,6 @@ public class UserController {
         appUserRepository.save(user);
         return true;
     }
-
-
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -135,8 +124,6 @@ public class UserController {
             }
         }
         //filter contains the events in the given time
-        //System.out.println(filter.size());
-
         ArrayList<Event> result = new ArrayList<Event>();
         List<Pulse> eventPulses;
         for (Event event : filter) {
@@ -175,7 +162,6 @@ public class UserController {
     public boolean refreshAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
         GoogleCallParser.refreshToken(user);
-
         return true;
     }
 }

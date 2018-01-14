@@ -22,7 +22,45 @@ import java.util.regex.Pattern;
 public class GoogleCallParser {
     //after calling this, re-add user to repo.
     public static boolean verifyAndRefresh(AppUser user) {
-        //TODO: Verify, if not valid, use refresh token
+        String refreshed;
+        HttpGet get = new HttpGet("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + user.getGoogleFitAccessToken());
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpResponse response = null;
+        try {
+            response = client.execute(get);
+
+            if (response.getStatusLine().getStatusCode() != 200 && response.getStatusLine().getStatusCode() != 400 ) {
+                //System.out.println(response.getStatusLine().getStatusCode());
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        try {
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(
+                            (response.getEntity().getContent())
+                    )
+            );
+            StringBuilder content = new StringBuilder();
+            String line;
+            while (null != (line = br.readLine())) {
+                content.append(line);
+            }
+            //System.out.println("----" + content.toString());
+            if(content.toString().compareTo("{\"error\":\"invalid_token\"}") == 0 || content.toString().compareTo("{ \"error_description\": \"Invalid Value\"}") == 0) {
+                refreshed = refreshToken(user);
+                if(refreshed.compareTo("Refresh token expired") == 0) {
+                    return false;
+                } else {
+                    //we update the user with a new access token
+                    user.setGoogleFitAccessToken(refreshed);
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
         return true;
     }
 
@@ -52,7 +90,7 @@ public class GoogleCallParser {
             response = client.execute(post);
 
             if (response.getStatusLine().getStatusCode() != 200) {
-                System.out.println(response.getStatusLine().getStatusCode());
+                //System.out.println(response.getStatusLine().getStatusCode());
                return "Refresh token expired";
             }
 
@@ -72,9 +110,6 @@ public class GoogleCallParser {
             access = m.group();
             String[] arr = access.split("\"");
             access = arr[3];
-            for(String s : arr){
-                System.out.println("---- "+s+"\n");
-            }
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
