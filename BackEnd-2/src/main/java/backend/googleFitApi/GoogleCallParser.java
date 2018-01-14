@@ -50,7 +50,7 @@ public class GoogleCallParser {
                 content.append(line);
             }
             System.out.println("----" + content.toString());
-            if(content.toString().compareTo("{\"error\"😕"invalid_token\"}") == 0) {
+            if(content.toString().compareTo("{\"error\":"invalid_token\"}") == 0) {
                 //then we need to refresh the access token
                 System.out.println("access token not valid");
                 refreshed = refreshToken(user);
