@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b4bf84d-dc0c-40f4-87f9-adfaca41e993" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" afterPath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" afterPath="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +30,8 @@
       <file leaf-file-name="GoogleCallParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="176">
+              <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -125,8 +120,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/backend/entity/RefreshTokenExpiredException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
       </list>
     </option>
   </component>
@@ -386,12 +381,12 @@
       <workItem from="1515763690287" duration="7674000" />
       <workItem from="1515791522744" duration="2537000" />
       <workItem from="1515796022209" duration="22000" />
-      <workItem from="1515927254583" duration="17267000" />
+      <workItem from="1515927254583" duration="17375000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27500000" />
+    <option name="totallyTimeSpent" value="27608000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -616,8 +611,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="176">
+          <caret line="36" column="25" lean-forward="true" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
           <folding />
         </state>
       </provider>
