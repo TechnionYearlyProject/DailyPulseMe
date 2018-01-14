@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b4bf84d-dc0c-40f4-87f9-adfaca41e993" name="Default" comment="" />
+    <list default="true" id="0b4bf84d-dc0c-40f4-87f9-adfaca41e993" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/backend/entity/RefreshTokenExpiredException.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/RefreshTokenExpiredException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" afterPath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/entity/Event.class" afterPath="$PROJECT_DIR$/target/classes/backend/entity/Event.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" afterPath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthenticationFilter.class" afterPath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthenticationFilter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthorizationFilter.class" afterPath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthorizationFilter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/security/RequestFilter.class" afterPath="$PROJECT_DIR$/target/classes/backend/security/RequestFilter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/service/UserDetailsServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/backend/service/UserDetailsServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" afterPath="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,9 +32,11 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
+            <state relative-caret-position="328">
               <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-              <folding />
+              <folding>
+                <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -348,16 +366,8 @@
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.DailyPulseApp" />
     </list>
   </component>
-  <component name="SbtLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -373,10 +383,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10249000" />
+    <option name="totallyTimeSpent" value="10486000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -455,7 +465,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -492,7 +504,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -529,7 +543,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -579,7 +595,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -619,7 +637,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -656,7 +676,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -720,9 +742,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
+        <state relative-caret-position="328">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding />
+          <folding>
+            <marker date="1515955707878" expanded="true" signature="6803:6810" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
