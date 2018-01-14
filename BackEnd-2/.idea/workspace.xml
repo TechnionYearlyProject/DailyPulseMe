@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b4bf84d-dc0c-40f4-87f9-adfaca41e993" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" afterPath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" afterPath="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
@@ -17,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1878">
-              <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="287">
+              <caret line="159" column="20" lean-forward="true" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="20" />
               <folding>
                 <element signature="e#4886#4893#0" expanded="true" />
                 <element signature="e#5271#5278#0" expanded="true" />
@@ -30,10 +32,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoogleCallParser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GoogleCallParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
+            <state relative-caret-position="1156">
               <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding />
             </state>
@@ -105,10 +107,10 @@
       <find>update</find>
       <find>out.</find>
       <find>syste</find>
-      <find>out</find>
       <find>----</find>
       <find>sys</find>
       <find>system</find>
+      <find>out</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -384,12 +386,12 @@
       <workItem from="1515763690287" duration="7674000" />
       <workItem from="1515791522744" duration="2537000" />
       <workItem from="1515796022209" duration="22000" />
-      <workItem from="1515927254583" duration="17199000" />
+      <workItem from="1515927254583" duration="17267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27432000" />
+    <option name="totallyTimeSpent" value="27500000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -601,22 +603,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1878">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        <state relative-caret-position="287">
+          <caret line="159" column="20" lean-forward="true" selection-start-line="159" selection-start-column="20" selection-end-line="159" selection-end-column="20" />
           <folding>
             <element signature="e#4886#4893#0" expanded="true" />
             <element signature="e#5271#5278#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
