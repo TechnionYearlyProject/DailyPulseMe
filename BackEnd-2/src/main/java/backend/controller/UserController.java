@@ -5,6 +5,7 @@ import backend.googleFitApi.GoogleCallParser;
 import backend.helperClasses.TwoStrings;
 import backend.repository.EventRepository;
 import backend.repository.UserRepository;
+import backend.service.UserService;
 import org.apache.http.auth.AUTH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -44,8 +45,12 @@ public class UserController {
     @PostMapping("/updateGoogleFitToken")
     public boolean updateGoogleFitToken(Authentication auth, @RequestBody TwoStrings accessTokens) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        user.setGoogleFitAccessToken(accessTokens.getFirst());
+       /* user.setGoogleFitAccessToken(accessTokens.getFirst());
         user.setGoogleFitRefreshToken(accessTokens.getSecond());
+        */
+       System.out.println(user.getUsername());
+
+        UserService.updateTokens(user,accessTokens);
         appUserRepository.save(user);
         //System.out.println(user.getGoogleFitAccessToken());
         return true;
@@ -70,10 +75,13 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getName();
     }
     @PostMapping("/addEvent")
-    public Boolean addEvent(Authentication auth, @RequestBody Event event) {
+    public boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
+       if(!UserService.addEvent(user,event)){
+           return false;
+       }
         /** checking whether the event interval intersects with existed event in the EventList that **/
-        long startTime=Long.parseLong(event.getStartTime());
+   /*     long startTime=Long.parseLong(event.getStartTime());
         long endTime=Long.parseLong(event.getEndTime());
         int size= user.getEvents().stream().filter(x->((Long.parseLong(x.getStartTime())>=
 
@@ -86,7 +94,7 @@ public class UserController {
             return  false;
         }
         user.addEvent(event);
-        event.setId(event.getStartTime());
+        event.setId(event.getStartTime());*/
         appUserRepository.save(user);
         return true;
     }
@@ -98,7 +106,7 @@ public class UserController {
     @PostMapping("/deleteEvent")
     public  Boolean deleteEvent(Authentication auth,@RequestBody StringDummy eventId){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        Event event_=null;
+      /*  Event event_=null;
         List<Event> tmp=user.getEvents();
         for(Event event : user.getEvents()){
             if(event.getStartTime().equals(eventId.getStr())){
@@ -107,14 +115,14 @@ public class UserController {
             }
         }
         tmp.remove(event_);
-        user.setEvents(tmp);
+        user.setEvents(tmp); */
         appUserRepository.save(user);
         return true;
     }
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        List<Event> events = user.getEvents();
+     /*   List<Event> events = user.getEvents();
         ArrayList<Event> filter = new ArrayList<Event>();
 
         //getting all events within time period
@@ -137,6 +145,9 @@ public class UserController {
                 event.setAverage();
             }
         }
+        */
+        List<Event> filter = UserService.getEvents(user,time);
+
         appUserRepository.save(user);
         return filter.stream().sorted(new Comparator<Event>() {
             @Override
