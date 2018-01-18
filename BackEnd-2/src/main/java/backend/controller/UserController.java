@@ -48,8 +48,7 @@ public class UserController {
        /* user.setGoogleFitAccessToken(accessTokens.getFirst());
         user.setGoogleFitRefreshToken(accessTokens.getSecond());
         */
-       System.out.println(user.getUsername());
-
+        System.out.println(user.getUsername());
         UserService.updateTokens(user,accessTokens);
         appUserRepository.save(user);
         //System.out.println(user.getGoogleFitAccessToken());
@@ -104,7 +103,7 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
     @PostMapping("/deleteEvent")
-    public  Boolean deleteEvent(Authentication auth,@RequestBody StringDummy eventId){
+    public  Boolean deleteEvent(Authentication auth,@RequestBody String eventId){
         AppUser user = appUserRepository.findByUsername(auth.getName());
       /*  Event event_=null;
         List<Event> tmp=user.getEvents();
@@ -116,38 +115,14 @@ public class UserController {
         }
         tmp.remove(event_);
         user.setEvents(tmp); */
+        UserService.deleteEvent(user,eventId);
         appUserRepository.save(user);
         return true;
     }
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-     /*   List<Event> events = user.getEvents();
-        ArrayList<Event> filter = new ArrayList<Event>();
-
-        //getting all events within time period
-        for (Event event : events) {
-            if (event.getStartTime().compareTo(time.getFirst()) >= 0 && event.getEndTime().compareTo(time.getSecond()) <= 0) {
-                filter.add(event);
-            }
-        }
-        //filter contains the events in the given time
-        ArrayList<Event> result = new ArrayList<Event>();
-        List<Pulse> eventPulses;
-        for (Event event : filter) {
-            if (event.getPulses().size() != 0) {
-                try {
-                    eventPulses = GoogleCallParser.getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);
-                } catch (RefreshTokenExpiredException e){
-                    return null;
-                }
-                event.saveAll(eventPulses);
-                event.setAverage();
-            }
-        }
-        */
         List<Event> filter = UserService.getEvents(user,time);
-
         appUserRepository.save(user);
         return filter.stream().sorted(new Comparator<Event>() {
             @Override

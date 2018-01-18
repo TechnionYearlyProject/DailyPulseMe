@@ -54,9 +54,12 @@ public class UserService {
 
         List<Event> events = user.getEvents();
         List<Event> filter = new ArrayList<Event>();
-
+        System.out.println("Events number: "+events.size());
         //getting all events within time period
         for (Event event : events) {
+            System.out.println("requested start time: "+time.getFirst()+" requested end time: "+time.getSecond());
+            System.out.println("    event start time: "+event.getStartTime()+"     event end time: "+event.getEndTime());
+            System.out.println("THE RESULT: " + (event.getStartTime().compareTo(time.getFirst()) >= 0 )+ " "+" " +( event.getEndTime().compareTo(time.getSecond()) <= 0));
             if (event.getStartTime().compareTo(time.getFirst()) >= 0 && event.getEndTime().compareTo(time.getSecond()) <= 0) {
                 filter.add(event);
             }
@@ -64,20 +67,21 @@ public class UserService {
         //filter contains the events in the given time
         List<Event> result = new ArrayList<Event>();
         List<Pulse> eventPulses;
+        System.out.println("Filter size: "+filter.size());
         for (Event event : filter) {
-            if (event.getPulses().size() != 0) {
+            if (event.getPulses().size() == 0) {
                 try {
                     eventPulses = GoogleCallParser.getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);
                 } catch (RefreshTokenExpiredException e) {
                     return null;
                 }
+                System.out.println("Pulses size: "+eventPulses.size());
                 event.saveAll(eventPulses);
                 event.setAverage();
             }
         }
+        System.out.println("Filter size: "+filter.size());
         return filter;
-
-
     }
     public static boolean updateTokens(AppUser user, TwoStrings accessTokens){
         System.out.println(accessTokens.getFirst());
