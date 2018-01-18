@@ -114,7 +114,7 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
     @PostMapping("/deleteEvent")
-    public  Boolean deleteEvent(Authentication auth,@RequestBody String eventId){
+    public Boolean deleteEvent(Authentication auth, String eventId){
         AppUser user = appUserRepository.findByUsername(auth.getName());
       /*  Event event_=null;
         List<Event> tmp=user.getEvents();
@@ -144,7 +144,7 @@ public class UserController {
     }
 
     @PostMapping("/getEvent")
-    public Event getEvent(Authentication auth,@RequestBody String id) {
+    public Event getEvent(Authentication auth, String id) {
         return appUserRepository.findByUsername(auth.getName()).getEvent(id);
     }
     @GetMapping("/verifyAccessToken")

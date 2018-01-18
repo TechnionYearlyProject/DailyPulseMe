@@ -45,8 +45,7 @@
       <b-form-group label="Description:"
                     label-for="exampleInput2">
         <b-form-input v-model="description"
-                      type="text"
-                      required
+                      
                       placeholder="Enter description">
         </b-form-input>
       </b-form-group>

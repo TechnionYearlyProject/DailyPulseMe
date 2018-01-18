@@ -3,9 +3,12 @@ import Router from 'vue-router'
 import Home from '../components/Home'
 import Login from '../components/Login'
 import Register from '../components/register'
-import Profile from '../components/Profile'
+import Config from '../components/Config'
 import Addevent from '../components/Addevent'
-
+import Events from '../components/eventsGraph'
+import Event from '../components/eventGraph'
+import GoogleFit from '../components/GoogleFit'
+import RemoveEvent from '../components/RemoveEvent'
 const requireAuth = (to, from, next) => {
  checkToken(function(){
             next()
@@ -49,6 +52,16 @@ const router = new Router({
       component: Register
     },
     {
+      path: '/eventsGraph',
+      name: 'Events',
+      component: Events
+    },
+    {
+      path: '/eventGraph',
+      name: 'Event',
+      component: Event
+    },
+    {
       path: '/',
       alias: '/home',
       name: 'Home',
@@ -56,9 +69,9 @@ const router = new Router({
       beforeEnter: requireAuth
     },
      {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile,
+      path: '/config',
+      name: 'Config',
+      component: Config,
       beforeEnter: requireAuth
     },
     {
@@ -66,7 +79,18 @@ const router = new Router({
      name: 'Addevent',
      component: Addevent,
      beforeEnter: requireAuth
-   }
+   },{
+      path: '/token',
+      name: 'Token',
+      component: GoogleFit,
+      beforeEnter: requireAuth
+    },{
+     path: '/removeevent',
+     name: 'RemoveEvent',
+     component: RemoveEvent,
+     beforeEnter: requireAuth
+   },
+
   ]
 })
 router.beforeEach((to, from, next) => {

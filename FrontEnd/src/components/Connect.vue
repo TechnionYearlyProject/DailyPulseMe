@@ -3,7 +3,7 @@
       <b-btn v-b-toggle.collapse1 variant="primary" v-b-popover.hover="'In order to start using DailyPulseYou need to configure you fitness tracker and your google account'">Configure your tracker!</b-btn>
    <b-collapse id="collapse1" style="  margin-top:10px; ">
        <b-btn v-b-toggle.collapse1 variant="success">Fitbit</b-btn>
-    <b-btn v-b-toggle.collapse1 variant="warning">Google</b-btn>
+    <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="googlefit" >Google</b-btn>
   </b-collapse>
 </div>
 </template>
@@ -13,10 +13,12 @@ export default {
   name: 'Connect',
   data(){
     return{
-      islogin: false
+      islogin: false,
+      isgoogle: false
     }
   },created: function () {
     this.checkToken();
+    this.checkGoogleToken();
   },
    methods : {
    checkToken(){
@@ -27,10 +29,23 @@ export default {
             }, (err) => {
           this.islogin = false
           })
+    },checkGoogleToken(){
+      this.$http.get('http://localhost:8081/users/verifyAccessToken',{headers: {'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')}    
+               }).then((res) => {
+                this.isgoogle = true
+                  }, (err) => {
+                this.isgoogle = false
+                })
     },
+
     toShow(){
-     return this.islogin
+     return this.islogin && !this.isgoogle
     },
+    googlefit() {
+      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.activity.read+https://www.googleapis.com/auth/calendar.readonly&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=128078459465-4bjs62f5pg8bmodena4ojqr5f78i709i.apps.googleusercontent.com'
+      location.assign(url);
+    }
   }
 }
 </script>

@@ -29,14 +29,13 @@
 
 
 <script>
-import Chart from './Chart'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
 export default {
   name: 'HelloWorld',
-  components: { Chart },
+  components: {  },
   data () {
     return {
       msg: '',
