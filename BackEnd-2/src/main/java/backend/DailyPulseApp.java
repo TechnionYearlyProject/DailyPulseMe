@@ -12,6 +12,7 @@ import java.util.logging.SimpleFormatter;
 
 @SpringBootApplication
 public class DailyPulseApp {
+    //logger initialization
     public static Logger LOGGER = Logger.getLogger("InfoLogging");
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
