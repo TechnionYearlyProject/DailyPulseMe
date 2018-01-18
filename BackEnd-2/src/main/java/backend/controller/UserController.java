@@ -55,15 +55,21 @@ public class UserController {
 
     @PostMapping("/updateGoogleFitToken")
     public boolean updateGoogleFitToken(Authentication auth, @RequestBody TwoStrings accessTokens) {
-        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try {
+            AppUser user = appUserRepository.findByUsername(auth.getName());
        /* user.setGoogleFitAccessToken(accessTokens.getFirst());
         user.setGoogleFitRefreshToken(accessTokens.getSecond());
         */
-        System.out.println(user.getUsername());
-        UserService.updateTokens(user,accessTokens);
-        appUserRepository.save(user);
-        //System.out.println(user.getGoogleFitAccessToken());
-        return true;
+            System.out.println(user.getUsername());
+            UserService.updateTokens(user,accessTokens);
+            appUserRepository.save(user);
+            //System.out.println(user.getGoogleFitAccessToken());
+            return true;
+        }
+        catch (Exception e){
+            DailyPulseApp.LOGGER.info("error from backend " + e.toString());
+            return false;
+        }
     }
 
     // Frontend Team requested this
