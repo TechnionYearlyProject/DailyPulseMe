@@ -1,5 +1,6 @@
 package backend.controller;
 
+import backend.DailyPulseApp;
 import backend.entity.*;
 import backend.googleFitApi.GoogleCallParser;
 import backend.helperClasses.TwoStrings;
@@ -12,16 +13,20 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
     private UserRepository appUserRepository;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private static final String MinInMs = "60000";
@@ -32,14 +37,20 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public boolean signUp(@RequestBody AppUser user) {
-        if (appUserRepository.findByUsername(user.getUsername()) != null) {
+    public boolean signUp(AppUser user) {
+        try {
+            if (appUserRepository.findByUsername(user.getUsername()) != null) {
+                return false;
+            }
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setEvents(new ArrayList<>());
+            appUserRepository.save(user);
+            return true;
+        }
+        catch (Exception e){
+            DailyPulseApp.LOGGER.info("error from backend " + e.toString());
             return false;
         }
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setEvents(new ArrayList<>());
-        appUserRepository.save(user);
-        return true;
     }
 
     @PostMapping("/updateGoogleFitToken")
