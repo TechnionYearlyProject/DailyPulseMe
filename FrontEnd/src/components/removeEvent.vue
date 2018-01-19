@@ -4,6 +4,7 @@
         <b-form @submit.prevent="RemoveEvent">
         <b-form-select label= "Tag:" :options="this.eventsList" v-model="retvalue"  class="mb-3" required>
       </b-form-select>
+      <p>{{this.msg}}</p>
             <b-button type="submit" variant="primary">Remove</b-button>
     </b-form>
 </div>
@@ -15,7 +16,8 @@ export default {
   data () {
   return {
     eventsList: [],
-    retvalue: null
+    retvalue: '',
+    msg: ''
   }
   },
   created: function(){
@@ -35,11 +37,11 @@ export default {
             })
         },
         RemoveEvent(){
-            this.$http.post('http://localhost:8081/users/deleteEvent',this.retvalue
+            this.$http.post('http://localhost:8081/users/deleteEvent',{"eventId": this.retvalue}
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             })
-            location.reload();
+            this.msg = 'Event Removed!'
         }
   }
 }
