@@ -2,7 +2,10 @@
   <div>
     <div class="hello">
       <p></p>
-  <h2 style="font-family: 'Muli', sans-serif;">Example heading <b-badge>New</b-badge></h2>    </div>
+
+  <h2 style="font-family: 'Muli', sans-serif;">Configure Page <b-badge>New</b-badge></h2>    </div>
+  <p></p>
+  <Connect></Connect>
 <div class="Change Password" style="margin-top:10px;">
    <div style ="width:25%; margin:auto">
      <b-card  bg-variant="dark" text-variant="white" title="Enter Your Desired Password And Confirm It">
@@ -15,13 +18,16 @@
        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Change Password</button>
      </form>
      </b-card>
+     
    </div>
 </div>  
 </div>
 </template>
 <script>
+import Connect from './Connect'
 export default {
   name: 'Config',
+  components:{ Connect },
   data() {
     return {
       password : '',

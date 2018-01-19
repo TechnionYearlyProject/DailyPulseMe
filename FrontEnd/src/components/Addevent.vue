@@ -45,7 +45,7 @@
       <b-form-group label="Description:"
                     label-for="exampleInput2">
         <b-form-input v-model="description"
-                      
+
                       placeholder="Enter description">
         </b-form-input>
       </b-form-group>
@@ -58,6 +58,7 @@
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
+    <p>{{this.msg}}</p>
   </div>
 </template>
 <script type="application/json">
@@ -71,6 +72,7 @@
         name: '',
         description: '',
         tag: '',
+        msg: ''
       }
 
     },
@@ -90,11 +92,17 @@
         let url = 'http://localhost:8081/users/addEvent'
         this.$http.post(url, input,{headers: {'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')}} ).then((res) => {
+            //check if event collides with another
+            if(res["body"] == false){
+              window.alert("colliding events");
+              return;
+            }
           console.log('Success', res);
-          //this.$router.push('/');
         }, (err) => {
-          console.log('Error: ', err)
+          console.log('Error: ', err);
+
         })
+          this.msg = "Event Added!"
       }
     }
   }

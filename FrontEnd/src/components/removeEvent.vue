@@ -1,11 +1,15 @@
 <template>
-<div style="width:30%; margin:auto">
+<div style="width:30%; margin:auto" >
+  <p></p>
     <h1>Remove event</h1>
+    <div v-if=!isempty v-cloak> 
         <b-form @submit.prevent="RemoveEvent">
         <b-form-select label= "Tag:" :options="this.eventsList" v-model="retvalue"  class="mb-3" required>
       </b-form-select>
             <b-button type="submit" variant="primary">Remove</b-button>
     </b-form>
+      <p>{{this.msg}}</p>
+  </div>
 </div>
 </template>
 
@@ -15,7 +19,9 @@ export default {
   data () {
   return {
     eventsList: [],
-    retvalue: null
+    retvalue: '',
+    msg: '',
+    isempty : true
   }
   },
   created: function(){
@@ -29,18 +35,23 @@ export default {
             }).then((res) => {
               var eventsArr = res.body;
                 var arrayLength = eventsArr.length;
+                if(arrayLength != 0) this.isempty = false;
                 for (var i = 0; i < arrayLength; i++) {
-                 this.eventsList.push({value:res.body[i].id,text:res.body[i].name})
-                }
+                  this.eventsList.push( {value:res.body[i].id,text:res.body[i].name});
+                }    
+
             })
         },
         RemoveEvent(){
-            this.$http.post('http://localhost:8081/users/deleteEvent',this.retvalue
+            this.$http.post('http://localhost:8081/users/deleteEvent',{"eventId": this.retvalue}
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             })
-            location.reload();
+            this.msg = 'Event Removed!'
+            // location.reload();
         }
   }
 }
 </script>
+<style> [v-cloak] > * { display:none }
+[v-cloak]::before { content: "loading…" } </style>

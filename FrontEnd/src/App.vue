@@ -1,7 +1,9 @@
 <template>
   <div id="app">
 <Navbar></Navbar>
-<Connect></Connect>
+<div v-cloak>
+<!-- <Connect ></Connect> -->
+</div>
     <router-view id="router-view"></router-view>
   </div>
 </template>
@@ -15,6 +17,9 @@
     }
 </script>
 <style>
+[v-cloak] {
+    display: none;
+  }
 body{
     background-image: url("http://static.hdw.eweb4.com/media/wallpapers_dl/1/90/890508-cloud-background.jpg");
     background-attachment: fixed;
