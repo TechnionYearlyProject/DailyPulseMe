@@ -5,7 +5,7 @@ import Login from '../components/Login'
 import Register from '../components/register'
 import Config from '../components/Config'
 import Addevent from '../components/Addevent'
-import Events from '../components/eventsGraph'
+import eventsWrapper from '../components/eventsWrapper'
 import Event from '../components/eventGraph'
 import GoogleFit from '../components/GoogleFit'
 import RemoveEvent from '../components/RemoveEvent'
@@ -53,8 +53,8 @@ const router = new Router({
     },
     {
       path: '/eventsGraph',
-      name: 'Events',
-      component: Events
+      name: 'eventsWrapper',
+      component: eventsWrapper
     },
     {
       path: '/eventGraph',

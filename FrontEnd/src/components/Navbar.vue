@@ -12,8 +12,8 @@
   <b-collapse is-nav id="nav_collapse">
 
     <b-navbar-nav>
-      <b-nav-item href="#">Home</b-nav-item>
-      <b-nav-item href="eventsGraph">Graphs</b-nav-item>
+      <b-nav-item href="/">Home</b-nav-item>
+      <b-nav-item href="/eventsGraph">Graphs</b-nav-item>
     </b-navbar-nav>
 
     <!-- Right aligned nav items -->
@@ -30,9 +30,9 @@
         <template slot="button-content">
           <em>Settings</em>
         </template>
-        <b-dropdown-item href="addevent">Add event</b-dropdown-item>
-        <b-dropdown-item href="removeevent">Remove event</b-dropdown-item>
-        <b-dropdown-item href="config">Configure</b-dropdown-item>
+        <b-dropdown-item href="/addevent">Add event</b-dropdown-item>
+        <b-dropdown-item href="/removeevent">Remove event</b-dropdown-item>
+        <b-dropdown-item href="/config">Configure</b-dropdown-item>
         <b-dropdown-item v-on:click="logout">Sign out</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>

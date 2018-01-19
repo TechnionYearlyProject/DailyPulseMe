@@ -6,7 +6,7 @@ import {Line} from 'vue-chartjs'
 export default { 
   name: 'Events', 
   extends: Line,
-  beforeMount: function () {
+  created: function () {
     this.getEvents();
         },
   data () {
@@ -14,17 +14,12 @@ export default {
       gradient: null,
       gradient2: null,
       datesList : [],
-      avgList: []
+      avgList: [],
+      isempty: true
     }
   },
   methods:{
-    
-       showModal () {
-      this.$refs.myModalRef.show()
-    },
-    hideModal () {
-      this.$refs.myModalRef.hide()
-    },
+
     graphClickEvent(event, array){
       var points = this.getElementAtEvent(event)
       },
@@ -70,7 +65,6 @@ export default {
 
 
     this.renderChart({
-      // labels: ['16/12', '17/12', '18 /12', '19/12', '20/12', '21/12', '22/12', '23/12'],
       labels: this.datesList,
       datasets: [
         {
@@ -80,28 +74,8 @@ export default {
           pointBorderColor: 'white',
           borderWidth: 2,
           backgroundColor: this.gradient2,
-          // data: [60, 55, 125, 65, 95, 60 ,64,123]
-          // data: [{label: 'Work with Adi',y: 60,id: 34},
-          //        {label: 'Working on project',y: 55},
-          //        {label: 'a a bug',y: 125},
-          //        {label: 'Going for a walk',y: 65},
-          //        {label: 'Having fun with our fitbit watch',y: 95},
-          //        {label: 'Soccer course',y: 60},
-          //        {label: 'Fixing a bug',y: 64},
-          //        {label: 'STILL Fixing a bug',y: 123}]
           data: this.avgList
          },
-
-        // ,{
-         
-        //   label: 'Eran',
-        //   borderColor: '#FC2525',
-        //   pointBackgroundColor: 'white',
-        //   borderWidth: 2,
-        //   pointBorderColor: 'white',
-        //   backgroundColor: this.gradient,
-        //   data: [65, 75, 50, 125, 65, 60, 65]
-        // }
       ]
     ,
      options: {
@@ -123,7 +97,8 @@ export default {
     var label = this.data.labels[firstPoint._index];
     var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
     var location = "eventGraph?id=" + value.id;
-    window.location.href = location;
+     // window.open(location);
+     window.open(location, 'event graph', "height=500px,width=600px");
     }
        }
       , responsive: true, maintainAspectRatio: false,fontColor: '#66226',
@@ -140,11 +115,6 @@ export default {
                        var evnt = 'Type: ' + data.datasets[0].data[tooltipItems.index].tag;
                         return [avg,evnt];
                     }
-        //             ,
-        //             afterLabel: function(tooltipItems, data) {
-        //   var evnt = 'Event name: ' + data.datasets[0].data[tooltipItems.index].label;
-        //                 return evnt;
-        // }
                 }
             }
           })

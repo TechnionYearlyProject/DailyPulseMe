@@ -58,6 +58,7 @@
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
+    <p>{{this.msg}}</p>
   </div>
 </template>
 <script type="application/json">
@@ -71,6 +72,7 @@
         name: '',
         description: '',
         tag: '',
+        msg: ''
       }
 
     },
@@ -95,6 +97,7 @@
         }, (err) => {
           console.log('Error: ', err)
         })
+          this.msg = "Event Added!"
       }
     }
   }
