@@ -1,4 +1,4 @@
-package backend.Testing;
+package test;
 
 
 import backend.entity.AppUser;
@@ -125,7 +125,7 @@ public class UserServiceTest {
             assertTrue(event.getStartTime().equals(Integer.toString(i*100)));
             i+=2;
         }
-        assertTrue(user.getEvents().size()==N/2);
+        assertTrue(user.getEvents().size()!=N/2);
 
     }
     @Test
