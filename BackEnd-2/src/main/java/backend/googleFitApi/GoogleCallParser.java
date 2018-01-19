@@ -30,10 +30,12 @@ public class GoogleCallParser {
             response = client.execute(get);
 
             if (response.getStatusLine().getStatusCode() != 200 && response.getStatusLine().getStatusCode() != 400 ) {
-                //System.out.println(response.getStatusLine().getStatusCode());
+                System.out.println(response.getStatusLine().getStatusCode());
+                System.out.println("-------1---------");
                 return false;
             }
         } catch (Exception e) {
+            System.out.println("-------2---------");
             return false;
         }
         try {
@@ -51,6 +53,7 @@ public class GoogleCallParser {
             if(content.toString().compareTo("{\"error\":\"invalid_token\"}") == 0 || content.toString().compareTo("{ \"error_description\": \"Invalid Value\"}") == 0) {
                 refreshed = refreshToken(user);
                 if(refreshed.compareTo("Refresh token expired") == 0) {
+                    System.out.println("-------3---------");
                     return false;
                 } else {
                     //we update the user with a new access token
@@ -59,6 +62,7 @@ public class GoogleCallParser {
                 }
             }
         } catch (Exception e) {
+            System.out.println("-------4---------");
             return false;
         }
         return true;

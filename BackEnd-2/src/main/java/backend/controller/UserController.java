@@ -122,16 +122,6 @@ public class UserController {
     @PostMapping("/deleteEvent")
     public Boolean deleteEvent(Authentication auth, String eventId){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-      /*  Event event_=null;
-        List<Event> tmp=user.getEvents();
-        for(Event event : user.getEvents()){
-            if(event.getStartTime().equals(eventId.getStr())){
-                event_=event;
-                break;
-            }
-        }
-        tmp.remove(event_);
-        user.setEvents(tmp); */
         UserService.deleteEvent(user,eventId);
         appUserRepository.save(user);
         return true;
