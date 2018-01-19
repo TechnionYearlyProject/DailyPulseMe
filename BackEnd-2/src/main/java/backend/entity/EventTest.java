@@ -1,4 +1,4 @@
-package backend.Testing;
+package backend.entity;
 
 import backend.entity.Event;
 import backend.entity.EventTag;
