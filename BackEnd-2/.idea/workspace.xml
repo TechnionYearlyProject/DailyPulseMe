@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/backend/Testing/EventTest.java" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.travis.yml" afterPath="$PROJECT_DIR$/../.travis.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,10 +19,10 @@
             <state relative-caret-position="11840">
               <caret line="361" column="37" lean-forward="true" selection-start-line="361" selection-start-column="37" selection-end-line="361" selection-end-column="37" />
               <folding>
-                <marker date="1516387327179" expanded="true" signature="31576:31618" ph="..." />
-                <marker date="1516387327179" expanded="true" signature="31576:31636" ph="..." />
-                <marker date="1516387327179" expanded="true" signature="31576:31649" ph="..." />
-                <marker date="1516387327179" expanded="true" signature="31576:31664" ph="..." />
+                <marker date="1516387328842" expanded="true" signature="31576:31618" ph="..." />
+                <marker date="1516387328842" expanded="true" signature="31576:31636" ph="..." />
+                <marker date="1516387328842" expanded="true" signature="31576:31649" ph="..." />
+                <marker date="1516387328842" expanded="true" signature="31576:31664" ph="..." />
               </folding>
             </state>
           </provider>
@@ -395,7 +393,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516382792575</updated>
-      <workItem from="1516382802539" duration="2804000" />
+      <workItem from="1516382802539" duration="2865000" />
     </task>
     <servers />
   </component>
@@ -414,7 +412,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2804000" />
+    <option name="totallyTimeSpent" value="2865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -483,10 +481,10 @@
         <state relative-caret-position="11840">
           <caret line="361" column="37" lean-forward="true" selection-start-line="361" selection-start-column="37" selection-end-line="361" selection-end-column="37" />
           <folding>
-            <marker date="1516387327179" expanded="true" signature="31576:31618" ph="..." />
-            <marker date="1516387327179" expanded="true" signature="31576:31636" ph="..." />
-            <marker date="1516387327179" expanded="true" signature="31576:31649" ph="..." />
-            <marker date="1516387327179" expanded="true" signature="31576:31664" ph="..." />
+            <marker date="1516387328842" expanded="true" signature="31576:31618" ph="..." />
+            <marker date="1516387328842" expanded="true" signature="31576:31636" ph="..." />
+            <marker date="1516387328842" expanded="true" signature="31576:31649" ph="..." />
+            <marker date="1516387328842" expanded="true" signature="31576:31664" ph="..." />
           </folding>
         </state>
       </provider>
