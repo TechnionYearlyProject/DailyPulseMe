@@ -26,12 +26,5 @@ public class DailyPulseApp {
         fh.setFormatter(formatter);
         SpringApplication.run(DailyPulseApp.class,args);
     }
-   /* public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repo) throws Exception {
-        builder.userDetailsService(new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-                return new MyUserDetails(repo.findByEmail(s));
-            }
-        });
-    }*/
+
 }
