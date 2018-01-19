@@ -6,7 +6,6 @@
         <b-form @submit.prevent="RemoveEvent">
         <b-form-select label= "Tag:" :options="this.eventsList" v-model="retvalue"  class="mb-3" required>
       </b-form-select>
-      <p>{{this.msg}}</p>
             <b-button type="submit" variant="primary">Remove</b-button>
     </b-form>
       <p>{{this.msg}}</p>
@@ -21,12 +20,8 @@ export default {
   return {
     eventsList: [],
     retvalue: '',
-<<<<<<< HEAD
     msg: '',
     isempty : true
-=======
-    msg: ''
->>>>>>> 93e7c0fbeefca0a43d4971517093128491a3c715
   }
   },
   created: function(){
@@ -53,10 +48,7 @@ export default {
               'Authorization': localStorage.getItem('token'),}
             })
             this.msg = 'Event Removed!'
-<<<<<<< HEAD
             // location.reload();
-=======
->>>>>>> 93e7c0fbeefca0a43d4971517093128491a3c715
         }
   }
 }
