@@ -15,17 +15,14 @@ import java.util.stream.Collectors;
 
 public class UserService {
     private static final String MinInMs = "60000";
+
     public static boolean addEvent(AppUser user, Event event) {
         long startTime = Long.parseLong(event.getStartTime());
         long endTime = Long.parseLong(event.getEndTime());
-        int size = user.getEvents().stream().filter(x -> ((Long.parseLong(x.getStartTime()) >=
-
-                startTime) && Long.parseLong(x.getStartTime()) <= endTime)
-                || ((Long.parseLong(x.getStartTime()) <= startTime) && Long.parseLong(x.getEndTime()) > startTime)
-                || ((Long.parseLong(x.getStartTime()) >= startTime) && Long.parseLong(x.getStartTime()) < endTime)
-                || ((Long.parseLong(x.getStartTime()) < startTime) && Long.parseLong(x.getEndTime()) > startTime)
-                || ((Long.parseLong(x.getStartTime()) > startTime) && Long.parseLong(x.getEndTime()) < startTime)).collect(Collectors.toList()).size();
-        if (size > 0) {
+        int size = user.getEvents().stream().filter(x ->
+                ((Long.parseLong(x.getStartTime()) >=  endTime) && (Long.parseLong(x.getEndTime()) >= endTime))
+                || ((Long.parseLong(x.getStartTime()) <=  startTime) && (Long.parseLong(x.getEndTime()) <= startTime))).collect(Collectors.toList()).size();
+        if ((user.getEvents().size()-size) != 0) {
             return false;
         }
         user.addEvent(event);
@@ -36,12 +33,18 @@ public class UserService {
     public static boolean deleteEvent(AppUser user, String eventID) {
 
         Event event_ = null;
+        boolean isExist=false;
         List<Event> tmp = user.getEvents();
         for (Event event : user.getEvents()) {
             if (event.getStartTime().equals(eventID)) {
                 event_ = event;
+                isExist=true;
                 break;
             }
+        }
+
+        if(!isExist){
+            return  false;
         }
         tmp.remove(event_);
         user.setEvents(tmp);

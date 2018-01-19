@@ -109,6 +109,10 @@
         <artifactId>google-api-services-fitness</artifactId>
         <version>v1-rev28-1.22.0</version>
     </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+    </dependency>
 </dependencies>
 
 <build>

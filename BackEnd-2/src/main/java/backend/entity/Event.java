@@ -21,7 +21,7 @@ public class Event {
         if (other == null) return false;
         if (other == this) return true;
         if (!(other instanceof Event)) return false;
-        return ((Event) other).getId()==(this.getId());
+        return ((Event) other).getId().equals(this.getId());
     }
     public String getName() {
         return name;
@@ -53,7 +53,7 @@ public class Event {
     }
 
     public void addPulse(Pulse pulse) {
-        //TODO: check if already in database?
+
         this.pulses.add(pulse);
     }
 
@@ -81,9 +81,11 @@ public class Event {
     public void setEndTime(String  endTime) {
         this.endTime = endTime;
     }
+
     public void saveAll(List<Pulse> p){
         pulses.addAll(p);
     }
+
     public void setPulses(List<Pulse> p){
         this.pulses=p;
     }
