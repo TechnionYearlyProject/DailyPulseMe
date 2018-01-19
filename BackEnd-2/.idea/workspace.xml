@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.travis.yml" afterPath="$PROJECT_DIR$/../.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,13 +16,13 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11840">
-              <caret line="361" column="37" lean-forward="true" selection-start-line="361" selection-start-column="37" selection-end-line="361" selection-end-column="37" />
+            <state relative-caret-position="11760">
+              <caret line="359" column="37" lean-forward="true" selection-start-line="359" selection-start-column="37" selection-end-line="359" selection-end-column="37" />
               <folding>
-                <marker date="1516387328842" expanded="true" signature="31576:31618" ph="..." />
-                <marker date="1516387328842" expanded="true" signature="31576:31636" ph="..." />
-                <marker date="1516387328842" expanded="true" signature="31576:31649" ph="..." />
-                <marker date="1516387328842" expanded="true" signature="31576:31664" ph="..." />
+                <marker date="1516387494901" expanded="true" signature="31254:31296" ph="..." />
+                <marker date="1516387494901" expanded="true" signature="31254:31314" ph="..." />
+                <marker date="1516387494901" expanded="true" signature="31254:31327" ph="..." />
+                <marker date="1516387494901" expanded="true" signature="31254:31342" ph="..." />
               </folding>
             </state>
           </provider>
@@ -38,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="628">
+            <state relative-caret-position="1268">
               <caret line="130" column="9" lean-forward="true" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
               <folding />
             </state>
@@ -58,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EventTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10852">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state relative-caret-position="428">
+              <caret line="295" column="9" lean-forward="true" selection-start-line="295" selection-start-column="9" selection-end-line="295" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -85,8 +85,8 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
       </list>
     </option>
   </component>
@@ -393,7 +393,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516382792575</updated>
-      <workItem from="1516382802539" duration="2865000" />
+      <workItem from="1516382802539" duration="2972000" />
     </task>
     <servers />
   </component>
@@ -412,7 +412,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2865000" />
+    <option name="totallyTimeSpent" value="2972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -478,13 +478,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11840">
-          <caret line="361" column="37" lean-forward="true" selection-start-line="361" selection-start-column="37" selection-end-line="361" selection-end-column="37" />
+        <state relative-caret-position="11760">
+          <caret line="359" column="37" lean-forward="true" selection-start-line="359" selection-start-column="37" selection-end-line="359" selection-end-column="37" />
           <folding>
-            <marker date="1516387328842" expanded="true" signature="31576:31618" ph="..." />
-            <marker date="1516387328842" expanded="true" signature="31576:31636" ph="..." />
-            <marker date="1516387328842" expanded="true" signature="31576:31649" ph="..." />
-            <marker date="1516387328842" expanded="true" signature="31576:31664" ph="..." />
+            <marker date="1516387494901" expanded="true" signature="31254:31296" ph="..." />
+            <marker date="1516387494901" expanded="true" signature="31254:31314" ph="..." />
+            <marker date="1516387494901" expanded="true" signature="31254:31327" ph="..." />
+            <marker date="1516387494901" expanded="true" signature="31254:31342" ph="..." />
           </folding>
         </state>
       </provider>
@@ -513,18 +513,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10852">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="1268">
+          <caret line="130" column="9" lean-forward="true" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="628">
-          <caret line="130" column="9" lean-forward="true" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
+        <state relative-caret-position="428">
+          <caret line="295" column="9" lean-forward="true" selection-start-line="295" selection-start-column="9" selection-end-line="295" selection-end-column="9" />
           <folding />
         </state>
       </provider>
