@@ -1,4 +1,4 @@
-package test;
+package backend.Testing;
 
 
 import backend.entity.AppUser;

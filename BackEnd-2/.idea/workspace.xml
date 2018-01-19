@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DailyPulse.iml" afterPath="$PROJECT_DIR$/DailyPulse.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/test/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/test/UserServiceTest.java">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3932">
-              <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -56,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EventTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="294" column="0" lean-forward="true" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+            <state relative-caret-position="616">
+              <caret line="302" column="47" lean-forward="false" selection-start-line="302" selection-start-column="47" selection-end-line="302" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -89,10 +87,10 @@
         <option value="$PROJECT_DIR$/DailyPulse.iml" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
       </list>
     </option>
   </component>
@@ -207,7 +205,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="Testing" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -288,8 +287,8 @@
       <module name="DailyPulse" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.UserServiceTest" />
+      <option name="PACKAGE_NAME" value="backend.Testing" />
+      <option name="MAIN_CLASS_NAME" value="backend.Testing.UserServiceTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -313,8 +312,8 @@
       <module name="DailyPulse" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.UserServiceTest" />
+      <option name="PACKAGE_NAME" value="backend.Testing" />
+      <option name="MAIN_CLASS_NAME" value="backend.Testing.UserServiceTest" />
       <option name="METHOD_NAME" value="deleteEvent" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -434,7 +433,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516382792575</updated>
-      <workItem from="1516382802539" duration="8035000" />
+      <workItem from="1516382802539" duration="8182000" />
     </task>
     <servers />
   </component>
@@ -462,7 +461,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8035000" />
+    <option name="totallyTimeSpent" value="8182000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -531,10 +530,10 @@
         <state relative-caret-position="11920">
           <caret line="363" column="37" lean-forward="false" selection-start-line="363" selection-start-column="37" selection-end-line="363" selection-end-column="37" />
           <folding>
-            <marker date="1516392998402" expanded="true" signature="34637:34654" ph="..." />
-            <marker date="1516392998402" expanded="true" signature="34637:34672" ph="..." />
-            <marker date="1516392998402" expanded="true" signature="34637:34685" ph="..." />
-            <marker date="1516392998402" expanded="true" signature="34637:34700" ph="..." />
+            <marker date="1516393125917" expanded="true" signature="34813:34830" ph="..." />
+            <marker date="1516393125917" expanded="true" signature="34813:34848" ph="..." />
+            <marker date="1516393125917" expanded="true" signature="34813:34861" ph="..." />
+            <marker date="1516393125917" expanded="true" signature="34813:34876" ph="..." />
           </folding>
         </state>
       </provider>
@@ -579,18 +578,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/UserServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3932">
-          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        <state relative-caret-position="616">
+          <caret line="302" column="47" lean-forward="false" selection-start-line="302" selection-start-column="47" selection-end-line="302" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="294" column="0" lean-forward="true" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
           <folding />
         </state>
       </provider>
