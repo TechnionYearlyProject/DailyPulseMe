@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/UserServiceTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +46,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="31">
@@ -67,12 +66,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-              <folding />
+            <state relative-caret-position="536">
+              <caret line="131" column="29" lean-forward="true" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,6 +105,7 @@
         <option value="$PROJECT_DIR$/src/main/java/backend/entity/EventTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/UserServiceTest.java" />
       </list>
     </option>
   </component>
@@ -428,7 +430,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1516382792575</updated>
-      <workItem from="1516382802539" duration="9561000" />
+      <workItem from="1516382802539" duration="9742000" />
     </task>
     <servers />
   </component>
@@ -462,7 +464,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9561000" />
+    <option name="totallyTimeSpent" value="9742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -531,10 +533,10 @@
         <state relative-caret-position="11920">
           <caret line="363" column="37" lean-forward="false" selection-start-line="363" selection-start-column="37" selection-end-line="363" selection-end-column="37" />
           <folding>
-            <marker date="1516394449897" expanded="true" signature="34382:34399" ph="..." />
-            <marker date="1516394449897" expanded="true" signature="34382:34417" ph="..." />
-            <marker date="1516394449897" expanded="true" signature="34382:34430" ph="..." />
-            <marker date="1516394449897" expanded="true" signature="34382:34445" ph="..." />
+            <marker date="1516394712355" expanded="true" signature="35125:35142" ph="..." />
+            <marker date="1516394712355" expanded="true" signature="35125:35160" ph="..." />
+            <marker date="1516394712355" expanded="true" signature="35125:35173" ph="..." />
+            <marker date="1516394712355" expanded="true" signature="35125:35188" ph="..." />
           </folding>
         </state>
       </provider>
@@ -559,14 +561,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
           <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -602,6 +596,16 @@
         <state relative-caret-position="31">
           <caret line="127" column="17" lean-forward="true" selection-start-line="127" selection-start-column="17" selection-end-line="127" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="131" column="29" lean-forward="true" selection-start-line="131" selection-start-column="29" selection-end-line="131" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
