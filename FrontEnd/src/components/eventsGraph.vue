@@ -135,7 +135,7 @@ export default {
                           if(rate < 60 && rate >= 40){
                             return "athlete";
                           }
-                          if(rate > 90){
+                          if(rate > 100){
                             return "above avarage";
                           }
                         }
