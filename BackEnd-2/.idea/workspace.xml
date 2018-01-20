@@ -16,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="471">
-              <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
+              <caret line="100" column="17" lean-forward="false" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -94,10 +94,10 @@
         <option value="$PROJECT_DIR$/src/main/java/backend/Testing/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/EventTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -162,11 +162,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -409,7 +404,7 @@
       <updated>1516382792575</updated>
       <workItem from="1516382802539" duration="10364000" />
       <workItem from="1516459201350" duration="8522000" />
-      <workItem from="1516472520684" duration="729000" />
+      <workItem from="1516472520684" duration="1314000" />
     </task>
     <servers />
   </component>
@@ -443,7 +438,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19615000" />
+    <option name="totallyTimeSpent" value="20200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
@@ -707,7 +702,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
-          <caret line="100" column="17" lean-forward="true" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
+          <caret line="100" column="17" lean-forward="false" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="17" />
           <folding />
         </state>
       </provider>

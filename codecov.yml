@@ -2,3 +2,6 @@ ignore:
   - "BackEnd-2/src/main/java/backend/repository/*"  
   - "BackEnd-2/src/main/java/backend/security/*"
   - "BackEnd-2/src/main/java/backend/controller/*"
+  - "BackEnd-2/src/main/java/backend/googleFitApi/*"
+  - "BackEnd-2/src/main/java/backend/service/*"
+  - "BackEnd-2/src/main/java/backend/entity/*"
