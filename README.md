@@ -1,3 +1,10 @@
+
+# DailyPulseMe
+[![Build Status](https://travis-ci.org/TechnionYearlyProject/DailyPulseMe.svg?branch=master)](https://travis-ci.org/TechnionYearlyProject/DailyPulseMe)
+[![codecov](https://codecov.io/gh/TechnionYearlyProject/DailyPulseMe/branch/master/graph/badge.svg)](https://codecov.io/gh/TechnionYearlyProject/DailyPulseMe)
+
+
+
 Installation and setup explanation for the backend:
 
 1. Installing IntelliJ: 
@@ -12,10 +19,10 @@ Installation and setup explanation for the backend:
 	2.2 Ask the team members to add you to the project on GitHub and give you access to the GitHub repository.
 	2.3 Install and setup Git according to your OS in the following link:
 	https://git-scm.com/download
-	2.4 Other information and explanation about the use of GitHub can be found in the following link under ìGit and Github introî:
+	2.4 Other information and explanation about the use of GitHub can be found in the following link under ‚ÄúGit and Github intro‚Äù:
 	https://webcourse.cs.technion.ac.il/234311/Winter2017-2018/ho.html
-	2.5 Create a new folder and right click inside the folder and choose ìGit bash hereî.
-	2.6 Use the command ìgit cloneî with the following link to clone the projectís repository in said folder:
+	2.5 Create a new folder and right click inside the folder and choose ‚ÄúGit bash here‚Äù.
+	2.6 Use the command ‚Äúgit clone‚Äù with the following link to clone the project‚Äôs repository in said folder:
 	https://github.com/TechnionYearlyProject/DailyPulseMe.git
 	Note that this will not worked unless you have access to the GitHub project repository (step 2.2).
 	2.7 After cloning is done, you can open the project via IntelliJ.
@@ -24,10 +31,10 @@ Installation and setup explanation for the backend:
 3. Accessing the cloud-hosted MongoDB:
 	3.1 To get access to the Mongo database we are using, first you need to ask for the username and password to be provided by the team members.
 	3.2 Login to https://mlab.com/login/ with said provided username and password.
-	3.3 After logging in successfully, choose ìds042677.mlab.com:42677/dailypulsemedatabaseî in the MongoDB Deployments page.
-	3.4 Choose ìUsersî and there you can manage existing users and add a new user.
+	3.3 After logging in successfully, choose ‚Äúds042677.mlab.com:42677/dailypulsemedatabase‚Äù in the MongoDB Deployments page.
+	3.4 Choose ‚ÄúUsers‚Äù and there you can manage existing users and add a new user.
 	3.5 Add a new user with the username and password of your choosing.
-	3.6 Now you need to add the following line to the ìapplication.propertiesî under BackEnd-2/src/main/resources :
+	3.6 Now you need to add the following line to the ‚Äúapplication.properties‚Äù under BackEnd-2/src/main/resources :
 	spring.data.mongodb.uri=mongodb://<dbuser>:<dbpassword>@ds042677.mlab.com:42677/dailypulsemedatabase.
 	Where <dbuser> and <dbpassword> are replaced with the username and password of the user you added earlier.
 
@@ -60,6 +67,3 @@ Installation and setup explanation for the backend:
 	7.3 Execute the command 'npm run dev'. this command will run the site.
 	7.4 Open your browser and go to address 'localhost:8080'. you will see the site now.
 
-# DailyPulseMe
-[![Build Status](https://travis-ci.org/TechnionYearlyProject/DailyPulseMe.svg?branch=master)](https://travis-ci.org/TechnionYearlyProject/DailyPulseMe)
-[![codecov](https://codecov.io/gh/TechnionYearlyProject/DailyPulseMe/branch/master/graph/badge.svg)](https://codecov.io/gh/TechnionYearlyProject/DailyPulseMe)
