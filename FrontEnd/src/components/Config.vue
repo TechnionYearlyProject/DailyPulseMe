@@ -5,7 +5,7 @@
 
   <h2 style="font-family: 'Muli', sans-serif;">Configure Page <b-badge>New</b-badge></h2>    </div>
   <p></p>
-  <Connect></Connect>
+  <Connect v-if="toshow"></Connect>
 <div class="Change Password" style="margin-top:10px;">
    <div style ="width:25%; margin:auto">
      <b-card  bg-variant="dark" text-variant="white" title="Enter Your Desired Password And Confirm It">
@@ -33,14 +33,31 @@ export default {
       password : '',
       rePassword : '',
       toggleMsg : false,
-      msg : ''
+      msg : '',
+      toshow: false
     }
   },
-  methods: {
+  
     created: function () {
       this.msg = ''
       this.toggleMsg = false
-    },
+      this.$http.get('http://localhost:8081/users/verifyAccessToken'
+             ,{headers: {'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('token'),}
+            }).then((res) => {
+              console.log(res.body)
+              console.log(res)
+              if(res.body== false){
+                  this.toshow = true
+              }else {
+                this.toshow = false
+              }
+              
+            },(err) =>{
+              console.log(err);
+            })
+          }
+    ,methods: {
     changePass() {
       this.toggleMsg = true
       if (this.password.localeCompare(this.rePassword) != 0){
@@ -58,7 +75,7 @@ export default {
       }
     },
     googlefit() {
-      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.activity.read+https://www.googleapis.com/auth/calendar.readonly&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=128078459465-4bjs62f5pg8bmodena4ojqr5f78i709i.apps.googleusercontent.com'
+      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id= 895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
       location.assign(url);
     }
   }

@@ -1,6 +1,6 @@
 <template>
-  <div v-cloak>
-  <eventsGraph v-if=!isempty  id="canvas" style="width=90%"></eventsGraph>
+  <div v-cloak style="width=60%">
+  <eventsGraph v-if=!isempty  id="canvas" style="width=60%"></eventsGraph>
   
 </div>
 </template>

@@ -1,3 +1,9 @@
+function heartStats(type, rate, age){
+  if(type = "rest"){
+    return restheartStats(rate, age);
+  }
+  return sportHeartStats(rate, age);
+}
 function restHeartStats(rate, age){
   if(age < 2){
     if(rate <= 100){
@@ -22,16 +28,16 @@ function restHeartStats(rate, age){
     if(rate < 60 && rate >= 40){
       return "athlete";
     }
-    if(rate > 100){
+    if(rate > 90){
       return "above avarage";
     }
   }
   return "avarage";
-};
+}
 function sportHeartStats(rate, age){
-  var maxRate = 220 - age;
-  var upper = maxRate * 0.85;
-  var lower = maxRate * 0.5
+  maxRate = 220 - age;
+  upper = maxRate * 0.85;
+  lower = maxRate * 0.5
   if(rate <= lower){
     return "bellow avarage";
   }
@@ -39,11 +45,4 @@ function sportHeartStats(rate, age){
     return "above avarage";
   }
   return "avarage";
-};
-function heartStats(type, rate, age){
-
-  if(type == "Rest"){
-    return restHeartStats(rate, age);
-  }
-  return sportHeartStats(rate, age);
-};
+}

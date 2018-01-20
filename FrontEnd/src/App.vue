@@ -21,7 +21,7 @@
     display: none;
   }
 body{
-    background-image: url("http://static.hdw.eweb4.com/media/wallpapers_dl/1/90/890508-cloud-background.jpg");
+    background-image: url("./images/wall.jpg");
     background-attachment: fixed;
     background-repeat:no-repeat;
 background-position: center center;

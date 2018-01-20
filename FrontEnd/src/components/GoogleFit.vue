@@ -40,7 +40,7 @@ export default {
    methods : {
      getTokens() {
        let url = 'https://www.googleapis.com/oauth2/v4/token'
-       this.$http.post(url, {code: this.accessCode, client_id: '128078459465-4bjs62f5pg8bmodena4ojqr5f78i709i.apps.googleusercontent.com', client_secret: 'cMr9fUA8Tybdf0fZTpbHHeLd', redirect_uri: 'http://localhost:8080/token', grant_type: 'authorization_code'}).then((res)=>{
+       this.$http.post(url, {code: this.accessCode, client_id: '895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com', client_secret: 'FGLsX3PBtIHEypj88z7UkI6R', redirect_uri: 'http://localhost:8080/token', grant_type: 'authorization_code'}).then((res)=>{
           console.log(res)
         if(res.ok != 'false'){
        this.$http.post('http://localhost:8081/users/updateGoogleFitToken',{

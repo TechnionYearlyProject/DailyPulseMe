@@ -1,5 +1,8 @@
 <template>
   <div style="width:20%; margin:auto; margin-top: 20px;">
+    <p></p>
+        <h1>Add event</h1>
+    <p></p> 
     <b-form @submit.prevent="addevent">
       <b-form-group id="exampleInputGroup1"
                     label="Event Name:"
@@ -56,7 +59,7 @@
         <option value="Rest">Rest</option>
       </b-form-select>
       <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
     </b-form>
     <p>{{this.msg}}</p>
   </div>
@@ -72,9 +75,25 @@
         name: '',
         description: '',
         tag: '',
-        msg: ''
+        msg: '',
+        toshow: false
       }
 
+    },
+    created: function(){
+      this.$http.get('http://localhost:8081/users/verifyAccessToken'
+             ,{headers: {'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('token'),}
+            }).then((res) => {
+              console.log(res.body)
+              console.log(res)
+              if(res.body == false){
+                 location.replace('/config');
+              }
+              
+            },(err) =>{
+              console.log(err);
+            })
     },
     methods: {
       addevent() {
@@ -97,12 +116,13 @@
               window.alert("colliding events");
               return;
             }
+            this.msg = "Event Added!"
           console.log('Success', res);
         }, (err) => {
           console.log('Error: ', err);
 
         })
-          this.msg = "Event Added!"
+          
       }
     }
   }

@@ -64,11 +64,11 @@ export default {
       datasets: [
         {
           label: 'Event',
-          borderColor: '#05CBE1',
+          borderColor: 'black',
           pointBackgroundColor: 'white',
-          pointBorderColor: 'white',
-          borderWidth: 2,
-          backgroundColor: this.gradient2,
+          pointBorderColor: 'gray',
+          borderWidth: 1,
+          backgroundColor: 'rgba(51,122,183,0.7)',
           data: this.getTime(this.putName)[0]
          },
 

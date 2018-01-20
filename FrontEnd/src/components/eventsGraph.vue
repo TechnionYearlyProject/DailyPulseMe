@@ -1,8 +1,6 @@
 
-
 <script>
 import {Line} from 'vue-chartjs'
-
 export default {
   name: 'Events',
   extends: Line,
@@ -19,7 +17,6 @@ export default {
     }
   },
   methods:{
-
     graphClickEvent(event, array){
       var points = this.getElementAtEvent(event)
       },
@@ -52,32 +49,27 @@ export default {
                  this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
                }
            })
-
        }
  },
   mounted () {
     this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
     this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-
     this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)')
     this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
     this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
-
     this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
     this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.35)');
     this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
-
-
     this.renderChart({
       labels: this.datesList,
       datasets: [
         {
           label: 'Events',
-          borderColor: '#05CBE1',
+          borderColor: 'black',
           pointBackgroundColor: 'white',
-          pointBorderColor: 'white',
-          borderWidth: 2,
-          backgroundColor: this.gradient2,
+          pointBorderColor: 'gray',
+          borderWidth: 1,
+          backgroundColor: 'rgba(51,122,183,0.7)',
           data: this.avgList
          },
       ]
@@ -92,7 +84,6 @@ export default {
         }
     }
   }
-
     //
      ,{ onClick: function(event){
       var activePoints = this.getElementAtEvent(event)
@@ -101,7 +92,6 @@ export default {
     var label = this.data.labels[firstPoint._index];
     var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
     var location = "eventGraph?id=" + value.id;
-     // window.open(location);
      window.open(location, 'event graph', "height=500px,width=600px");
     }
        }
@@ -118,47 +108,46 @@ export default {
                       function restHeartStats(rate, age){
                         if(age < 2){
                           if(rate <= 100){
-                            return "bellow avarage";
+                            return "BELOW AVERAGE";
                           }
                           if(rate >= 170){
-                            return "above avarage";
+                            return "ABOVE AVERAGE";
                           }
                         }
                         else if(age > 1 && age <= 11){
                           if(rate <= 60){
-                            return "bellow avarage";
+                            return "BELOW AVERAGE";
                           }
                           if(rate >= 110){
-                            return "above avarage";
+                            return "ABOVE AVERAGE";
                           }
                         }
                         else if(age > 11){
                           if(rate < 40){
-                            return "dangerous";
+                            return "DANGEROUS";
                           }
                           if(rate < 60 && rate >= 40){
-                            return "athlete";
+                            return "ATHLETE";
                           }
                           if(rate > 100){
-                            return "above avarage";
+                            return "ABOVE AVERAGE";
                           }
                         }
-                        return "avarage";
+                        return "AVERAGE";
                       };
                       function sportHeartStats(rate, age){
                         var maxRate = 220 - age;
                         var upper = maxRate * 0.85;
                         var lower = maxRate * 0.5
                         if(rate < lower){
-                          return "bellow avarage";
+                          return "BELOW AVERAGE";
                         }
                         if(rate > upper){
-                          return "above avarage";
+                          return "ABOVE AVERAGE";
                         }
-                        return "avarage";
+                        return "AVERAGE";
                       };
                       function heartStats(type, rate, age){
-
                         if(type == "Rest"){
                           return restHeartStats(rate, age);
                         }
@@ -169,7 +158,6 @@ export default {
                        var stats = heartStats(data.datasets[0].data[tooltipItems.index].tag, [tooltipItems.yLabel], 30);
                         return [avg,evnt,stats];
                     },
-
                 }
             }
           })

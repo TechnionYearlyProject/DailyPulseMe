@@ -46,8 +46,8 @@ export default {
     toShow(){
      return this.islogin
     },
-    googlefit() {
-      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.activity.read+https://www.googleapis.com/auth/calendar.readonly&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=128078459465-4bjs62f5pg8bmodena4ojqr5f78i709i.apps.googleusercontent.com'
+     googlefit() {
+      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
       location.assign(url);
     }
   }

@@ -1,11 +1,11 @@
 <template>
   <div>
         <div v-if="this.toShow()" id="nav">
- <b-navbar toggleable="md"  style="background-color: rgba(44,144,205,0.6); box-shadow: 2px 2px 2px gray;">
+ <b-navbar toggleable="md"  style="background-color: rgba(51,122,183,0.9); box-shadow: 0.5px 0.5px 6px gray;">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-  <b-navbar-brand href="Home">
+  <b-navbar-brand href="/">
       <img src="../images/logo.png" alt="BV" style=" width:140px; /* you can use % */
     height: auto;">
     </b-navbar-brand>

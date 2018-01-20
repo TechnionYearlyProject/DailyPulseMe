@@ -54,12 +54,14 @@ const router = new Router({
     {
       path: '/eventsGraph',
       name: 'eventsWrapper',
-      component: eventsWrapper
+      component: eventsWrapper,
+      beforeEnter: requireAuth
     },
     {
       path: '/eventGraph',
       name: 'Event',
-      component: Event
+      component: Event,
+      beforeEnter: requireAuth
     },
     {
       path: '/',

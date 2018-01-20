@@ -28,6 +28,16 @@ export default {
     this.getEvents();
   },
   methods:{
+          getTimes(time){
+              var date = new Date(parseInt(time))
+                 var day = date.getDate()
+                 var hours = date.getHours()
+                 hours = ("0" + hours).slice(-2);
+                 var minutes = date.getMinutes()
+                 minutes = ("0" + minutes).slice(-2);
+                 var str = hours + ":" + minutes
+                 return str
+          },
            getEvents () {
             this.$http.get('http://localhost:8081/users/getAllEvents'
              ,{headers: {'Content-Type': 'application/json',
@@ -37,7 +47,12 @@ export default {
                 var arrayLength = eventsArr.length;
                 if(arrayLength != 0) this.isempty = false;
                 for (var i = 0; i < arrayLength; i++) {
-                  this.eventsList.push( {value:res.body[i].id,text:res.body[i].name});
+                var date = new Date(parseInt(eventsArr[i].startTime))
+                 var day = date.getDate()
+                 var month =  date.getMonth()
+                 var year = date.getFullYear()
+                  var str = day + "." + (month + 1) + "." + year +" - " + this.getTimes(eventsArr[i].startTime) + ' - ' + this.getTimes(eventsArr[i].endTime)
+                  this.eventsList.push( {value:res.body[i].id,text:res.body[i].name + ' ' + str});
                 }    
 
             })
