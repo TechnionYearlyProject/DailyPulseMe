@@ -5,3 +5,5 @@ ignore:
   - "BackEnd-2/src/main/java/backend/googleFitApi/*"
   - "BackEnd-2/src/main/java/backend/service/*"
   - "BackEnd-2/src/main/java/backend/entity/*"
+  - "FrontEnd/src/components/*"
+  - "FrontEnd/**/*"
