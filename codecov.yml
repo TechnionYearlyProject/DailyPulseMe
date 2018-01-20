@@ -5,5 +5,9 @@ ignore:
   - "BackEnd-2/src/main/java/backend/googleFitApi/*"
   - "BackEnd-2/src/main/java/backend/service/*"
   - "BackEnd-2/src/main/java/backend/entity/*"
-  - "FrontEnd/src/components/*"
-  - "FrontEnd/**/*"
+  - "BackEnd-2/*.xml"
+  - "BackEnd-2/target/test-classes/backend/Testing/*"
+  - "BackEnd-2/target/test-classes/backend/entity/*"
+  - "BackEnd-2/.idea/libraries/*"
+  - "BackEnd-2/.idea/*"
+  
