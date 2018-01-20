@@ -21,6 +21,8 @@ import java.util.regex.Pattern;
 
 public class GoogleCallParser {
     //after calling this, re-add user to repo.
+	
+	//this function is to verify that the access token is still valid , if not we use refresh token to generate new one
     public static boolean verifyAndRefresh(AppUser user) {
         String refreshed;
         HttpGet get = new HttpGet("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + user.getGoogleFitAccessToken());
@@ -39,6 +41,7 @@ public class GoogleCallParser {
             return false;
         }
         try {
+			//here we put the respone we got from google in string
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
                             (response.getEntity().getContent())
@@ -49,9 +52,10 @@ public class GoogleCallParser {
             while (null != (line = br.readLine())) {
                 content.append(line);
             }
-            //System.out.println("----" + content.toString());
+			//if the response is token not valid , we should generate new one 
             if(content.toString().compareTo("{\"error\":\"invalid_token\"}") == 0 || content.toString().compareTo("{ \"error_description\": \"Invalid Value\"}") == 0) {
-                refreshed = refreshToken(user);
+                //call refresh token to get accessToken from the refresh token
+				refreshed = refreshToken(user);
                 if(refreshed.compareTo("Refresh token expired") == 0) {
                     System.out.println("-------3---------");
                     return false;
@@ -68,15 +72,18 @@ public class GoogleCallParser {
         return true;
     }
 
-
+	
+//this function genereates new access token from the refresh token 
     public static String refreshToken(AppUser user) {
         int ACCESS_START = 15;
         String refresh = user.getGoogleFitRefreshToken();
         String access = "error";
+		//the post request we should send to google so they generate our access token 
         HttpPost post = new HttpPost("https://www.googleapis.com/oauth2/v4/token");
         post.addHeader("Content-Type", "application/x-www-form-urlencoded");
         StringEntity str=null;
         try {
+			//building the request the way Google defined it , using our client id and the refresh token 
             str = new StringEntity("client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com&" +
                     "client_secret=FGLsX3PBtIHEypj88z7UkI6R&" +
                     "refresh_token="+refresh+"&" +
@@ -98,16 +105,20 @@ public class GoogleCallParser {
                return "Refresh token expired";
             }
 
+			
+			//we put the response in string
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
                             (response.getEntity().getContent())
                     )
             );
+			
             StringBuilder content = new StringBuilder();
             String line;
             while (null != (line = br.readLine())) {
                 content.append(line);
             }
+			//here we extract the accessToken from the whole response using REGEX
             Pattern p = Pattern.compile("\"access_token\".[^\\,]*");
             Matcher m = p.matcher(content.toString());
             m.find();
@@ -117,6 +128,7 @@ public class GoogleCallParser {
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
+			
             e.printStackTrace();
         } finally {
             post.releaseConnection();
@@ -127,11 +139,14 @@ public class GoogleCallParser {
         List<Pulse> pulses=new ArrayList<>();
         String accessToken=user.getGoogleFitAccessToken();
         //// check if the access token has expired TODO
+		
+		//the post request for getting the pulses from google fit 
         HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate");
         post.addHeader("Content-Type","application/json;encoding=utf-8");
         post.addHeader("Authorization" , "Bearer "+ accessToken );
         StringEntity str=null;
         try {
+			//time between pulses and start and end time , we send it the way google defined it 
             str = new StringEntity("{\n" +
                     "  \"aggregateBy\": [{\n" +
                     "    \"dataTypeName\": \"com.google.heart_rate.bpm\"\n" +
@@ -153,6 +168,7 @@ public class GoogleCallParser {
         try {
             response = client.execute(post);
 
+			//if the token is not valid , we generate new one using the refresh and call the function again with the new token
             if (response.getStatusLine().getStatusCode() != 200) {
                 accessToken = refreshToken(user);
                 if(accessToken.compareTo("Refresh token expired") == 0) {
@@ -162,7 +178,7 @@ public class GoogleCallParser {
                     return getPulses( user, startTime, endTime ,  bucket);
                 }
             }
-
+//we put the response in string 
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(
                             (response.getEntity().getContent())
@@ -173,6 +189,7 @@ public class GoogleCallParser {
             while (null != (line = br.readLine())) {
                 content.append(line);
             }
+			//using regex we get the pulses and save them 
             Pattern p=Pattern.compile("([0-9]+)\\.([0-9])");
             Matcher m=p.matcher(content.toString());
             int counter=0;
