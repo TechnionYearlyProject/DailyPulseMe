@@ -52,9 +52,29 @@ public class AppUserTest {
 
     @Test
     public void setUsername() throws Exception {
+
         user.setUsername("fake");
         assertTrue(user.getUsername().equalsIgnoreCase("fake"));
         user.setUsername("AnadilMuhammedMuhammedNageebRoberPelegYotam");
+    }
+    @Test
+    public  void  setPassword(){
+        user.setPassword("hhh");
+        assertTrue(user.getPassword().equals("hhh"));
+    }
+
+    @Test
+    public  void test2(){
+
+        ArrayList<Event> events=new ArrayList<Event>();
+        Event event=new Event();
+        event.setId("1");
+        event.setStartTime("1");
+        user.saveAll(events);
+        user.getEvents();
+        user.getEvent("1");
+        user.deleteEvent("1");
+
     }
 }
 
