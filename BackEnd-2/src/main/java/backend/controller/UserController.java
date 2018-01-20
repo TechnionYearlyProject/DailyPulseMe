@@ -27,24 +27,36 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    private UserRepository appUserRepository;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private static final String MinInMs = "60000";
+    private UserRepository appUserRepository;             //Repository that contains the users who  registered  for websites
+    private BCryptPasswordEncoder bCryptPasswordEncoder; //this is used for encoding passwords
+    private static final String MinInMs = "60000";        // constant which "stores" one minunte in millis
+
+
+
+    /*
+    Constructor which gets two params , the appUserRepository and  bCryptPasswordEncoder
+     */
     public UserController(UserRepository applicationUserRepository,
                           BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.appUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+
+    /*
+    singUp method adds new user fot the repository
+    @param user which will be added
+    @return true if the user doesn't exist in the repo, otherwise false
+     */
     @PostMapping("/sign-up")
     public boolean signUp(AppUser user) {
         try {
-            if (appUserRepository.findByUsername(user.getUsername()) != null) {
+            if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setEvents(new ArrayList<>());
-            appUserRepository.save(user);
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
+            user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
+            appUserRepository.save(user); //saving the user in the user's repository
             return true;
         }
         catch (Exception e){
@@ -53,17 +65,22 @@ public class UserController {
         }
     }
 
+
+    /*
+    updateGoogleFitToken updates the access token and refresh token of Google Fit ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+     */
     @PostMapping("/updateGoogleFitToken")
     public boolean updateGoogleFitToken(Authentication auth, TwoStrings accessTokens) {
         try {
             AppUser user = appUserRepository.findByUsername(auth.getName());
-       /* user.setGoogleFitAccessToken(accessTokens.getFirst());
-        user.setGoogleFitRefreshToken(accessTokens.getSecond());
-        */
-            System.out.println(user.getUsername());
-            UserService.updateTokens(user,accessTokens);
+            if(user == null){
+                return  false;
+            }
+            UserService.updateTokens(user,accessTokens); //calling for Service function
             appUserRepository.save(user);
-            //System.out.println(user.getGoogleFitAccessToken());
             return true;
         }
         catch (Exception e){
@@ -72,11 +89,14 @@ public class UserController {
         }
     }
 
-    // Frontend Team requested this
+
+    /*(Frontend Team requested this)
+      when calling this method with an invalid token, an error will be returned,
+      else, nothing will be returned
+     */
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken() {
-        //when calling this method with an invalid token, an error will be returned,
-        //else, nothing will be returned
+
         return true;
     }
 
@@ -85,40 +105,48 @@ public class UserController {
         return "THIS IS PRIVATE!!";
     }
 
-    //Aux Testing Method
+
+    /*Aux Testing Method
+     @param auth , which by it the user will be retrieved
+     @return user name
+     */
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getName();
     }
+
+    /*
+    addEvent adds new event to list user of specific user
+    @param auth , which by it the user will be retrieved
+    @param event which will be added
+    @return true if the adding process passed OK ,otherwise false
+     */
     @PostMapping("/addEvent")
     public boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
        if(!UserService.addEvent(user,event)){
            return false;
        }
-        /** checking whether the event interval intersects with existed event in the EventList that **/
-   /*     long startTime=Long.parseLong(event.getStartTime());
-        long endTime=Long.parseLong(event.getEndTime());
-        int size= user.getEvents().stream().filter(x->((Long.parseLong(x.getStartTime())>=
-
-                startTime) && Long.parseLong(x.getStartTime())<=endTime )
-                || ((Long.parseLong(x.getStartTime())<=startTime) && Long.parseLong(x.getEndTime())>startTime )
-                || ((Long.parseLong(x.getStartTime())>=startTime) && Long.parseLong(x.getStartTime())<endTime )
-                || ((Long.parseLong(x.getStartTime())<startTime) && Long.parseLong(x.getEndTime())>startTime)
-                || ((Long.parseLong(x.getStartTime())>startTime) && Long.parseLong(x.getEndTime())<startTime)).collect(Collectors.toList()).size();
-        if(size>0){
-            return  false;
-        }
-        user.addEvent(event);
-        event.setId(event.getStartTime());*/
         appUserRepository.save(user);
         return true;
     }
-    //Aux Testing Method.
+
+
+    /*Aux Testing Method. @testing
+    @param auth , which by it the user will be retrieved
+    @return list of events of specific user
+    */
     @GetMapping("/getAllEvents")
     public List<Event> getAllEvents(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
+
+    /*
+    deleteEvent deletes an event which exist in list of event of specific user
+    @param auth , which by it the user will be retrieved
+    @param evenId which is the id of the event to be deleted
+    @return true if the deleting event process passed OK ,otherwise false
+     */
     @PostMapping("/deleteEvent")
     public Boolean deleteEvent(Authentication auth, String eventId){
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -126,6 +154,15 @@ public class UserController {
         appUserRepository.save(user);
         return true;
     }
+
+
+    /*
+    getEvents return Events which were taken place between time1 until time2
+    ,and each event which will be returned through the list , will includes it's pulses
+     @param auth , which by it the user will be retrieved
+     @param time which contains the startTiming and endTiming
+     @return list of events which were taken place between time1 until time2
+     */
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth, TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -142,10 +179,18 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
+    /*
+    getEvent return an Event,
+    @param auth , which by it the user will be retrieved
+    @param id of the event which will be returned
+    @return an event from the user's list of event which it's id is same to the given id
+    */
     @PostMapping("/getEvent")
     public Event getEvent(Authentication auth, String id) {
         return appUserRepository.findByUsername(auth.getName()).getEvent(id);
     }
+
+
     @GetMapping("/verifyAccessToken")
     public boolean verifyAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -153,7 +198,8 @@ public class UserController {
         appUserRepository.save(user);
         return response;
     }
-    //testing method
+
+
     @GetMapping("/refreshAccessToken")
     public boolean refreshAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
