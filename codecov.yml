@@ -1,0 +1,3 @@
+ignore:
+  - "BackEnd-2/src/main/java/backend/repository/*"  
+  - "BackEnd-2/src/main/java/backend/security/*"
