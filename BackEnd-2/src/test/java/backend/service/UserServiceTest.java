@@ -124,7 +124,7 @@ public class UserServiceTest {
         for (int i = 1; i <= N/2; i++) {
             assertTrue(service.deleteEvent(user, Integer.toString(i*2*100)));
         }
-        
+
 
     }
     @Test
