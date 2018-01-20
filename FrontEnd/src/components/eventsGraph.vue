@@ -3,8 +3,8 @@
 <script>
 import {Line} from 'vue-chartjs'
 
-export default { 
-  name: 'Events', 
+export default {
+  name: 'Events',
   extends: Line,
   created: function () {
     this.getEvents();
@@ -49,7 +49,7 @@ export default {
                   this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
                 }
             })
-        }
+        },
   },
   mounted () {
     this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
@@ -58,7 +58,7 @@ export default {
     this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)')
     this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
     this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
-    
+
     this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
     this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.35)');
     this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
@@ -88,7 +88,7 @@ export default {
         }
     }
   }
-     
+
     //
      ,{ onClick: function(event){
       var activePoints = this.getElementAtEvent(event)
@@ -110,11 +110,62 @@ export default {
                     var evnt = data.datasets[0].data[tooltipItems[0].index].label;
                     return evnt
                   },
-                    label: function(tooltipItems, data) { 
+                    label: function(tooltipItems, data) {
+                      function restHeartStats(rate, age){
+                        if(age < 2){
+                          if(rate <= 100){
+                            return "bellow avarage";
+                          }
+                          if(rate >= 170){
+                            return "above avarage";
+                          }
+                        }
+                        else if(age > 1 && age <= 11){
+                          if(rate <= 60){
+                            return "bellow avarage";
+                          }
+                          if(rate >= 110){
+                            return "above avarage";
+                          }
+                        }
+                        else if(age > 11){
+                          if(rate < 40){
+                            return "dangerous";
+                          }
+                          if(rate < 60 && rate >= 40){
+                            return "athlete";
+                          }
+                          if(rate > 90){
+                            return "above avarage";
+                          }
+                        }
+                        return "avarage";
+                      };
+                      function sportHeartStats(rate, age){
+                        var maxRate = 220 - age;
+                        var upper = maxRate * 0.85;
+                        var lower = maxRate * 0.5
+                        if(rate < lower){
+                          return "bellow avarage";
+                        }
+                        if(rate > upper){
+                          return "above avarage";
+                        }
+                        return "avarage";
+                      };
+                      function heartStats(type, rate, age){
+
+                        if(type == "Rest"){
+                          return restHeartStats(rate, age);
+                        }
+                        return sportHeartStats(rate, age);
+                      };
                        var avg = 'Average heart: ' + [tooltipItems.yLabel];
                        var evnt = 'Type: ' + data.datasets[0].data[tooltipItems.index].tag;
-                        return [avg,evnt];
-                    }
+                       var stats = heartStats(data.datasets[0].data[tooltipItems.index].tag, [tooltipItems.yLabel], 30);
+                        return [avg,evnt,stats];
+                    },
+
                 }
             }
           })
