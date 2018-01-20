@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @PostMapping("/updateGoogleFitToken")
-    public boolean updateGoogleFitToken(Authentication auth, @RequestBody TwoStrings accessTokens) {
+    public boolean updateGoogleFitToken(Authentication auth, TwoStrings accessTokens) {
         try {
             AppUser user = appUserRepository.findByUsername(auth.getName());
        /* user.setGoogleFitAccessToken(accessTokens.getFirst());
@@ -127,10 +127,13 @@ public class UserController {
         return true;
     }
     @PostMapping("/getEvents")
-    public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
+    public List<Event> getEvents(Authentication auth, TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
+        if(filter == null){
+            return null;
+        }
         return filter.stream().sorted(new Comparator<Event>() {
             @Override
             public int compare(Event r1, Event r2) {
