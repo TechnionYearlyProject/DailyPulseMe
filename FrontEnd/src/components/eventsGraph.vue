@@ -23,34 +23,38 @@ export default {
     graphClickEvent(event, array){
       var points = this.getElementAtEvent(event)
       },
-       getEvents () {
-            this.$http.get('http://localhost:8081/users/getAllEvents'
-             ,{headers: {'Content-Type': 'application/json',
-              'Authorization': localStorage.getItem('token'),}
-            }).then((res) => {
-              // res.body = array of event object
-              var eventsArr = res.body;
-                var arrayLength = eventsArr.length;
-                for (var i = 0; i < arrayLength; i++) {
-                  var date = new Date(parseInt(eventsArr[i].startTime))
-                  var day = date.getDate()
-                  var month =  date.getMonth()
-                  var year = date.getFullYear()
-                  var hours = date.getHours()
-                  hours = ("0" + hours).slice(-2);
-                  var minutes = date.getMinutes()
-                  minutes = ("0" + minutes).slice(-2);
-                  var str = day;
-                  var str = day + "." + (month + 1) + "." + year +" - " + hours + ":" + minutes
-                    this.datesList.push(str);
-                }
-                for (var i = 0; i < arrayLength; i++) {
-                    var evnt = eventsArr[i];
-                  this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
-                }
-            })
-        },
-  },
+      getEvents () {
+           this.$http.post('http://localhost:8081/users/getEvents',{
+             "first": 1515103200000,
+             "second": 1516399200000
+           }
+            ,{headers: {'Content-Type': 'application/json',
+             'Authorization': localStorage.getItem('token'),}
+           }).then((res) => {
+             // res.body = array of event object
+             var eventsArr = res.body;
+               var arrayLength = eventsArr.length;
+               for (var i = 0; i < arrayLength; i++) {
+                 var date = new Date(parseInt(eventsArr[i].startTime))
+                 var day = date.getDate()
+                 var month =  date.getMonth()
+                 var year = date.getFullYear()
+                 var hours = date.getHours()
+                 hours = ("0" + hours).slice(-2);
+                 var minutes = date.getMinutes()
+                 minutes = ("0" + minutes).slice(-2);
+                 var str = day;
+                 var str = day + "." + (month + 1) + "." + year +" - " + hours + ":" + minutes
+                   this.datesList.push(str);
+               }
+               for (var i = 0; i < arrayLength; i++) {
+                   var evnt = eventsArr[i];
+                 this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
+               }
+           })
+
+       }
+ },
   mounted () {
     this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
     this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
