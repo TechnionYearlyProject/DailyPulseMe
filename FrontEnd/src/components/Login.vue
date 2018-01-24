@@ -3,7 +3,7 @@
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="../images/logo.png"/>
             <form class="form-signin" @submit.prevent="login">
-            	      <p v-if="authFailed">Invalid Username and Password</p>
+            	      <p v-if="authFailed" style="color:red">Invalid Username and Password</p>
                 <span id="reauth-email" class="reauth-email"></span>
                 <input class="form-control" v-model="user.username" type="email" placeholder="Email Address" id="inputEmail" required autofocus style="    text-align: center;"/>
                 <input type="password" id="inputPassword" v-model="user.password" class="form-control" placeholder="Password" required style="text-align: center;">
@@ -20,7 +20,7 @@
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
-            
+
         </div><!-- /card-container -->
     </div>
 </template>
@@ -50,6 +50,7 @@
 					localStorage.setItem('token', res.headers.get('authorization'));
         }, (err) => {
           console.log(err);
+          this.authFailed = true
           // error callback
         });
         },
