@@ -257,8 +257,7 @@ public class GoogleCallParser {
     /*
     @author :Anadil
     @param : the user who his events will be extract from Google Calender
-    @return :getting on the events from the User's google Calendar ,the events until the current time
-     for optimizing this process , we getting events starting from that last end time that is stored in the database
+    @return :getting on the events from the User's google Calendar
     */
     public static List<Event> ExtractGoogleCalendarEvents(AppUser user) throws RefreshTokenExpiredException{
 
