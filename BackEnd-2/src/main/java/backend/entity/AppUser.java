@@ -17,8 +17,8 @@ public class AppUser {
     private String username;
     private String password;
     private String name;
-    private String googleFitAccessToken;
-    private String googleFitRefreshToken;
+    private String googleFitAccessToken;    //TODO : change the field name to googleAccessToken
+    private String googleFitRefreshToken;   // TODO : change the field name to googleRefreshToken
     private List<Event> events;
 
     public String getId() {

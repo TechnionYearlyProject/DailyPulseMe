@@ -179,6 +179,19 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
+    @GetMapping("/anadil")
+    public void getEvents(Authentication auth)  {
+        System.out.println("confg confg confg anadil");
+
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+        GoogleCallParser.ExtractGoogleCalendarEvents(user);}
+        catch (Exception e){
+          System.out.println("line 188 user cON");
+        }
+
+    }
+
     /*
     getEvent return an Event,
     @param auth , which by it the user will be retrieved

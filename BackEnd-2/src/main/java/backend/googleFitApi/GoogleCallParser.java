@@ -1,6 +1,7 @@
 package backend.googleFitApi;
 
 import backend.entity.AppUser;
+import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
 import org.apache.http.HttpResponse;
@@ -10,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import sun.text.resources.no.CollationData_no;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -95,8 +97,8 @@ public class GoogleCallParser {
         try {
 
 			/* building the request based on the way that Google defined it ,using our client id, and the refresh token */
-            str = new StringEntity("client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com&" +
-                    "client_secret=FGLsX3PBtIHEypj88z7UkI6R&" +
+            str = new StringEntity("187665345194-0d324v8gel15pj9jh9fecmqknmk4k59k.apps.googleusercontent.com&" +
+                    "client_secret=zdKcoMYRsAcrboIU4FmVRF-q&" +
                     "refresh_token="+refresh+"&" +
                     "grant_type=refresh_token");
         }
@@ -160,10 +162,11 @@ public class GoogleCallParser {
     public static List<Pulse> getPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
         List<Pulse> pulses=new ArrayList<>();
         String accessToken=user.getGoogleFitAccessToken();
+
         //// check if the access token has expired TODO
 		
 		/* POST request for getting the pulses from Google Fit  */
-        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate");
+        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/\"https://www.googleapis.com/fitness/v1/users/me/dataset:aggregat/dataset:aggregate");
         post.addHeader("Content-Type","application/json;encoding=utf-8");
         post.addHeader("Authorization" , "Bearer "+ accessToken );
         StringEntity str=null;
@@ -197,6 +200,7 @@ public class GoogleCallParser {
                     throw new RefreshTokenExpiredException();
                 } else {
                     user.setGoogleFitAccessToken(accessToken);
+                    System.out.println("update acces token");
                     return getPulses( user, startTime, endTime ,  bucket);
                 }
             }
@@ -230,5 +234,122 @@ public class GoogleCallParser {
             post.releaseConnection();
         }
         return pulses;
+    }
+
+    /*
+    @author :Anadil
+    @param String with the format "zzzzz" : "xxxxx",
+    @return value : the field value ,eg "zzzzz" : "xxxx" , it will return xxxxx
+     */
+    public static String retrieveFeidInJson(String str){
+        System.out.println(str);
+        Pattern pattern= Pattern.compile("( )*(\")(.*)(\")(.*)(: \")(.*)(\")(.)*");
+        Matcher m= pattern.matcher(str);
+        String str_="";
+        if (m.matches()) {
+            str_=m.group(7); //: "zzzzz"
+        }
+        System.out.println(str_);
+        return str_;
+    }
+
+
+    /*
+    @author :Anadil
+    @param : the user who his events will be extract from Google Calender
+    @return :getting on the events from the User's google Calendar ,the events until the current time
+     for optimizing this process , we getting events starting from that last end time that is stored in the database
+    */
+    public static List<Event> ExtractGoogleCalendarEvents(AppUser user) throws RefreshTokenExpiredException{
+
+        System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
+        List<Event> events=new ArrayList<>();
+        String accessToken=user.getGoogleFitAccessToken();
+
+
+        /* POST Request Getting Events From Google Calendar
+          the primary calendar of the currently logged in user
+          */
+        /*
+        URL example !
+        https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMax=2018-06-03T10%3A00%3A00Z
+        &timeMin=2018-03-03T10%3A00%3A00Z&key={YOUR_API_KEY}
+         */
+        HttpGet get_=new HttpGet("https://www.googleapis.com/calendar/v3/calendars/primary/events");
+        get_.addHeader("Content-Type","application/json;encoding=utf-8");
+        get_.addHeader("Authorization" , "Bearer "+ accessToken );
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpResponse response = null;
+        try {
+            response = client.execute(get_);
+            System.out.println("status "+response.getStatusLine().getStatusCode());
+            /*if the token is not valid , we generate new one using the refresh and call the function again with the new token*/
+            if (response.getStatusLine().getStatusCode() != 200) {
+                accessToken = refreshToken(user);
+                if (accessToken.compareTo("Refresh token expired") == 0) {
+                    System.out.println("step66");
+                  //  throw new RefreshTokenExpiredException();
+                } else {
+                    System.out.println("step555");
+                    user.setGoogleFitAccessToken(accessToken);
+                    return ExtractGoogleCalendarEvents(user);
+                }
+            }
+            System.out.println("Step33");
+            BufferedReader br = new BufferedReader(  //putting the response in string
+                    new InputStreamReader(
+                            (response.getEntity().getContent())
+                    )
+            );
+            System.out.println(br);
+            StringBuilder content = new StringBuilder();
+            String line;
+            boolean flag=false,desc=false;
+            int i=0;
+            ArrayList<Event> ls=new ArrayList<>();
+            Event tmp;
+
+
+            //now extracting the events from the respond
+            while (null != (line = br.readLine())) {
+              //  System.out.println(line);
+
+                if(line.contains("items")){
+                    flag=true;
+                    continue;
+                }
+                if(flag) {
+                    if(line.matches("([ ]*)(\"summary\":)(.*)")){
+                        System.out.println("event name :"+retrieveFeidInJson(line));
+                        while (null != (line = br.readLine())) {
+                            if(line.matches("([ ]*)(\"description\":)(.*)")){
+                                System.out.println("event desc:"+retrieveFeidInJson(line));
+                                desc=true;
+                            }
+                           if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
+                                if(!desc){
+                                    System.out.println("event desc:"+ "empty descp");
+                                }
+                               System.out.println("event EndTime:"+retrieveFeidInJson(line));
+                                break;
+                            }
+
+                        }
+                        while (null != (line = br.readLine())) {
+                            if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
+                                System.out.println("event StartTime:"+retrieveFeidInJson(line));
+                                desc=false;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+            catch (Exception e){
+
+            }
+            return  events;
     }
 }
