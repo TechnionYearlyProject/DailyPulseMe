@@ -58,6 +58,10 @@ public class AppUser {
 
         events.add(event);
     }
+    public void addEvents(ArrayList<Event> events){
+
+        events.addAll(events);
+    }
 
     public String getGoogleFitAccessToken() {
         return googleFitAccessToken;

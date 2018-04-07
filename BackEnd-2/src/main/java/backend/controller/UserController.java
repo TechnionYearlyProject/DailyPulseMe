@@ -23,6 +23,8 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
+import static backend.googleFitApi.GoogleCallParser.ExtractGoogleCalendarEvents;
+
 
 @RestController
 @RequestMapping("/users")
@@ -179,17 +181,19 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/anadil")
-    public void getEvents(Authentication auth)  {
-        System.out.println("confg confg confg anadil");
-
+    @RequestMapping("/GoogleCalendarEvents")
+    public ArrayList<Event> getEventsGoogleCalendar(Authentication auth)  {
+        System.out.println("GoogleCalendarEvents\n");
+        ArrayList<Event> tmp=null;
         AppUser user = appUserRepository.findByUsername(auth.getName());
         try{
-        GoogleCallParser.ExtractGoogleCalendarEvents(user);}
-        catch (Exception e){
+            tmp=ExtractGoogleCalendarEvents(user);
+            user.addEvents(tmp);
+            appUserRepository.save(user);
+        }catch (Exception e){
           System.out.println("line 188 user cON");
         }
-
+        return tmp;
     }
 
     /*

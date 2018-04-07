@@ -4,6 +4,7 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -11,11 +12,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-import sun.text.resources.no.CollationData_no;
+//import sun.text.resources.no.CollationData_no;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -256,17 +259,33 @@ public class GoogleCallParser {
 
     /*
     @author :Anadil
+    @param : string of RFC5545 timestamp format // example for the format 2018-04-05T16:00:00+03:00
+    @return : the date time in seconds (long)
+     */
+    public  static  long RFC5545ToLong(String str){
+        Pattern pattern= Pattern.compile("(.*)(T)(.*)(\\+|-)(.*)");
+        Matcher m= pattern.matcher(str);
+        String str_="";
+        if (m.matches()) {
+            str_=m.group(1)+" "+m.group(3); //
+        }
+        Timestamp ts = Timestamp.valueOf(str_);
+        return ts.getTime();
+    }
+
+    /*
+    @author :Anadil
     @param : the user who his events will be extract from Google Calender
     @return :getting on the events from the User's google Calendar
     */
-    public static List<Event> ExtractGoogleCalendarEvents(AppUser user) throws RefreshTokenExpiredException{
+    public static ArrayList<Event> ExtractGoogleCalendarEvents(AppUser user) throws RefreshTokenExpiredException{
 
         System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
-        List<Event> events=new ArrayList<>();
+       ArrayList<Event> events=new ArrayList<>();
         String accessToken=user.getGoogleFitAccessToken();
 
 
-        /* POST Request Getting Events From Google Calendar
+        /* GET Request Getting Events From Google Calendar
           the primary calendar of the currently logged in user
           */
         /*
@@ -287,7 +306,7 @@ public class GoogleCallParser {
                 accessToken = refreshToken(user);
                 if (accessToken.compareTo("Refresh token expired") == 0) {
                     System.out.println("step66");
-                  //  throw new RefreshTokenExpiredException();
+                   throw new RefreshTokenExpiredException();
                 } else {
                     System.out.println("step555");
                     user.setGoogleFitAccessToken(accessToken);
@@ -295,49 +314,51 @@ public class GoogleCallParser {
                 }
             }
             System.out.println("Step33");
-            BufferedReader br = new BufferedReader(  //putting the response in string
+            BufferedReader br = new BufferedReader( //putting the response in buffer
                     new InputStreamReader(
                             (response.getEntity().getContent())
                     )
             );
-            System.out.println(br);
-            StringBuilder content = new StringBuilder();
             String line;
             boolean flag=false,desc=false;
-            int i=0;
-            ArrayList<Event> ls=new ArrayList<>();
-            Event tmp;
-
-
+            Event tmpEvent=null;
             //now extracting the events from the respond
             while (null != (line = br.readLine())) {
-              //  System.out.println(line);
 
-                if(line.contains("items")){
+                if(line.matches("([ ]*)(\"items\":)(.*)")){
                     flag=true;
                     continue;
                 }
                 if(flag) {
                     if(line.matches("([ ]*)(\"summary\":)(.*)")){
+                        tmpEvent=new Event();
                         System.out.println("event name :"+retrieveFeidInJson(line));
+                        tmpEvent.setName(retrieveFeidInJson(line));
                         while (null != (line = br.readLine())) {
                             if(line.matches("([ ]*)(\"description\":)(.*)")){
                                 System.out.println("event desc:"+retrieveFeidInJson(line));
+                                tmpEvent.setDescription(retrieveFeidInJson(line));
                                 desc=true;
                             }
                            if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
                                 if(!desc){
+                                    tmpEvent.setDescription("");
                                     System.out.println("event desc:"+ "empty descp");
                                 }
-                               System.out.println("event EndTime:"+retrieveFeidInJson(line));
+                               tmpEvent.setStartTime(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
+                               tmpEvent.setId(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
+                               System.out.println("event StartTime:"+retrieveFeidInJson(line));
                                 break;
                             }
 
                         }
                         while (null != (line = br.readLine())) {
                             if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
-                                System.out.println("event StartTime:"+retrieveFeidInJson(line));
+                                System.out.println("event EndTime:"+retrieveFeidInJson(line));
+                                tmpEvent.setEndTime(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
                                 desc=false;
+                                events.add(tmpEvent);
+                                System.out.println(tmpEvent.toString());
                                 break;
                             }
                         }
@@ -347,8 +368,12 @@ public class GoogleCallParser {
             }
         }
             catch (Exception e){
+                System.out.println(e.toString());
 
             }
+
+        System.out.println(events
+                .toString());
             return  events;
     }
 }
