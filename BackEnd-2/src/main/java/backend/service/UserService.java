@@ -92,6 +92,8 @@ public class UserService {
         List<Pulse> eventPulses;
 		
 
+
+        //TODO : we should call the function from the new interface here depending on type of band
         for (Event event : filter) {//for all the events we should get the pulses
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
@@ -116,8 +118,8 @@ public class UserService {
      */
     public static boolean updateTokens(AppUser user, TwoStrings accessTokens){
         //update token fields 
-        user.setGoogleFitAccessToken(accessTokens.getFirst());
-        user.setGoogleFitRefreshToken(accessTokens.getSecond());
+        user.setAccessToken(accessTokens.getFirst());
+        user.setRefreshToken(accessTokens.getSecond());
         return true;
     }
 }
