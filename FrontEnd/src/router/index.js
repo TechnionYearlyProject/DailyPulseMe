@@ -9,6 +9,7 @@ import eventsWrapper from '../components/eventsWrapper'
 import Event from '../components/eventGraph'
 import GoogleFit from '../components/GoogleFit'
 import RemoveEvent from '../components/RemoveEvent'
+import Calendar from '../components/Calendar'
 const requireAuth = (to, from, next) => {
  checkToken(function(){
             next()
@@ -68,6 +69,12 @@ const router = new Router({
       alias: '/home',
       name: 'Home',
       component: Home,
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/calendar',
+      name: 'Calendar',
+      component: Calendar,
       beforeEnter: requireAuth
     },
      {
