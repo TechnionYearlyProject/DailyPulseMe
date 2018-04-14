@@ -36,7 +36,7 @@ public class GoogleCallParser {
 	 */
     public static boolean verifyAndRefresh(AppUser user) {
         String refreshed;
-        HttpGet get = new HttpGet("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + user.getGoogleFitAccessToken());
+        HttpGet get = new HttpGet("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + user.getAccessToken());
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = null;
         try {
@@ -72,7 +72,7 @@ public class GoogleCallParser {
                     System.out.println("-------3---------");
                     return false;
                 } else {
-                    user.setGoogleFitAccessToken(refreshed);  // update the user access token with a new one
+                    user.setAccessToken(refreshed);  // update the user access token with a new one
                     return true;
                 }
             }
@@ -90,7 +90,7 @@ public class GoogleCallParser {
      */
     public static String refreshToken(AppUser user) {
         int ACCESS_START = 15;
-        String refresh = user.getGoogleFitRefreshToken();
+        String refresh = user.getRefreshToken();
         String access = "error";
 
 		/*the post request should be sent to google so they will generate access token */
@@ -164,7 +164,7 @@ public class GoogleCallParser {
      */
     public static List<Pulse> getPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
         List<Pulse> pulses=new ArrayList<>();
-        String accessToken=user.getGoogleFitAccessToken();
+        String accessToken=user.getAccessToken();
 
         //// check if the access token has expired TODO
 		
@@ -202,7 +202,7 @@ public class GoogleCallParser {
                 if(accessToken.compareTo("Refresh token expired") == 0) {
                     throw new RefreshTokenExpiredException();
                 } else {
-                    user.setGoogleFitAccessToken(accessToken);
+                    user.setAccessToken(accessToken);
                     System.out.println("update acces token");
                     return getPulses( user, startTime, endTime ,  bucket);
                 }
@@ -280,9 +280,9 @@ public class GoogleCallParser {
     */
     public static ArrayList<Event> ExtractGoogleCalendarEvents(AppUser user) throws RefreshTokenExpiredException{
 
-        System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
+        System.out.println(user.getAccessToken()+"*******\n"+user.getRefreshToken());
        ArrayList<Event> events=new ArrayList<>();
-        String accessToken=user.getGoogleFitAccessToken();
+        String accessToken=user.getAccessToken();
 
 
         /* GET Request Getting Events From Google Calendar
@@ -309,7 +309,7 @@ public class GoogleCallParser {
                    throw new RefreshTokenExpiredException();
                 } else {
                     System.out.println("step555");
-                    user.setGoogleFitAccessToken(accessToken);
+                    user.setAccessToken(accessToken);
                     return ExtractGoogleCalendarEvents(user);
                 }
             }

@@ -17,8 +17,10 @@ public class AppUser {
     private String username;
     private String password;
     private String name;
-    private String googleFitAccessToken;    //TODO : change the field name to googleAccessToken
-    private String googleFitRefreshToken;   // TODO : change the field name to googleRefreshToken
+    private String accessToken;
+    private String refreshToken;
+    private String activeBandType;
+    // TODO : change the field name to googleRefreshToken
     private List<Event> events;
 
     public String getId() {
@@ -63,20 +65,20 @@ public class AppUser {
         events.addAll(events);
     }
 
-    public String getGoogleFitAccessToken() {
-        return googleFitAccessToken;
+    public String getAccessToken (){
+        return accessToken;
     }
 
-    public void setGoogleFitAccessToken(String googleFitAccessToken) {
-        this.googleFitAccessToken = googleFitAccessToken;
+    public void setAccessToken(String googleFitAccessToken) {
+        this.accessToken = googleFitAccessToken;
     }
 
-    public String getGoogleFitRefreshToken() {
-        return googleFitRefreshToken;
+    public String getRefreshToken() {
+        return refreshToken;
     }
 
-    public void setGoogleFitRefreshToken(String googleFitRefreshToken) {
-        this.googleFitRefreshToken = googleFitRefreshToken;
+    public void setRefreshToken(String googleFitRefreshToken) {
+        this.refreshToken = googleFitRefreshToken;
     }
 
     public Event getEvent(String id) {
@@ -110,4 +112,14 @@ public class AppUser {
     public void setEvents(List<Event> e) {
         events=e;
     }
+
+
+    public String getActiveBandType() {
+        return activeBandType;
+    }
+
+    public void setActiveBandType(String activeBandType) {
+        this.activeBandType = activeBandType;
+    }
 }
+
