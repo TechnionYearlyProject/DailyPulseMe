@@ -23,7 +23,6 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
-import static backend.googleFitApi.GoogleCallParser.ExtractGoogleCalendarEvents;
 
 
 @RestController
@@ -181,13 +180,13 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-    @RequestMapping("/GoogleCalendarEvents")
-    public ArrayList<Event> getEventsGoogleCalendar(Authentication auth)  {
-        System.out.println("GoogleCalendarEvents\n");
+    @RequestMapping("/GetCalendarEvents")
+    public ArrayList<Event> getCalendarEvents(Authentication auth)  {
+       // System.out.println("GoogleCalendarEvents\n");
         ArrayList<Event> tmp=null;
         AppUser user = appUserRepository.findByUsername(auth.getName());
         try{
-            tmp=ExtractGoogleCalendarEvents(user);
+            tmp=(user.getCalendar()).getEvents(user);
             user.addEvents(tmp);
             appUserRepository.save(user);
         }catch (Exception e){
