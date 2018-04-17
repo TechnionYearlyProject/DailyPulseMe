@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.logging.Logger;
 import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 

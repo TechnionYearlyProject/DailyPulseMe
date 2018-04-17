@@ -4,7 +4,6 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -12,17 +11,17 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-//import sun.text.resources.no.CollationData_no;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+//import sun.text.resources.no.CollationData_no;
 
 public class GoogleCallParser {
     /*
@@ -162,7 +161,7 @@ public class GoogleCallParser {
      @param bucket which the interval between two Consecutive pulses
      @return list of Pulse between startTime and endTime  (getting the data from GOOGLE FIT)
      */
-    public static List<Pulse> getPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
+    public static List<Pulse> getGoogleFitPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
         List<Pulse> pulses=new ArrayList<>();
         String accessToken=user.getAccessToken();
 
@@ -204,7 +203,7 @@ public class GoogleCallParser {
                 } else {
                     user.setAccessToken(accessToken);
                     System.out.println("update acces token");
-                    return getPulses( user, startTime, endTime ,  bucket);
+                    return getGoogleFitPulses( user, startTime, endTime ,  bucket);
                 }
             }
 

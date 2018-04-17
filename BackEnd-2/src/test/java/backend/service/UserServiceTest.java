@@ -6,12 +6,10 @@ import backend.entity.Event;
 import backend.entity.EventTag;
 import backend.entity.Pulse;
 import backend.helperClasses.TwoStrings;
-import backend.service.UserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.List;
 

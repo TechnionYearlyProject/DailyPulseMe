@@ -1,26 +1,20 @@
 package backend.controller;
 
 import backend.DailyPulseApp;
-import backend.entity.*;
+import backend.entity.AppUser;
+import backend.entity.Event;
 import backend.googleFitApi.GoogleCallParser;
+import backend.helperClasses.BandTypes;
 import backend.helperClasses.TwoStrings;
-import backend.repository.EventRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
-import org.apache.http.auth.AUTH;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 import static backend.googleFitApi.GoogleCallParser.ExtractGoogleCalendarEvents;
@@ -69,26 +63,20 @@ public class UserController {
 
 
     /*
-    updateGoogleFitToken updates the access token and refresh token of Google Fit ,
+    updateTokens updates the access token and refresh token of the band ,
     @param auth which by it the user will be retrieved
     @param accessToken which contains the new access token and refresh token
     @return true
      */
-    @PostMapping("/updateGoogleFitToken")
-    public boolean updateGoogleFitToken(Authentication auth, TwoStrings accessTokens) {
-        try {
-            AppUser user = appUserRepository.findByUsername(auth.getName());
-            if(user == null){
-                return  false;
-            }
-            UserService.updateTokens(user,accessTokens); //calling for Service function
-            appUserRepository.save(user);
-            return true;
+    @PostMapping("/updateTokens")
+    public boolean updateTokens(Authentication auth, TwoStrings tokens) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null){
+            return  false;
         }
-        catch (Exception e){
-            DailyPulseApp.LOGGER.info("error from backend " + e.toString());
-            return false;
-        }
+        UserService.updateTokens(user,tokens); //calling for Service function
+        appUserRepository.save(user);
+        return true;
     }
 
 
@@ -98,10 +86,10 @@ public class UserController {
      */
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken() {
-
+        //JWT token.
         return true;
     }
-
+    //testing
     @GetMapping("/private")
     public String privatee() {
         return "THIS IS PRIVATE!!";
@@ -207,20 +195,30 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvent(id);
     }
 
-
     @GetMapping("/verifyAccessToken")
     public boolean verifyAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        boolean response = GoogleCallParser.verifyAndRefresh(user);
+        boolean response = UserService.verifyAndRefresh(user);
         appUserRepository.save(user);
         return response;
     }
 
-
     @GetMapping("/refreshAccessToken")
     public boolean refreshAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        GoogleCallParser.refreshToken(user);
+        UserService.refreshToken(user);
+        return true;
+    }
+
+    @PostMapping
+    public boolean updateActiveBand(Authentication auth, int bandType){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || bandType < 0 || bandType > BandTypes.BANDS_NUM){
+            //check for valid band type
+            return  false;
+        }
+        UserService.updateActiveBand(user,bandType); //calling for Service function
+        appUserRepository.save(user);
         return true;
     }
 }

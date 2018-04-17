@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class fitBitCallParser {
+public class FitBitCallParser {
     public static List<Pulse> getFitBitPulses(AppUser user, String startTime, String endTime, String minInMs) {
 
         String js;

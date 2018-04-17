@@ -1,11 +1,5 @@
 package backend.entity;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import sun.awt.SunHints;
-
-import java.time.LocalDateTime;
 public class Pulse {
 
     private int value;

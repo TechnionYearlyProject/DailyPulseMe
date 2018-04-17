@@ -1,11 +1,7 @@
 package backend.entity;
 
-import backend.repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +15,10 @@ public class AppUser {
     private String name;
     private String accessToken;
     private String refreshToken;
-    private String activeBandType;
-    // TODO : change the field name to googleRefreshToken
+
+    //A value from BandTypes class.
+    private int activeBandType;
+
     private List<Event> events;
 
     public String getId() {
@@ -114,11 +112,11 @@ public class AppUser {
     }
 
 
-    public String getActiveBandType() {
+    public int getActiveBandType() {
         return activeBandType;
     }
 
-    public void setActiveBandType(String activeBandType) {
+    public void setActiveBandType(int activeBandType) {
         this.activeBandType = activeBandType;
     }
 }
