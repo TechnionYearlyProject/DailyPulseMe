@@ -14,6 +14,7 @@
     <b-navbar-nav>
       <b-nav-item href="/">Home</b-nav-item>
       <b-nav-item href="/eventsGraph">Graphs</b-nav-item>
+      <b-nav-item href="/calendar">Calendar</b-nav-item>
     </b-navbar-nav>
 
     <!-- Right aligned nav items -->
