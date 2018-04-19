@@ -3,8 +3,7 @@ package backend.controller;
 import backend.DailyPulseApp;
 import backend.entity.AppUser;
 import backend.entity.Event;
-import backend.googleFitApi.GoogleCallParser;
-import backend.helperClasses.BandTypes;
+import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
 import backend.repository.UserRepository;
 import backend.service.UserService;
@@ -45,13 +44,17 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(AppUser user) {
+    public boolean signUp(@RequestBody AppUser user) {
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
+
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //encoding the password
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
+            user.setAccessToken(" ");
+            user.setRefreshToken(" ");
+            user.setActiveBandType(BandType.GOOGLEFIT_BAND);
             appUserRepository.save(user); //saving the user in the user's repository
             return true;
         }
@@ -68,8 +71,8 @@ public class UserController {
     @param accessToken which contains the new access token and refresh token
     @return true
      */
-    @PostMapping("/updateTokens")
-    public boolean updateTokens(Authentication auth, TwoStrings tokens) {
+        @PostMapping("/updateTokens")
+    public boolean updateTokens(Authentication auth, @RequestBody TwoStrings tokens) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
             return  false;
@@ -210,10 +213,10 @@ public class UserController {
         return true;
     }
 
-    @PostMapping
-    public boolean updateActiveBand(Authentication auth, int bandType){
+    @PostMapping("/updateBandType")
+    public boolean updateActiveBand(Authentication auth,@RequestBody BandType bandType){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        if(user == null || bandType < 0 || bandType > BandTypes.BANDS_NUM){
+        if(user == null || bandType.ordinal() < 0 || bandType.ordinal() > BandType.NUM_OF_BANDS.ordinal()){
             //check for valid band type
             return  false;
         }
@@ -221,4 +224,10 @@ public class UserController {
         appUserRepository.save(user);
         return true;
     }
+    @GetMapping("/getBandType")
+    public BandType getBand(Authentication auth) {
+        return appUserRepository.findByUsername(auth.getName()).getActiveBandType();
+    }
+
+
 }
