@@ -1,6 +1,5 @@
 package backend.entity;
 
-import backend.helperClasses.BandType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,13 +10,15 @@ import java.util.List;
 public class AppUser {
     @Id
     private String id;
-    private String username;
+    private String username; //email
     private String password;
     private String name;
     private String accessToken;
     private String refreshToken;
+
     //A value from BandTypes class.
-    private BandType activeBandType;
+    private int activeBandType;
+
     private List<Event> events;
 
     public String getId() {
@@ -111,12 +112,12 @@ public class AppUser {
     }
 
 
-    public BandType getActiveBandType() {
+    public int getActiveBandType() {
         return activeBandType;
     }
 
-    public void setActiveBandType(BandType activeBandType) {
-        this.activeBandType =activeBandType;
+    public void setActiveBandType(int activeBandType) {
+        this.activeBandType = activeBandType;
     }
 }
 
