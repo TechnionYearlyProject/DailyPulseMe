@@ -2,7 +2,7 @@
   <div style="width:20%; margin:auto; margin-top: 20px;">
     <p></p>
         <h1>Add event</h1>
-    <p></p> 
+    <p></p>
     <b-form @submit.prevent="addevent">
       <b-form-group id="exampleInputGroup1"
                     label="Event Name:"
@@ -90,7 +90,7 @@
               if(res.body == false){
                  location.replace('/config');
               }
-              
+
             },(err) =>{
               console.log(err);
             })
@@ -122,7 +122,7 @@
           console.log('Error: ', err);
 
         })
-          
+
       }
     }
   }
