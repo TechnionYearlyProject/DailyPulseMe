@@ -35,13 +35,25 @@ export default {
     }
     let route = this.$route.fullPath;
     var x = route.split('=')[1];
-    this.accessCode = decodeURIComponent(x);
-    this.accessCode = this.accessCode.split("&")[0]
-    this.getTokens();
+    this.accessToken = decodeURIComponent(x);
+     this.$http.post('http://localhost:8081/users/getOutlookToken',{
+        "first": this.accessToken,
+        "second": ''
+      }
+       ,{headers: {'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),}
+      }).then((res) =>{
+        this.$router.push('/');
+        console.log(res);
+      },(err) =>{
+        console.log(err);
+      })
+    // this.getTokens();
   },
    methods : {
      getTokens() {
-       let url = 'http://cors.io/?https://login.microsoftonline.com/common/oauth2/token/'
+
+       let url = 'https://login.microsoftonline.com/common/oauth2/token/'
        this.$http.post(url, {
         client_id: 'c8b9175b-e478-4c52-b8e6-178246c03006',
         response_type:'token',
@@ -49,10 +61,7 @@ export default {
         redirect_uri: 'http://localhost:8080/token1',
         grant_type: 'authorization_code',
         resource: '00000003-0000-0000-c000-000000000000',
-        client_secret: 'xlgsIAORXV4_njfK0325((^'},{headers: {
-    'Content-Type': 'application/json;',
-    // 'Access-Control-Allow-Origin': '*'  
-  }}).then((res)=>{
+        client_secret: 'xlgsIAORXV4_njfK0325((^'}).then((res)=>{
         console.log("hi")
         if(res.ok != 'false'){
        // this.$http.post('http://localhost:8081/users/updateGoogleFitToken',{

@@ -51,8 +51,9 @@ export default {
       location.assign(url);
     },
     microsoftfit() {
-      let url = 'https://login.microsoftonline.com/common/oauth2/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=code&redirect_uri=http://localhost:8080/token1&state=12345&scope=Calendars.Read Calendars.ReadWrite'
-      location.assign(url);
+      // let url = 'https://login.microsoftonline.com/common/oauth2/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=code&redirect_uri=http://localhost:8080/token1&state=12345&scope=Calendars.Read Calendars.ReadWrite'
+      let url2 = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=http://localhost:8080/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
+      location.assign(url2);
     }
   }
 }
