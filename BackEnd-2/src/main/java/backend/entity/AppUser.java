@@ -22,8 +22,24 @@ public class AppUser {
     private String googleFitAccessToken;    //TODO : change the field name to googleAccessToken
     private String googleFitRefreshToken;   // TODO : change the field name to googleRefreshToken
     private List<Event> events;
-    private CalendarI calendar; //TODO : in login or when the user choose which calendar ,this feild must be updated
+    private CalendarI calendar; //TODO : in login (when the user choose which calendar) ,this feild must be updated
+    private String outlookToken;
+    private String outlookRefreshoToken;
 
+    public String getOutlookRefreshoToken() {
+        return outlookRefreshoToken;
+    }
+    public  String getOutlookToken(){
+        return outlookToken;
+    }
+
+    public void setOutlookRefreshoToken(String outlookRefreshoToken) {
+        this.outlookRefreshoToken = outlookRefreshoToken;
+    }
+
+    public void setOutlookToken(String outlookToken) {
+        this.outlookToken = outlookToken;
+    }
 
     public  CalendarI getCalendar(){
         return calendar;

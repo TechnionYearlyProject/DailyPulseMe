@@ -51,6 +51,7 @@ public class UserController {
      */
     @PostMapping("/sign-up")
     public boolean signUp(AppUser user) {
+
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
@@ -58,6 +59,30 @@ public class UserController {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
             appUserRepository.save(user); //saving the user in the user's repository
+            return true;
+        }
+        catch (Exception e){
+            DailyPulseApp.LOGGER.info("error from backend " + e.toString());
+            return false;
+        }
+    }
+
+    /*
+    @auother: Anadil
+    update outlookToken's access token and refresh token of Microsoft outlook ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+     */
+    @PostMapping("/getOutlookToken")
+    public boolean getOutLookToken(Authentication auth, TwoStrings accessTokens) {
+        try {
+            AppUser user = appUserRepository.findByUsername(auth.getName());
+            if(user == null){
+                return  false;
+            }
+            UserService.updateOutLookTokens(user,accessTokens); //calling for Service function
+            appUserRepository.save(user);
             return true;
         }
         catch (Exception e){
