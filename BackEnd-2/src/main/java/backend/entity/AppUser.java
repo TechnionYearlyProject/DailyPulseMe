@@ -1,15 +1,9 @@
 package backend.entity;
 
-import backend.Calendar.CalendarI;
-import backend.repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 @Document
@@ -22,33 +16,15 @@ public class AppUser {
     private String googleFitAccessToken;    //TODO : change the field name to googleAccessToken
     private String googleFitRefreshToken;   // TODO : change the field name to googleRefreshToken
     private List<Event> events;
-    private CalendarI calendar; //TODO : in login (when the user choose which calendar) ,this feild must be updated
     private String outlookToken;
-    private String outlookRefreshoToken;
 
-    public String getOutlookRefreshoToken() {
-        return outlookRefreshoToken;
-    }
+
     public  String getOutlookToken(){
         return outlookToken;
     }
 
-    public void setOutlookRefreshoToken(String outlookRefreshoToken) {
-        this.outlookRefreshoToken = outlookRefreshoToken;
-    }
-
     public void setOutlookToken(String outlookToken) {
         this.outlookToken = outlookToken;
-    }
-
-    public  CalendarI getCalendar(){
-        return calendar;
-    }
-    public void setCalendar(CalendarI calendar){
-        this.calendar=calendar;
-    }
-    public String getId() {
-        return id;
     }
 
     public void setId(String id) {

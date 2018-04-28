@@ -30,7 +30,7 @@ public class AuxMethods {
     @return : the date time in seconds (long)
      */
     public  static  long RFC5545ToLong(String str){
-        Pattern pattern= Pattern.compile("(.*)(T)(.*)(\\+|-)(.*)");
+        Pattern pattern= Pattern.compile("(.*)(T)(.*)(\\+|-|\\.)(.*)");
         Matcher m= pattern.matcher(str);
         String str_="";
         if (m.matches()) {

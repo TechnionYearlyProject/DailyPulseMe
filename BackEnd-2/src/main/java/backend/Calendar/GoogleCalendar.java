@@ -19,18 +19,18 @@ import static backend.Calendar.AuxMethods.RFC5545ToLong;
 import static backend.Calendar.AuxMethods.retrieveFeidInJson;
 import static backend.googleFitApi.GoogleCallParser.refreshToken;
 
-public class GoogleCalendar implements CalendarI {
+public class GoogleCalendar {
 
     /*
     @author :Anadil
     @param : the user who his events will be extract from Google Calender
     @return :getting on the events from the User's google Calendar
     */
-    public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
+    static public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
 
         System.out.println(user.getOutlookToken()+"*******\n"+user.getGoogleFitRefreshToken());
         ArrayList<Event> events=new ArrayList<>();
-        String accessToken=user.getOutlookToken();
+        String accessToken=user.getGoogleFitRefreshToken();
 
         /* GET Request Getting Events From Google Calendar
           the primary calendar of the currently logged in user

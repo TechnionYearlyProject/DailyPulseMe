@@ -1,6 +1,8 @@
 package backend.controller;
 
+import backend.Calendar.OutlookCalendar;
 import backend.DailyPulseApp;
+import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleFitApi.GoogleCallParser;
 import backend.helperClasses.TwoStrings;
@@ -92,6 +94,21 @@ public class UserController {
     }
 
 
+    /*@auother: Anadil
+       this function return true if the user sign in to one calender at least
+    */
+    @GetMapping("/isThereOneCalendar")
+    public boolean getOutLookToken(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null){
+            return  false;
+        }
+        if((user.getGoogleFitAccessToken()== null || user.getGoogleFitAccessToken()== "") &&
+                (user.getOutlookToken()== null || user.getOutlookToken()== "") ){
+            return false;
+        }
+        return  true;
+    }
     /*
     updateGoogleFitToken updates the access token and refresh token of Google Fit ,
     @param auth which by it the user will be retrieved
@@ -205,13 +222,16 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
+
+
+
     @RequestMapping("/GetCalendarEvents")
     public ArrayList<Event> getCalendarEvents(Authentication auth)  {
-       // System.out.println("GoogleCalendarEvents\n");
+
         ArrayList<Event> tmp=null;
         AppUser user = appUserRepository.findByUsername(auth.getName());
         try{
-            tmp=(user.getCalendar()).getEvents(user);
+            tmp= OutlookCalendar.getEvents(user);
             user.addEvents(tmp);
             appUserRepository.save(user);
         }catch (Exception e){
