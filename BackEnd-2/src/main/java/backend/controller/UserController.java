@@ -3,6 +3,7 @@ package backend.controller;
 import backend.DailyPulseApp;
 import backend.entity.*;
 import backend.googleFitApi.GoogleCallParser;
+import backend.googleSignIn.SignUpGoogle;
 import backend.helperClasses.TwoStrings;
 import backend.repository.EventRepository;
 import backend.repository.UserRepository;
@@ -63,6 +64,12 @@ public class UserController {
             DailyPulseApp.LOGGER.info("error from backend " + e.toString());
             return false;
         }
+    }
+    @PostMapping("/sign-up-google")
+    public boolean signUp(String authToken) {
+       AppUser user=SignUpGoogle.getGoogleUser(authToken);
+       return signUp(user);
+
     }
 
 

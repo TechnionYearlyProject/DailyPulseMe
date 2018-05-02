@@ -1,4 +1,5 @@
 package backend.googleSignIn;
+import backend.entity.AppUser;
 import com.google.api.client.googleapis.auth.oauth2.*;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -9,12 +10,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
 
-public class SignUp {
-    String CLIENT_SECRET_FILE = "/src/main/java/resources/client_secret.json";
-    String redirectUrl="http://localhost:8080/token";
-    String authCode="we have to take it from frontend";
-
-    GoogleClientSecrets clientSecrets;
+public class SignUpGoogle {
+    private static final String CLIENT_SECRET_FILE = "/src/main/java/resources/client_secret.json";
+    private static final String redirectUrl="http://localhost:8080/token";
+public static AppUser getGoogleUser(String authCode){
+    GoogleClientSecrets clientSecrets = null;
 
     {
         try {
@@ -25,7 +25,7 @@ public class SignUp {
         }
     }
 
-    GoogleTokenResponse tokenResponse;
+    GoogleTokenResponse tokenResponse=null;
 
     {
         try {
@@ -46,11 +46,11 @@ public class SignUp {
     }
 
     String accessToken = tokenResponse.getAccessToken();
-
+    String refreshToken = tokenResponse.getRefreshToken();
     // Use access token to call API
     GoogleCredential credential = new GoogleCredential().setAccessToken(accessToken);
     // Get profile info from ID token
-    GoogleIdToken idToken;
+    GoogleIdToken idToken = null;
 
     {
         try {
@@ -60,14 +60,17 @@ public class SignUp {
         }
     }
 
-        GoogleIdToken.Payload payload = idToken.getPayload();
-        String userId = payload.getSubject();  // Use this value as a key to identify a user.
-        String email = payload.getEmail();
-        boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
-        String name = (String) payload.get("name");
-        String pictureUrl = (String) payload.get("picture");
-        String locale = (String) payload.get("locale");
-        String familyName = (String) payload.get("family_name");
-        String givenName = (String) payload.get("given_name");
+    GoogleIdToken.Payload payload = idToken.getPayload();
+    String userId = payload.getSubject();  // Use this value as a key to identify a user.
+    String email = payload.getEmail();
+    boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
+    String name = (String) payload.get("name");
+    String pictureUrl = (String) payload.get("picture");
+    String locale = (String) payload.get("locale");
+    String familyName = (String) payload.get("family_name");
+    String givenName = (String) payload.get("given_name");
+    AppUser user=new AppUser(userId,email,"123",name,accessToken,refreshToken);
+return user;
+}
 
 }

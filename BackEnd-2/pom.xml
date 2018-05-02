@@ -105,6 +105,11 @@
         <version>v1-rev28-1.22.0</version>
     </dependency>
     <dependency>
+        <groupId>com.google.apis</groupId>
+        <artifactId>google-api-services-fitness</artifactId>
+        <version>v1-rev30-1.23.0</version>
+    </dependency>
+    <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.12</version>

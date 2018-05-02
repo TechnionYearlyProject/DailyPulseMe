@@ -18,7 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import com.google.api.client.googleapis.auth.oauth2.*;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 public class GoogleCallParser {
     /*
     after calling this,re-add user to repo.
@@ -78,13 +81,11 @@ public class GoogleCallParser {
         return true;
     }
 
-	
     /*this function generates new access token from the refresh token
      @param user which his  access token will be refreshed by his refresh token
      @return new access token
      */
     public static String refreshToken(AppUser user) {
-        int ACCESS_START = 15;
         String refresh = user.getGoogleFitRefreshToken();
         String access = "error";
 
