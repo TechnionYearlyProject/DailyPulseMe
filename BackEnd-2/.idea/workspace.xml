@@ -3,16 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyPulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DailyPulse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/googleFitApi/GoogleCallParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AppUserTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-34">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="340">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -36,11 +32,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppUserTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="119" column="31" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="31" />
+            <state relative-caret-position="85">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -87,15 +95,17 @@
         <option value="$PROJECT_DIR$/src/test/java/EventTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java" />
-        <option value="$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/entity/AppUserTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" />
       </list>
     </option>
   </component>
@@ -141,6 +151,27 @@
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -157,22 +188,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="googleFitApi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,12 +244,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GoogleCallParserTest">
+  <component name="RunManager" selected="JUnit.All in DailyPulse">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="All in DailyPulse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
@@ -250,29 +282,6 @@
       <option name="MAIN_CLASS_NAME" value="backend.entity.AppUserTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="AppUserTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DailyPulse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.entity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.entity" />
-      <option name="MAIN_CLASS_NAME" value="backend.entity.AppUserTest" />
-      <option name="METHOD_NAME" value="test2" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -408,19 +417,19 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.DailyPulseApp" />
-      <item itemvalue="JUnit.AppUserTest.test2" />
       <item itemvalue="JUnit.GoogleCallParserTest" />
-      <item itemvalue="JUnit.AppUserTest" />
       <item itemvalue="JUnit.EventTest" />
       <item itemvalue="JUnit.UserServiceTest" />
+      <item itemvalue="JUnit.All in DailyPulse" />
+      <item itemvalue="JUnit.AppUserTest (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in DailyPulse" />
+        <item itemvalue="JUnit.AppUserTest (1)" />
         <item itemvalue="JUnit.GoogleCallParserTest" />
         <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.EventTest" />
-        <item itemvalue="JUnit.AppUserTest" />
-        <item itemvalue="JUnit.AppUserTest.test2" />
       </list>
     </recent_temporary>
   </component>
@@ -451,23 +460,11 @@
       <workItem from="1524129990974" duration="7689000" />
       <workItem from="1524489151703" duration="196000" />
       <workItem from="1525277696540" duration="1396000" />
-      <workItem from="1525279170619" duration="623000" />
+      <workItem from="1525279170619" duration="1573000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GoogleCallParserTest_getPulses - 2018.01.21 at 00h 18m 06s.xml">
-      <configuration name="GoogleCallParserTest.getPulses" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoogleCallParserTest_getPulses - 2018.01.21 at 00h 19m 01s.xml">
-      <configuration name="GoogleCallParserTest.getPulses" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoogleCallParserTest_getPulses - 2018.01.21 at 00h 20m 29s.xml">
-      <configuration name="GoogleCallParserTest.getPulses" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoogleCallParserTest_getPulses - 2018.01.21 at 00h 21m 13s.xml">
-      <configuration name="GoogleCallParserTest.getPulses" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GoogleCallParserTest_refreshToken - 2018.01.21 at 00h 10m 35s.xml">
       <configuration name="GoogleCallParserTest.refreshToken" configurationId="JUnit" />
     </history-entry>
@@ -486,13 +483,24 @@
     <history-entry file="GoogleCallParserTest - 2018.05.02 at 19h 44m 30s.xml">
       <configuration name="GoogleCallParserTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.02 at 19h 59m 21s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.02 at 20h 01m 18s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.02 at 20h 01m 47s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.02 at 20h 01m 57s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44866000" />
+    <option name="totallyTimeSpent" value="45816000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50033534" side_tool="true" weight="0.38921282" />
@@ -512,10 +520,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49966466" visible="true" weight="0.38921282" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966466" visible="true" weight="0.38921282" />
       <window_info anchor="bottom" id="Spring" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20724346" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20724346" />
       <window_info anchor="right" id="Bean Validation" order="7" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -785,27 +793,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="16" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -847,10 +838,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -859,8 +850,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="119" column="31" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="31" />
+        <state relative-caret-position="85">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
