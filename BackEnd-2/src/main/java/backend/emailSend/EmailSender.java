@@ -1,5 +1,7 @@
 package backend.emailSend;
 
+import backend.entity.Subscription;
+
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -10,17 +12,17 @@ public class EmailSender {
     private static String PASSWORD = "Dailypulseme2018"; // GMail password
     private static String RECIPIENT = "rober.shhock@gmail.com";
 
-    public static void main(String[] args) {
+    public static void sendMail(ArrayList<Subscription> to) {
         String from = USER_NAME;
         String pass = PASSWORD;
-        String[] to = { RECIPIENT }; // list of recipient email addresses
+        // list of recipient email addresses
         String subject = "Java send mail example";
         String body = "Welcome to JavaMail!";
 
         sendFromGMail(from, pass, to, subject, body);
     }
 
-    public static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+    public static void sendFromGMail(String from, String pass, ArrayList<Subscription> to, String subject, String body) {
         Properties props = System.getProperties();
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
@@ -35,11 +37,11 @@ public class EmailSender {
 
         try {
             message.setFrom(new InternetAddress(from));
-            InternetAddress[] toAddress = new InternetAddress[to.length];
+            InternetAddress[] toAddress = new InternetAddress[to.size()];
 
             // To get the array of addresses
-            for( int i = 0; i < to.length; i++ ) {
-                toAddress[i] = new InternetAddress(to[i]);
+            for( int i = 0; i < to.size(); i++ ) {
+                toAddress[i] = new InternetAddress(to.get(i).getEmail());
             }
 
             for( int i = 0; i < toAddress.length; i++) {

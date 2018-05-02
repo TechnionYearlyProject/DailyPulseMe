@@ -1,6 +1,7 @@
 package backend.controller;
 
 import backend.DailyPulseApp;
+import backend.emailSend.EmailSender;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Subscription;
@@ -249,5 +250,12 @@ public class UserController {
     @GetMapping("/getSubscribedUsers")
     public List<Subscription> getSubscribedUsers(){
         return subscribedUserRepository.findAll();
+    }
+
+    @PostMapping("/sendMails")
+    public void sendMail() {
+        ArrayList<Subscription> subcribers = new ArrayList<>();
+        subcribers.addAll(subscribedUserRepository.findAll());
+        EmailSender.sendMail(subcribers);
     }
 }
