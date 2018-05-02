@@ -21,6 +21,9 @@ public class AppUser {
     private String googleFitRefreshToken;
     private List<Event> events;
 
+    public AppUser() {
+    }
+
     public AppUser(String id, String username, String password, String name, String googleFitAccessToken, String googleFitRefreshToken) {
         this.id = id;
         this.username = username;
