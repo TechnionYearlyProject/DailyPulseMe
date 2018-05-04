@@ -4,12 +4,8 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
-import backend.googleFitApi.GoogleCallParser;
-import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
-import backend.interfaces.PulsesInterface;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -93,26 +89,12 @@ public class UserService {
         List<Event> result = new ArrayList<Event>(); //filter contains the events in the given time interval
         List<Pulse> eventPulses;
 
-
-
-//TESTINGGGGGGGGGG
-//try {
-//    eventPulses = PulsesInterface.getPulsesByType(user, "0", "9999999999999", MinInMs);//get the pulses in this specific time
-//    for(Pulse p: eventPulses){
-//        System.out.println(p);
-//    }
-//
-//}catch (RefreshTokenExpiredException e){
-//    return null;
-//}
-
-
-
         //TODO : we should call the function from the new interface here depending on type of band
         for (Event event : filter) {//for all the events we should get the pulses
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
-                    eventPulses = PulsesInterface.getPulsesByType(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
+                    //getCallParser will return either FitBit or Google callParser
+                    eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
                 } catch (RefreshTokenExpiredException e) {
                     return null;
                 }
@@ -138,54 +120,12 @@ public class UserService {
         return true;
     }
 
-
-
-
-
     public static boolean verifyAndRefresh(AppUser user) {
-        switch (user.getActiveBandType()){
-            case FITBIT_BAND:
-                //TODO: add verifyAndRefresh() to FitBitCallParser
-                //return FitBitCallParser.verifyAndRefresh(user);
-                return false;
-            case GOOGLEFIT_BAND:
-                return GoogleCallParser.verifyAndRefresh(user);
-            default:
-                //should not ever get here.
-                return false;
-        }
+        return user.getCallParser().verifyAndRefresh(user);
     }
-
-
-
 
     public static void refreshToken(AppUser user) {
-        switch (user.getActiveBandType()){
-            case FITBIT_BAND:
-                //TODO: add refreshToken() to FitBitCallParser
-                //                 //return FitBitCallParser.verifyAndRefresh(user);
-            case GOOGLEFIT_BAND:
-                GoogleCallParser.refreshToken(user);
-            default:
-                //should not ever get here.
-        }
+        user.getCallParser().refreshToken(user);
     }
-
-
-
-   /*
-+       This function updates the active band type of the user
-+       @param user which for him the token will be updated
-+       @param bandType which contains the new active band type
-+       @return no return.
-+    */
-
-    public static void updateActiveBand(AppUser user, BandType bandType) {
-        user.setActiveBandType(bandType);
-    }
-
-
-
-
 
 }

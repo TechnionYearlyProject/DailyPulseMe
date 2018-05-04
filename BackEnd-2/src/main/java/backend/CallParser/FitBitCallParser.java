@@ -1,4 +1,4 @@
-package backend.fitBitApi;
+package backend.CallParser;
 
 import backend.entity.AppUser;
 import backend.entity.Pulse;
@@ -16,8 +16,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FitBitCallParser {
-    public static List<Pulse> getFitBitPulses(AppUser user, String startTime, String endTime, String minInMs) {
+public class FitBitCallParser extends CallParser{
+
+    public List<Pulse> getPulses(AppUser user, String startTime, String endTime, String minInMs) {
 
         String js;
         String accessToken=user.getAccessToken();
@@ -82,6 +83,17 @@ public class FitBitCallParser {
         }
         return  pulses;
 
+    }
+
+    //TODO: implement this method
+    @Override
+    public boolean verifyAndRefresh(AppUser user) {
+        return false;
+    }
+    //TODO: implement this method
+    @Override
+    public String refreshToken(AppUser user) {
+        return null;
     }
 
 

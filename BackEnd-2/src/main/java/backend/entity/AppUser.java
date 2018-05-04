@@ -1,5 +1,6 @@
 package backend.entity;
 
+import backend.CallParser.CallParser;
 import backend.helperClasses.BandType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,13 +12,14 @@ import java.util.List;
 public class AppUser {
     @Id
     private String id;
-    private String username;
+    private String username; //The email
     private String password;
     private String name;
     private String accessToken;
     private String refreshToken;
     //A value from BandTypes class.
     private BandType activeBandType;
+    private CallParser callParser;
     private List<Event> events;
 
     public String getId() {
@@ -117,6 +119,14 @@ public class AppUser {
 
     public void setActiveBandType(BandType activeBandType) {
         this.activeBandType =activeBandType;
+    }
+
+    public CallParser getCallParser() {
+        return callParser;
+    }
+
+    public void setCallParser(CallParser callParser) {
+        this.callParser = callParser;
     }
 }
 

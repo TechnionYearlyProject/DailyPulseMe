@@ -1,4 +1,4 @@
-package backend.googleFitApi;
+package backend.CallParser;
 
 import backend.entity.AppUser;
 import backend.entity.Event;
@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 //import sun.text.resources.no.CollationData_no;
 
-public class GoogleCallParser {
+public class GoogleCallParser extends CallParser{
     /*
     after calling this,re-add user to repo.
      */
@@ -33,7 +33,8 @@ public class GoogleCallParser {
 	@param user that his access token will be refreshed
 	@return true of the refreshing process passed ok , otherwise false
 	 */
-    public static boolean verifyAndRefresh(AppUser user) {
+	@Override
+    public boolean verifyAndRefresh(AppUser user) {
         String refreshed;
         HttpGet get = new HttpGet("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + user.getAccessToken());
         HttpClient client = HttpClientBuilder.create().build();
@@ -87,7 +88,8 @@ public class GoogleCallParser {
      @param user which his  access token will be refreshed by his refresh token
      @return new access token
      */
-    public static String refreshToken(AppUser user) {
+    @Override
+    public String refreshToken(AppUser user) {
         int ACCESS_START = 15;
         String refresh = user.getRefreshToken();
         String access = "error";
@@ -161,7 +163,8 @@ public class GoogleCallParser {
      @param bucket which the interval between two Consecutive pulses
      @return list of Pulse between startTime and endTime  (getting the data from GOOGLE FIT)
      */
-    public static List<Pulse> getGoogleFitPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
+    @Override
+    public List<Pulse> getPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
         List<Pulse> pulses=new ArrayList<>();
         String accessToken=user.getAccessToken();
 
@@ -203,7 +206,7 @@ public class GoogleCallParser {
                 } else {
                     user.setAccessToken(accessToken);
                     System.out.println("update acces token");
-                    return getGoogleFitPulses( user, startTime, endTime ,  bucket);
+                    return this.getPulses( user, startTime, endTime ,  bucket);
                 }
             }
 
@@ -302,7 +305,8 @@ public class GoogleCallParser {
             System.out.println("status "+response.getStatusLine().getStatusCode());
             /*if the token is not valid , we generate new one using the refresh and call the function again with the new token*/
             if (response.getStatusLine().getStatusCode() != 200) {
-                accessToken = refreshToken(user);
+                //***Rober: updated this to solve error : calling nonstatic method from static context
+                accessToken = (new GoogleCallParser()).refreshToken(user);
                 if (accessToken.compareTo("Refresh token expired") == 0) {
                     System.out.println("step66");
                    throw new RefreshTokenExpiredException();

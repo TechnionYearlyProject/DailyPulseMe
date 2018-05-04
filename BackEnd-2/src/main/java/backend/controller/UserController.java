@@ -1,5 +1,7 @@
 package backend.controller;
 
+import backend.CallParser.FitBitCallParser;
+import backend.CallParser.GoogleCallParser;
 import backend.DailyPulseApp;
 import backend.entity.AppUser;
 import backend.entity.Event;
@@ -16,7 +18,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static backend.googleFitApi.GoogleCallParser.ExtractGoogleCalendarEvents;
+import static backend.CallParser.GoogleCallParser.ExtractGoogleCalendarEvents;
+import static backend.helperClasses.BandType.FITBIT_BAND;
+import static backend.helperClasses.BandType.GOOGLEFIT_BAND;
 
 
 @RestController
@@ -54,7 +58,11 @@ public class UserController {
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
             user.setAccessToken(" ");
             user.setRefreshToken(" ");
+
+            //default is googleFit
             user.setActiveBandType(BandType.GOOGLEFIT_BAND);
+            user.setCallParser(new GoogleCallParser());
+
             appUserRepository.save(user); //saving the user in the user's repository
             return true;
         }
@@ -89,7 +97,7 @@ public class UserController {
      */
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken() {
-        //JWT token.
+        //authenticates JWT token.
         return true;
     }
     //testing
@@ -103,6 +111,7 @@ public class UserController {
      @param auth , which by it the user will be retrieved
      @return user name
      */
+    //TODO: Delete this?
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getName();
@@ -212,22 +221,28 @@ public class UserController {
         UserService.refreshToken(user);
         return true;
     }
-
-    @PostMapping("/updateBandType")
-    public boolean updateActiveBand(Authentication auth,@RequestBody BandType bandType){
+    //sets the FitBit band as the active band
+    @PostMapping("/setFitBitBand")
+    public void updateToFitBit(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        if(user == null || bandType.ordinal() < 0 || bandType.ordinal() > BandType.NUM_OF_BANDS.ordinal()){
-            //check for valid band type
-            return  false;
-        }
-        UserService.updateActiveBand(user,bandType); //calling for Service function
-        appUserRepository.save(user);
-        return true;
+        user.setCallParser(new FitBitCallParser());
+        user.setActiveBandType(FITBIT_BAND);
     }
-    @GetMapping("/getBandType")
-    public BandType getBand(Authentication auth) {
-        return appUserRepository.findByUsername(auth.getName()).getActiveBandType();
+    //sets the GoogleFit as the active band (this is the default)
+    @PostMapping("/setGoogleFitBand")
+    public void updateToGoogleFit(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        user.setCallParser(new GoogleCallParser());
+        user.setActiveBandType(GOOGLEFIT_BAND);
     }
 
-
+    /*returns the number associated with the band type
+    0 - GoogleFit
+    1 - FitBit
+    */
+    @GetMapping("/getActiveBand")
+    public int getActiveBand(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        return user.getActiveBandType().getBandTypeAsInt();
+    }
 }
