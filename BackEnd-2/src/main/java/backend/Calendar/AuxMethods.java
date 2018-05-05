@@ -1,6 +1,7 @@
 package backend.Calendar;
 
 import java.sql.Timestamp;
+import java.util.logging.SimpleFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,14 +31,18 @@ public class AuxMethods {
     @return : the date time in seconds (long)
      */
     public  static  long RFC5545ToLong(String str){
+        System.out.println(str);
         Pattern pattern= Pattern.compile("(.*)(T)(.*)(\\+|-|\\.)(.*)");
         Matcher m= pattern.matcher(str);
         String str_="";
         if (m.matches()) {
-            str_=m.group(1)+" "+m.group(3); //
+            str_=m.group(1)+" "+m.group(3)+".0"; //
         }
+        System.out.println(str_);
         Timestamp ts = Timestamp.valueOf(str_);
         return ts.getTime();
     }
+
+
 
 }

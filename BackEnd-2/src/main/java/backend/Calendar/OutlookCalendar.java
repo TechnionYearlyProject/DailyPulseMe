@@ -3,11 +3,15 @@ package backend.Calendar;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.RefreshTokenExpiredException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 
+import javax.swing.text.html.parser.Entity;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
@@ -30,17 +34,17 @@ public class OutlookCalendar {
 
     /*
     @aouther : Anadil
+
      */
      static public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
 
 
-         System.out.println("here here");
         ArrayList<Event> events=new ArrayList<>(); //events array which will contain outlook Events Lettter !
         String accessToken=user.getOutlookToken();
         System.out.println("access token :" + accessToken+"\n");
-        HttpGet get_=new HttpGet("https://graph.microsoft.com/v1.0/me/events?access_token=Bearer "+accessToken+"&$select=subject,bodyPreview,Start,End&body-content-type=text");
+        HttpGet get_=new HttpGet("https://graph.microsoft.com/v1.0/me/events?&$select=subject,bodyPreview,Start,End&body-content-type=text");
       //  get_.addHeader("Content-Type","application/json");
-     //   get_.addHeader("Authorization" , "Bearer "+ accessToken );
+        get_.addHeader("Authorization" , "Bearer " +user.getOutlookToken());
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = null;
         try {
@@ -50,50 +54,36 @@ public class OutlookCalendar {
             if (response.getStatusLine().getStatusCode() != 200) {
                  throw  new RefreshTokenExpiredException();
             }
-            System.out.println("Read res "+response.getEntity().getContent().toString());
-            BufferedReader br = new BufferedReader( //putting the response in buffer
+
+        /*    BufferedReader br = new BufferedReader( //putting the response in buffer
                     new InputStreamReader(
                             (response.getEntity().getContent())
                     )
-            );
-            String line;
-            boolean flag=false;
-            Event tmpEvent=null;
-            System.out.println("lets starts extracting the events");
-            //now extracting the events from the respond
-            while (null != (line = br.readLine())) {
-                System.out.println("ok");
-                System.out.println(line);
-                if(line.matches("([ ]*)(\"value\":)(.*)")){
-                    flag=true;
-                    continue;
-                }
-                if(flag) {
-                    if(line.matches("([ ]*)(\"subject\":)(.*)")){
-                        tmpEvent=new Event();
-                        System.out.println("event name :"+retrieveFeidInJson(line));
-                        tmpEvent.setName(retrieveFeidInJson(line));
-                        while (null != (line = br.readLine())) {
-                            if(line.matches("([ ]*)(\"bodyPreview\":)(.*)")){
-                                tmpEvent.setDescription(retrieveFeidInJson(line));
-                            }
-                            if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
-                                tmpEvent.setStartTime(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
-                                tmpEvent.setId(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
-                                break;
-                            }
-                        }
-                        while (null != (line = br.readLine())) {
-                            if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
-                                tmpEvent.setEndTime(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
-                                events.add(tmpEvent);
-                                System.out.println(tmpEvent.toString());
-                                break;
-                            }
-                        }
+            );*/
 
-                    }
-                }
+            String result= EntityUtils.toString(response.getEntity());
+            System.out.println("the http response is :"+ result);
+            System.out.println("lets starts extracting the events");
+            //now extracting the events from the respon
+            /*************************************************************/
+            ObjectMapper mapper=new ObjectMapper();
+            //	mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+            JsonNode root = mapper.readTree(result);
+            JsonNode eventsNode = root.path("value");
+            for (JsonNode node : eventsNode) {
+                String subject = node.path("subject").asText();
+                String bodyPreview=node.path("bodyPreview").asText();
+                String start=node.path("start").path("dateTime").asText();
+                String end=node.path("end").path("dateTime").asText();
+                System.out.println("sunject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
+                Event event=new Event();
+                event.setStartTime(Long.toString(RFC5545ToLong(start)));
+                event.setName(subject);
+                event.setDescription(bodyPreview);
+                event.setStartTime(Long.toString(RFC5545ToLong(start)));
+                event.setEndTime(Long.toString(RFC5545ToLong(end)));
+                events.add(event);
+
             }
         }
         catch (Exception e){

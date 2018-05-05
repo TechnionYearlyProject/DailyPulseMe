@@ -233,7 +233,9 @@ public class UserController {
         try{
             tmp= OutlookCalendar.getEvents(user);
             user.addEvents(tmp);
+            user.setEvents(tmp);
             appUserRepository.save(user);
+            System.out.println("done");
         }catch (Exception e){
           System.out.println("line 188 user cON");
         }
