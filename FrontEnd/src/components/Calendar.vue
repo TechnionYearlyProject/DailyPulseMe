@@ -69,17 +69,19 @@
         },
         mounted() {
             let me = this;
+            this.getEvents();
             setTimeout(function () {
-                int i = 0;
-                for (var variable in me.datesList) {
+                for (var i = 0; i < me.datesList.length; i++) {
                   me.events.push(                {
                                       id: 1,
                                       title:'Event 1',
-                                      description: 'http://allfitnessweb.com/wp-content/uploads/2015/09/heart-rate.jpg',
+                                      description: 'http://localhost:8080/eventGraph?id=' + me.avgList[i].id,
                                       color: 'card-danger card-inverse',
-                                      date: variable
+                                      date: me.datesList[i]
                                   });
                     i++;
+                }
+                for (var variable in me.datesList) {
                 }
                 me.events = [ // you can make ajax call here,
                 ];
