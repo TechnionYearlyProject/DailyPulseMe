@@ -1,3 +1,4 @@
+
 <template>
     <div id="app">
         <calendar
@@ -69,14 +70,18 @@
         mounted() {
             let me = this;
             setTimeout(function () {
-                me.events = [ // you can make ajax call here
-                    {
-                        id: 1,
-                        title:'Event 1',
-                        description: 'http://allfitnessweb.com/wp-content/uploads/2015/09/heart-rate.jpg',
-                        color: 'card-danger card-inverse',
-                        date: new Date()
-                    },
+                int i = 0;
+                for (var variable in me.datesList) {
+                  me.events.push(                {
+                                      id: 1,
+                                      title:'Event 1',
+                                      description: 'http://allfitnessweb.com/wp-content/uploads/2015/09/heart-rate.jpg',
+                                      color: 'card-danger card-inverse',
+                                      date: variable
+                                  });
+                    i++;
+                }
+                me.events = [ // you can make ajax call here,
                 ];
             }, 1000);
         }
