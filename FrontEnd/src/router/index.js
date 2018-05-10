@@ -24,11 +24,12 @@ const requireAuth = (to, from, next) => {
 }
 const loginRedirect = (to, from, next) => {
    checkToken(function(){
-    router.push('/');
+    router.push('/wizard');
     },function(){
     next()
     });
 }
+
 
 Vue.use(Router)
 function checkToken(funcYes,funcNo){
@@ -40,6 +41,13 @@ function checkToken(funcYes,funcNo){
             }, (err) => {
           funcNo()
           })
+    }
+function account(){
+      this.$http.get('http://localhost:8081/users/isThereOneCalendar',{headers: {'Content-Type': 'application/json',
+  'Authorization': localStorage.getItem('token')}
+     }).then((res) => {
+          this.isAccount = true
+        })
     }
 const router = new Router({
   mode: 'history',

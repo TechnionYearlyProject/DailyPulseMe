@@ -10,6 +10,7 @@ import backend.repository.EventRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
 import org.apache.http.auth.AUTH;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.security.core.Authentication;
@@ -155,7 +156,8 @@ public class UserController {
      */
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
-        return appUserRepository.findByUsername(auth.getName()).getName();
+        String str = appUserRepository.findByUsername(auth.getName()).getName();
+        return JSONObject.quote(str);
     }
 
     /*
