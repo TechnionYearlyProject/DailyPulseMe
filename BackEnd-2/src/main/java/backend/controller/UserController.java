@@ -50,7 +50,7 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(AppUser user) {
+    public boolean signUp(@RequestBody AppUser user) {
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
@@ -66,8 +66,12 @@ public class UserController {
         }
     }
     @PostMapping("/sign-up-google")
-    public boolean signUp(String authToken) {
+    public boolean signUp(@RequestBody String authToken) {
        AppUser user=SignUpGoogle.getGoogleUser(authToken);
+       if(user==null){
+           return false;
+       }
+       System.out.println(user.getName());
        return signUp(user);
 
     }

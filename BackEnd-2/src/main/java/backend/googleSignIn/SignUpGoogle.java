@@ -10,8 +10,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
 
+import static javafx.application.Platform.exit;
+
 public class SignUpGoogle {
-    private static final String CLIENT_SECRET_FILE = "/src/main/java/resources/client_secret.json";
+    private static final String CLIENT_SECRET_FILE = "src/main/resources/clientSecret.json";
     private static final String redirectUrl="http://localhost:8080/token";
 public static AppUser getGoogleUser(String authCode){
     GoogleClientSecrets clientSecrets = null;
@@ -37,11 +39,12 @@ public static AppUser getGoogleUser(String authCode){
                     clientSecrets.getDetails().getClientSecret(),
                     authCode,
                     redirectUrl)  // Specify the same redirect URI that you use with your web
-                    // app. If you don't have a web version of your app, you can
+                    //                    // app. If you don't have a web version of your app, you can
                     // specify an empty string.
                     .execute();
         } catch (IOException e) {
-            e.printStackTrace();
+           e.printStackTrace();
+            return null;
         }
     }
 
