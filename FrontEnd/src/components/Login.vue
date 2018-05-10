@@ -64,3 +64,12 @@
 
   </script>
 <style src="../styles/Form.css"></style>
+<style scoped>
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: white;
+}
+</style>

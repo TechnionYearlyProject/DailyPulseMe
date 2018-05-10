@@ -14,28 +14,12 @@ export default {
     // console.log(this.succesful)
     if(this.succesful){
       console.log('second time ?')
-      // this.$http.post('http://localhost:8081/users/updataGoogleFitToken',{
-      //         "first": this.accessToken.toString() ,
-      //         "second": this.refreshToken.toString()
-      //       }
-      //        ,{headers: {'Content-Type': 'application/json',
-      //         'Authorization': localStorage.getItem('token'),}
-      //       }).then((res) =>{
-      //         console.log(res);
-      //         console.log(successsssss);
-      //       },(err) =>{
-      //         console.log(err);
-      //         console.log(faillllll);
-      //       })
-      //       console.log('hi')
-      //           window.location.href = "http://localhost:8080/config/";
-      //           // router.replace('/');
-      // // location.assign('http://localhost:8080/config/');
-    }
+    }else{
     let route = this.$route.fullPath;
     var x = route.split('=')[1];
     this.accessCode = decodeURIComponent(x);
     this.getTokens();
+}
   },
    methods : {
      getTokens() {
@@ -45,24 +29,27 @@ export default {
         if(res.ok != 'false'){
        this.$http.post('http://localhost:8081/users/updateGoogleFitToken',{
               "first": res.body.access_token.toString() ,
-              "second": res.body.refresh_token.toString()
+              "second": ''
             }
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) =>{
               this.$router.push('/');
+              close();
               console.log(res);
             },(err) =>{
               console.log(err);
             })
           }
-       // this.accessToken = res.body.access_token;
-       // this.refreshToken = res.body.refresh_token;
-       this.succesful = true;
+          else{
+          	console.log('hi')
+          	close();
+          }
+                 this.succesful = true;
             },(err) =>{
-       console.log(err);
+       close();
      });
-        console.log(this.succesful)
+        // console.log(this.succesful)
      }
   }
 }

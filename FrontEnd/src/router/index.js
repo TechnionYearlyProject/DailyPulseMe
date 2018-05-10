@@ -8,8 +8,11 @@ import Addevent from '../components/Addevent'
 import eventsWrapper from '../components/eventsWrapper'
 import Event from '../components/eventGraph'
 import GoogleFit from '../components/GoogleFit'
+import MicrosoftFit from '../components/MicrosoftFit'
 import RemoveEvent from '../components/RemoveEvent'
 import Calendar from '../components/Calendar'
+import Wizard from '../components/Wizard'
+
 const requireAuth = (to, from, next) => {
  checkToken(function(){
             next()
@@ -77,6 +80,12 @@ const router = new Router({
       component: Calendar,
       beforeEnter: requireAuth
     },
+    {
+      path: '/Wizard',
+      name: 'Wizard',
+      component: Wizard,
+      beforeEnter: requireAuth
+    },
      {
       path: '/config',
       name: 'Config',
@@ -94,6 +103,12 @@ const router = new Router({
       component: GoogleFit,
       beforeEnter: requireAuth
     },{
+      path: '/token1',
+      name: 'Token1',
+      component: MicrosoftFit,
+      beforeEnter: requireAuth
+    },
+    {
      path: '/removeevent',
      name: 'RemoveEvent',
      component: RemoveEvent,
