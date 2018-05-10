@@ -118,7 +118,7 @@ public class UserController {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         try{
             if(isUserConnectedToCalendar(user)){
-                return True;
+                return null;
             }
                 tmp= OutlookCalendar.getEvents(user);
             user.addEvents(tmp);

@@ -2,7 +2,7 @@
 import {Line} from 'vue-chartjs'
 
 export default { 
-  name: 'Event', 
+  name: 'Event Analyz', 
   extends: Line,
   data () {
     return {
@@ -105,7 +105,7 @@ export default {
     // window.location.href = "/";  
     }
        }
-      , responsive: true, maintainAspectRatio: false,fontColor: '#66226',
+      , responsive: true, maintainAspectRatio: false,fontColor: '#5DBCD2',
     tooltips: {
                 enabled: true,
                 mode: 'single',

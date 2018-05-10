@@ -1,9 +1,9 @@
 
 <script>
-import {Line} from 'vue-chartjs'
+import {Line, Bar} from 'vue-chartjs'
 export default {
-  name: 'Events',
-  extends: Line,
+  name: 'Events Analyz',
+  extends: Bar,
   created: function () {
     this.getEvents();
         },
@@ -52,37 +52,53 @@ export default {
        }
  },
   mounted () {
-    this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-    this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-    this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)')
-    this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
-    this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
-    this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
-    this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.35)');
-    this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
+   
     this.renderChart({
       labels: this.datesList,
       datasets: [
         {
-          label: 'Events',
-          borderColor: 'black',
-          pointBackgroundColor: 'white',
-          pointBorderColor: 'gray',
+        //  color: 'FF3333',
+       //     label: 'Events',
+        //  borderColor: ' #FFFFFF',
+         // pointBackgroundColor: '#f11',
+       //   pointBorderColor: 'gray',
+       //   fillColor : '#48A497',
           borderWidth: 1,
-          backgroundColor: 'rgba(51,122,183,0.7)',
+       //   borderColor: 'FF3333',
+          backgroundColor: "rgba(73,188,170,0.7)",
           data: this.avgList
          },
-      ]
-    ,
-     options: {
-        scales: {
-            xAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
+      ] ,
+        options: {
+    scales: {
+      yAxes: [{
+        ticks:{
+          min : 0,
+          stepSize : 1,
+          fontColor : "#FFFFFF",
+          fontSize : 14
+        },
+        gridLines:{
+          color: "#FFFFFF",
+          lineWidth:2,
+          zeroLineColor :"#FFFFFF",
+          zeroLineWidth : 2
+        },
+        stacked: true
+      }],
+      xAxes: [{
+        ticks:{
+          fontColor : "#FFFFFF",
+          fontSize : 14
+        },
+        gridLines:{
+          color: "#FFFFFF",
+          lineWidth:2
         }
-    }
+      }]
+    },
+    responsive:false,
+  }
   }
     //
      ,{ onClick: function(event){
@@ -92,10 +108,10 @@ export default {
     var label = this.data.labels[firstPoint._index];
     var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
     var location = "eventGraph?id=" + value.id;
-     window.open(location, 'event graph', "height=500px,width=600px");
+     window.open(location, 'event graph', "height=200px,width=200px");
     }
        }
-      , responsive: true, maintainAspectRatio: false,fontColor: '#66226',
+      , responsive: true, maintainAspectRatio: false,fontColor: '#FFFFFF',
     tooltips: {
                 enabled: true,
                 mode: 'single',
