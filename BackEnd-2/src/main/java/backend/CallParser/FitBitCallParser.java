@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FitBitCallParser extends CallParser{
+public class FitBitCallParser implements CallParser{
 
     public List<Pulse> getPulses(AppUser user, String startTime, String endTime, String minInMs) {
 

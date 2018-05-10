@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 
 //import sun.text.resources.no.CollationData_no;
 
-public class GoogleCallParser extends CallParser{
+public class GoogleCallParser implements CallParser{
     /*
     after calling this,re-add user to repo.
      */
@@ -101,8 +101,8 @@ public class GoogleCallParser extends CallParser{
         try {
 
 			/* building the request based on the way that Google defined it ,using our client id, and the refresh token */
-            str = new StringEntity("187665345194-0d324v8gel15pj9jh9fecmqknmk4k59k.apps.googleusercontent.com&" +
-                    "client_secret=zdKcoMYRsAcrboIU4FmVRF-q&" +
+            str = new StringEntity("895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com&" +
+                    "client_secret=FGLsX3PBtIHEypj88z7UkI6R&" +
                     "refresh_token="+refresh+"&" +
                     "grant_type=refresh_token");
         }
@@ -118,7 +118,7 @@ public class GoogleCallParser extends CallParser{
             response = client.execute(post);
 
             if (response.getStatusLine().getStatusCode() != 200) { //if the respond isn't OK , that means Refresh token expired
-
+                System.out.println("Status code: " + response);
                return "Refresh token expired";
             }
 
@@ -171,7 +171,7 @@ public class GoogleCallParser extends CallParser{
         //// check if the access token has expired TODO
 		
 		/* POST request for getting the pulses from Google Fit  */
-        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/\"https://www.googleapis.com/fitness/v1/users/me/dataset:aggregat/dataset:aggregate");
+        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate");
         post.addHeader("Content-Type","application/json;encoding=utf-8");
         post.addHeader("Authorization" , "Bearer "+ accessToken );
         StringEntity str=null;

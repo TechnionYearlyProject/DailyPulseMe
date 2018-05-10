@@ -79,7 +79,7 @@ public class UserController {
     @param accessToken which contains the new access token and refresh token
     @return true
      */
-        @PostMapping("/updateTokens")
+    @PostMapping("/updateTokens")
     public boolean updateTokens(Authentication auth, @RequestBody TwoStrings tokens) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
@@ -166,19 +166,22 @@ public class UserController {
      @return list of events which were taken place between time1 until time2
      */
     @PostMapping("/getEvents")
-    public List<Event> getEvents(Authentication auth, TwoStrings time) {
+    public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
+        System.out.println("xxxxxxxxxxx");
         if(filter == null){
             return null;
         }
-        return filter.stream().sorted(new Comparator<Event>() {
+        List<Event> toreturn = filter.stream().sorted(new Comparator<Event>() {
             @Override
             public int compare(Event r1, Event r2) {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
+        System.out.println(toreturn.size()+" xxxxxx");
+        return toreturn;
     }
 
     @RequestMapping("/GoogleCalendarEvents")

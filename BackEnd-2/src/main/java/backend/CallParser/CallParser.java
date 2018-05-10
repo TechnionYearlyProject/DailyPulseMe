@@ -6,7 +6,7 @@ import backend.entity.RefreshTokenExpiredException;
 
 import java.util.List;
 
-public abstract class CallParser {
+public interface CallParser {
     public abstract List<Pulse> getPulses(AppUser user, String startTime, String endTime, String minInMs) throws RefreshTokenExpiredException;
 
     public abstract boolean verifyAndRefresh(AppUser user);

@@ -89,13 +89,13 @@ public class UserService {
         List<Event> result = new ArrayList<Event>(); //filter contains the events in the given time interval
         List<Pulse> eventPulses;
 
-        //TODO : we should call the function from the new interface here depending on type of band
         for (Event event : filter) {//for all the events we should get the pulses
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
                     //getCallParser will return either FitBit or Google callParser
                     eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
                 } catch (RefreshTokenExpiredException e) {
+                    System.out.println("YYYYYYYY");
                     return null;
                 }
                 event.saveAll(eventPulses);//update the pulses for this event
