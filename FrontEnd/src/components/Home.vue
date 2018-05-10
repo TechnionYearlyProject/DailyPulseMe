@@ -6,26 +6,15 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
-<!-- 
-<div>  
-  <b-img style="width:120px; position: absolute; margin-left:-750px; margin-top:2px;"src="https://i.imgur.com/KAA30GB.png"/>
-  <b-nav class="pre">
-    <b-nav-item>SIGN IN</b-nav-item>
-    <b-nav-item>ABOUT US</b-nav-item>
-  </b-nav>
-</div><br> -->
-<!-- <div class="div1"></div>
- -->
  <div style="color:white;
     position: absolute;
     top: 270px;
     right: 27%;
       font-family: Open Sans;" class="mid">LIVE A BETTER LIFE <br>
-      <div class="mid-inside" >DAILYPULSE will analyze your heart pulse using <br>
-        your fitness band and your calendar
+      <div class="mid-inside" >DAILYPULSE will analyze your heart pulse<br>
+      	using your fitness band and your calendar.
       </div>
-      <b-button variant="primary" class="butt">START NOW</b-button>
-
+      <b-button variant="primary" class="butt" href="/login">START NOW</b-button>
     </div>
   </div>
 </template>
@@ -42,8 +31,7 @@
     box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
     border-radius: 2px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&0.65+0,0+98 */
-background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); 
 }
 
 .butt{
@@ -60,7 +48,7 @@ background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98
   margin: 0 0 0.05em 0;
   text-align: center;
   /*text-transform: uppercase;*/
-       text-shadow: 1px 1px #007afd;
+       text-shadow: 2px 2px #007afd;
 }
 .mid-inside{
        text-shadow: 1px 0px #007afd;
