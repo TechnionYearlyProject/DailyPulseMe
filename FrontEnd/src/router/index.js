@@ -72,7 +72,7 @@ const router = new Router({
       alias: '/home',
       name: 'Home',
       component: Home,
-      beforeEnter: requireAuth
+      // beforeEnter: requireAuth
     },
     {
       path: '/calendar',

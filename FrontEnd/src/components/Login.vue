@@ -1,7 +1,12 @@
 <template>
-<div class="container">
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="../images/logo.png"/>
+<div class="container" style="margin-top:50px;">
+  <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
+  width:400px; height:400px; margin-left:23.5%;"></div>
+        <div style="margin-top:100px; margin-left:25%; width:20%; position:absolute;">
+            <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
+          <!--    <div style="
+      font-family: Open Sans;" class="mid">Sign In<br>
+    </div> -->
             <form class="form-signin" @submit.prevent="login">
             	      <p v-if="authFailed" style="color:red">Invalid Username and Password</p>
                 <span id="reauth-email" class="reauth-email"></span>
@@ -71,5 +76,18 @@ li {
 }
 a {
   color: white;
+}
+</style>
+<style>
+.mid{
+  color: #eaeaea;
+  font-size: 4.5em;
+  font-weight: normal;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin: 0 0 0.05em 0;
+  text-align: center;
+  /*text-transform: uppercase;*/
+       text-shadow: 0px 1px blue;
 }
 </style>

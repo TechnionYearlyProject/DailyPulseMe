@@ -1,5 +1,8 @@
 <template>
-  <div style="width:50%;margin: auto;">
+  <div style="width:50%;margin-top: 100px; margin:auto;">
+     <div class="card card-container" style="z-index:-2;  position:absolute; opacity:1;  background:white;
+  width:685px; height:350px; margin:auto; margin-right:50px;"></div>
+  <div style="z-index:2;  position:absolute; width:700px;">
   <form-wizard @on-complete="onComplete"
                   @on-loading="setLoading"
                   @on-validate="handleValidation"
@@ -16,22 +19,22 @@
     </div>
     </b-modal>
       <tab-content title="Calendar Account"
-                   icon="ti-user"
                    :before-change="validateAsync">
                    <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="microsoft">Microsoft</b-btn>
     <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="google" >Google</b-btn>
       </tab-content>
       <tab-content title="Fitness Account"
-                   icon="ti-settings">
+                  >
         <b-btn v-b-toggle.collapse1 variant="success" >Fitbit</b-btn>
     <b-btn v-b-toggle.collapse1 variant="success" >Google Fit</b-btn>
       </tab-content>
       <tab-content title="Last step"
-                   icon="ti-check">
+                 >
         Yuhuuu! This seems pretty damn simple. <br>
         <b-img src="https://www.hprc-online.org/sites/default/files/infographs/3Check_Mark_G4G.png" width="100" fluid alt="done" />
       </tab-content>
   </form-wizard>
+</div>
 </div>
 </template>
 <script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>
