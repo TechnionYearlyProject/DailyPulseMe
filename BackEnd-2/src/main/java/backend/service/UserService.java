@@ -120,4 +120,17 @@ public class UserService {
         user.setGoogleFitRefreshToken(accessTokens.getSecond());
         return true;
     }
+
+    /*
+    @auother: Anadil
+    update outlookToken's access token and refresh token of Microsoft outlook ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+    */
+    public static boolean updateOutLookTokens(AppUser user, TwoStrings accessTokens){
+        user.setOutlookToken(accessTokens.getFirst());
+        user.setGoogleFitAccessToken(accessTokens.getSecond());
+        return true;
+    }
 }
