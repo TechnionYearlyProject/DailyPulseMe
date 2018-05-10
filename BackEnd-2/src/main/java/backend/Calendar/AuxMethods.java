@@ -1,5 +1,7 @@
 package backend.Calendar;
 
+import backend.entity.AppUser;
+
 import java.sql.Timestamp;
 import java.util.logging.SimpleFormatter;
 import java.util.regex.Matcher;
@@ -41,6 +43,17 @@ public class AuxMethods {
         System.out.println(str_);
         Timestamp ts = Timestamp.valueOf(str_);
         return ts.getTime();
+    }
+
+    public static boolean  isUserConnectedToCalendar(AppUser user){
+        if(user == null){
+            return  false;
+        }
+        if((user.getGoogleFitAccessToken()== null || user.getGoogleFitAccessToken()== "") &&
+                (user.getOutlookToken()== null || user.getOutlookToken()== "") ){
+            return false;
+        }
+        return  true;
     }
 
 

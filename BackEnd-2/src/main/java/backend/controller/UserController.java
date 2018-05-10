@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
+import static backend.Calendar.AuxMethods.isUserConnectedToCalendar;
 
 
 @RestController
@@ -70,7 +71,7 @@ public class UserController {
     }
 
     /*
-    @auother: Anadil
+    @author: Anadil
     update outlookToken's access token and refresh token of Microsoft outlook ,
     @param auth which by it the user will be retrieved
     @param accessToken which contains the new access token and refresh token
@@ -94,20 +95,40 @@ public class UserController {
     }
 
 
-    /*@auother: Anadil
+    /*@author: Anadil Hussein
        this function return true if the user sign in to one calender at least
     */
     @GetMapping("/isThereOneCalendar")
-    public boolean getOutLookToken(Authentication auth) {
+    public boolean isConnectedToCalendar(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        if(user == null){
-            return  false;
+        return isUserConnectedToCalendar(user);
+    }
+
+
+    /*
+    @author :Anadil Hussein
+    this Function returns the events from the user's Calendars (google Calendar
+    ,OutLook Calendar),if the case is connected to them ,otherwise return empty list.
+
+    */
+    @RequestMapping("/GetCalendarEvents")
+    public ArrayList<Event> getCalendarEvents(Authentication auth)  {
+
+        ArrayList<Event> tmp=null;
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            if(isUserConnectedToCalendar(user)){
+                return True;
+            }
+                tmp= OutlookCalendar.getEvents(user);
+            user.addEvents(tmp);
+            user.setEvents(tmp);
+            appUserRepository.save(user);
+            System.out.println("done");
+        }catch (Exception e){
+            System.out.println("line 188 user cON");
         }
-        if((user.getGoogleFitAccessToken()== null || user.getGoogleFitAccessToken()== "") &&
-                (user.getOutlookToken()== null || user.getOutlookToken()== "") ){
-            return false;
-        }
-        return  true;
+        return tmp;
     }
     /*
     updateGoogleFitToken updates the access token and refresh token of Google Fit ,
@@ -225,22 +246,6 @@ public class UserController {
 
 
 
-    @RequestMapping("/GetCalendarEvents")
-    public ArrayList<Event> getCalendarEvents(Authentication auth)  {
-
-        ArrayList<Event> tmp=null;
-        AppUser user = appUserRepository.findByUsername(auth.getName());
-        try{
-            tmp= OutlookCalendar.getEvents(user);
-            user.addEvents(tmp);
-            user.setEvents(tmp);
-            appUserRepository.save(user);
-            System.out.println("done");
-        }catch (Exception e){
-          System.out.println("line 188 user cON");
-        }
-        return tmp;
-    }
 
     /*
     getEvent return an Event,

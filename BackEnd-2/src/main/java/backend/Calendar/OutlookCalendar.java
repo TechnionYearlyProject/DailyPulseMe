@@ -66,6 +66,8 @@ public class OutlookCalendar {
             System.out.println("lets starts extracting the events");
             //now extracting the events from the respon
             /*************************************************************/
+            /* The next part is about fetching the events from the response*/
+            /************************************************************/
             ObjectMapper mapper=new ObjectMapper();
             //	mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
             JsonNode root = mapper.readTree(result);
