@@ -18,7 +18,6 @@ import static org.junit.Assert.assertTrue;
 
 
 public class UserServiceTest {
-    /*
 
     UserService service=new UserService();
     AppUser user= new AppUser();
@@ -216,5 +215,4 @@ public class UserServiceTest {
 		
 		
     }
-    */
 }

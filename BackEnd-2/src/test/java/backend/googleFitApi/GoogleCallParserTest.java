@@ -11,10 +11,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-
-
 public class GoogleCallParserTest {
-/*    AppUser user= new AppUser();
+    AppUser user= new AppUser();
     AppUser user2=new AppUser();
     AppUser user3=new AppUser();
     @Before
@@ -76,7 +74,5 @@ public class GoogleCallParserTest {
         }
 
     }
-
-    */
 
 }

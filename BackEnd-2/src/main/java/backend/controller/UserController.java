@@ -3,10 +3,13 @@ package backend.controller;
 import backend.CallParser.FitBitCallParser;
 import backend.CallParser.GoogleCallParser;
 import backend.DailyPulseApp;
+import backend.emailSend.EmailSender;
 import backend.entity.AppUser;
 import backend.entity.Event;
+import backend.entity.Subscription;
 import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
+import backend.repository.SubscribedRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -29,8 +32,7 @@ public class UserController {
     private UserRepository appUserRepository;             //Repository that contains the users who  registered  for websites
     private BCryptPasswordEncoder bCryptPasswordEncoder; //this is used for encoding passwords
     private static final String MinInMs = "60000";        // constant which "stores" one minunte in millis
-
-
+    private SubscribedRepository subscribedUserRepository; //Repository that contains weekly-mail subscribed users
 
     /*
     Constructor which gets two params , the appUserRepository and  bCryptPasswordEncoder
@@ -48,13 +50,12 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(@RequestBody AppUser user) {
+    public boolean signUp(AppUser user) {
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
-
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //encoding the password
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
             user.setAccessToken(" ");
             user.setRefreshToken(" ");
@@ -81,6 +82,7 @@ public class UserController {
      */
     @PostMapping("/updateTokens")
     public boolean updateTokens(Authentication auth, @RequestBody TwoStrings tokens) {
+
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
             return  false;
@@ -170,7 +172,6 @@ public class UserController {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
-        System.out.println("xxxxxxxxxxx");
         if(filter == null){
             return null;
         }
@@ -244,8 +245,45 @@ public class UserController {
     1 - FitBit
     */
     @GetMapping("/getActiveBand")
-    public int getActiveBand(Authentication auth){
+    public int getActiveBand(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         return user.getActiveBandType().getBandTypeAsInt();
+    }
+
+    //adds the user to the subscribedUsersRepo
+    @PostMapping("/subscribe")
+    public boolean subscribeUser(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) != null){
+            //user already subscribed
+            return false;
+        }
+        subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
+        return true;
+    }
+
+    //removes the user from the subscribedUsersRepo
+    @PostMapping("unsubscribe")
+    public boolean unsubscribeUser(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
+            //user already unsubscribed
+            return false;
+        }
+        subscribedUserRepository.deleteByEmail(user.getUsername());
+        return true;
+    }
+    //returns all the subscribed users
+    //TODO: find a way to make this safe (added to public calls)
+    @GetMapping("/getSubscribedUsers")
+    public List<Subscription> getSubscribedUsers(){
+        return subscribedUserRepository.findAll();
+    }
+
+    @PostMapping("/sendMails")
+    public void sendMail() {
+        ArrayList<Subscription> subcribers = new ArrayList<>();
+        subcribers.addAll(subscribedUserRepository.findAll());
+        EmailSender.sendMail(subcribers);
     }
 }

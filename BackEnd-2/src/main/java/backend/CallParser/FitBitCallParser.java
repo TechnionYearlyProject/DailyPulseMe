@@ -27,6 +27,7 @@ public class FitBitCallParser implements CallParser{
         //System.out.println(accessToken);
 
 
+
         //TODO: CHANGE TIME AND DATE IN THE REQUEST USING startTime AND endTime
         String date = "2018-" + "June-" ;
 
@@ -81,7 +82,7 @@ public class FitBitCallParser implements CallParser{
         } finally {
             get.releaseConnection();
         }
-        return  pulses;
+   return  pulses;
 
     }
 

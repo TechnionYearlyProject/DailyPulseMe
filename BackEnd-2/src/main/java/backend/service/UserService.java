@@ -4,6 +4,8 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
+import backend.entity.*;
+import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
 
 import java.util.ArrayList;
@@ -21,17 +23,17 @@ public class UserService {
     @return true , if this event is allowed to be added , otherwise false
  */
     public static boolean addEvent(AppUser user, Event event) {
-
-
+		
+		
         long startTime = Long.parseLong(event.getStartTime());
         long endTime = Long.parseLong(event.getEndTime());//check if this event can be added (doesn't interlap) and it's times are legal
         int size = user.getEvents().stream().filter(x ->
                 ((Long.parseLong(x.getStartTime()) >=  endTime) && (Long.parseLong(x.getEndTime()) >= endTime))
-                        || ((Long.parseLong(x.getStartTime()) <=  startTime) && (Long.parseLong(x.getEndTime()) <= startTime))).collect(Collectors.toList()).size();
+                || ((Long.parseLong(x.getStartTime()) <=  startTime) && (Long.parseLong(x.getEndTime()) <= startTime))).collect(Collectors.toList()).size();
         if ((user.getEvents().size()-size) != 0) {
             return false;
         }
-        //add to user's events  list
+		//add to user's events  list
         user.addEvent(event);//since events doesn't interlap , we give the event a unique id , it's start time (easier to return it to the front when needed)
         event.setId(event.getStartTime());
         return true;
@@ -94,8 +96,8 @@ public class UserService {
                 try {
                     //getCallParser will return either FitBit or Google callParser
                     eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
+
                 } catch (RefreshTokenExpiredException e) {
-                    System.out.println("YYYYYYYY");
                     return null;
                 }
                 event.saveAll(eventPulses);//update the pulses for this event
@@ -106,15 +108,14 @@ public class UserService {
         return filter;
     }
 
-
     /*
-        This function updates Token
+        This function updates the tokens
         @param user which for him the token will be updated
         @param accessTokens which contains both access token and refresh token
         @return true , if the updating process passed okey, otherwise false
      */
     public static boolean updateTokens(AppUser user, TwoStrings accessTokens){
-        //update token fields
+        //update token fields 
         user.setAccessToken(accessTokens.getFirst());
         user.setRefreshToken(accessTokens.getSecond());
         return true;
@@ -127,5 +128,4 @@ public class UserService {
     public static void refreshToken(AppUser user) {
         user.getCallParser().refreshToken(user);
     }
-
 }
