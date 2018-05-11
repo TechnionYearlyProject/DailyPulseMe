@@ -2,89 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_rest_assured_json_path_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_rest_assured_rest_assured_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_rest_assured_rest_assured_common_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_rest_assured_xml_path_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_6_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_6_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ccil_cowan_tagsoup_tagsoup_1_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_json_2_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_xml_2_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_all_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/WebConfig/ApplicationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_5_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_atteo_evo_inflector_1_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_atteo_evo_inflector_1_2_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_2_4_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_5_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_7_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_4_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_4_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_3_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_mongodb_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_mongodb_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_rest_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_rest_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_4_2_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_12_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_mongodb_1_9_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_mongodb_1_10_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_rest_core_2_5_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_rest_core_2_6_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_rest_webmvc_2_5_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_rest_webmvc_2_6_4_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_20_0_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_23_0_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_4_1_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_4_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_4_2_3_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_4_1_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_9_RELEASE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_9_RELEASE.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyPulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DailyPulse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/security/SecurityConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/googleSignIn/SignUpGoogle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/googleSignIn/SignUpGoogle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/SecurityConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/security/SecurityConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/WebSecurity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/security/WebSecurity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -99,21 +19,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="73" column="6" lean-forward="true" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="42" />
-              <folding>
-                <element signature="e#4075#4076#0" expanded="true" />
-                <element signature="e#4117#4118#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignUpGoogle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-561">
-              <caret line="16" column="61" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="61" />
+            <state relative-caret-position="102">
+              <caret line="124" column="63" lean-forward="true" selection-start-line="124" selection-start-column="63" selection-end-line="124" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -121,56 +28,11 @@
       <file leaf-file-name="controllerTestSample.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="70" column="49" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="49" />
+            <state relative-caret-position="312">
+              <caret line="89" column="99" lean-forward="true" selection-start-line="89" selection-start-column="99" selection-end-line="89" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebSecurity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="60" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/security/RequestFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="31" column="21" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecurityConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/security/SecurityConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="49" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserAuthenticationFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/security/UserAuthenticationFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoogleCallParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-139">
-              <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="88" />
             </state>
           </provider>
         </entry>
@@ -236,11 +98,11 @@
         <option value="$PROJECT_DIR$/src/test/backend/controller/MongoDbtest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/WebConfig/ApplicationConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/security/SecurityConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" />
       </list>
     </option>
   </component>
@@ -306,7 +168,115 @@
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="googleFitApi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="googleSignIn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="helperClasses" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -362,7 +332,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DailyPulseApp">
+  <component name="RunManager" selected="JUnit.controllerTestSample">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -425,29 +395,6 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="controllerTestSample.givenWac_whenServletContext_thenItProvidesGreetController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DailyPulse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.controller" />
-      <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
-      <option name="METHOD_NAME" value="givenWac_whenServletContext_thenItProvidesGreetController" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
     <configuration name="controllerTestSample.logInTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
       <extension name="coverage">
@@ -461,6 +408,29 @@
       <option name="PACKAGE_NAME" value="backend.controller" />
       <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
       <option name="METHOD_NAME" value="logInTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="controllerTestSample.loginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
+      <option name="METHOD_NAME" value="loginTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -537,17 +507,17 @@
       <item itemvalue="Spring Boot.DailyPulseApp" />
       <item itemvalue="JUnit.All in DailyPulse" />
       <item itemvalue="JUnit.controllerTestSample" />
-      <item itemvalue="JUnit.controllerTestSample.givenWac_whenServletContext_thenItProvidesGreetController" />
       <item itemvalue="JUnit.controllerTestSample.signUpTest" />
       <item itemvalue="JUnit.controllerTestSample.logInTest" />
+      <item itemvalue="JUnit.controllerTestSample.loginTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.controllerTestSample.logInTest" />
         <item itemvalue="JUnit.controllerTestSample" />
+        <item itemvalue="JUnit.controllerTestSample.loginTest" />
+        <item itemvalue="JUnit.controllerTestSample.logInTest" />
         <item itemvalue="JUnit.controllerTestSample.signUpTest" />
         <item itemvalue="JUnit.All in DailyPulse" />
-        <item itemvalue="JUnit.controllerTestSample.givenWac_whenServletContext_thenItProvidesGreetController" />
       </list>
     </recent_temporary>
   </component>
@@ -583,48 +553,48 @@
       <workItem from="1525862107088" duration="25030000" />
       <workItem from="1525956474254" duration="66000" />
       <workItem from="1525956645203" duration="19000" />
-      <workItem from="1525959952205" duration="4862000" />
+      <workItem from="1525959952205" duration="5732000" />
+      <workItem from="1526025319983" duration="3017000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="controllerTestSample - 2018.05.09 at 22h 35m 04s.xml">
-      <configuration name="controllerTestSample" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 22h 38m 18s.xml">
-      <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample - 2018.05.09 at 22h 39m 55s.xml">
-      <configuration name="controllerTestSample" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 22h 40m 19s.xml">
-      <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample - 2018.05.09 at 22h 42m 56s.xml">
-      <configuration name="controllerTestSample" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 22h 43m 11s.xml">
-      <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 23h 09m 06s.xml">
-      <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample - 2018.05.09 at 23h 20m 18s.xml">
-      <configuration name="controllerTestSample" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 23h 20m 34s.xml">
-      <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 23h 22m 43s.xml">
       <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 05m 47s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 06m 52s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 18m 52s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 19m 22s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 23m 40s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 24m 26s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 24m 49s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 25m 06s.xml">
+      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="controllerTestSample - 2018.05.11 at 11h 28m 43s.xml">
+      <configuration name="controllerTestSample" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88594000" />
+    <option name="totallyTimeSpent" value="92481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50033534" side_tool="true" weight="0.38921282" />
@@ -643,13 +613,14 @@
       <window_info id="Image Layers" order="4" />
       <window_info anchor="bottom" id="Java Enterprise" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966466" visible="true" weight="0.38921282" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32944608" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966466" weight="0.38921282" />
       <window_info anchor="bottom" id="Spring" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988067" visible="true" weight="0.212609" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988067" visible="true" weight="0.21529175" />
       <window_info anchor="right" id="Bean Validation" order="7" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32944608" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -657,30 +628,46 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32944608" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="22" />
+      <option name="time" value="24" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LogFile.log.lck" />
     <entry file="file://$PROJECT_DIR$/src/test/java/backend.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/googleAuth.java" />
     <entry file="file://$PROJECT_DIR$/target/test-classes/backend/Testing/UserServiceTest.class" />
@@ -883,13 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserDetailsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="25" column="70" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/security/JWTAuthorizationFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -929,9 +909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="73" lean-forward="true" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -970,35 +947,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="73" column="6" lean-forward="true" selection-start-line="73" selection-start-column="6" selection-end-line="73" selection-end-column="42" />
-          <folding>
-            <element signature="e#4075#4076#0" expanded="true" />
-            <element signature="e#4117#4118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleFitApi/GoogleCallParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-139">
+        <state relative-caret-position="2465">
           <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="88" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3179" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561">
-          <caret line="16" column="61" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="61" />
+        <state relative-caret-position="1054">
+          <caret line="73" column="55" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="124" column="63" lean-forward="true" selection-start-line="124" selection-start-column="63" selection-end-line="124" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserDetailsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="25" column="70" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="70" column="49" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="49" />
+        <state relative-caret-position="312">
+          <caret line="89" column="99" lean-forward="true" selection-start-line="89" selection-start-column="99" selection-end-line="89" selection-end-column="99" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

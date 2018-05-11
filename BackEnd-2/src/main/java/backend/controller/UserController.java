@@ -71,7 +71,6 @@ public class UserController {
        if(user==null){
            return false;
        }
-       System.out.println(user.getName());
        return signUp(user);
 
     }

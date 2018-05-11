@@ -1,11 +1,7 @@
 package backend.controller;
 import WebConfig.ApplicationConfig;
-import backend.DailyPulseApp;
 import backend.entity.AppUser;
 import backend.repository.UserRepository;
-import backend.security.JWTAuthorizationFilter;
-import backend.security.RequestFilter;
-import backend.security.WebSecurity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,17 +9,12 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import static org.mockito.ArgumentMatchers.*;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockServletContext;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -45,6 +36,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = { ApplicationConfig.class })
 @WebAppConfiguration
 public class controllerTestSample {
+    private AppUser tmpUser =new AppUser("31","abd","2","mohamad","3","2");
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
@@ -67,25 +59,23 @@ public class controllerTestSample {
     }
     @Test
     public void signUpTestWithSameUserExist() throws Exception {
-        AppUser user=new AppUser("31","abd","2","mohamad","3","2");
-        Mockito.when(mockRepo.findByUsername("abd")).thenReturn(user);
-        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(user))
+        Mockito.when(mockRepo.findByUsername("abd")).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(tmpUser))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 
-        Mockito.verify(mockRepo).findByUsername(user.getUsername());
-          Mockito.verify(mockRepo,Mockito.times(0)).save(any(user.getClass()));
+        Mockito.verify(mockRepo).findByUsername(tmpUser.getUsername());
+          Mockito.verify(mockRepo,Mockito.times(0)).save(any(tmpUser.getClass()));
 
 
     }
     @Test
     public void signUpTest() throws Exception {
-        AppUser user=new AppUser("31","abd","2","mohamad","3","2");
-        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(user))
+        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(tmpUser))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-        Mockito.verify(mockRepo).findByUsername(user.getUsername());
-        Mockito.verify(mockRepo,Mockito.times(1)).save(any(user.getClass()));
+        Mockito.verify(mockRepo).findByUsername(tmpUser.getUsername());
+        Mockito.verify(mockRepo,Mockito.times(1)).save(any(tmpUser.getClass()));
 
 
     }
@@ -94,6 +84,12 @@ public class controllerTestSample {
         this.mockMvc.perform(get("/users/username")).andExpect(status().isForbidden());
 
     }
+    @Test
+    public void loginTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(get("/users/username").with(user("user"))).andExpect(status().isOk());
+    }
+
     public static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
