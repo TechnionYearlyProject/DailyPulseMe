@@ -1,5 +1,7 @@
 package backend.controller;
 
+import backend.Calendar.AuxMethods;
+import backend.Calendar.GoogleCalendar;
 import backend.Calendar.OutlookCalendar;
 import backend.DailyPulseApp;
 import backend.Outlook.Outlook;
@@ -25,7 +27,12 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
+<<<<<<< Updated upstream
 import static backend.Calendar.AuxMethods.isUserConnectedToCalendar;
+=======
+import static backend.Calendar.AuxMethods.IsConnectedToGoogleCalendar;
+import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
+>>>>>>> Stashed changes
 
 
 @RestController
@@ -101,6 +108,7 @@ public class UserController {
     @GetMapping("/isThereOneCalendar")
     public boolean isConnectedToCalendar(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
+<<<<<<< Updated upstream
         return isUserConnectedToCalendar(user);
     }
 
@@ -129,6 +137,12 @@ public class UserController {
             System.out.println("line 188 user cON");
         }
         return tmp;
+=======
+        if(user == null){
+            return  false;
+        }
+        return IsConnectedToGoogleCalendar(user)||IsConnectedToOutlookCalendar(user);
+>>>>>>> Stashed changes
     }
     /*
     updateGoogleFitToken updates the access token and refresh token of Google Fit ,
@@ -229,6 +243,8 @@ public class UserController {
      */
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth, TwoStrings time) {
+
+        getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
@@ -244,6 +260,52 @@ public class UserController {
     }
 
 
+
+
+<<<<<<< Updated upstream
+=======
+    @RequestMapping("/GetCalendarsEvents")
+    public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
+
+        ArrayList<Event> tmp_=null;
+        ArrayList<Event> tmp=new ArrayList<Event>();
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            if(IsConnectedToGoogleCalendar(user)){
+                tmp_= GoogleCalendar.getEvents(user);
+            }
+            if(IsConnectedToOutlookCalendar(user)) {
+                tmp_.addAll( OutlookCalendar.getEvents(user));
+            }
+
+            System.out.println("now the refreshing part");
+            //Refreshing
+            boolean isNewEvent=true;
+            for(Event event : tmp_){
+
+                for (Event userEvent : user.getEvents()){
+                    if(userEvent.getId()== event.getId()  && userEvent.getEndTime()==event.getEndTime()){
+                            isNewEvent=false;
+                            break;
+                    }
+                }
+                if(isNewEvent){
+                    System.out.println("Ohhh we have new event ");
+                    tmp.add(event);
+                }
+                isNewEvent=true;
+            }
+            System.out.println("number of new events :"+tmp.size());
+            user.addEvents(tmp);
+            user.setEvents(tmp);
+            appUserRepository.save(user);
+            System.out.println("done");
+        }catch (Exception e){
+          System.out.println(e.toString());
+        }
+        return tmp;
+    }
+>>>>>>> Stashed changes
 
 
 

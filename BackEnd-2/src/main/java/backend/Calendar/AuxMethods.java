@@ -45,6 +45,7 @@ public class AuxMethods {
         return ts.getTime();
     }
 
+<<<<<<< Updated upstream
     public static boolean  isUserConnectedToCalendar(AppUser user){
         if(user == null){
             return  false;
@@ -56,6 +57,25 @@ public class AuxMethods {
         return  true;
     }
 
+=======
+    /*
+    @author : Anadil
+    this method check if the user has connected to googleCalendar
+     */
+    public static boolean IsConnectedToGoogleCalendar(AppUser usr){
+
+        return !(usr.getGoogleFitAccessToken()==null || usr.getGoogleFitAccessToken()=="");
+    }
+
+    /*
+    @author : Anadil
+    this method check if the user has connected to googleCalendar
+    */
+    public static boolean IsConnectedToOutlookCalendar(AppUser usr){
+
+        return !(usr.getOutlookToken()==null || usr.getOutlookToken()=="");
+    }
+>>>>>>> Stashed changes
 
 
 }

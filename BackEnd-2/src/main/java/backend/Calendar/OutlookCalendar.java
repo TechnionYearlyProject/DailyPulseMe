@@ -80,9 +80,10 @@ public class OutlookCalendar {
                 System.out.println("sunject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
                 Event event=new Event();
                 event.setStartTime(Long.toString(RFC5545ToLong(start)));
+                event.setId(Long.toString(RFC5545ToLong(start)));
                 event.setName(subject);
                 event.setDescription(bodyPreview);
-                event.setStartTime(Long.toString(RFC5545ToLong(start)));
+          //      event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setEndTime(Long.toString(RFC5545ToLong(end)));
                 events.add(event);
 
