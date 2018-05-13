@@ -169,7 +169,7 @@ public class GoogleCallParser {
         //// check if the access token has expired TODO
 		
 		/* POST request for getting the pulses from Google Fit  */
-        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/\"https://www.googleapis.com/fitness/v1/users/me/dataset:aggregat/dataset:aggregate");
+        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate");
         post.addHeader("Content-Type","application/json;encoding=utf-8");
         post.addHeader("Authorization" , "Bearer "+ accessToken );
         StringEntity str=null;

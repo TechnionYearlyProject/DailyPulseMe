@@ -45,7 +45,10 @@ public class AuxMethods {
         return ts.getTime();
     }
 
-
+    /*
+    @author :Anadil
+    this methods is written for usage of the FronEnd
+     */
     public static boolean  isUserConnectedToCalendar(AppUser user){
         if(user == null){
             return  false;

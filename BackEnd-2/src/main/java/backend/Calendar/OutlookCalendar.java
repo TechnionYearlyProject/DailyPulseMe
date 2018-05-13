@@ -2,6 +2,7 @@ package backend.Calendar;
 
 import backend.entity.AppUser;
 import backend.entity.Event;
+import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -85,6 +86,7 @@ public class OutlookCalendar {
                 event.setDescription(bodyPreview);
           //      event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setEndTime(Long.toString(RFC5545ToLong(end)));
+                event.setPulses(new ArrayList<Pulse>());
                 events.add(event);
 
             }

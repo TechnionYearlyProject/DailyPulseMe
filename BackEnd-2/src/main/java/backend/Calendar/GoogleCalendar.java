@@ -2,6 +2,7 @@ package backend.Calendar;
 
 import backend.entity.AppUser;
 import backend.entity.Event;
+import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -92,6 +94,7 @@ public class GoogleCalendar {
                 event.setDescription(bodyPreview);
               //  event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setEndTime(Long.toString(RFC5545ToLong(end)));
+                event.setPulses(new ArrayList<Pulse>());
                 events.add(event);
 
             }

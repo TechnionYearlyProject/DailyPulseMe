@@ -93,6 +93,8 @@ public class UserService {
 		
 
         for (Event event : filter) {//for all the events we should get the pulses
+
+            System.out.println("Event name is : "+ event.getName());
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
                     eventPulses = GoogleCallParser.getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
