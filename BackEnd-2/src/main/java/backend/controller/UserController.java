@@ -12,6 +12,7 @@ import backend.repository.EventRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
 import org.apache.http.auth.AUTH;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.security.core.Authentication;
@@ -27,12 +28,8 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
-<<<<<<< Updated upstream
-import static backend.Calendar.AuxMethods.isUserConnectedToCalendar;
-=======
 import static backend.Calendar.AuxMethods.IsConnectedToGoogleCalendar;
 import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
->>>>>>> Stashed changes
 
 
 @RestController
@@ -78,7 +75,7 @@ public class UserController {
     }
 
     /*
-    @author: Anadil
+    @auother: Anadil
     update outlookToken's access token and refresh token of Microsoft outlook ,
     @param auth which by it the user will be retrieved
     @param accessToken which contains the new access token and refresh token
@@ -102,47 +99,16 @@ public class UserController {
     }
 
 
-    /*@author: Anadil Hussein
+    /*@auother: Anadil
        this function return true if the user sign in to one calender at least
     */
     @GetMapping("/isThereOneCalendar")
-    public boolean isConnectedToCalendar(Authentication auth) {
+    public boolean getOutLookToken(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-<<<<<<< Updated upstream
-        return isUserConnectedToCalendar(user);
-    }
-
-
-    /*
-    @author :Anadil Hussein
-    this Function returns the events from the user's Calendars (google Calendar
-    ,OutLook Calendar),if the case is connected to them ,otherwise return empty list.
-
-    */
-    @RequestMapping("/GetCalendarEvents")
-    public ArrayList<Event> getCalendarEvents(Authentication auth)  {
-
-        ArrayList<Event> tmp=null;
-        AppUser user = appUserRepository.findByUsername(auth.getName());
-        try{
-            if(isUserConnectedToCalendar(user)){
-                return null;
-            }
-                tmp= OutlookCalendar.getEvents(user);
-            user.addEvents(tmp);
-            user.setEvents(tmp);
-            appUserRepository.save(user);
-            System.out.println("done");
-        }catch (Exception e){
-            System.out.println("line 188 user cON");
-        }
-        return tmp;
-=======
         if(user == null){
             return  false;
         }
         return IsConnectedToGoogleCalendar(user)||IsConnectedToOutlookCalendar(user);
->>>>>>> Stashed changes
     }
     /*
     updateGoogleFitToken updates the access token and refresh token of Google Fit ,
@@ -190,7 +156,8 @@ public class UserController {
      */
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
-        return appUserRepository.findByUsername(auth.getName()).getName();
+        String str = appUserRepository.findByUsername(auth.getName()).getName();
+        return JSONObject.quote(str);
     }
 
     /*
@@ -202,9 +169,9 @@ public class UserController {
     @PostMapping("/addEvent")
     public boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-       if(!UserService.addEvent(user,event)){
-           return false;
-       }
+        if(!UserService.addEvent(user,event)){
+            return false;
+        }
         appUserRepository.save(user);
         return true;
     }
@@ -262,8 +229,6 @@ public class UserController {
 
 
 
-<<<<<<< Updated upstream
-=======
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
 
@@ -285,8 +250,8 @@ public class UserController {
 
                 for (Event userEvent : user.getEvents()){
                     if(userEvent.getId()== event.getId()  && userEvent.getEndTime()==event.getEndTime()){
-                            isNewEvent=false;
-                            break;
+                        isNewEvent=false;
+                        break;
                     }
                 }
                 if(isNewEvent){
@@ -301,11 +266,10 @@ public class UserController {
             appUserRepository.save(user);
             System.out.println("done");
         }catch (Exception e){
-          System.out.println(e.toString());
+            System.out.println(e.toString());
         }
         return tmp;
     }
->>>>>>> Stashed changes
 
 
 
