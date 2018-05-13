@@ -1,7 +1,7 @@
 <template>
 <div class="container" style="margin-top:50px;">
   <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
-  width:400px; height:400px; margin-left:23.5%;"></div>
+  width:400px; height:430px; margin-left:23.5%;"></div>
         <div style="margin-top:100px; margin-left:25%; width:20%; position:absolute;">
             <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
           <!--    <div style="
@@ -18,7 +18,7 @@
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-
+<!-- Here!!!! -->
             </form><!-- /form -->
               <router-link to="/register">Create an account
             </router-link>
@@ -76,6 +76,9 @@ li {
 }
 a {
   color: white;
+}
+body {
+    font: normal 10px Verdana, Arial, sans-serif;
 }
 </style>
 <style>

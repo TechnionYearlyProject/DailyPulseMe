@@ -6,7 +6,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
- <div style="color:white;
+ <div v-if="!this.loggedin" style="color:white;
     position: absolute;
     top: 270px;
     right: 27%;
@@ -15,6 +15,24 @@
       	using your fitness band and your calendar.
       </div>
       <b-button variant="primary" class="butt" href="/login">START NOW</b-button>
+    </div>
+    <div v-else style="color:white;
+    margin: auto;
+    width: 50%;
+    padding: 80px;" class="mid">Good Evening {{this.msg.slice(1, this.msg.length-1)}}!<br>
+      <div class="mid-inside" >
+        You can now start using our AMAZING tools! <br>
+      
+        <div style="margin-right:220px;">
+          <img style="margin-top:-190px; margin-left:410px; width:300px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="../images/arrows.png"/>
+          <img style="margin-top:0px; margin-left:425px; width:70px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="http://clipartmag.com/images/charts-clipart-11.png"/>
+          <img style="margin-top:-5px; margin-left:530px; width:70px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="http://clipartoons.com/wp-content/uploads/2015/12/calendar-clip-art-images-free-for-commercial-use.png"/>
+          <img style="margin-top:0px; margin-left:640px; width:65px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/256/Settings-5-icon.png"/>
+        </div>
+    <b-button variant="primary" class="butt" style="margin-right:5%; margin-top:75px;">Learn More</b-button>
+      
+
+      </div>
     </div>
   </div>
 </template>
@@ -77,20 +95,18 @@
 }
 </style>
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueResource from 'vue-resource'
-import BootstrapVue from 'bootstrap-vue'
 export default {
   name: 'HelloWorld',
   components: {  },
   data () {
     return {
       msg: '',
-      token: localStorage.getItem('token')
+      token: localStorage.getItem('token'),
+      loggedin: false
     }
   },
    created: function () {
+          this.checkToken()
           this.getMessages();
         },
   methods : {
@@ -104,21 +120,17 @@ export default {
               console.log(err);
           })
         },
+    checkToken(){
+   var self = this;
+    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}
+         }).then((res) => {
+            this.loggedin = true
+            })
+    },
   logout () {
-    localStorage.setItem('loggedIn', 'false');
-    localStorage.setItem('username', '');
     localStorage.setItem('token', 'false');
     location.reload();
-    // let url = "http://localhost:8081/logout";
-    // this.$http.get(url).then((res) => {
-    //   localStorage.setItem('loggedIn', 'false');
-    //   localStorage.setItem('username', '');
-    // 	localStorage.setItem('token', 'false');
-    //   location.reload();
-    // 	this.$store.dispatch(types.LOGOUT);
-    // 	token: ''
-    // 	username: ''
-    // });
   }
   }
 }

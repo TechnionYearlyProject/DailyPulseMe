@@ -3,11 +3,22 @@
 <div>  <a href="/">
   <b-img style="width:120px; position: absolute; margin-left:-750px; margin-top:2px;"src="https://i.imgur.com/KAA30GB.png"/></a>
   <b-nav class="pre">
-    <b-nav-item href="/login">SIGN IN</b-nav-item>
+    <div v-if="this.loggedin">
+      <b-nav-item href="/">Home</b-nav-item>
+      <b-nav-item href="/eventsgraph">Graphs</b-nav-item>
+      <b-nav-item href="/calendar">Calendar</b-nav-item>
+      <b-nav-item href="/config">Settings</b-nav-item>
+      <b-nav-item @click="logout">Logout</b-nav-item>
+    </div>
+      <div v-else>
+        <b-nav-item href="/login">SIGN IN</b-nav-item>
     <b-nav-item>ABOUT US</b-nav-item>
+      </div>
+
+    
   </b-nav>
 </div><br>
-<div class="div1" style="  position:fixed;
+<div class="div1" style="  position:fixed;  
   z-index: -1;"></div>
     <router-view id="router-view"></router-view>
   </div>
@@ -15,8 +26,32 @@
   <script>
   export default {
     name: 'app',
+    data(){
+      return{
+        loggedin: false
+      }
+    },
+    created: function(){
+      this.checkToken()
+    },
+    methods:{
+      checkToken(){
+   var self = this;
+    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}
+         }).then((res) => {
+            this.loggedin = true
+            console.log('hi')
+            })
+    },logout() {
+    localStorage.setItem('token', 'false');
+    location.reload();
     }
+    
+  }
+  }
 </script>
+
 <style>
 [v-cloak] {
     display: none;
