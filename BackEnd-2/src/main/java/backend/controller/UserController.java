@@ -7,6 +7,7 @@ import backend.DailyPulseApp;
 import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleFitApi.GoogleCallParser;
+import backend.googleSignIn.SignUpGoogle;
 import backend.helperClasses.TwoStrings;
 import backend.repository.EventRepository;
 import backend.repository.UserRepository;
@@ -57,8 +58,7 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(AppUser user) {
-
+    public boolean signUp(@RequestBody AppUser user) {
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
@@ -72,6 +72,15 @@ public class UserController {
             DailyPulseApp.LOGGER.info("error from backend " + e.toString());
             return false;
         }
+    }
+    @PostMapping("/sign-up-google")
+    public boolean signUp(@RequestBody String authToken) {
+       AppUser user=SignUpGoogle.getGoogleUser(authToken);
+       if(user==null){
+           return false;
+       }
+       return signUp(user);
+
     }
 
     /*

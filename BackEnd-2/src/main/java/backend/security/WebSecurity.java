@@ -13,6 +13,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.context.annotation.Bean;
 
 import static backend.security.SecurityConstants.SIGN_UP_URL;
+import static backend.security.SecurityConstants.SIGN_UP_GOOGLE_URL;
+
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -27,7 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST, SIGN_UP_URL, "/users/userPassword").permitAll()
+                .antMatchers(HttpMethod.POST, SIGN_UP_URL, "/users/userPassword",SIGN_UP_GOOGLE_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))

@@ -17,14 +17,28 @@ public class AppUser {
     private String googleFitRefreshToken;   // TODO : change the field name to googleRefreshToken
     private List<Event> events;
     private String outlookToken;
-
-
     public  String getOutlookToken(){
         return outlookToken;
     }
 
+    public AppUser() {
+    }
+
     public void setOutlookToken(String outlookToken) {
         this.outlookToken = outlookToken;
+    }
+
+    public AppUser(String id, String username, String password, String name, String googleFitAccessToken, String googleFitRefreshToken) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.googleFitAccessToken = googleFitAccessToken;
+        this.googleFitRefreshToken = googleFitRefreshToken;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setId(String id) {
