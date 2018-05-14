@@ -1,14 +1,10 @@
 <template>
-<div class="container" style="margin-top:50px;">
+<div style="margin-top:50px;">
+  <b-container fluid style="width:350px;">
   <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
-  width:400px; height:430px; margin-left:23.5%;"></div>
-        <div style="margin-top:100px; margin-left:25%; width:20%; position:absolute;">
+  width:350px; height:400px; margin-top:-20px; margin-left:-15px;"></div>
             <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
-          <!--    <div style="
-      font-family: Open Sans;" class="mid">Sign In<br>
-    </div> -->
             <form class="form-signin" @submit.prevent="login">
-            	      <p v-if="authFailed" style="color:red">Invalid Username and Password</p>
                 <span id="reauth-email" class="reauth-email"></span>
                 <input class="form-control" v-model="user.username" type="email" placeholder="Email Address" id="inputEmail" required autofocus style="    text-align: center;"/>
                 <input type="password" id="inputPassword" v-model="user.password" class="form-control" placeholder="Password" required style="text-align: center;">
@@ -25,8 +21,9 @@
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
-
-        </div><!-- /card-container -->
+  <p v-if="authFailed" style="color:red">Invalid Username and Password</p>
+        
+  </b-container>
     </div>
 </template>
 <script type="text/javascript">

@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-<div>  <a href="/">
-  <b-img style="width:120px; position: absolute; margin-left:-750px; margin-top:2px;"src="https://i.imgur.com/KAA30GB.png"/></a>
+  <b-container fluid class="bv-example-row bv-example-row-flex-cols"> 
+  <b-row >
+    <b-col cols="1">
+  <a href="/">
+  <b-img style="width:120px; margin-top:4px;" src="https://i.imgur.com/KAA30GB.png"/></a>
+</b-col>
+<b-col>
   <b-nav class="pre">
     <div v-if="this.loggedin">
       <b-nav-item href="/">Home</b-nav-item>
@@ -14,13 +19,15 @@
         <b-nav-item href="/login">SIGN IN</b-nav-item>
     <b-nav-item>ABOUT US</b-nav-item>
       </div>
-
-    
   </b-nav>
-</div><br>
-<div class="div1" style="  position:fixed;  
+</b-col>
+</b-row>
+<b-row>
+<div class="div1" style="  position:fixed;  margin-top:10px;
   z-index: -1;"></div>
+</b-row>
     <router-view id="router-view"></router-view>
+</b-container> <br>
   </div>
 </template>
   <script>

@@ -6,17 +6,30 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
- <div v-if="!this.loggedin" style="color:white;
-    position: absolute;
-    top: 270px;
-    right: 27%;
-      font-family: Open Sans;" class="mid">LIVE A BETTER LIFE <br>
+<b-container fluid style="margin-top:150px;">
+    <b-row>
+        <b-col style="color:white;
+      font-family: Open Sans;" class="mid"><div v-if="!this.loggedin">LIVE A BETTER LIFE <br>
       <div class="mid-inside" >DAILYPULSE will analyze your heart pulse<br>
-      	using your fitness band and your calendar.
+        using your fitness band and your calendar.
       </div>
-      <b-button variant="primary" class="butt" href="/login">START NOW</b-button>
     </div>
-    <div v-else style="color:white;
+    <div v-else>Good Evening {{this.msg.slice(1, this.msg.length-1)}} <br>
+      <div class="mid-inside" >You can now start using our AMAZING tools!
+      </div>
+    </div>
+  </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+      <b-button variant="primary" href="/login">START NOW</b-button>
+    </b-col>
+    </b-row>
+</b-container>
+
+ 
+    <!-- Hello -->
+    <!-- <div v-else style="color:white;
     margin: auto;
     width: 50%;
     padding: 80px;" class="mid">Good Evening {{this.msg.slice(1, this.msg.length-1)}}!<br>
@@ -32,7 +45,7 @@
     <b-button variant="primary" class="butt" style="margin-right:5%; margin-top:75px;">Learn More</b-button>
       
 
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -51,12 +64,6 @@
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&0.65+0,0+98 */
     background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); 
 }
-
-.butt{
-    position: absolute;
-    top: 160px;
-    right: 40%;
-}
 .mid{
   color: #374248;
   font-size: 5em;
@@ -66,7 +73,7 @@
   margin: 0 0 0.05em 0;
   text-align: center;
   /*text-transform: uppercase;*/
-       text-shadow: 2px 2px #007afd;
+       text-shadow: 1.5px 2px #007afd;
 }
 .mid-inside{
        text-shadow: 1px 0px #007afd;
