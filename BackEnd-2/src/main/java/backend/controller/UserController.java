@@ -1,6 +1,10 @@
 package backend.controller;
 
+import backend.Calendar.AuxMethods;
+import backend.Calendar.GoogleCalendar;
+import backend.Calendar.OutlookCalendar;
 import backend.DailyPulseApp;
+import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleFitApi.GoogleCallParser;
 import backend.helperClasses.TwoStrings;
@@ -8,6 +12,7 @@ import backend.repository.EventRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
 import org.apache.http.auth.AUTH;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.security.core.Authentication;
@@ -22,6 +27,9 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
+
+import static backend.Calendar.AuxMethods.IsConnectedToGoogleCalendar;
+import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
 
 
 @RestController
@@ -50,6 +58,7 @@ public class UserController {
      */
     @PostMapping("/sign-up")
     public boolean signUp(AppUser user) {
+
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
@@ -65,7 +74,42 @@ public class UserController {
         }
     }
 
+    /*
+    @auother: Anadil
+    update outlookToken's access token and refresh token of Microsoft outlook ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+     */
+    @PostMapping("/getOutlookToken")
+    public boolean getOutLookToken(Authentication auth, TwoStrings accessTokens) {
+        try {
+            AppUser user = appUserRepository.findByUsername(auth.getName());
+            if(user == null){
+                return  false;
+            }
+            UserService.updateOutLookTokens(user,accessTokens); //calling for Service function
+            appUserRepository.save(user);
+            return true;
+        }
+        catch (Exception e){
+            DailyPulseApp.LOGGER.info("error from backend " + e.toString());
+            return false;
+        }
+    }
 
+
+    /*@auother: Anadil
+       this function return true if the user sign in to one calender at least
+    */
+    @GetMapping("/isThereOneCalendar")
+    public boolean getOutLookToken(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null){
+            return  false;
+        }
+        return IsConnectedToGoogleCalendar(user)||IsConnectedToOutlookCalendar(user);
+    }
     /*
     updateGoogleFitToken updates the access token and refresh token of Google Fit ,
     @param auth which by it the user will be retrieved
@@ -112,7 +156,8 @@ public class UserController {
      */
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
-        return appUserRepository.findByUsername(auth.getName()).getName();
+        String str = appUserRepository.findByUsername(auth.getName()).getName();
+        return JSONObject.quote(str);
     }
 
     /*
@@ -124,9 +169,9 @@ public class UserController {
     @PostMapping("/addEvent")
     public boolean addEvent(Authentication auth, @RequestBody Event event) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
-       if(!UserService.addEvent(user,event)){
-           return false;
-       }
+        if(!UserService.addEvent(user,event)){
+            return false;
+        }
         appUserRepository.save(user);
         return true;
     }
@@ -165,6 +210,8 @@ public class UserController {
      */
     @PostMapping("/getEvents")
     public List<Event> getEvents(Authentication auth, TwoStrings time) {
+
+        getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
@@ -178,6 +225,53 @@ public class UserController {
             }
         }).collect(Collectors.toList());
     }
+
+
+
+
+    @RequestMapping("/GetCalendarsEvents")
+    public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
+
+        ArrayList<Event> tmp_=null;
+        ArrayList<Event> tmp=new ArrayList<Event>();
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            if(IsConnectedToGoogleCalendar(user)){
+                tmp_= GoogleCalendar.getEvents(user);
+            }
+            if(IsConnectedToOutlookCalendar(user)) {
+                tmp_.addAll( OutlookCalendar.getEvents(user));
+            }
+
+            System.out.println("now the refreshing part");
+            //Refreshing
+            boolean isNewEvent=true;
+            for(Event event : tmp_){
+
+                for (Event userEvent : user.getEvents()){
+                    if(userEvent.getId()== event.getId()  && userEvent.getEndTime()==event.getEndTime()){
+                        isNewEvent=false;
+                        break;
+                    }
+                }
+                if(isNewEvent){
+                    System.out.println("Ohhh we have new event ");
+                    tmp.add(event);
+                }
+                isNewEvent=true;
+            }
+            System.out.println("number of new events :"+tmp.size());
+            user.addEvents(tmp);
+            user.setEvents(tmp);
+            appUserRepository.save(user);
+            System.out.println("done");
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return tmp;
+    }
+
+
 
     /*
     getEvent return an Event,

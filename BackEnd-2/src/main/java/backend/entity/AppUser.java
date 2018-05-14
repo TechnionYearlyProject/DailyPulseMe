@@ -1,11 +1,7 @@
 package backend.entity;
 
-import backend.repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +13,18 @@ public class AppUser {
     private String username;
     private String password;
     private String name;
-    private String googleFitAccessToken;
-    private String googleFitRefreshToken;
+    private String googleFitAccessToken;    //TODO : change the field name to googleAccessToken
+    private String googleFitRefreshToken;   // TODO : change the field name to googleRefreshToken
     private List<Event> events;
+    private String outlookToken;
 
-    public String getId() {
-        return id;
+
+    public  String getOutlookToken(){
+        return outlookToken;
+    }
+
+    public void setOutlookToken(String outlookToken) {
+        this.outlookToken = outlookToken;
     }
 
     public void setId(String id) {
@@ -57,6 +59,10 @@ public class AppUser {
         //TODO: CHECK IF EVENT ALREADY EXITS
 
         events.add(event);
+    }
+    public void addEvents(ArrayList<Event> events){
+
+        events.addAll(events);
     }
 
     public String getGoogleFitAccessToken() {

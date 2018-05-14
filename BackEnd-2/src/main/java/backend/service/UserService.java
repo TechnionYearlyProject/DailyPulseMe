@@ -93,6 +93,8 @@ public class UserService {
 		
 
         for (Event event : filter) {//for all the events we should get the pulses
+
+            System.out.println("Event name is : "+ event.getName());
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
                     eventPulses = GoogleCallParser.getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
@@ -118,6 +120,19 @@ public class UserService {
         //update token fields 
         user.setGoogleFitAccessToken(accessTokens.getFirst());
         user.setGoogleFitRefreshToken(accessTokens.getSecond());
+        return true;
+    }
+
+    /*
+    @auother: Anadil
+    update outlookToken's access token and refresh token of Microsoft outlook ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+    */
+    public static boolean updateOutLookTokens(AppUser user, TwoStrings accessTokens){
+        user.setOutlookToken(accessTokens.getFirst());
+        user.setGoogleFitAccessToken(accessTokens.getSecond());
         return true;
     }
 }
