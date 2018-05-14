@@ -1,6 +1,6 @@
 package backend.entity;
-
 import backend.CallParser.CallParser;
+import backend.CallParser.GoogleCallParser;
 import backend.helperClasses.BandType;
 
 import org.springframework.data.annotation.Id;
@@ -24,6 +24,27 @@ public class AppUser {
     private CallParser callParser;
 
     private List<Event> events;
+    private String outlookToken;
+    public  String getOutlookToken(){
+        return outlookToken;
+    }
+
+    public AppUser() {
+        this.callParser=new GoogleCallParser();
+    }
+
+    public void setOutlookToken(String outlookToken) {
+        this.outlookToken = outlookToken;
+    }
+
+    public AppUser(String id, String username, String password, String name, String accessToken, String refreshToken) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
+    }
 
     public String getId() {
         return id;

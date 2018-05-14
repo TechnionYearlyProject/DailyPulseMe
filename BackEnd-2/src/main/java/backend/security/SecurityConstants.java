@@ -10,4 +10,5 @@ public class SecurityConstants {
     //TODO: Remove from here and find a safe way
     public static final String GET_SUBSCRIBTIONS_URL = "/users/getSubscribedUsers";
     public static final String SEND_EMAILS_URL = "/users/sendEmails";
+    public static final String SIGN_UP_GOOGLE_URL ="/users/sign-up-google";
 }

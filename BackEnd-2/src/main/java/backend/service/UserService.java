@@ -92,6 +92,8 @@ public class UserService {
         List<Pulse> eventPulses;
 
         for (Event event : filter) {//for all the events we should get the pulses
+
+            System.out.println("Event name is : "+ event.getName());
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
                     //getCallParser will return either FitBit or Google callParser
@@ -127,5 +129,17 @@ public class UserService {
 
     public static void refreshToken(AppUser user) {
         user.getCallParser().refreshToken(user);
+    }
+    /*
+    @auother: Anadil
+    update outlookToken's access token and refresh token of Microsoft outlook ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+    */
+    public static boolean updateOutLookTokens(AppUser user, TwoStrings accessTokens){
+        user.setOutlookToken(accessTokens.getFirst());
+        user.setAccessToken(accessTokens.getSecond());
+        return true;
     }
 }

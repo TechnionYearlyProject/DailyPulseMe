@@ -1,3 +1,3 @@
 ignore:
   - "BackEnd-2/src/main/java/backend/security/*.java"  #ignore the JWT that thier tests we are making manually
-  - "BackEnd-2/src/main/java/backend/controller/*.java" #ignore the controller because we cant test automatic but we can do it manually
+ 
