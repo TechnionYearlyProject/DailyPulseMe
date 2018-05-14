@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../codecov.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../codecov.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="124" column="63" lean-forward="true" selection-start-line="124" selection-start-column="63" selection-end-line="124" selection-end-column="63" />
+            <state relative-caret-position="3060">
+              <caret line="180" selection-start-line="180" selection-end-line="180" />
             </state>
           </provider>
         </entry>
@@ -28,11 +27,8 @@
       <file leaf-file-name="controllerTestSample.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="89" column="99" lean-forward="true" selection-start-line="89" selection-start-column="99" selection-end-line="89" selection-end-column="99" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="646">
+              <caret line="38" column="19" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -102,6 +98,7 @@
         <option value="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/controller/controllerTestSample.java" />
         <option value="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" />
       </list>
     </option>
@@ -143,7 +140,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -161,29 +157,20 @@
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -191,8 +178,7 @@
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -200,8 +186,7 @@
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="googleFitApi" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -209,80 +194,16 @@
               <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="googleSignIn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="helperClasses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BackEnd-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -332,7 +253,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.controllerTestSample">
+  <component name="RunManager" selected="JUnit.All in DailyPulse">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -376,14 +297,14 @@
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.controller.*" />
+          <option name="PATTERN" value="java.backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.controller" />
-      <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
+      <option name="PACKAGE_NAME" value="java.backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="java.backend.controller.controllerTestSample" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -399,14 +320,14 @@
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.controller.*" />
+          <option name="PATTERN" value="java.backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.controller" />
-      <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
+      <option name="PACKAGE_NAME" value="java.backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="java.backend.controller.controllerTestSample" />
       <option name="METHOD_NAME" value="logInTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -422,14 +343,14 @@
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.controller.*" />
+          <option name="PATTERN" value="java.backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.controller" />
-      <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
+      <option name="PACKAGE_NAME" value="java.backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="java.backend.controller.controllerTestSample" />
       <option name="METHOD_NAME" value="loginTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -445,14 +366,14 @@
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.controller.*" />
+          <option name="PATTERN" value="java.backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.controller" />
-      <option name="MAIN_CLASS_NAME" value="backend.controller.controllerTestSample" />
+      <option name="PACKAGE_NAME" value="java.backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="java.backend.controller.controllerTestSample" />
       <option name="METHOD_NAME" value="signUpTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -466,7 +387,7 @@
     </configuration>
     <configuration name="DailyPulseApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="DailyPulse" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="backend.DailyPulseApp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="java.backend.DailyPulseApp" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -513,11 +434,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in DailyPulse" />
         <item itemvalue="JUnit.controllerTestSample" />
         <item itemvalue="JUnit.controllerTestSample.loginTest" />
         <item itemvalue="JUnit.controllerTestSample.logInTest" />
         <item itemvalue="JUnit.controllerTestSample.signUpTest" />
-        <item itemvalue="JUnit.All in DailyPulse" />
       </list>
     </recent_temporary>
   </component>
@@ -555,16 +476,12 @@
       <workItem from="1525956645203" duration="19000" />
       <workItem from="1525959952205" duration="5732000" />
       <workItem from="1526025319983" duration="3017000" />
+      <workItem from="1526029164308" duration="415000" />
+      <workItem from="1526229234209" duration="63000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="controllerTestSample_logInTest - 2018.05.09 at 23h 22m 43s.xml">
-      <configuration name="controllerTestSample.logInTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 05m 47s.xml">
-      <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="controllerTestSample_loginTest - 2018.05.11 at 11h 06m 52s.xml">
       <configuration name="controllerTestSample.loginTest" configurationId="JUnit" />
     </history-entry>
@@ -589,12 +506,19 @@
     <history-entry file="controllerTestSample - 2018.05.11 at 11h 28m 43s.xml">
       <configuration name="controllerTestSample" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.11 at 12h 02m 46s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.11 at 12h 05m 25s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92481000" />
+    <option name="totallyTimeSpent" value="92959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50033534" side_tool="true" weight="0.38921282" />
@@ -608,7 +532,6 @@
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39941692" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49966466" weight="0.32944608" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info id="Image Layers" order="4" />
       <window_info anchor="bottom" id="Java Enterprise" order="8" />
@@ -617,17 +540,18 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966466" weight="0.38921282" />
       <window_info anchor="bottom" id="Spring" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4988067" visible="true" weight="0.21529175" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988067" visible="true" weight="0.21797451" />
       <window_info anchor="right" id="Bean Validation" order="7" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32944608" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49966466" weight="0.32944608" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32944608" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -693,13 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/repository/EventRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -756,13 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.4.RELEASE/spring-core-4.3.4.RELEASE.jar!/org/springframework/util/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -795,13 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Pulse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="61" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -898,13 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2635">
-          <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/WebConfig/ApplicationConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -968,8 +864,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="124" column="63" lean-forward="true" selection-start-line="124" selection-start-column="63" selection-end-line="124" selection-end-column="63" />
+        <state relative-caret-position="1700">
+          <caret line="124" column="63" selection-start-line="124" selection-start-column="63" selection-end-line="124" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -980,13 +876,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Pulse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3060">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="89" column="99" lean-forward="true" selection-start-line="89" selection-start-column="99" selection-end-line="89" selection-end-column="99" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="646">
+          <caret line="38" column="19" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="19" />
         </state>
       </provider>
     </entry>
