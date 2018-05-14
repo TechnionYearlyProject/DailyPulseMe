@@ -1,8 +1,5 @@
 package backend.entity;
 
-import backend.entity.Event;
-import backend.entity.EventTag;
-import backend.entity.Pulse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

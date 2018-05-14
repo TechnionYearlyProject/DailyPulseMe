@@ -1,27 +1,29 @@
 package backend.controller;
 
+import backend.CallParser.FitBitCallParser;
+import backend.CallParser.GoogleCallParser;
 import backend.DailyPulseApp;
-import backend.entity.*;
-import backend.googleFitApi.GoogleCallParser;
+import backend.emailSend.EmailSender;
+import backend.entity.AppUser;
+import backend.entity.Event;
+import backend.entity.Subscription;
+import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
-import backend.repository.EventRepository;
+import backend.repository.SubscribedRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
-import org.apache.http.auth.AUTH;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
+
+import static backend.CallParser.GoogleCallParser.ExtractGoogleCalendarEvents;
+import static backend.helperClasses.BandType.FITBIT_BAND;
+import static backend.helperClasses.BandType.GOOGLEFIT_BAND;
 
 
 @RestController
@@ -30,8 +32,7 @@ public class UserController {
     private UserRepository appUserRepository;             //Repository that contains the users who  registered  for websites
     private BCryptPasswordEncoder bCryptPasswordEncoder; //this is used for encoding passwords
     private static final String MinInMs = "60000";        // constant which "stores" one minunte in millis
-
-
+    private SubscribedRepository subscribedUserRepository; //Repository that contains weekly-mail subscribed users
 
     /*
     Constructor which gets two params , the appUserRepository and  bCryptPasswordEncoder
@@ -56,6 +57,13 @@ public class UserController {
             }
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
+            user.setAccessToken(" ");
+            user.setRefreshToken(" ");
+
+            //default is googleFit
+            user.setActiveBandType(BandType.GOOGLEFIT_BAND);
+            user.setCallParser(new GoogleCallParser());
+
             appUserRepository.save(user); //saving the user in the user's repository
             return true;
         }
@@ -67,26 +75,21 @@ public class UserController {
 
 
     /*
-    updateGoogleFitToken updates the access token and refresh token of Google Fit ,
+    updateTokens updates the access token and refresh token of the band ,
     @param auth which by it the user will be retrieved
     @param accessToken which contains the new access token and refresh token
     @return true
      */
-    @PostMapping("/updateGoogleFitToken")
-    public boolean updateGoogleFitToken(Authentication auth, TwoStrings accessTokens) {
-        try {
-            AppUser user = appUserRepository.findByUsername(auth.getName());
-            if(user == null){
-                return  false;
-            }
-            UserService.updateTokens(user,accessTokens); //calling for Service function
-            appUserRepository.save(user);
-            return true;
+    @PostMapping("/updateTokens")
+    public boolean updateTokens(Authentication auth, @RequestBody TwoStrings tokens) {
+
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null){
+            return  false;
         }
-        catch (Exception e){
-            DailyPulseApp.LOGGER.info("error from backend " + e.toString());
-            return false;
-        }
+        UserService.updateTokens(user,tokens); //calling for Service function
+        appUserRepository.save(user);
+        return true;
     }
 
 
@@ -96,10 +99,10 @@ public class UserController {
      */
     @GetMapping("/authenticateToken")
     public Boolean authenticateToken() {
-
+        //authenticates JWT token.
         return true;
     }
-
+    //testing
     @GetMapping("/private")
     public String privatee() {
         return "THIS IS PRIVATE!!";
@@ -110,6 +113,7 @@ public class UserController {
      @param auth , which by it the user will be retrieved
      @return user name
      */
+    //TODO: Delete this?
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         return appUserRepository.findByUsername(auth.getName()).getName();
@@ -164,19 +168,36 @@ public class UserController {
      @return list of events which were taken place between time1 until time2
      */
     @PostMapping("/getEvents")
-    public List<Event> getEvents(Authentication auth, TwoStrings time) {
+    public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
         if(filter == null){
             return null;
         }
-        return filter.stream().sorted(new Comparator<Event>() {
+        List<Event> toreturn = filter.stream().sorted(new Comparator<Event>() {
             @Override
             public int compare(Event r1, Event r2) {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
+        System.out.println(toreturn.size()+" xxxxxx");
+        return toreturn;
+    }
+
+    @RequestMapping("/GoogleCalendarEvents")
+    public ArrayList<Event> getEventsGoogleCalendar(Authentication auth)  {
+        System.out.println("GoogleCalendarEvents\n");
+        ArrayList<Event> tmp=null;
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            tmp=ExtractGoogleCalendarEvents(user);
+            user.addEvents(tmp);
+            appUserRepository.save(user);
+        }catch (Exception e){
+          System.out.println("line 188 user cON");
+        }
+        return tmp;
     }
 
     /*
@@ -190,20 +211,79 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvent(id);
     }
 
-
     @GetMapping("/verifyAccessToken")
     public boolean verifyAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        boolean response = GoogleCallParser.verifyAndRefresh(user);
+        boolean response = UserService.verifyAndRefresh(user);
         appUserRepository.save(user);
         return response;
     }
 
-
     @GetMapping("/refreshAccessToken")
     public boolean refreshAccessToken(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        GoogleCallParser.refreshToken(user);
+        UserService.refreshToken(user);
         return true;
+    }
+    //sets the FitBit band as the active band
+    @PostMapping("/setFitBitBand")
+    public void updateToFitBit(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        user.setCallParser(new FitBitCallParser());
+        user.setActiveBandType(FITBIT_BAND);
+    }
+    //sets the GoogleFit as the active band (this is the default)
+    @PostMapping("/setGoogleFitBand")
+    public void updateToGoogleFit(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        user.setCallParser(new GoogleCallParser());
+        user.setActiveBandType(GOOGLEFIT_BAND);
+    }
+
+    /*returns the number associated with the band type
+    0 - GoogleFit
+    1 - FitBit
+    */
+    @GetMapping("/getActiveBand")
+    public int getActiveBand(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        return user.getActiveBandType().getBandTypeAsInt();
+    }
+
+    //adds the user to the subscribedUsersRepo
+    @PostMapping("/subscribe")
+    public boolean subscribeUser(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) != null){
+            //user already subscribed
+            return false;
+        }
+        subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
+        return true;
+    }
+
+    //removes the user from the subscribedUsersRepo
+    @PostMapping("unsubscribe")
+    public boolean unsubscribeUser(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
+            //user already unsubscribed
+            return false;
+        }
+        subscribedUserRepository.deleteByEmail(user.getUsername());
+        return true;
+    }
+    //returns all the subscribed users
+    //TODO: find a way to make this safe (added to public calls)
+    @GetMapping("/getSubscribedUsers")
+    public List<Subscription> getSubscribedUsers(){
+        return subscribedUserRepository.findAll();
+    }
+
+    @PostMapping("/sendMails")
+    public void sendMail() {
+        ArrayList<Subscription> subcribers = new ArrayList<>();
+        subcribers.addAll(subscribedUserRepository.findAll());
+        EmailSender.sendMail(subcribers);
     }
 }

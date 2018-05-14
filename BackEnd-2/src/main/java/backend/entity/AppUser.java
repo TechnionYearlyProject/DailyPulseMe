@@ -1,11 +1,10 @@
 package backend.entity;
 
-import backend.repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import backend.CallParser.CallParser;
+import backend.helperClasses.BandType;
+
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +13,16 @@ import java.util.List;
 public class AppUser {
     @Id
     private String id;
-    private String username;
+    private String username; //email
     private String password;
     private String name;
-    private String googleFitAccessToken;
-    private String googleFitRefreshToken;
+    private String accessToken;
+    private String refreshToken;
+
+    //A value from BandTypes class.
+    private BandType activeBandType;
+    private CallParser callParser;
+
     private List<Event> events;
 
     public String getId() {
@@ -58,21 +62,25 @@ public class AppUser {
 
         events.add(event);
     }
+    public void addEvents(ArrayList<Event> events){
 
-    public String getGoogleFitAccessToken() {
-        return googleFitAccessToken;
+        events.addAll(events);
     }
 
-    public void setGoogleFitAccessToken(String googleFitAccessToken) {
-        this.googleFitAccessToken = googleFitAccessToken;
+    public String getAccessToken (){
+        return accessToken;
     }
 
-    public String getGoogleFitRefreshToken() {
-        return googleFitRefreshToken;
+    public void setAccessToken(String googleFitAccessToken) {
+        this.accessToken = googleFitAccessToken;
     }
 
-    public void setGoogleFitRefreshToken(String googleFitRefreshToken) {
-        this.googleFitRefreshToken = googleFitRefreshToken;
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String googleFitRefreshToken) {
+        this.refreshToken = googleFitRefreshToken;
     }
 
     public Event getEvent(String id) {
@@ -106,4 +114,22 @@ public class AppUser {
     public void setEvents(List<Event> e) {
         events=e;
     }
+
+
+    public BandType getActiveBandType() {
+        return activeBandType;
+    }
+
+    public void setActiveBandType(BandType activeBandType) {
+        this.activeBandType = activeBandType;
+    }
+
+    public CallParser getCallParser() {
+        return callParser;
+    }
+
+    public void setCallParser(CallParser callParser) {
+        this.callParser = callParser;
+    }
 }
+

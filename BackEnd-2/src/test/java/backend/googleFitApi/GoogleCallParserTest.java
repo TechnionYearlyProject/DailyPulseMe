@@ -3,16 +3,12 @@ package backend.googleFitApi;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
-import backend.entity.RefreshTokenExpiredException;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
 public class GoogleCallParserTest {

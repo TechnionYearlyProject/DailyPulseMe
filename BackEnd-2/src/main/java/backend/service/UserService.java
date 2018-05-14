@@ -4,10 +4,10 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
-import backend.googleFitApi.GoogleCallParser;
+import backend.entity.*;
+import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -90,12 +90,13 @@ public class UserService {
         }
         List<Event> result = new ArrayList<Event>(); //filter contains the events in the given time interval
         List<Pulse> eventPulses;
-		
 
         for (Event event : filter) {//for all the events we should get the pulses
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
-                    eventPulses = GoogleCallParser.getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
+                    //getCallParser will return either FitBit or Google callParser
+                    eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
+
                 } catch (RefreshTokenExpiredException e) {
                     return null;
                 }
@@ -107,17 +108,24 @@ public class UserService {
         return filter;
     }
 
-
     /*
-        This function updates Token
+        This function updates the tokens
         @param user which for him the token will be updated
         @param accessTokens which contains both access token and refresh token
         @return true , if the updating process passed okey, otherwise false
      */
     public static boolean updateTokens(AppUser user, TwoStrings accessTokens){
         //update token fields 
-        user.setGoogleFitAccessToken(accessTokens.getFirst());
-        user.setGoogleFitRefreshToken(accessTokens.getSecond());
+        user.setAccessToken(accessTokens.getFirst());
+        user.setRefreshToken(accessTokens.getSecond());
         return true;
+    }
+
+    public static boolean verifyAndRefresh(AppUser user) {
+        return user.getCallParser().verifyAndRefresh(user);
+    }
+
+    public static void refreshToken(AppUser user) {
+        user.getCallParser().refreshToken(user);
     }
 }
