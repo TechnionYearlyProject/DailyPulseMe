@@ -24,6 +24,7 @@ import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -177,6 +178,21 @@ public class UserController {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
+    }
+
+    @RequestMapping("/GetCalendarEvents")
+    public ArrayList<Event> getCalendarEvents(Authentication auth)  {
+       // System.out.println("GoogleCalendarEvents\n");
+        ArrayList<Event> tmp=null;
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            tmp=(user.getCalendar()).getEvents(user);
+            user.addEvents(tmp);
+            appUserRepository.save(user);
+        }catch (Exception e){
+          System.out.println("line 188 user cON");
+        }
+        return tmp;
     }
 
     /*

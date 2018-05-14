@@ -1,8 +1,10 @@
 package backend.googleFitApi;
 
 import backend.entity.AppUser;
+import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -10,10 +12,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+//import sun.text.resources.no.CollationData_no;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -95,8 +100,8 @@ public class GoogleCallParser {
         try {
 
 			/* building the request based on the way that Google defined it ,using our client id, and the refresh token */
-            str = new StringEntity("client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com&" +
-                    "client_secret=FGLsX3PBtIHEypj88z7UkI6R&" +
+            str = new StringEntity("187665345194-0d324v8gel15pj9jh9fecmqknmk4k59k.apps.googleusercontent.com&" +
+                    "client_secret=zdKcoMYRsAcrboIU4FmVRF-q&" +
                     "refresh_token="+refresh+"&" +
                     "grant_type=refresh_token");
         }
@@ -160,10 +165,11 @@ public class GoogleCallParser {
     public static List<Pulse> getPulses(AppUser user,String startTime,String endTime , String bucket) throws RefreshTokenExpiredException{
         List<Pulse> pulses=new ArrayList<>();
         String accessToken=user.getGoogleFitAccessToken();
+
         //// check if the access token has expired TODO
 		
 		/* POST request for getting the pulses from Google Fit  */
-        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate");
+        HttpPost post=new HttpPost("https://www.googleapis.com/fitness/v1/users/\"https://www.googleapis.com/fitness/v1/users/me/dataset:aggregat/dataset:aggregate");
         post.addHeader("Content-Type","application/json;encoding=utf-8");
         post.addHeader("Authorization" , "Bearer "+ accessToken );
         StringEntity str=null;
@@ -197,6 +203,7 @@ public class GoogleCallParser {
                     throw new RefreshTokenExpiredException();
                 } else {
                     user.setGoogleFitAccessToken(accessToken);
+                    System.out.println("update acces token");
                     return getPulses( user, startTime, endTime ,  bucket);
                 }
             }
@@ -231,4 +238,6 @@ public class GoogleCallParser {
         }
         return pulses;
     }
+
+
 }
