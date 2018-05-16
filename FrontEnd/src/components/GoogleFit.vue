@@ -1,0 +1,56 @@
+<template>
+</template>
+<script>
+export default {
+  name: 'GoogleFit',
+  data(){
+    return{
+      accessToken: '',
+      refreshToken: '',
+      accessCode: '',
+      succesful: false
+    }
+  },created: function () {
+    // console.log(this.succesful)
+    if(this.succesful){
+      console.log('second time ?')
+    }else{
+    let route = this.$route.fullPath;
+    var x = route.split('=')[1];
+    this.accessCode = decodeURIComponent(x);
+    this.getTokens();
+}
+  },
+   methods : {
+     getTokens() {
+       let url = 'https://www.googleapis.com/oauth2/v4/token'
+       this.$http.post(url, {code: this.accessCode, client_id: '187665345194-0d324v8gel15pj9jh9fecmqknmk4k59k.apps.googleusercontent.com', client_secret: 'zdKcoMYRsAcrboIU4FmVRF-q', redirect_uri: 'http://localhost:8080/token', grant_type: 'authorization_code'}).then((res)=>{
+          console.log(res)
+        if(res.ok != 'false'){
+       this.$http.post('http://localhost:8081/users/updateGoogleFitToken',{
+              "first": res.body.access_token.toString() ,
+              "second": ''
+            }
+             ,{headers: {'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('token'),}
+            }).then((res) =>{
+              this.$router.push('/');
+              close();
+              console.log(res);
+            },(err) =>{
+              console.log(err);
+            })
+          }
+          else{
+          	console.log('hi')
+          	close();
+          }
+                 this.succesful = true;
+            },(err) =>{
+       close();
+     });
+        // console.log(this.succesful)
+     }
+  }
+}
+</script>
