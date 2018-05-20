@@ -1,5 +1,8 @@
 package backend.entity;
 
+import backend.entity.Event;
+import backend.entity.EventTag;
+import backend.entity.Pulse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class EventTest {
 
     ArrayList<Event> events=new ArrayList<Event>();
-   ArrayList<Event> eventsTesting=new ArrayList<Event>();
+    ArrayList<Event> eventsTesting=new ArrayList<Event>();
 
 
     public Event CreateEvent(String id, String name , String startTime, String endTime, String description , EventTag tag){
@@ -32,10 +35,10 @@ public class EventTest {
     public void setUp() throws Exception {
 
         for(int i=0;i<100;i++){
-        //   String aux
+            //   String aux
             events.add(CreateEvent(Integer.toString(i),"event number"+i,Integer.toString(i) ,Integer.toString(i + 1),"event dis"+i,Sport)) ;
-           eventsTesting.add(CreateEvent(Integer.toString(i),"event number"+i, Integer.toString(i), Integer.toString(i + 1),"event dis"+i,Rest)) ;
-           events.get(i).setPulses(new ArrayList<Pulse>());
+            eventsTesting.add(CreateEvent(Integer.toString(i),"event number"+i, Integer.toString(i), Integer.toString(i + 1),"event dis"+i,Rest)) ;
+            events.get(i).setPulses(new ArrayList<Pulse>());
             eventsTesting.get(i).setPulses(new ArrayList<Pulse>());
         }
     }
@@ -46,92 +49,92 @@ public class EventTest {
 
     @Test
     public void equals() {
-         for(int i=0;i<100;i++){
+        for(int i=0;i<100;i++){
             assertTrue(events.get(i).equals(eventsTesting.get(i)));
-         }
+        }
     }
 
     @Test
     public void getName() {
 
-       for(int i = 0; i < 100;i++){
+        for(int i = 0; i < 100;i++){
 
-          assertTrue(events.get(i).getName().equals(eventsTesting.get(i).getName()));
-          if(i != 99) {
-              assertTrue(!(events.get(i).getName().equals(eventsTesting.get(i + 1).getName())));
-          }
-       }
+            assertTrue(events.get(i).getName().equals(eventsTesting.get(i).getName()));
+            if(i != 99) {
+                assertTrue(!(events.get(i).getName().equals(eventsTesting.get(i + 1).getName())));
+            }
+        }
     }
 
     @Test
     public void setName() {
 
-      for(int i=0;i<100;i++){
-         events.get(i).setName(Integer.toString(i+1));
-      }
-       for(int i=0;i<99;i++){
-          assertTrue(events.get(i).getName().equals(events.get(i).getName()));
-       }
-       for(int i=0;i<100;i++){
-          events.get(i).setName(Integer.toString(i));
-       }
-       for(int i=0;i<100;i++){
-          assertTrue(events.get(i).getName().equals(events.get(i).getName()));
-       }
+        for(int i=0;i<100;i++){
+            events.get(i).setName(Integer.toString(i+1));
+        }
+        for(int i=0;i<99;i++){
+            assertTrue(events.get(i).getName().equals(events.get(i).getName()));
+        }
+        for(int i=0;i<100;i++){
+            events.get(i).setName(Integer.toString(i));
+        }
+        for(int i=0;i<100;i++){
+            assertTrue(events.get(i).getName().equals(events.get(i).getName()));
+        }
 
     }
 
     @Test
     public void getDescription() {
-       for(int i=0;i<100;i++){
+        for(int i=0;i<100;i++){
 
-          assertTrue(events.get(i).getDescription().equals(eventsTesting.get(i).getDescription()));
-           if(i != 99) {
-               assertTrue(!(events.get(i).getDescription().equals(eventsTesting.get(i + 1).getDescription()
-               )));
-           }
-       }
+            assertTrue(events.get(i).getDescription().equals(eventsTesting.get(i).getDescription()));
+            if(i != 99) {
+                assertTrue(!(events.get(i).getDescription().equals(eventsTesting.get(i + 1).getDescription()
+                )));
+            }
+        }
 
     }
 
     @Test
     public void setDescription() {
-       for(int i=0;i<100;i++){
-          events.get(i).setDescription(Integer.toString(i+1));
-       }
-       for(int i=0;i<99;i++){
-          assertTrue(events.get(i).getDescription().equals(Integer.toString(i+1)));
-       }
-       for(int i=0;i<100;i++){
-          events.get(i).setDescription("event dis"+i);
-       }
-       for(int i=0;i<100;i++){
-          assertTrue(events.get(i).getDescription().equals(eventsTesting.get(i).getDescription()));
-       }
+        for(int i=0;i<100;i++){
+            events.get(i).setDescription(Integer.toString(i+1));
+        }
+        for(int i=0;i<99;i++){
+            assertTrue(events.get(i).getDescription().equals(Integer.toString(i+1)));
+        }
+        for(int i=0;i<100;i++){
+            events.get(i).setDescription("event dis"+i);
+        }
+        for(int i=0;i<100;i++){
+            assertTrue(events.get(i).getDescription().equals(eventsTesting.get(i).getDescription()));
+        }
 
     }
 
     @Test
     public void getTag() {
-       for(int i=0;i<99;i++) {
-          assertTrue(events.get(i).getTag()==events.get(i+1).getTag());
-       }
+        for(int i=0;i<99;i++) {
+            assertTrue(events.get(i).getTag()==events.get(i+1).getTag());
+        }
     }
 
     @Test
     public void setTag() {
-       for (int i = 0; i < 100; i++) {
-          events.get(i).setTag(Rest);
-       }
-       for (int i = 0; i < 100; i++) {
-          assertTrue(events.get(i).getTag() == eventsTesting.get(i).getTag());
-       }
-       for (int i = 0; i < 100; i++) {
-          events.get(i).setTag(Sport);
-       }
-       for (int i = 0; i < 100; i++) {
-          assertTrue(events.get(i).getTag() == Sport);
-       }
+        for (int i = 0; i < 100; i++) {
+            events.get(i).setTag(Rest);
+        }
+        for (int i = 0; i < 100; i++) {
+            assertTrue(events.get(i).getTag() == eventsTesting.get(i).getTag());
+        }
+        for (int i = 0; i < 100; i++) {
+            events.get(i).setTag(Sport);
+        }
+        for (int i = 0; i < 100; i++) {
+            assertTrue(events.get(i).getTag() == Sport);
+        }
     }
 
     @Test

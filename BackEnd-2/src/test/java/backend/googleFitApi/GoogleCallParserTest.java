@@ -21,15 +21,15 @@ public class GoogleCallParserTest {
         user.setName("mohamad");
         user.setUsername("m@m");
         user.setEvents(new ArrayList<Event>());
-        user.setGoogleFitAccessToken("ya29.GltIBbZhSXf5M-7tSN3QExwz6_zJBlttaVkemwQobLxVdmAsyPAZAmQwCybiu7PrJImDsVP2H6CNist7nx3RIDKkFpDaIld45JSbG1a72rMxQD6xDf9c-saqOOCY");
-        user.setGoogleFitRefreshToken("1/8IIZcys9xQyBBx5jratzpvl7BLfLrYyAHPPmrVLSXdU");
+        user.setAccessToken("ya29.GlvBBdBUYGcDZ3y9TWKK3WcTCUboukfAVSajc3SpUuxvqH3nHNGOxquRND_2amxnuvqlK5te3gCDUm04AKIqJzfxbWXS8kK20h5gbfo0dyDfOjO_48LaC2V57vih");
+        user.setRefreshToken("1/3qCL9J5Qr7Ou_PidxdOuNAlN0swZ3nr-5C290pgpfMo");
 
         user2.setId("111");
         user2.setName("anadil1");
         user2.setUsername("anadil@anadil");
         user2.setEvents(new ArrayList<Event>());
-        user2.setGoogleFitAccessToken("nothing");
-        user2.setGoogleFitRefreshToken("nothing");
+        user2.setAccessToken("nothing");
+        user2.setRefreshToken("nothing");
 
         user2.setId("1111");
         user2.setName("anadil2");
@@ -38,34 +38,34 @@ public class GoogleCallParserTest {
     }
     @Test
     public void verifyAndRefresh() throws Exception {
-        assertTrue(GoogleCallParser.verifyAndRefresh(user));
-        assertTrue(!GoogleCallParser.verifyAndRefresh(user2));
-        assertTrue(!GoogleCallParser.verifyAndRefresh(user3));
+        assertTrue(user.getCallParser().verifyAndRefresh(user));
+        assertTrue(!user.getCallParser().verifyAndRefresh(user2));
+        assertTrue(!user.getCallParser().verifyAndRefresh(user3));
 
     }
 
     @Test
     public void refreshToken() throws Exception {
-        String accessToken=GoogleCallParser.refreshToken(user);
+        String accessToken=user.getCallParser().refreshToken(user);
         assertTrue(!accessToken.equalsIgnoreCase("nn"));
-        user.setGoogleFitAccessToken(accessToken);
-        GoogleCallParser.refreshToken(user2);
-        GoogleCallParser.refreshToken(user3);
+        user.setAccessToken(accessToken);
+        user.getCallParser().refreshToken(user2);
+        user.getCallParser().refreshToken(user3);
 
     }
 
     @Test
     public void getPulses() throws Exception {
         try{
-            List<Pulse> pulses=GoogleCallParser.getPulses(user,"0","100000000","60000");
+            List<Pulse> pulses=user.getCallParser().getPulses(user,"0","100000000","60000");
             assertTrue(true);
 
-            GoogleCallParser.getPulses(user2,"0","100000000","60000");
+            user.getCallParser().getPulses(user2,"0","100000000","60000");
 
         }
         catch (Throwable t) {
             try {
-                GoogleCallParser.getPulses(user2,null,null,null);
+                user.getCallParser().getPulses(user2,null,null,null);
             }
             catch (Throwable t2){
 
