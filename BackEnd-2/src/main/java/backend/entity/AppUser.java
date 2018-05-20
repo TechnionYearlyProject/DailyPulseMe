@@ -105,6 +105,9 @@ public class AppUser {
     }
 
     public Event getEvent(String id) {
+        if(events==null){
+            return null;
+        }
        for(Event event : events){
 
            if(event.getId().compareTo(id)==0){
@@ -122,7 +125,9 @@ public class AppUser {
     }
 
     public void deleteEvent(String id){
-
+        if(events==null){
+            return ;
+        }
         for(Event event:events){
             if(event.getId().compareTo(id) == 0){
                 events.remove(event);

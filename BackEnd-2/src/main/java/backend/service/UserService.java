@@ -47,7 +47,9 @@ public class UserService {
  @return true , if the specific event exists in the user list event , otherwise false
   */
     public static boolean deleteEvent(AppUser user, String eventID) {
-
+if(user.getEvents()==null){
+    return false;
+}
         Event event_ = null;
         boolean isExist=false;
         List<Event> tmp = user.getEvents();//temp list of the user's events

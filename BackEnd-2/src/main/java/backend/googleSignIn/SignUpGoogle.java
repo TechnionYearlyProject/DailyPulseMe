@@ -43,7 +43,6 @@ public static AppUser getGoogleUser(String authCode){
                     // specify an empty string.
                     .execute();
         } catch (IOException e) {
-           e.printStackTrace();
             return null;
         }
     }
