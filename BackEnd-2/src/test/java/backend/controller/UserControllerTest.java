@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 @WebAppConfiguration
-public class controllerTestSample {
+public class UserControllerTest {
     private AppUser tmpUser =new AppUser("31","abd","2","mohamad","3","2");
     @Autowired
     private WebApplicationContext wac;
