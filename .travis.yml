@@ -1,5 +1,6 @@
 language: java
 sudo: false
+before_install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
 - cd BackEnd-2
 - mvn cobertura:cobertura

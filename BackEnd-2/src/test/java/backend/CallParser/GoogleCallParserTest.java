@@ -1,4 +1,4 @@
-package backend.googleFitApi;
+package backend.CallParser;
 
 import backend.entity.AppUser;
 import backend.entity.Event;

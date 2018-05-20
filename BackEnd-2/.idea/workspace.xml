@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d000baa-bace-4368-945c-514dd942feae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/backend/controller/controllerTestSample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyPulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DailyPulse.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/entity/AppUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/entity/EventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/googleFitApi/GoogleCallParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/entity/AppUserTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/entity/EventTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/googleFitApi/GoogleCallParserTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/service/UserServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/FitBitCallParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/CallParser/FitBitCallParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/GoogleCallParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/CallParser/GoogleCallParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,13 +15,37 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/DailyPulse$All_in_DailyPulse.ic" NAME="All in DailyPulse Coverage Results" MODIFIED="1526815072543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="controllerTestSample.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="controllerTestSample.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/controllerTestSample.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="38" column="52" lean-forward="true" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="174" column="17" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="167" column="34" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -59,7 +69,7 @@
         </entry>
       </file>
       <file leaf-file-name="GoogleCallParserTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1156">
               <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
@@ -195,15 +205,8 @@
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
@@ -225,20 +228,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -268,6 +257,7 @@
       <recent name="backend.entity" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="backend.CallParser" />
       <recent name="backend" />
       <recent name="backend.service" />
       <recent name="backend.entity" />
@@ -372,14 +362,14 @@
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.googleFitApi.*" />
+          <option name="PATTERN" value="backend.CallParser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.googleFitApi" />
-      <option name="MAIN_CLASS_NAME" value="backend.googleFitApi.GoogleCallParserTest" />
+      <option name="PACKAGE_NAME" value="backend.CallParser" />
+      <option name="MAIN_CLASS_NAME" value="backend.CallParser.GoogleCallParserTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -395,14 +385,14 @@
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.googleFitApi.*" />
+          <option name="PATTERN" value="backend.CallParser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.googleFitApi" />
-      <option name="MAIN_CLASS_NAME" value="backend.googleFitApi.GoogleCallParserTest" />
+      <option name="PACKAGE_NAME" value="backend.CallParser" />
+      <option name="MAIN_CLASS_NAME" value="backend.CallParser.GoogleCallParserTest" />
       <option name="METHOD_NAME" value="getPulses" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -505,17 +495,11 @@
       <workItem from="1526319272119" duration="4661000" />
       <workItem from="1526566892126" duration="35000" />
       <workItem from="1526758650826" duration="89000" />
-      <workItem from="1526810409085" duration="3823000" />
+      <workItem from="1526810409085" duration="5427000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GoogleCallParserTest_getPulses - 2018.01.21 at 00h 20m 29s.xml">
-      <configuration name="GoogleCallParserTest.getPulses" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GoogleCallParserTest_getPulses - 2018.01.21 at 00h 21m 13s.xml">
-      <configuration name="GoogleCallParserTest.getPulses" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GoogleCallParserTest_refreshToken - 2018.01.21 at 00h 10m 35s.xml">
       <configuration name="GoogleCallParserTest.refreshToken" configurationId="JUnit" />
     </history-entry>
@@ -540,9 +524,15 @@
     <history-entry file="All_in_DailyPulse - 2018.05.20 at 14h 03m 48s.xml">
       <configuration name="All in DailyPulse" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.20 at 14h 18m 14s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.20 at 14h 27m 32s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31324000" />
+    <option name="totallyTimeSpent" value="32928000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -566,6 +556,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29446065" />
       <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32997987" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23675385" />
@@ -614,9 +605,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java</url>
           <line>61</line>
-          <properties class="java.backend.googleFitApi.GoogleCallParserTest">
+          <properties class="backend.googleFitApi.GoogleCallParserTest">
             <option name="EMULATED" value="true" />
           </properties>
         </line-breakpoint>
@@ -805,16 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3689">
-          <caret line="257" column="40" selection-start-line="257" selection-start-column="40" selection-end-line="257" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/interfaces/PulsesInterface.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/AuxMethods.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -887,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="165" selection-start-line="165" selection-end-line="165" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -908,7 +882,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="18" column="26" selection-end-line="77" selection-end-column="1" />
@@ -950,7 +924,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/googleFitApi/GoogleCallParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
           <caret line="77" column="1" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
@@ -984,6 +958,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="38" column="52" lean-forward="true" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="174" column="17" selection-start-line="174" selection-start-column="13" selection-end-line="174" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="167" column="34" selection-start-line="167" selection-start-column="30" selection-end-line="167" selection-end-column="34" />
         </state>
       </provider>
     </entry>
