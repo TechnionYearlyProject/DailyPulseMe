@@ -67,7 +67,7 @@ public class AuxMethods {
      */
     public static boolean IsConnectedToGoogleCalendar(AppUser usr){
 
-        return !(usr.getAccessToken()==null || usr.getAccessToken()=="");
+        return !(usr.getAccessToken()==null || usr.getAccessToken()=="" || usr.getAccessToken()==" ");
     }
 
     /*

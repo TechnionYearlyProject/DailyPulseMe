@@ -80,26 +80,41 @@ public class UserService {
  */
     public static List<Event> getEvents(AppUser user, TwoStrings time) {
 
-
+        System.out.println("get events where Start Time="+time.getFirst()+" end time= "+time.getSecond());
         List<Event> events = user.getEvents();
         List<Event> filter = new ArrayList<Event>();
-        for (Event event : events) {//getting all events within time period
-            if (event.getStartTime().compareTo(time.getFirst()) >= 0 && event.getEndTime().compareTo(time.getSecond()) <= 0) {
-                filter.add(event);
+
+        if(time.getFirst().compareTo("0")==0){ //that means return all the events
+            filter.addAll(events);
+        }
+        else{
+            for (Event event : events) {//getting all events within time period
+                System.out.println("Event name: "+ event.getName()+  " ** " + event.getStartTime());
+                if (Long.valueOf(event.getStartTime())>Long.valueOf(time.getFirst())  && Long.valueOf(event.getEndTime())<=Long.valueOf(time.getSecond())) {
+                    filter.add(event);
+                }
             }
         }
         List<Event> result = new ArrayList<Event>(); //filter contains the events in the given time interval
         List<Pulse> eventPulses;
 
-        for (Event event : filter) {//for all the events we should get the pulses
+        for (Event event : filter) {//for only the new events we should get the pulses
+
+            System.out.print("google access token : "+ user.getAccessToken());
+            if(user.getAccessToken()==null || user.getAccessToken().compareTo("")==0 ||
+                    user.getAccessToken().compareTo(" ")==0){ //the user is not connected to google API
+                break;
+            }
 
             System.out.println("Event name is : "+ event.getName());
-            if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
+            if (event.getPulses().size() == 0 ) {	//if it's pulses list is empty  , we should ask google to give us the pulses
+
                 try {
                     //getCallParser will return either FitBit or Google callParser
                     eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
 
                 } catch (RefreshTokenExpiredException e) {
+                    System.out.print(e.toString());
                     return null;
                 }
                 event.saveAll(eventPulses);//update the pulses for this event
@@ -139,7 +154,6 @@ public class UserService {
     */
     public static boolean updateOutLookTokens(AppUser user, TwoStrings accessTokens){
         user.setOutlookToken(accessTokens.getFirst());
-        user.setAccessToken(accessTokens.getSecond());
         return true;
     }
 }

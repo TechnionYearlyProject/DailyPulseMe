@@ -33,7 +33,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL, "/users/userPassword").permitAll()
                 .antMatchers(HttpMethod.GET, SEND_EMAILS_URL, "WHAT IS THIS?").permitAll()
-              .antMatchers(HttpMethod.POST, SIGN_UP_URL, "/users/userPassword",SIGN_UP_GOOGLE_URL).permitAll()
+                .antMatchers(HttpMethod.POST, SIGN_UP_URL, "/users/userPassword",SIGN_UP_GOOGLE_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))

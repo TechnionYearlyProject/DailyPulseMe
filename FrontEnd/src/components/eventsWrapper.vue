@@ -20,7 +20,7 @@ export default {
   }
   ,methods: {
   	getEvents(){
-  		 this.$http.get('http://localhost:8081/users/getAllEvents'
+  		 this.$http.get('http://localhost:8081/users/getEvents'
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {

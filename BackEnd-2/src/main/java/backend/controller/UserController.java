@@ -63,8 +63,9 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(@RequestBody AppUser user) {
+    public boolean signUp(AppUser user) {
         try {
+            System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
@@ -96,9 +97,6 @@ public class UserController {
     }
 
     /*
-<<<<<<< HEAD
-    updateTokens updates the access token and refresh token of the band ,
-=======
     @auother: Anadil
     update outlookToken's access token and refresh token of Microsoft outlook ,
     @param auth which by it the user will be retrieved
@@ -127,7 +125,7 @@ public class UserController {
        this function return true if the user sign in to one calender at least
     */
     @GetMapping("/isThereOneCalendar")
-    public boolean getOutLookToken(Authentication auth) {
+    public boolean isThereOneCalendar(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
             return  false;
@@ -135,14 +133,12 @@ public class UserController {
         return IsConnectedToGoogleCalendar(user)||IsConnectedToOutlookCalendar(user);
     }
     /*
-    updateGoogleFitToken updates the access token and refresh token of Google Fit ,
->>>>>>> calendars_done
     @param auth which by it the user will be retrieved
     @param accessToken which contains the new access token and refresh token
     @return true
      */
     @PostMapping("/updateTokens")
-    public boolean updateTokens(Authentication auth, @RequestBody TwoStrings tokens) {
+    public boolean updateTokens(Authentication auth,TwoStrings tokens) {
 
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
@@ -222,6 +218,12 @@ public class UserController {
     }
 
 
+    @GetMapping("/getEvents")
+    public List<Event> getEvents(Authentication auth) {
+        TwoStrings time=new TwoStrings();
+        time.setFirst("0");
+        return getEventsBetweenInterval(auth,time);
+    }
     /*
     getEvents return Events which were taken place between time1 until time2
     ,and each event which will be returned through the list , will includes it's pulses
@@ -229,24 +231,24 @@ public class UserController {
      @param time which contains the startTiming and endTiming
      @return list of events which were taken place between time1 until time2
      */
-    @PostMapping("/getEvents")
-    public List<Event> getEvents(Authentication auth,@RequestBody TwoStrings time) {
-
+    @PostMapping("/getEventsBetweenInterval")
+    public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
+        System.out.println("in get events time is"+ time.getFirst());
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
+        List<Event> filter = UserService.getEvents(user,time);
         if(filter == null){
             return null;
         }
-        List<Event> toreturn = filter.stream().sorted(new Comparator<Event>() {
+        List<Event> toReturn = filter.stream().sorted(new Comparator<Event>() {
             @Override
             public int compare(Event r1, Event r2) {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
-        System.out.println(toreturn.size()+" xxxxxx");
-        return toreturn;
+        System.out.println(toReturn.size()+" xxxxxx");
+        return toReturn;
     }
 
     @RequestMapping("/GoogleCalendarEvents")
@@ -287,7 +289,7 @@ public class UserController {
             for(Event event : tmp_){
 
                 for (Event userEvent : user.getEvents()){
-                    if(userEvent.getId()== event.getId()  && userEvent.getEndTime()==event.getEndTime()){
+                    if(userEvent.getId().compareTo(event.getId())==0  && userEvent.getEndTime().compareTo(event.getEndTime())==0){
                         isNewEvent=false;
                         break;
                     }
@@ -299,7 +301,8 @@ public class UserController {
                 isNewEvent=true;
             }
             System.out.println("number of new events :"+tmp.size());
-            user.addEvents(tmp);
+           // user.addEvents(tmp);
+            tmp.addAll(user.getEvents());
             user.setEvents(tmp);
             appUserRepository.save(user);
             System.out.println("done");

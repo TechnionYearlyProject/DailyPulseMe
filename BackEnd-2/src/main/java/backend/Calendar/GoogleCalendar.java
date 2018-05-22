@@ -35,7 +35,7 @@ public class GoogleCalendar {
        // System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
         ArrayList<Event> events=new ArrayList<>();
         String accessToken=user.getAccessToken();
-
+        System.out.println("Now DailyPulsMe will bring your Google Calendar Events (Google API)");
         /* GET Request Getting Events From Google Calendar
           the primary calendar of the currently logged in user
           */

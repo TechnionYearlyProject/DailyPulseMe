@@ -22,9 +22,11 @@ public class AppUser {
     //A value from BandTypes class.
     private BandType activeBandType;
     private CallParser callParser;
-
-    private List<Event> events;
     private String outlookToken;
+    private List<Event> events;
+
+
+
     public  String getOutlookToken(){
         return outlookToken;
     }

@@ -41,7 +41,7 @@ public class OutlookCalendar {
 
         ArrayList<Event> events=new ArrayList<>(); //events array which will contain outlook Events Lettter !
         String accessToken=user.getOutlookToken();
-        System.out.println("access token :" + accessToken+"\n");
+        System.out.println("Now DailyPulsMe will bring your Outlook Calendar Events (Azure&Microsoft)");
         HttpGet get_=new HttpGet("https://graph.microsoft.com/v1.0/me/events?&$select=subject,bodyPreview,Start,End&body-content-type=text");
       //  get_.addHeader("Content-Type","application/json");
         get_.addHeader("Authorization" , "Bearer " +user.getOutlookToken());
