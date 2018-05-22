@@ -53,11 +53,8 @@ public class AuxMethods {
         if(user == null){
             return  false;
         }
-        if((user.getAccessToken()== null || user.getAccessToken()== "") &&
-                (user.getOutlookToken()== null || user.getOutlookToken()== "") ){
-            return false;
-        }
-        return  true;
+        return  IsConnectedToGoogleCalendar(user)|| IsConnectedToOutlookCalendar(user);
+
     }
 
 

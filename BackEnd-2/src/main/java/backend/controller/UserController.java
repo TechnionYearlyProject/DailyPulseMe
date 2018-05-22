@@ -33,6 +33,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static backend.Calendar.AuxMethods.isUserConnectedToCalendar;
 import static backend.helperClasses.BandType.FITBIT_BAND;
 import static backend.helperClasses.BandType.GOOGLEFIT_BAND;
 import static backend.Calendar.AuxMethods.IsConnectedToGoogleCalendar;
@@ -124,13 +125,13 @@ public class UserController {
     /*@auother: Anadil
        this function return true if the user sign in to one calender at least
     */
-    @GetMapping("/isThereOneCalendar")
+    @GetMapping("/isConnectedToGoogleCalendar")
     public boolean isThereOneCalendar(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
             return  false;
         }
-        return IsConnectedToGoogleCalendar(user)||IsConnectedToOutlookCalendar(user);
+        return  IsConnectedToGoogleCalendar(user);
     }
     /*
     @param auth which by it the user will be retrieved
