@@ -1,6 +1,3 @@
-<template>
-    <div id="chartContainer" style="height: 300px; width: 100%; background-image:url('http://i.imgur.com/XVCnqWS.jpg');"></div>
-</template>
 <script>
 import {Line, Bar} from 'vue-chartjs'
 export default {

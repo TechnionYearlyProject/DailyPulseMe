@@ -1,40 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c7df110-e455-4a51-b219-ca4603268795" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/azureSettings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Calendar/AuxMethods.java" afterPath="$PROJECT_DIR$/src/main/java/backend/Calendar/AuxMethods.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" afterPath="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java" afterPath="$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/JWTAuthenticationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/backend/security/JWTAuthenticationFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/JWTAuthorizationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/backend/security/JWTAuthorizationFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/RequestFilter.java" afterPath="$PROJECT_DIR$/src/main/java/backend/security/RequestFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/SecurityConstants.java" afterPath="$PROJECT_DIR$/src/main/java/backend/security/SecurityConstants.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/UserAuthenticationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/backend/security/UserAuthenticationFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" afterPath="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/AuxMethods.class" afterPath="$PROJECT_DIR$/target/classes/backend/Calendar/AuxMethods.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/GoogleCalendar.class" afterPath="$PROJECT_DIR$/target/classes/backend/Calendar/GoogleCalendar.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/OutlookCalendar.class" afterPath="$PROJECT_DIR$/target/classes/backend/Calendar/OutlookCalendar.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" afterPath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/RequestFilter.class" afterPath="$PROJECT_DIR$/target/classes/backend/security/RequestFilter.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/backend/service/UserService.class" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/package-lock.json" afterPath="$PROJECT_DIR$/../FrontEnd/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/package.json" afterPath="$PROJECT_DIR$/../FrontEnd/package.json" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Calendar.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Calendar.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Config.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Config.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Connect.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Connect.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/GoogleFit.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/GoogleFit.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Wizard.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Wizard.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/eventsGraph.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/eventsGraph.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/eventsWrapper.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/eventsWrapper.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/main.js" afterPath="$PROJECT_DIR$/../FrontEnd/src/main.js" />
-    </list>
+    <list default="true" id="8c7df110-e455-4a51-b219-ca4603268795" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -640,7 +607,7 @@
       <workItem from="1526818988448" duration="127000" />
       <workItem from="1526819219422" duration="83000" />
       <workItem from="1526819380271" duration="19612000" />
-      <workItem from="1526975576903" duration="5274000" />
+      <workItem from="1526975576903" duration="5693000" />
     </task>
     <servers />
   </component>
@@ -677,7 +644,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134805000" />
+    <option name="totallyTimeSpent" value="135224000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
