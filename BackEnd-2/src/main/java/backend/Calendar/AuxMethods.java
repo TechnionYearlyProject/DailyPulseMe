@@ -64,7 +64,8 @@ public class AuxMethods {
      */
     public static boolean IsConnectedToGoogleCalendar(AppUser usr){
 
-        return !(usr.getAccessToken()==null || usr.getAccessToken()=="" || usr.getAccessToken()==" ");
+        return !(usr.getAccessToken()==null || usr.getAccessToken().compareTo("")==0
+                || usr.getAccessToken().compareTo(" ")==0);
     }
 
     /*
@@ -73,7 +74,8 @@ public class AuxMethods {
     */
     public static boolean IsConnectedToOutlookCalendar(AppUser usr){
 
-        return !(usr.getOutlookToken()==null || usr.getOutlookToken()=="");
+        return !(usr.getOutlookToken()==null || usr.getOutlookToken().compareTo("")==0
+                || usr.getOutlookToken().compareTo(" ")==0);
     }
 
 

@@ -61,7 +61,7 @@ export default {
         this.$router.push('/');
        },
        account(){
-          this.$http.get('http://localhost:8081/users/isThereOneCalendar',{headers: {'Content-Type': 'application/json',
+          this.$http.get('http://localhost:8081/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
               this.isAccount = res.body
@@ -93,7 +93,7 @@ export default {
                       // this.account();
 
               if(this.isAccount == false){
-                  reject('You must connect to AT LEAST one calendar account')
+                  reject('You must connect to Connect for Google Calendar')
               }else{
                resolve(true)
               }   

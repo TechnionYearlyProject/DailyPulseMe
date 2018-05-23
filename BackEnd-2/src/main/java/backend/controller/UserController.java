@@ -126,7 +126,7 @@ public class UserController {
        this function return true if the user sign in to one calender at least
     */
     @GetMapping("/isConnectedToGoogleCalendar")
-    public boolean isThereOneCalendar(Authentication auth) {
+    public boolean isConnectedToGoogleCalendar(Authentication auth) {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
             return  false;
