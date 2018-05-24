@@ -1,3 +1,6 @@
+<style scoped>
+  body {background: white;}
+</style>
 <script>
 import {Line} from 'vue-chartjs'
 

@@ -8,9 +8,9 @@
                   @on-validate="handleValidation"
                   @on-error="handleErrorMessage"
                         shape="circle"
-                        color="#3498db"
+                        color="#007bff"
                         title="DailyPulse"
-                        subtitle="A few steps are required">
+                        subtitle="A few steps are required.">
                         <div class="loader" v-if="loadingWizard"></div>       
        <b-modal ref="myModalRef" hide-footer title="You Must Connect!" style="color:black;">
       <div class="d-block text-center">
@@ -18,14 +18,15 @@
       <b-btn class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-btn>
     </div>
     </b-modal>
-      <tab-content title="Calendar Account"
+      <tab-content title="Google Account"
                    :before-change="validateAsync">
-                   <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="microsoft">Microsoft</b-btn>
-    <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="google" >Google</b-btn>
+    <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="google" >Google</b-btn>
       </tab-content>
-      <tab-content title="Fitbit Account"
-                  >
-        <b-btn v-b-toggle.collapse1 variant="success" >Fitbit</b-btn>
+       <!-- <tab-content title="Microsoft Account">
+          <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>
+      </tab-content> -->
+      <tab-content title="Fitbit Account">
+        <b-btn v-b-toggle.collapse1 variant="primary" >Fitbit</b-btn>
       </tab-content>
       <tab-content title="Last step"> <div style="color:black;">
         You can now start using DailyPulse! </div>

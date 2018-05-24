@@ -11,41 +11,24 @@
         <b-col style="color:white;
       font-family: Open Sans;" class="mid"><div v-if="!this.loggedin">LIVE A BETTER LIFE <br>
       <div class="mid-inside" >DAILYPULSE will analyze your heart pulse<br>
-        using your fitness band and your calendar.
+        using your fitness band and your calendar.<br>
+         <b-button variant="primary" href="/login">START NOW</b-button>
       </div>
     </div>
     <div v-else>Good Evening {{this.msg.slice(1, this.msg.length-1)}} <br>
       <div class="mid-inside" >You can now start using our AMAZING tools!
+
       </div>
     </div>
   </b-col>
     </b-row>
     <b-row>
       <b-col>
-      <b-button variant="primary" href="/login">START NOW</b-button>
+     
     </b-col>
     </b-row>
 </b-container>
 
- 
-    <!-- Hello -->
-    <!-- <div v-else style="color:white;
-    margin: auto;
-    width: 50%;
-    padding: 80px;" class="mid">Good Evening {{this.msg.slice(1, this.msg.length-1)}}!<br>
-      <div class="mid-inside" >
-        You can now start using our AMAZING tools! <br>
-      
-        <div style="margin-right:220px;">
-          <img style="margin-top:-190px; margin-left:410px; width:300px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="../images/arrows.png"/>
-          <img style="margin-top:0px; margin-left:425px; width:70px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="http://clipartmag.com/images/charts-clipart-11.png"/>
-          <img style="margin-top:-5px; margin-left:530px; width:70px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="http://clipartoons.com/wp-content/uploads/2015/12/calendar-clip-art-images-free-for-commercial-use.png"/>
-          <img style="margin-top:0px; margin-left:640px; width:65px; position:absolute; z-index:-1;"id="profile-img" class="profile-img-card" src="http://icons.iconarchive.com/icons/webalys/kameleon.pics/256/Settings-5-icon.png"/>
-        </div>
-    <b-button variant="primary" class="butt" style="margin-right:5%; margin-top:75px;">Learn More</b-button>
-      
-
-      </div> -->
     </div>
   </div>
 </template>
