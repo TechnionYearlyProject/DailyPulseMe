@@ -1,4 +1,5 @@
 <script>
+
 import {Line, Bar} from 'vue-chartjs'
 export default {
   name: 'eventsGraph',
@@ -63,7 +64,7 @@ export default {
         {
         //  color: 'FF3333',
             label: 'Events',
-            borderColor: '#FC2525', 
+          //  borderColor: '#FC2525', 
             pointBackgroundColor: 'black', 
 
             pointBorderColor: 'black',
@@ -73,38 +74,15 @@ export default {
        //   fillColor : '#48A497',
           borderWidth: 1,
        //   borderColor: 'FF3333',
-          backgroundColor: "rgba(73,188,170,0.7)",
+          gradient : "['#ffbe88', '#ff93df']",
+          backgroundColor: "#800517",
+          growDuration: 10,
           data: this.avgList
          },
       ] ,
         options: {
     scales: {
-      yAxes: [{
-        ticks:{
-          min : 0,
-          stepSize : 1,
-          fontColor : "#FFFFFF",
-          fontSize : 14
-        },
-        gridLines:{
-          color: "#FFFFFF",
-          lineWidth:2,
-          zeroLineColor :"#FFFFFF",
-          zeroLineWidth : 2
-        },
-        stacked: true
-      }],
-      xAxes: [{
-        ticks:{
-          fontColor : "#FFFFFF",
-          fontSize : 14
-        },
-        gridLines:{
-          color: "#FFFFFF",
-          lineWidth:2
-        }
-      }]
-    },
+         },
     responsive:false,
   }
   }

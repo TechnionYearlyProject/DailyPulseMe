@@ -1,6 +1,6 @@
 <template>
   <b-container style="margin-top:30px;width:60%;">
-      <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.6; 
+      <div class="card card-container" style="z-index:-2; background: #00000E; position:absolute; opacity:1; 
   width:60%; height:400px; margin-left:-15px;"></div>
   <eventsGraph v-if="!isempty" ></eventsGraph>
     <Spinner size="massive" v-if="!timeup" style="z-index:1; margin-top:30px;">Loading..</Spinner>

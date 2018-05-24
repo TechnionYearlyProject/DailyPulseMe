@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c7df110-e455-4a51-b219-ca4603268795" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/../FrontEnd/package-lock.json" afterPath="$PROJECT_DIR$/../FrontEnd/package-lock.json" />
       <change beforePath="$PROJECT_DIR$/../FrontEnd/package.json" afterPath="$PROJECT_DIR$/../FrontEnd/package.json" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Calendar.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Calendar.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Config.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Config.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Home.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Home.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/Wizard.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/Wizard.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/eventGraph.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/eventGraph.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/eventsGraph.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/eventsGraph.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/eventsWrapper.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/eventsWrapper.vue" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/main.js" afterPath="$PROJECT_DIR$/../FrontEnd/src/main.js" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/router/index.js" afterPath="$PROJECT_DIR$/../FrontEnd/src/router/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,8 +69,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="214" column="34" lean-forward="false" selection-start-line="214" selection-start-column="10" selection-end-line="214" selection-end-column="34" />
+            <state relative-caret-position="453">
+              <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
               <folding>
                 <element signature="e#7746#7753#0" expanded="true" />
                 <element signature="e#7799#7806#0" expanded="true" />
@@ -249,7 +241,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="371" />
@@ -637,7 +629,7 @@
       <workItem from="1526975576903" duration="6906000" />
       <workItem from="1527080353940" duration="8074000" />
       <workItem from="1527148684081" duration="3755000" />
-      <workItem from="1527176658530" duration="1732000" />
+      <workItem from="1527176658530" duration="3873000" />
     </task>
     <servers />
   </component>
@@ -674,10 +666,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149998000" />
+    <option name="totallyTimeSpent" value="152139000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1133,8 +1125,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="214" column="34" lean-forward="false" selection-start-line="214" selection-start-column="10" selection-end-line="214" selection-end-column="34" />
+        <state relative-caret-position="453">
+          <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
           <folding>
             <element signature="e#7746#7753#0" expanded="true" />
             <element signature="e#7799#7806#0" expanded="true" />
