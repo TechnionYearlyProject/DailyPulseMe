@@ -96,7 +96,7 @@ public class Event {
             sum+=pulse.getValue();
         }
         if(pulses.size() == 0){
-            System.out.println("size is zero in SetAvg");
+           // System.out.println("size is zero in SetAvg");
             return;
         }
         this.pulseAverage = sum /pulses.size();

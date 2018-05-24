@@ -80,7 +80,7 @@ public class UserService {
  */
     public static List<Event> getEvents(AppUser user, TwoStrings time) {
 
-        System.out.println("get events where Start Time="+time.getFirst()+" end time= "+time.getSecond());
+      //  System.out.println("get events where Start Time="+time.getFirst()+" end time= "+time.getSecond());
         List<Event> events = user.getEvents();
         List<Event> filter = new ArrayList<Event>();
 
@@ -89,8 +89,8 @@ public class UserService {
         }
         else{
             for (Event event : events) {//getting all events within time period
-                System.out.println("Event name: "+ event.getName()+  " ** " + event.getStartTime());
-                if (Long.valueOf(event.getStartTime())>Long.valueOf(time.getFirst())  && Long.valueOf(event.getEndTime())<=Long.valueOf(time.getSecond())) {
+               // System.out.println("Event name: "+ event.getName()+  " ** " + event.getStartTime());
+                if (Long.valueOf(event.getStartTime())>=Long.valueOf(time.getFirst())  && Long.valueOf(event.getEndTime())<=Long.valueOf(time.getSecond())) {
                     filter.add(event);
                 }
             }
@@ -100,13 +100,13 @@ public class UserService {
 
         for (Event event : filter) {//for only the new events we should get the pulses
 
-            System.out.print("google access token : "+ user.getAccessToken());
+
             if(user.getAccessToken()==null || user.getAccessToken().compareTo("")==0 ||
                     user.getAccessToken().compareTo(" ")==0){ //the user is not connected to google API
                 break;
             }
 
-            System.out.println("Event name is : "+ event.getName());
+
             if (event.getPulses().size() == 0 ) {	//if it's pulses list is empty  , we should ask google to give us the pulses
 
                 try {
@@ -121,7 +121,7 @@ public class UserService {
                 event.setAverage();
             }
         }
-        System.out.println("Filter size: "+filter.size());
+        //System.out.println("Filter size: "+filter.size());
         return filter;
     }
 

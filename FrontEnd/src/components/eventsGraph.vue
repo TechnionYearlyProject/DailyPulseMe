@@ -20,13 +20,17 @@ export default {
       var points = this.getElementAtEvent(event)
       },
       getEvents () {
-           this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
-             "first": 1515103200000,
-             "second": 15163992000000
+           this.$http.post('http://localhost:8081/users/getAllEventsWhichHavePulses',{
+             "first": 151611120000,
+             "second": 151639920000000
            }
             ,{headers: {'Content-Type': 'application/json',
              'Authorization': localStorage.getItem('token'),}
            }).then((res) => {
+
+             var eventsArr = res.body;
+             var arrayLength = eventsArr.length;
+              if(arrayLength==0) location.replace('/addevent');
              // res.body = array of event object
              var eventsArr = res.body;
                var arrayLength = eventsArr.length;

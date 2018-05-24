@@ -66,7 +66,7 @@ public class UserController {
     @PostMapping("/sign-up")
     public boolean signUp(AppUser user) {
         try {
-            System.out.println("heyyyy signup");
+            //System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
@@ -204,6 +204,33 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
 
+
+    /*
+     @auther :Anadil
+     Getting Events between Interval Time and with pulses
+     */
+    @PostMapping("/getAllEventsWhichHavePulses")
+    public List<Event> getAllEventsWhichHavePulses(Authentication auth,TwoStrings time){
+
+        //getEventsBetweenInterval(auth,time);
+        AppUser user=appUserRepository.findByUsername(auth.getName());
+        List<Event> filter_=new ArrayList<Event>();
+        ArrayList<Event> tmp=new ArrayList<Event>();
+        filter_.addAll(user.getEvents());
+        filter_=filter_.stream().filter(event -> !(event.getPulses() == null ||
+                event.getPulses().size() == 0 )).collect(Collectors.toList());
+        if(time.getFirst().compareTo("0")!=0){ //that means return all the events
+            for (Event event : filter_) {//getting all events within time period
+               // System.out.println("Event name: " + event.getName() + " ** " + event.getStartTime());
+                if (Long.valueOf(event.getStartTime()) >= Long.valueOf(time.getFirst()) && Long.valueOf(event.getEndTime()) <= Long.valueOf(time.getSecond())) {
+                    tmp.add(event);
+                }
+            }
+            return tmp;
+        }
+        return filter_;
+    }
+
     /*
     deleteEvent deletes an event which exist in list of event of specific user
     @param auth , which by it the user will be retrieved
@@ -234,7 +261,7 @@ public class UserController {
      */
     @PostMapping("/getEventsBetweenInterval")
     public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
-        System.out.println("in get events time is"+ time.getFirst());
+        //System.out.println("in get events time is"+ time.getFirst());
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
         appUserRepository.save(user);
@@ -248,7 +275,7 @@ public class UserController {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
-        System.out.println(toReturn.size()+" xxxxxx");
+       // System.out.println(toReturn.size()+" xxxxxx");
         return toReturn;
     }
 
@@ -262,7 +289,7 @@ public class UserController {
             user.addEvents(tmp);
             appUserRepository.save(user);
         }catch (Exception e){
-          System.out.println("line 188 user cON");
+         // System.out.println("line 188 user cON");
         }
         return tmp;
     }
@@ -284,7 +311,7 @@ public class UserController {
                 tmp_.addAll( OutlookCalendar.getEvents(user));
             }
 
-            System.out.println("now the refreshing part");
+           // System.out.println("now the refreshing part");
             //Refreshing
             boolean isNewEvent=true;
             for(Event event : tmp_){
@@ -296,17 +323,17 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
-                    System.out.println("Ohhh we have new event ");
+                   // System.out.println("Ohhh we have new event ");
                     tmp.add(event);
                 }
                 isNewEvent=true;
             }
-            System.out.println("number of new events :"+tmp.size());
+           // System.out.println("number of new events :"+tmp.size());
            // user.addEvents(tmp);
             tmp.addAll(user.getEvents());
             user.setEvents(tmp);
             appUserRepository.save(user);
-            System.out.println("done");
+           // System.out.println("done");
         }catch (Exception e){
             System.out.println(e.toString());
         }

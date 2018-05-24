@@ -51,7 +51,7 @@ public class GoogleCalendar {
         HttpResponse response = null;
         try {
             response = client.execute(get_);
-            System.out.println("status "+response.getStatusLine().getStatusCode());
+          //  System.out.println("status "+response.getStatusLine().getStatusCode());
             /*if the token is not valid , we generate new one using the refresh and call the function again with the new token*/
                 if (response.getStatusLine().getStatusCode() != 200) {
                 accessToken = user.getCallParser().refreshToken(user);
@@ -65,8 +65,8 @@ public class GoogleCalendar {
                 }
             }
             String result= EntityUtils.toString(response.getEntity());
-            System.out.println("the http response is :"+ result);
-            System.out.println("lets starts extracting the events");
+            //System.out.println("the http response is :"+ result);
+           // System.out.println("lets starts extracting the events");
             //now extracting the events from the respon
             /*************************************************************/
 
@@ -85,7 +85,7 @@ public class GoogleCalendar {
                 if(end == ""){
                     end=node.path("end").path("date").asText()+"T00:00:00+03:00";
                 }
-                System.out.println("subject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
+               // System.out.println("subject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
                 Event event=new Event();
                 event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setId(Long.toString(RFC5545ToLong(start)));

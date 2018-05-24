@@ -11,25 +11,28 @@ export default {
   name: 'eventsWrapper',
   components: { eventsGraph },
   created: function(){
-  	this.getEvents();
+    this.getEvents();
   },
   data(){
-  	return{
-  		isempty: true
-  	}
+    return{
+      isempty: true
+    }
   }
   ,methods: {
-  	getEvents(){
-  		 this.$http.get('http://localhost:8081/users/getEvents'
+    getEvents(){
+       this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
+             "first": 151611120000,
+             "second": 151639920000000
+           }
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {
-            	var eventsArr = res.body;
+              var eventsArr = res.body;
                 var arrayLength = eventsArr.length;
-            	if(arrayLength==0) location.replace('/addevent');
-            	this.isempty = false
+              if(arrayLength==0) location.replace('/addevent');
+              this.isempty = false
             })
-  	}
+    }
   }
 }
 </script>

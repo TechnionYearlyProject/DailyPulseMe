@@ -62,8 +62,8 @@ public class OutlookCalendar {
             );*/
 
             String result= EntityUtils.toString(response.getEntity());
-            System.out.println("the http response is :"+ result);
-            System.out.println("lets starts extracting the events");
+           // System.out.println("the http response is :"+ result);
+          //  System.out.println("lets starts extracting the events");
             //now extracting the events from the respon
             /*************************************************************/
             /* The next part is about fetching the events from the response*/
@@ -77,7 +77,7 @@ public class OutlookCalendar {
                 String bodyPreview=node.path("bodyPreview").asText();
                 String start=node.path("start").path("dateTime").asText();
                 String end=node.path("end").path("dateTime").asText();
-                System.out.println("sunject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
+             //   System.out.println("sunject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
                 Event event=new Event();
                 event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setId(Long.toString(RFC5545ToLong(start)));

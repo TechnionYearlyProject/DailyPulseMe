@@ -1,6 +1,5 @@
 <script>
 import {Line} from 'vue-chartjs'
-
 export default { 
   name: 'Event', 
   extends: Line,
@@ -49,7 +48,6 @@ export default {
   mounted () {
     this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
     this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-
     this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)')
     this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
     this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
@@ -57,7 +55,6 @@ export default {
     this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
     this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.35)');
     this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
-
     this.renderChart({
       // labels: ['16/12', '17/12', '18 /12', '19/12', '20/12', '21/12', '22/12', '23/12'],
       labels: this.getTime(this.putName)[1],
@@ -71,7 +68,6 @@ export default {
           backgroundColor: 'rgba(51,122,183,0.7)',
           data: this.getTime(this.putName)[0]
          },
-
         // ,{
          
         //   label: 'Eran',
