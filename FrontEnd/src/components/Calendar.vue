@@ -7,31 +7,24 @@
       @day-changed="handleDayChanged"
       @month-changed="handleMonthChanged"
     ></vue-event-calendar>
+        <Spinner size="massive" v-if="!timeup" style="margin-left:70%; margin-top:-40%; ">Loading..</Spinner>
+
 </b-row>
 </b-container>
 </template>
 
 <script>
 let today = new Date()
+import Spinner from 'vue-simple-spinner'
+
 export default {
   name: 'app',
+  components:{Spinner},
   data () {
     return {
       datesList : [],
-      avgList: [],
-      demoEvents: [{
-        date: `${today.getFullYear()}/${today.getMonth() + 1}/24`,
-        title: 'Title-1',
-        desc: 'longlonglong description'
-      },{
-        date: `${today.getFullYear()}/${today.getMonth() + 1}/24`,
-        title: 'Title-2'
-      },{
-        date: `${today.getFullYear()}/${today.getMonth() === 11 ? 1 : today.getMonth() + 2}/06`,
-        title: 'Title-3',
-        desc: 'description'
-      }],
-      
+      pList: [],
+      timeup: false
     }
   },
   created: function () {
@@ -41,23 +34,19 @@ export default {
         },
   methods: {
     handleDayChanged (data) {
-      console.log('date-changed', data)
-      console.log(data.events[0].id)
-      var p = document.getElementsByClassName("title");
+        var p = document.getElementsByClassName("desc")
       var len = p.length
-      for (var i = 1; i < len; i++) {
-        console.log(p[i])
-        var title = p[i].innerHTML;
+      for (var i = 0; i < data.events.length; i++) {
+        var title = data.events[i].title;
         var google = 'google.com'
-        var location = "eventGraph?id=" + data.events[i-1].id;
-        // var open = ;
-
-        // p[i].innerHTML = "<a href="+location+" target="">Go to Yahoo</a>"
-        p[i].innerHTML =  '<a href="'+location+'" target="_blank">'+title+'</a>'
+        var location = "eventGraph?id=" + data.events[i].id;
+        var str = p[i].innerHTML
+        if(len == data.events.length){
+        p[i].innerHTML =  p[i].innerHTML.split("<br>")[0]
+      console.log( p[i].innerHTML)
+         p[i].innerHTML =  p[i].innerHTML + '<br><a href="'+location+'" target="_blank">'+'Click here to watch graph'+'</a>'
+       }
       }
-
-      // console.log(date-changed)
-      
     },
     handleMonthChanged (data) {
       console.log('month-changed', data)
@@ -80,11 +69,13 @@ export default {
             
             var x = {date:`${date.getFullYear()}/${4 + 1}/${date.getDate()}`,
                 title: eventsArr[i].name,
-        desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag, id:eventsArr[i].id};  
+        desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag, id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0) 
+                x.desc = 'NO DATA'
                this.datesList.push(x);
            }
-          
+           this.timeup = true
        })
+
     }
   }
 }

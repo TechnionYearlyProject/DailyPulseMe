@@ -1,7 +1,7 @@
 <script>
 import {Line, Bar} from 'vue-chartjs'
 export default {
-  name: 'Events Analyz',
+  name: 'eventsGraph',
   extends: Bar,
   created: function () {
     this.getEvents();
@@ -15,6 +15,7 @@ export default {
       isempty: true
     }
   },
+
   methods:{
     graphClickEvent(event, array){
       var points = this.getElementAtEvent(event)

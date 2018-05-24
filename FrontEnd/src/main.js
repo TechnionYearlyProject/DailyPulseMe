@@ -15,7 +15,8 @@ import VueFormWizard from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import 'vue-event-calendar/dist/style.css' //^1.1.10, CSS has been extracted as one file, so you can easily update it.
 import vueEventCalendar from 'vue-event-calendar'
-Vue.use(vueEventCalendar, {locale: 'en', color: '#007afd',className: 'Custom className for current clicked date'})
+import Spinner from 'vue-simple-spinner'
+Vue.use(vueEventCalendar, {locale: 'en', color: '#007afd',className: 'clicked'})
 Vue.use(VueFormWizard)
 Vue.http.options.emulateJSON = true
 // Vue.http.headers.common['Access-Control-Allow-Headers'] = 'access-control-allow-headers'

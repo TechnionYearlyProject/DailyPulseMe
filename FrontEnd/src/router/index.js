@@ -13,12 +13,32 @@ import RemoveEvent from '../components/RemoveEvent'
 import Calendar from '../components/Calendar'
 import Wizard from '../components/Wizard'
 
+function checkAccount(push1,push2){
+         var self = this;
+    Vue.http.get('http://localhost:8081/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}
+         }).then((res) => {
+              if(res.body == false)
+                push2()
+              else
+                push1()
+            })
+        }
 const requireAuth = (to, from, next) => {
  checkToken(function(){
             next()
 
     },function(){
                router.push('/login');
+
+    });
+}
+const checkWizard = (to, from, next) => {
+ checkAccount(function(){
+            next()
+
+    },function(){
+               router.push('/wizard');
 
     });
 }
@@ -29,7 +49,13 @@ const loginRedirect = (to, from, next) => {
     next()
     });
 }
-
+const loginRedirectToWizard = (to, from, next) => {
+   checkAccount(function(){
+    router.push('/wizard');
+    },function(){
+    router.push('/');
+    });
+}
 
 Vue.use(Router)
 function checkToken(funcYes,funcNo){
@@ -41,13 +67,6 @@ function checkToken(funcYes,funcNo){
             }, (err) => {
           funcNo()
           })
-    }
-function account(){
-      this.$http.get('http://localhost:8081/users/isThereOneCalendar',{headers: {'Content-Type': 'application/json',
-  'Authorization': localStorage.getItem('token')}
-     }).then((res) => {
-          this.isAccount = true
-        })
     }
 const router = new Router({
   mode: 'history',
@@ -67,7 +86,8 @@ const router = new Router({
       path: '/eventsGraph',
       name: 'eventsWrapper',
       component: eventsWrapper,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
       path: '/eventGraph',
@@ -86,7 +106,8 @@ const router = new Router({
       path: '/calendar',
       name: 'Calendar',
       component: Calendar,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
       path: '/Wizard',
@@ -98,7 +119,8 @@ const router = new Router({
       path: '/config',
       name: 'Config',
       component: Config,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
      path: '/addevent',
