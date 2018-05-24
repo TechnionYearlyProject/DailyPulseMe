@@ -68,7 +68,7 @@ export default {
           pointBackgroundColor: 'white',
           pointBorderColor: 'gray',
           borderWidth: 1,
-          backgroundColor: 'rgba(51,122,183,0.7)',
+          backgroundColor:'rgba(51,36,183,0.7)',
           data: this.getTime(this.putName)[0]
          },
         // ,{

@@ -207,12 +207,13 @@ public class UserController {
 
     /*
      @auther :Anadil
-     Getting Events between Interval Time and with pulses
+     Getting Events between Interval Time and with pulses between Interval
+     in case time ='0' it means return all and dont care about the given timeInterval
      */
     @PostMapping("/getAllEventsWhichHavePulses")
     public List<Event> getAllEventsWhichHavePulses(Authentication auth,TwoStrings time){
 
-        //getEventsBetweenInterval(auth,time);
+
         AppUser user=appUserRepository.findByUsername(auth.getName());
         List<Event> filter_=new ArrayList<Event>();
         ArrayList<Event> tmp=new ArrayList<Event>();
@@ -221,7 +222,6 @@ public class UserController {
                 event.getPulses().size() == 0 )).collect(Collectors.toList());
         if(time.getFirst().compareTo("0")!=0){ //that means return all the events
             for (Event event : filter_) {//getting all events within time period
-               // System.out.println("Event name: " + event.getName() + " ** " + event.getStartTime());
                 if (Long.valueOf(event.getStartTime()) >= Long.valueOf(time.getFirst()) && Long.valueOf(event.getEndTime()) <= Long.valueOf(time.getSecond())) {
                     tmp.add(event);
                 }
@@ -246,14 +246,20 @@ public class UserController {
     }
 
 
+    /*
+    * this methods get all events from user Calendars
+    * */
     @GetMapping("/getEvents")
     public List<Event> getEvents(Authentication auth) {
         TwoStrings time=new TwoStrings();
         time.setFirst("0");
         return getEventsBetweenInterval(auth,time);
     }
+
+
     /*
-    getEvents return Events which were taken place between time1 until time2
+    @author :Anadil
+     Events which were taken place between time1 until time2 (including events which
     ,and each event which will be returned through the list , will includes it's pulses
      @param auth , which by it the user will be retrieved
      @param time which contains the startTiming and endTiming
@@ -262,7 +268,7 @@ public class UserController {
     @PostMapping("/getEventsBetweenInterval")
     public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
         //System.out.println("in get events time is"+ time.getFirst());
-        getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
+        getCalendarsEvents(auth);
         AppUser user = appUserRepository.findByUsername(auth.getName());
         appUserRepository.save(user);
         List<Event> filter = UserService.getEvents(user,time);
@@ -275,7 +281,7 @@ public class UserController {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
-       // System.out.println(toReturn.size()+" xxxxxx");
+
         return toReturn;
     }
 
@@ -296,7 +302,10 @@ public class UserController {
 
 
 
-
+    /*
+    @author :Anadil
+    getting Calendars Events Outlook&Google Calendar
+     */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
 
@@ -323,13 +332,10 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
-                   // System.out.println("Ohhh we have new event ");
                     tmp.add(event);
                 }
                 isNewEvent=true;
             }
-           // System.out.println("number of new events :"+tmp.size());
-           // user.addEvents(tmp);
             tmp.addAll(user.getEvents());
             user.setEvents(tmp);
             appUserRepository.save(user);

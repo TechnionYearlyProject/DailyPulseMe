@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8c7df110-e455-4a51-b219-ca4603268795" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/package-lock.json" afterPath="$PROJECT_DIR$/../FrontEnd/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/../FrontEnd/package.json" afterPath="$PROJECT_DIR$/../FrontEnd/package.json" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/src/components/eventsWrapper.vue" afterPath="$PROJECT_DIR$/../FrontEnd/src/components/eventsWrapper.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +19,7 @@
       <file leaf-file-name="GoogleCalendar.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="17">
               <caret line="37" column="88" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="88" />
               <folding />
             </state>
@@ -66,24 +66,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
-              <folding>
-                <element signature="e#7746#7753#0" expanded="true" />
-                <element signature="e#7799#7806#0" expanded="true" />
-                <element signature="e#10429#10430#0" expanded="true" />
-                <element signature="e#10502#10503#0" expanded="true" />
-                <element signature="e#11369#11376#0" expanded="true" />
-                <element signature="e#15855#15856#0" expanded="true" />
-                <element signature="e#15912#15913#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
@@ -107,8 +89,8 @@
       <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="92" column="40" lean-forward="false" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
+            <state relative-caret-position="-242">
+              <caret line="80" column="30" lean-forward="false" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
               <folding>
                 <element signature="e#5658#5659#0" expanded="true" />
                 <element signature="e#5724#5725#0" expanded="true" />
@@ -129,6 +111,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2211">
+              <caret line="306" column="52" lean-forward="false" selection-start-line="306" selection-start-column="52" selection-end-line="306" selection-end-column="52" />
+              <folding>
+                <element signature="e#7803#7810#0" expanded="true" />
+                <element signature="e#7856#7863#0" expanded="true" />
+                <element signature="e#11391#11398#0" expanded="true" />
+                <element signature="e#15702#15703#0" expanded="true" />
+                <element signature="e#15759#15760#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -142,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>twostr</find>
       <find>isCo</find>
       <find>==&quot;&quot;</find>
       <find>client</find>
@@ -169,9 +166,10 @@
       <find>the http response is</find>
       <find>size i</find>
       <find>subject :</find>
-      <find>getevents</find>
       <find>get</find>
       <find>getEvents</find>
+      <find>getevents</find>
+      <find>getEventsBetweenInterval</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\USER\Desktop\dialyPulseMe\Developer\DailyPulseMe\BackEnd-2\src\main\java\backend\security</dir>
@@ -629,7 +627,7 @@
       <workItem from="1526975576903" duration="6906000" />
       <workItem from="1527080353940" duration="8074000" />
       <workItem from="1527148684081" duration="3755000" />
-      <workItem from="1527176658530" duration="3873000" />
+      <workItem from="1527176658530" duration="5913000" />
     </task>
     <servers />
   </component>
@@ -666,7 +664,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152139000" />
+    <option name="totallyTimeSpent" value="154179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -730,13 +728,11 @@
         <state relative-caret-position="3689">
           <caret line="257" column="40" lean-forward="false" selection-start-line="257" selection-start-column="40" selection-end-line="257" selection-end-column="40" />
           <folding>
-            <element signature="e#7746#7753#0" expanded="true" />
-            <element signature="e#7799#7806#0" expanded="true" />
-            <element signature="e#10429#10430#0" expanded="true" />
-            <element signature="e#10502#10503#0" expanded="true" />
-            <element signature="e#11369#11376#0" expanded="true" />
-            <element signature="e#15855#15856#0" expanded="true" />
-            <element signature="e#15912#15913#0" expanded="true" />
+            <element signature="e#7803#7810#0" expanded="true" />
+            <element signature="e#7856#7863#0" expanded="true" />
+            <element signature="e#11391#11398#0" expanded="true" />
+            <element signature="e#15702#15703#0" expanded="true" />
+            <element signature="e#15759#15760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -813,13 +809,11 @@
         <state relative-caret-position="3689">
           <caret line="257" column="40" lean-forward="false" selection-start-line="257" selection-start-column="40" selection-end-line="257" selection-end-column="40" />
           <folding>
-            <element signature="e#7746#7753#0" expanded="true" />
-            <element signature="e#7799#7806#0" expanded="true" />
-            <element signature="e#10429#10430#0" expanded="true" />
-            <element signature="e#10502#10503#0" expanded="true" />
-            <element signature="e#11369#11376#0" expanded="true" />
-            <element signature="e#15855#15856#0" expanded="true" />
-            <element signature="e#15912#15913#0" expanded="true" />
+            <element signature="e#7803#7810#0" expanded="true" />
+            <element signature="e#7856#7863#0" expanded="true" />
+            <element signature="e#11391#11398#0" expanded="true" />
+            <element signature="e#15702#15703#0" expanded="true" />
+            <element signature="e#15759#15760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1070,19 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="92" column="40" lean-forward="false" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
-          <folding>
-            <element signature="e#5658#5659#0" expanded="true" />
-            <element signature="e#5724#5725#0" expanded="true" />
-            <element signature="e#5777#5778#0" expanded="true" />
-            <element signature="e#5832#5833#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
@@ -1093,7 +1074,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="17">
           <caret line="37" column="88" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="88" />
           <folding />
         </state>
@@ -1123,18 +1104,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-242">
+          <caret line="80" column="30" lean-forward="false" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+          <folding>
+            <element signature="e#5658#5659#0" expanded="true" />
+            <element signature="e#5724#5725#0" expanded="true" />
+            <element signature="e#5777#5778#0" expanded="true" />
+            <element signature="e#5832#5833#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="161" column="5" lean-forward="true" selection-start-line="161" selection-start-column="5" selection-end-line="161" selection-end-column="5" />
+        <state relative-caret-position="2211">
+          <caret line="306" column="52" lean-forward="false" selection-start-line="306" selection-start-column="52" selection-end-line="306" selection-end-column="52" />
           <folding>
-            <element signature="e#7746#7753#0" expanded="true" />
-            <element signature="e#7799#7806#0" expanded="true" />
-            <element signature="e#10429#10430#0" expanded="true" />
-            <element signature="e#10502#10503#0" expanded="true" />
-            <element signature="e#11369#11376#0" expanded="true" />
-            <element signature="e#15855#15856#0" expanded="true" />
-            <element signature="e#15912#15913#0" expanded="true" />
+            <element signature="e#7803#7810#0" expanded="true" />
+            <element signature="e#7856#7863#0" expanded="true" />
+            <element signature="e#11391#11398#0" expanded="true" />
+            <element signature="e#15702#15703#0" expanded="true" />
+            <element signature="e#15759#15760#0" expanded="true" />
           </folding>
         </state>
       </provider>

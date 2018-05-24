@@ -23,7 +23,7 @@ export default {
       },
       getEvents () {
            this.$http.post('http://localhost:8081/users/getAllEventsWhichHavePulses',{
-             "first": 151611120000,
+             "first": '0',
              "second": 151639920000000
            }
             ,{headers: {'Content-Type': 'application/json',
