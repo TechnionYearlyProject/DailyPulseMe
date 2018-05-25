@@ -226,9 +226,16 @@ public class UserController {
                     tmp.add(event);
                 }
             }
-            return tmp;
+            filter_=tmp;
         }
-        return filter_;
+        return  filter_.stream().sorted(new Comparator<Event>() {
+            @Override
+            public int compare(Event r1, Event r2) {
+                return (r1.getId().compareTo(r2.getId()));
+            }
+
+        }).collect(Collectors.toList());
+
     }
 
     /*
@@ -293,6 +300,9 @@ public class UserController {
                         return (r1.getId().compareTo(r2.getId()));
                     }
                 }).collect(Collectors.toList());
+            }
+            for(Event event : toReturn){
+                System.out.println("here is an event : "+ event.getStartTime());
             }
             return toReturn;
     }
