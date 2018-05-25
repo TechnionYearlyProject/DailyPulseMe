@@ -51,6 +51,9 @@ export default {
                }
                for (var i = 0; i < arrayLength; i++) {
                    var evnt = eventsArr[i];
+				   if(evnt.tag == null){
+					   evnt.tag = "Rest";
+				   }
                  this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
                }
            })
