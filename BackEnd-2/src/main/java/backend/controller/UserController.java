@@ -267,11 +267,17 @@ public class UserController {
      */
     @PostMapping("/getEventsBetweenInterval")
     public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
-        //System.out.println("in get events time is"+ time.getFirst());
-        getCalendarsEvents(auth);
+
+
+        getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        appUserRepository.save(user);
         List<Event> filter = UserService.getEvents(user,time);
+        appUserRepository.save(user);
+
+        if(time.getFirst().compareTo("0")==0){
+            return user.getEvents();
+        }
+
         if(filter == null){
             return null;
         }
@@ -281,7 +287,6 @@ public class UserController {
                 return (r1.getId().compareTo(r2.getId()));
             }
         }).collect(Collectors.toList());
-
         return toReturn;
     }
 
