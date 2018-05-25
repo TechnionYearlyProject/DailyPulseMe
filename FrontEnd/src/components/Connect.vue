@@ -1,7 +1,7 @@
 <template>
   <div v-cloak>
   <div  class="hello" style="margin-top:10px;" >
-      <b-btn v-b-toggle.collapse1 variant="primary" v-b-popover.hover="'In order to start using DailyPulseYou need to configure you fitness tracker and your google account'">Configure your tracker!</b-btn>
+      <b-btn v-b-toggle.collapse1 variant="primary" v-b-popover.hover="'In order to start using DailyPulseYou need to configure your fitness tracker and your google account'">Configure your tracker!</b-btn>
    <b-collapse id="collapse1" style="  margin-top:10px; ">
        <b-btn v-b-toggle.collapse1 variant="success" v-on:click="microsoftfit">Microsoft</b-btn>
     <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="googlefit" >Google</b-btn>

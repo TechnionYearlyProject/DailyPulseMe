@@ -20,7 +20,7 @@
     </b-modal>
       <tab-content title="Calendar Account"
                    :before-change="validateAsync">
-                   <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="microsoft">Microsoft</b-btn>
+    <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="microsoft">Microsoft</b-btn>
     <b-btn v-b-toggle.collapse1 variant="warning" v-on:click="google" >Google</b-btn>
       </tab-content>
       <tab-content title="Fitbit Account"

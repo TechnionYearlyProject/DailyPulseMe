@@ -51,9 +51,11 @@ public class UserController {
     Constructor which gets two params , the appUserRepository and  bCryptPasswordEncoder
      */
     public UserController(UserRepository applicationUserRepository,
+                          SubscribedRepository subscribedRepository,
                           BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.appUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.subscribedUserRepository = subscribedRepository;
     }
 
 
@@ -63,7 +65,7 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(@RequestBody AppUser user) {
+    public boolean signUp( AppUser user) {
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
@@ -377,10 +379,12 @@ public class UserController {
     @PostMapping("unsubscribe")
     public boolean unsubscribeUser(Authentication auth){
         AppUser user = appUserRepository.findByUsername(auth.getName());
+        //Subscription.email = AppUser.username
         if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
             //user already unsubscribed
             return false;
         }
+        //Subscription.email = AppUser.username
         subscribedUserRepository.deleteByEmail(user.getUsername());
         return true;
     }
@@ -396,5 +400,16 @@ public class UserController {
         ArrayList<Subscription> subcribers = new ArrayList<>();
         subcribers.addAll(subscribedUserRepository.findAll());
         EmailSender.sendMail(subcribers);
+    }
+    @GetMapping("/isSubscribed")
+    public boolean isUserSubscribed(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(subscribedUserRepository.findByEmail(user.getUsername()) != null){
+            //user is subscribed
+            return true;
+        } else {
+            //user is not subscribed
+            return false;
+        }
     }
 }

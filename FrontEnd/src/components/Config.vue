@@ -1,26 +1,40 @@
 <template>
-  <div>
+	<div>
     <div class="hello">
-      <p></p>
-
-  <h2 style="font-family: 'Muli', sans-serif;">Configure Page <b-badge>New</b-badge></h2>    </div>
-  <p></p>
-  <Connect v-if="toshow"></Connect>
-<div class="Change Password" style="margin-top:10px;">
-   <div style ="width:25%; margin:auto">
-     <b-card  bg-variant="dark" text-variant="white" title="Enter Your Desired Password And Confirm It">
-       <form class="form-signin" @submit.prevent="changePass">
-       <p v-if="toggleMsg" style="color:red"> {{msg}}</p>
-       <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required style="text-align: center;">
-       <p></p>
-       <input v-model="rePassword" type="password" id="inputPasswordAgain" class="form-control" placeholder="Password Again" required style="text-align: center;">
-       <p></p>
-       <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Change Password</button>
-     </form>
-     </b-card>
-     
-   </div>
-</div>  
+		<p></p>
+		<h2 style="font-family: 'Muli', sans-serif;">Configure Page <b-badge>New</b-badge></h2>    </div>
+		<p></p>
+		<Connect v-if="toshow"></Connect>
+	<div class="Change Password" style="margin-top:10px;">
+		<div style ="width:25%; margin:auto">
+			<b-card  bg-variant="dark" text-variant="white" title="Enter Your Desired Password And Confirm It">
+			<form class="form-signin" @submit.prevent="changePass">
+			<p v-if="toggleMsg" style="color:red"> {{msg}}</p>
+			<input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required style="text-align: center;">
+			<p></p>
+			<input v-model="rePassword" type="password" id="inputPasswordAgain" class="form-control" placeholder="Password Again" required style="text-align: center;">
+			<p></p>
+			<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Change Password</button>
+			</form>
+			</b-card>
+		</div>
+	</div>
+	<div style ="width:30%; margin:10px auto;">
+		<b-card  bg-variant="dark" text-variant="white" title="Stay alerted! Subscribe to our weekly email updates and receive weekly summaries of your activities!">
+		<template v-if="subscribed === false">
+			<div style ="width:25%; margin:5px auto;">
+				<b-button variant="warning" v-on:click="subscribe" v-b-popover.hover="'Subscribe to our weekly email updates'">Subscribe</b-button>
+			</div>
+			<p class="text-secondary">You are currently not subscribed. What are you waiting for?</p> 
+		</template>
+		<template v-else>
+			<div style ="width:25%; margin:5px auto;">
+				<b-button variant="warning" v-on:click="unsubscribe" v-b-popover.hover="'Unsubscribe from our weekly email updates!'">Unsubscribe</b-button>
+			</div>
+			<p class="text-secondary">You are currently subscribed. Wise choice.</p> 
+		</template>
+		</b-card>
+	</div>
 </div>
 </template>
 <script>
@@ -34,12 +48,22 @@ export default {
       rePassword : '',
       toggleMsg : false,
       msg : '',
-      toshow: false
+      toshow: false,
+	  subscribed: false
     }
   },
   
     created: function () {
-      this.msg = ''
+	  this.$http.get('http://localhost:8081/users/isSubscribed',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}    
+         }).then((res) => {
+		 if(res.body == true){
+			this.subscribed = true;
+			} else {
+			this.subscribed = false;
+			}
+		 })
+	  this.msg = ''
       this.toggleMsg = false
       this.$http.get('http://localhost:8081/users/verifyAccessToken'
              ,{headers: {'Content-Type': 'application/json',
@@ -66,7 +90,7 @@ export default {
         this.msg = 'Password Length Must Be At Least 6'
       } else {
         let url = 'http://localhost:8081/users/changepassword'
-        this.$http.post(url,password, {headers: {'Content-Type': 'application/json',
+        this.$http.post(url,this.password, {headers: {'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')}}).then((res) => {
           this.msg = 'Password Changed Succefully'
         }, (err) => {
@@ -77,8 +101,24 @@ export default {
     googlefit() {
       let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id= 187665345194-0d324v8gel15pj9jh9fecmqknmk4k59k.apps.googleusercontent.com'
       location.assign(url);
-    }
+    },
+	subscribe() {
+		let url = 'http://localhost:8081/users/subscribe';
+		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}    
+         });
+		this.subscribed = true;			
+	},
+	unsubscribe(){
+		let r = confirm('Are you sure you want to unsubscribe from our weekly emails?');
+		if(r == false) {
+			return;
+		}
+		let url = 'http://localhost:8081/users/unsubscribe';
+		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
+		'Authorization': localStorage.getItem('token')}});
+	  	this.subscribed = false;
+	}
   }
 }
-
 </script>

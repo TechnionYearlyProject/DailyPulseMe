@@ -36,6 +36,8 @@ public class GoogleCallParser implements CallParser{
     @Override
     public boolean verifyAndRefresh(AppUser user) {
         String refreshed;
+        System.out.println(user.getAccessToken()+"  xxxxxxxxxx");
+
         HttpGet get = new HttpGet("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + user.getAccessToken());
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = null;
