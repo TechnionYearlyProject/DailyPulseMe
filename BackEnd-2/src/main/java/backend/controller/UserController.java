@@ -273,21 +273,28 @@ public class UserController {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
-
+        List<Event> toReturn=new ArrayList<Event>();
         if(time.getFirst().compareTo("0")==0){
-            return user.getEvents();
-        }
+            toReturn = user.getEvents().stream().sorted(new Comparator<Event>() {
+                @Override
+                public int compare(Event r1, Event r2) {
+                    return (r1.getId().compareTo(r2.getId()));
+                }
 
-        if(filter == null){
-            return null;
+            }).collect(Collectors.toList());
         }
-        List<Event> toReturn = filter.stream().sorted(new Comparator<Event>() {
-            @Override
-            public int compare(Event r1, Event r2) {
-                return (r1.getId().compareTo(r2.getId()));
+        else{
+                if (filter == null) {
+                    return null;
+                }
+                    toReturn = filter.stream().sorted(new Comparator<Event>() {
+                    @Override
+                    public int compare(Event r1, Event r2) {
+                        return (r1.getId().compareTo(r2.getId()));
+                    }
+                }).collect(Collectors.toList());
             }
-        }).collect(Collectors.toList());
-        return toReturn;
+            return toReturn;
     }
 
     @RequestMapping("/GoogleCalendarEvents")

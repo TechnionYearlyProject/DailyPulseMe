@@ -92,7 +92,6 @@ public class UserService {
 
         for (Event event : filter) {//for all the events we should get the pulses
 
-            System.out.println("Event name is : "+ event.getName());
 
             if(user.getAccessToken()==null || user.getAccessToken().compareTo("")==0 ||
                     user.getAccessToken().compareTo(" ")==0){ //the user is not connected to google API
@@ -111,7 +110,7 @@ public class UserService {
                 event.setAverage();
             }
         }
-        System.out.println("Filter size: "+filter.size());
+
         return filter;
     }
 
