@@ -121,10 +121,10 @@ export default {
                           if(rate <= 70){
                             return "Normal activity, heart rate indicates you're in above average shape."
                           }
-                          if(rate <= 75){
+                          if(rate <= 90){
                             return "Normal activity, heart rate indicates you're in average shape."
                           }
-                          if(rate <= 81){
+                          if(rate <= 100){
                             return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
                           }
                           return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
