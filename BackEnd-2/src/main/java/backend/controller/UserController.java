@@ -265,7 +265,6 @@ public class UserController {
 
 
     /*
-    @author :Anadil
      Events which were taken place between time1 until time2 (including events which
     ,and each event which will be returned through the list , will includes it's pulses
      @param auth , which by it the user will be retrieved

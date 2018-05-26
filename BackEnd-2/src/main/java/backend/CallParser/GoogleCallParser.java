@@ -90,7 +90,6 @@ public class GoogleCallParser implements CallParser{
      */
     @Override
     public String refreshToken(AppUser user) {
-        int ACCESS_START = 15;
         String refresh = user.getRefreshToken();
         String access = "error";
 
@@ -101,7 +100,7 @@ public class GoogleCallParser implements CallParser{
         try {
 
             /* building the request based on the way that Google defined it ,using our client id, and the refresh token */
-            str = new StringEntity("895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com&" +
+            str = new StringEntity("client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com&" +
                     "client_secret=FGLsX3PBtIHEypj88z7UkI6R&" +
                     "refresh_token="+refresh+"&" +
                     "grant_type=refresh_token");
@@ -118,7 +117,7 @@ public class GoogleCallParser implements CallParser{
             response = client.execute(post);
 
             if (response.getStatusLine().getStatusCode() != 200) { //if the respond isn't OK , that means Refresh token expired
-                System.out.println("Status code: " + response);
+
                 return "Refresh token expired";
             }
 
@@ -152,6 +151,7 @@ public class GoogleCallParser implements CallParser{
         }
         return access;
     }
+
 
 
 

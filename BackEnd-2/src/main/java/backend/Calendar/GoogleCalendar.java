@@ -57,7 +57,7 @@ public class GoogleCalendar {
                 if (response.getStatusLine().getStatusCode() != 200) {
                 accessToken = user.getCallParser().refreshToken(user);
                 if (accessToken.compareTo("Refresh token expired") == 0) {
-                    System.out.println("step66");
+                    System.out.println("step66"); //TODO : LOGGER
                     throw new RefreshTokenExpiredException();
                 } else {
                     System.out.println("step555");
