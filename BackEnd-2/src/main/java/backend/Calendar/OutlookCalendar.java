@@ -1,5 +1,6 @@
 package backend.Calendar;
 
+import backend.NLP.NLP;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
@@ -87,6 +88,10 @@ public class OutlookCalendar {
                 event.setEndTime(Long.toString(RFC5545ToLong(end)));
                 event.setPulses(new ArrayList<Pulse>());
                 events.add(event);
+
+
+                //Setting the event tag by calling NLP
+                event.setTag(NLP.RunNLP(event.getName()));
 
             }
         }

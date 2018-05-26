@@ -1,5 +1,6 @@
 package backend;
 
+import backend.NLP.NLP;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ public class DailyPulseApp {
         SimpleFormatter formatter = new SimpleFormatter();
         fh.setFormatter(formatter);
         SpringApplication.run(DailyPulseApp.class,args);
+        NLP.TestingRunNLP();
     }
 
 }
