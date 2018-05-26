@@ -3,6 +3,7 @@ package backend.controller;
 import backend.CallParser.FitBitCallParser;
 import backend.CallParser.GoogleCallParser;
 import backend.DailyPulseApp;
+import backend.NLP.NLP;
 import backend.emailSend.EmailSender;
 import backend.entity.AppUser;
 import backend.entity.Event;
@@ -355,6 +356,7 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
+                    event.setTag(NLP.RunNLP(event.getName()));
                     tmp.add(event);
                 }
                 isNewEvent=true;

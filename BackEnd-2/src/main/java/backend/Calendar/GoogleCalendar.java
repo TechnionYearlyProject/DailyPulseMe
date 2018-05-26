@@ -101,7 +101,7 @@ public class GoogleCalendar {
                 events.add(event);
 
                 //Setting the event tag by calling NLP
-                event.setTag(NLP.RunNLP(event.getName()));
+            //    event.setTag(NLP.RunNLP(event.getName()));
 
             }
 
