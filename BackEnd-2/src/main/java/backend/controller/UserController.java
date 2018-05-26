@@ -15,6 +15,7 @@ import backend.DailyPulseApp;
 import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleSignIn.SignUpGoogle;
+import backend.helperClasses.KindOfEvent;
 import backend.helperClasses.TwoStrings;
 import backend.repository.SubscribedRepository;
 import backend.repository.UserRepository;
@@ -38,6 +39,9 @@ import static backend.helperClasses.BandType.FITBIT_BAND;
 import static backend.helperClasses.BandType.GOOGLEFIT_BAND;
 import static backend.Calendar.AuxMethods.IsConnectedToGoogleCalendar;
 import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
+import static backend.helperClasses.KindOfEvent.OUR_EVENT;
+import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
 
 
 @RestController
@@ -186,6 +190,7 @@ public class UserController {
      */
     @PostMapping("/addEvent")
     public boolean addEvent(Authentication auth, @RequestBody Event event) {
+        event.setKindOfEvent(OUR_EVENT);
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(!UserService.addEvent(user,event)){
             return false;
@@ -206,7 +211,6 @@ public class UserController {
 
 
     /*
-     @auther :Anadil
      Getting Events between Interval Time and with pulses between Interval
      in case time ='0' it means return all and dont care about the given timeInterval
      */
@@ -258,6 +262,7 @@ public class UserController {
     * */
     @GetMapping("/getEvents")
     public List<Event> getEvents(Authentication auth) {
+        System.out.println("333333333333333333333");
         TwoStrings time=new TwoStrings();
         time.setFirst("0");
         return getEventsBetweenInterval(auth,time);
@@ -274,7 +279,7 @@ public class UserController {
     @PostMapping("/getEventsBetweenInterval")
     public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
 
-
+        System.out.println("2222222222222222222222222");
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
@@ -329,7 +334,7 @@ public class UserController {
      */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
-
+        System.out.println("11111111111111111111");
         ArrayList<Event> tmp_=null;
         ArrayList<Event> tmp=new ArrayList<Event>();
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -341,11 +346,8 @@ public class UserController {
                 tmp_.addAll( OutlookCalendar.getEvents(user));
             }
 
-           // System.out.println("now the refreshing part");
-            //Refreshing
             boolean isNewEvent=true;
             for(Event event : tmp_){
-
                 for (Event userEvent : user.getEvents()){
                     if(userEvent.getId().compareTo(event.getId())==0  && userEvent.getEndTime().compareTo(event.getEndTime())==0){
                         isNewEvent=false;
@@ -357,12 +359,36 @@ public class UserController {
                 }
                 isNewEvent=true;
             }
-            tmp.addAll(user.getEvents());
+            ////// mohamad abd code
+            boolean isconnectedToGoogle=IsConnectedToGoogleCalendar(user);
+            boolean isconnectedToOutlook=IsConnectedToOutlookCalendar(user);
+            List<Event> userEvents=user.getEvents();
+            List<Event> userEventsToremove=new ArrayList<>();
+            boolean eventDeleted=true;
+            for (Event userEvent :userEvents){// check if the event has been deleted
+              if((userEvent.getKindOfEvent()==GOOGLE_EVENT && isconnectedToGoogle) ||
+                      (userEvent.getKindOfEvent()==OUTLOOK_EVENT && isconnectedToOutlook)){
+                  for(Event event : tmp_){
+                      if(userEvent.getId().equals(event.getId()) && userEvent.getEndTime().equals(event.getEndTime())){
+                          eventDeleted=false;
+                          break;
+                      }
+                  }
+                  if(eventDeleted){
+                      userEventsToremove.add(userEvent);
+                  }
+              }
+                eventDeleted=true;
+            }
+            ///////// end of mohamad abd code
+              for(Event j : userEventsToremove){
+                userEvents.remove(j);
+             }
+            tmp.addAll(userEvents);
             user.setEvents(tmp);
             appUserRepository.save(user);
-           // System.out.println("done");
         }catch (Exception e){
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
         return tmp;
     }

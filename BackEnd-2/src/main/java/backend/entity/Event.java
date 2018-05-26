@@ -1,5 +1,7 @@
 package backend.entity;
 
+import backend.helperClasses.KindOfEvent;
+
 import java.util.List;
 
 public class Event {
@@ -10,11 +12,19 @@ public class Event {
     private String endTime;
     private String description;
     private EventTag tag;
-
-
+    private KindOfEvent KindOfEvent;
     private int pulseAverage;
     private List<Pulse> pulses;
     // private PulseRepository pulses;
+
+
+    public KindOfEvent getKindOfEvent() {
+        return KindOfEvent;
+    }
+
+    public void setKindOfEvent(KindOfEvent kindOfEvent) {
+        KindOfEvent = kindOfEvent;
+    }
 
     @Override
     public boolean equals(Object other) {

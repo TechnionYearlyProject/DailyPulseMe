@@ -5,6 +5,7 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
+import backend.helperClasses.KindOfEvent;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
@@ -23,6 +24,7 @@ import java.util.regex.Pattern;
 
 import static backend.Calendar.AuxMethods.RFC5545ToLong;
 import static backend.Calendar.AuxMethods.retrieveFeidInJson;
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
 
 public class GoogleCalendar {
 
@@ -95,6 +97,7 @@ public class GoogleCalendar {
               //  event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setEndTime(Long.toString(RFC5545ToLong(end)));
                 event.setPulses(new ArrayList<Pulse>());
+                event.setKindOfEvent(GOOGLE_EVENT);
                 events.add(event);
 
                 //Setting the event tag by calling NLP

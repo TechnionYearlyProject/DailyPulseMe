@@ -2,40 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8933eb7-9615-4dec-a918-954895ab9412" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/backend/controller/UserControllerTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/backend/helperClasses/KindOfEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyPulse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DailyPulse.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/CallParser/GoogleCallParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/CallParser/GoogleCallParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/helperClasses/TwoStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/helperClasses/TwoStrings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/entity/AppUserTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/entity/EventTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/googleFitApi/GoogleCallParserTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/backend/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/controller/controllerTestSample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/entity/AppUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/entity/EventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/googleFitApi/GoogleCallParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/backend/service/UserServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/FitBitCallParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/CallParser/FitBitCallParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/GoogleCallParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/CallParser/GoogleCallParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/entity/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/GoogleCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Calendar/GoogleCalendar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/OutlookCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Calendar/OutlookCalendar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/googleSignIn/SignUpGoogle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/googleSignIn/SignUpGoogle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/TwoStrings.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/helperClasses/TwoStrings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/controller/controllerTestSample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/googleFitApi/GoogleCallParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/CallParser/GoogleCallParserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/entity/Event.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FrontEnd/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FrontEnd/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,31 +28,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="196" column="5" lean-forward="true" selection-start-line="196" selection-start-column="5" selection-end-line="196" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="326" column="11" selection-start-line="326" selection-start-column="5" selection-end-line="326" selection-end-column="11" />
+            <state relative-caret-position="75">
+              <caret line="319" column="40" selection-start-line="319" selection-start-column="31" selection-end-line="319" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>isThereOneCalendar</find>
       <find>autho</find>
       <find>author</find>
+      <find>FITBIT_BAND</find>
+      <find>GOOGLEFIT_BAND</find>
+      <find>activeBandType</find>
+      <find>now we have google Calendar events</find>
+      <find>Pre-flight</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -80,8 +68,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/helperClasses/KindOfEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/entity/Event.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/NLP/NLP.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -100,6 +93,12 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1385" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -123,142 +122,7 @@
               <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="CallParser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="googleSignIn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="helperClasses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="NLP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Outlook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="CallParser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -267,6 +131,17 @@
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/HW2SD/sdhw2/base" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -280,7 +155,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest">
+  <component name="RunManager" selected="Spring Boot.DailyPulseApp">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -340,6 +215,16 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="DailyPulseApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="backend.DailyPulseApp" />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -365,11 +250,13 @@
     <list>
       <item itemvalue="JUnit.All in DailyPulse" />
       <item itemvalue="JUnit.UserControllerTest" />
+      <item itemvalue="Spring Boot.DailyPulseApp" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserControllerTest" />
+        <item itemvalue="Spring Boot.DailyPulseApp" />
         <item itemvalue="JUnit.All in DailyPulse" />
+        <item itemvalue="JUnit.UserControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -383,7 +270,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1527337369064</updated>
-      <workItem from="1527337394437" duration="839000" />
+      <workItem from="1527337394437" duration="10836000" />
     </task>
     <servers />
   </component>
@@ -394,46 +281,60 @@
     <history-entry file="UserControllerTest - 2018.05.26 at 15h 34m 59s.xml">
       <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserControllerTest - 2018.05.26 at 15h 40m 34s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserControllerTest - 2018.05.26 at 17h 31m 57s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserControllerTest - 2018.05.26 at 17h 32m 13s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.26 at 19h 13m 25s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.05.26 at 19h 14m 32s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="839000" />
+    <option name="totallyTimeSpent" value="10836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info anchor="right" id="Database" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="bottom" id="Java Enterprise" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32944608" />
-      <window_info anchor="bottom" id="Spring" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24949698" />
-      <window_info anchor="right" id="Bean Validation" />
-      <window_info id="Web" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="0" />
+      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Designer" order="0" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="13" />
+      <window_info anchor="bottom" id="Messages" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="1" />
+      <window_info anchor="bottom" id="Java Enterprise" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="5" />
+      <window_info anchor="bottom" id="Run" order="9" weight="0.32944608" />
+      <window_info anchor="bottom" id="Spring" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24949698" />
+      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="7" />
+      <window_info anchor="right" id="Commander" order="7" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,14 +343,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="196" column="5" lean-forward="true" selection-start-line="196" selection-start-column="5" selection-end-line="196" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-289">
@@ -457,17 +356,164 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1564">
+          <caret line="82" column="100" selection-start-line="82" selection-start-column="100" selection-end-line="82" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/CallParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/FitBitCallParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/helperClasses/BandType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#180#181#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/helperClasses/KindOfEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#207#208#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-747">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/EventTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/DailyPulseMeException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="91" column="50" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/repository/EventRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/repository/SubscribedRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/repository/TokenRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/AuxMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="66" column="16" lean-forward="true" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/NLP/NLP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="63" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1168">
+          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/GoogleCallParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="175" column="30" selection-start-line="175" selection-start-column="24" selection-end-line="175" selection-end-column="30" />
+        <state relative-caret-position="113">
+          <caret line="169" lean-forward="true" selection-start-line="169" selection-end-line="169" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="326" column="11" selection-start-line="326" selection-start-column="5" selection-end-line="326" selection-end-column="11" />
+        <state relative-caret-position="75">
+          <caret line="319" column="40" selection-start-line="319" selection-start-column="31" selection-end-line="319" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

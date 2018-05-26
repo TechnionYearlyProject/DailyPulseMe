@@ -23,6 +23,8 @@ import java.util.regex.Pattern;
 
 import static backend.Calendar.AuxMethods.RFC5545ToLong;
 import static backend.Calendar.AuxMethods.retrieveFeidInJson;
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
+import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
 
 
 /*
@@ -87,6 +89,7 @@ public class OutlookCalendar {
           //      event.setStartTime(Long.toString(RFC5545ToLong(start)));
                 event.setEndTime(Long.toString(RFC5545ToLong(end)));
                 event.setPulses(new ArrayList<Pulse>());
+                event.setKindOfEvent(OUTLOOK_EVENT);
                 events.add(event);
 
 
