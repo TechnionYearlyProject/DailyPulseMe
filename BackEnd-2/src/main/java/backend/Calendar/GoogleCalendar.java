@@ -100,13 +100,19 @@ public class GoogleCalendar {
                 event.setKindOfEvent(GOOGLE_EVENT);
                 events.add(event);
 
+
+                Boolean flag=false;
                     ArrayList<Event> userEvents=getEvents(user);
                     for(Event oneEvent: userEvents){
                         if(oneEvent.getStartTime()==Long.toString(RFC5545ToLong(start))){
-                            continue;
-                        }else{
-                            event.setTag(NLP.RunNLP(event.getName()));
+                            event.setTag(oneEvent.getTag());
+                            flag=true;
+                            break;
                         }
+
+                    }
+                    if(flag == false){
+                        event.setTag(NLP.RunNLP(event.getName()));
 
                     }
                 //Setting the event tag by calling NLP
