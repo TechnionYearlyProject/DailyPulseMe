@@ -11,7 +11,7 @@
                         color="#007bff"
                         title="DailyPulse"
                         subtitle="A few steps are required.">
-                        <div class="loader" v-if="loadingWizard"></div>       
+                        <div class="loader" v-if="loadingWizard"></div>
        <b-modal ref="myModalRef" hide-footer title="You Must Connect!" style="color:black;">
       <div class="d-block text-center">
         <h3>Please connect to a calendar account!</h3>
@@ -26,7 +26,7 @@
           <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>
       </tab-content> -->
       <tab-content title="Fitbit Account">
-        <b-btn v-b-toggle.collapse1 variant="primary" >Fitbit</b-btn>
+        <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit" >Fitbit</b-btn>
       </tab-content>
       <tab-content title="Last step"> <div style="color:black;">
         You can now start using DailyPulse! </div>
@@ -68,13 +68,18 @@ export default {
               this.isAccount = res.body
             })
         },
+        fitbit(){
+          let url = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22CKWG&redirect_uri=http%3A%2F%2Fwww.cs.technion.ac.il%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800'
+         var win = window.open(url, "windowname1", 'width=800, height=600');
+
+       },
        microsoft(){
          let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=http://localhost:8080/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
-        var win = window.open(url, "windowname1", 'width=800, height=600'); 
-      
+        var win = window.open(url, "windowname1", 'width=800, height=600');
+
        },google(){
       let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
-      var win = window.open(url, "windowname1", 'width=800, height=600'); 
+      var win = window.open(url, "windowname1", 'width=800, height=600');
        }, setLoading: function(value) {
             this.loadingWizard = value
         },
@@ -97,12 +102,12 @@ export default {
                   reject('You must connect to Connect for Google Calendar')
               }else{
                resolve(true)
-              }   
+              }
             }, 1000)
           })
          },
        }
-      }   
+      }
 </script>
 <!-- validateAsync() {
           return new Promise((resolve, reject) => {
@@ -113,7 +118,7 @@ export default {
               }else{
                this.count = 5
                resolve(true)
-              }   
+              }
             }, 1000)
           })
          } -->

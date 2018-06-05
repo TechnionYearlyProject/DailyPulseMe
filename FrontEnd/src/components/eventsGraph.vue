@@ -60,15 +60,15 @@ export default {
        }
  },
   mounted () {
-   
+
     this.renderChart({
       labels: this.datesList,
       datasets: [
         {
         //  color: 'FF3333',
             label: 'Events',
-          //  borderColor: '#FC2525', 
-            pointBackgroundColor: 'black', 
+          //  borderColor: '#FC2525',
+            pointBackgroundColor: 'black',
 
             pointBorderColor: 'black',
         //  borderColor: ' #FFFFFF',
@@ -97,7 +97,7 @@ export default {
     var label = this.data.labels[firstPoint._index];
     var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
     var location = "eventGraph?id=" + value.id;
-     window.open(location, 'event graph', "height=200px,width=200px");
+     window.open(location, 'event graph', "height=600px,width=700px");
     }
        }
       , responsive: true, maintainAspectRatio: false,fontColor: '#FFFFFF',
@@ -164,27 +164,27 @@ export default {
                             return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
                           }
                           return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
-                        }				  
+                        }
                       };
                       function sportHeartStats(rate, age){
-                       maxRate = 220 - age;
+                       var maxRate = 220 - age;
                         if(rate < 0.5*maxRate){
                           return "Heart rate is too low, we recommend you to be more active in this session."
                         }
                         if(rate >=0.5*maxRate && rate < 0.6*maxRate){
-                          return "This activity is great for low intensity sports and is recommended to do often to generally stay in shape."
+                          return "This activity is great is recommended to do often to generally stay in shape."
                         }
                         if(rate >=0.6*maxRate && rate < 0.7*maxRate){
-                          return "This activity is great for for weight loss and calorie burn, ideal for burning fat with preserving as much muscle mass as possible."
+                          return "This activity is great forburning fat with preserving as much muscle mass as possible."
                         }
                         if(rate >=0.7*maxRate && rate < 0.8*maxRate){
-                          return "This activity is great improving aerobic and cardio fitness, ideal for increasing endurance over long distances."
+                          return "This activity is great improving aerobic and cardio fitness,\n ideal for increasing endurance over long distances."
                         }
                         if(rate >=0.8*maxRate && rate < 0.9*maxRate){
-                          return "This activity is great improving anaerobic fitness and muscle strength, ideal if you are trying to build muscle."
+                          return "This activity is great improving anaerobic fitness and muscle strength,\n ideal if you are trying to build muscle."
                         }
-                        return "This activity is great improving maximum performance and speed, ideal for short bursts of intense activity and shouldn't be done over a long period of time."
-						  
+                        return "This activity is great improving maximum performance and speed,\n ideal for short bursts of intense activity and shouldn't be done over a long period of time."
+
                       };
                       function heartStats(type, rate, age){
                         if(type == "Rest"){

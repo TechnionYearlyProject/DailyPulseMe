@@ -7,7 +7,7 @@
       @day-changed="handleDayChanged"
       @month-changed="handleMonthChanged"
     ></vue-event-calendar>
-        <Spinner size="massive" v-if="!timeup" style="margin-left:70%; margin-top:-40%; ">Loading..</Spinner>
+      <Spinner size="massive" v-if="!timeup" style="margin-left:50%; margin-top:10%; z-index:2; position:absolute;">Loading..</Spinner>
 
 </b-row>
 </b-container>
@@ -87,10 +87,10 @@ export default {
                             return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
                           }
                           return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
-                        }				  
+                        }
                       },
              sportHeartStats(rate, age){
-                       maxRate = 220 - age;
+                       var maxRate = 220 - age;
                         if(rate < 0.5*maxRate){
                           return "Heart rate is too low, we recommend you to be more active in this session."
                         }
@@ -107,26 +107,26 @@ export default {
                           return "This activity is great improving anaerobic fitness and muscle strength, ideal if you are trying to build muscle."
                         }
                         return "This activity is great improving maximum performance and speed, ideal for short bursts of intense activity and shouldn't be done over a long period of time."
-						  
+
                       },
                heartStats(type, rate, age){
                         if(type == "Rest"){
                           return this.restHeartStats(rate, age);
                         }
                         return this.sportHeartStats(rate, age);
-                      },	  
+                      },
     handleDayChanged (data) {
         var p = document.getElementsByClassName("desc")
       var len = p.length
+      if(len == data.events.length){
       for (var i = 0; i < data.events.length; i++) {
         var title = data.events[i].title;
-        var google = 'google.com'
         var location = "eventGraph?id=" + data.events[i].id;
         var str = p[i].innerHTML
-        if(len == data.events.length){
-        p[i].innerHTML =  p[i].innerHTML.split("<br>")[0]
-      console.log( p[i].innerHTML)
-         p[i].innerHTML =  p[i].innerHTML + '<br><a href="'+location+'" target="_blank">'+'Click here to watch graph'+'</a>'
+        console.log(data.events[i])
+         p[i].innerHTML  = 'Average heart rate :' + data.events[i].avg +'. Type: ' + data.events[i].tag + '<br>' +
+         this.heartStats(data.events[i].tag, data.events[i].avg, 30) +
+          '<br><a href="'+ location+'" target="_blank">'+'Click here to watch graph'+'</a>'
        }
       }
     },
@@ -147,14 +147,12 @@ export default {
          var eventsArr = res.body;
            var arrayLength = eventsArr.length;
            for (var i = 0; i < arrayLength; i++) {
-			   if(eventsArr[i].tag == null){
-				   eventsArr[i].tag = "Rest";
-			   }			   
+
 				var date = new Date(parseInt(eventsArr[i].startTime))
-            
+
 				var x = {date:`${date.getFullYear()}/${4 + 1}/${date.getDate()}`,
-                title: eventsArr[i].name,
-				desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag + '. \n' + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0) 
+                title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag,
+				desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag + '.\n' + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0)
                 x.desc = 'NO DATA'
                this.datesList.push(x);
            }
