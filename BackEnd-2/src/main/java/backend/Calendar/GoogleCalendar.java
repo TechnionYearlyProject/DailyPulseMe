@@ -1,70 +1,44 @@
 package backend.Calendar;
 
+import backend.NLP.NLP;
 import backend.entity.AppUser;
 import backend.entity.Event;
+import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
+import backend.helperClasses.KindOfEvent;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static backend.googleFitApi.GoogleCallParser.refreshToken;
+import static backend.Calendar.AuxMethods.RFC5545ToLong;
+import static backend.Calendar.AuxMethods.retrieveFeidInJson;
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
 
-public class GoogleCalendar implements CalendarI {
-
-    /*
-@author :Anadil
-@param String with the format "zzzzz" : "xxxxx",
-@return value : the field value ,eg "zzzzz" : "xxxx" , it will return xxxxx
- */
-    public static String retrieveFeidInJson(String str){
-        System.out.println(str);
-        Pattern pattern= Pattern.compile("( )*(\")(.*)(\")(.*)(: \")(.*)(\")(.)*");
-        Matcher m= pattern.matcher(str);
-        String str_="";
-        if (m.matches()) {
-            str_=m.group(7); //: "zzzzz"
-        }
-        System.out.println(str_);
-        return str_;
-    }
-
-
-    /*
-    @author :Anadil
-    @param : string of RFC5545 timestamp format // example for the format 2018-04-05T16:00:00+03:00
-    @return : the date time in seconds (long)
-     */
-    public  static  long RFC5545ToLong(String str){
-        Pattern pattern= Pattern.compile("(.*)(T)(.*)(\\+|-)(.*)");
-        Matcher m= pattern.matcher(str);
-        String str_="";
-        if (m.matches()) {
-            str_=m.group(1)+" "+m.group(3); //
-        }
-        Timestamp ts = Timestamp.valueOf(str_);
-        return ts.getTime();
-    }
+public class GoogleCalendar {
 
     /*
     @author :Anadil
     @param : the user who his events will be extract from Google Calender
     @return :getting on the events from the User's google Calendar
     */
-    public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
+    static public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
 
-        System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
+       // System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
         ArrayList<Event> events=new ArrayList<>();
-        String accessToken=user.getGoogleFitAccessToken();
-
-
+        String accessToken=user.getAccessToken();
+        System.out.println("Now DailyPulsMe will bring your Google Calendar Events (Google API)");
         /* GET Request Getting Events From Google Calendar
           the primary calendar of the currently logged in user
           */
@@ -80,72 +54,57 @@ public class GoogleCalendar implements CalendarI {
         HttpResponse response = null;
         try {
             response = client.execute(get_);
-            System.out.println("status "+response.getStatusLine().getStatusCode());
+          //  System.out.println("status "+response.getStatusLine().getStatusCode());
             /*if the token is not valid , we generate new one using the refresh and call the function again with the new token*/
-            if (response.getStatusLine().getStatusCode() != 200) {
-                accessToken = refreshToken(user);
+                if (response.getStatusLine().getStatusCode() != 200) {
+                accessToken = user.getCallParser().refreshToken(user);
                 if (accessToken.compareTo("Refresh token expired") == 0) {
-                    System.out.println("step66");
+                    System.out.println("step66"); //TODO : LOGGER
                     throw new RefreshTokenExpiredException();
                 } else {
                     System.out.println("step555");
-                    user.setGoogleFitAccessToken(accessToken);
+                    user.setAccessToken(accessToken);
                     return getEvents(user);
                 }
             }
-            System.out.println("Step33");
-            BufferedReader br = new BufferedReader( //putting the response in buffer
-                    new InputStreamReader(
-                            (response.getEntity().getContent())
-                    )
-            );
-            String line;
-            boolean flag=false,desc=false;
-            Event tmpEvent=null;
-            //now extracting the events from the respond
-            while (null != (line = br.readLine())) {
+            String result= EntityUtils.toString(response.getEntity());
+            //System.out.println("the http response is :"+ result);
+           // System.out.println("lets starts extracting the events");
+            //now extracting the events from the respon
+            /*************************************************************/
 
-                if(line.matches("([ ]*)(\"items\":)(.*)")){
-                    flag=true;
-                    continue;
+            ObjectMapper mapper=new ObjectMapper();
+            //	mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+            JsonNode root = mapper.readTree(result);
+            JsonNode eventsNode = root.path("items");
+            for (JsonNode node : eventsNode) {
+                String subject = node.path("summary").asText();
+                String bodyPreview=node.path("description").asText();
+                String start=node.path("start").path("dateTime").asText();
+                if(start==""){
+                    start=node.path("start").path("date").asText()+"T00:00:00+03:00";
                 }
-                if(flag) {
-                    if(line.matches("([ ]*)(\"summary\":)(.*)")){
-                        tmpEvent=new Event();
-                        System.out.println("event name :"+retrieveFeidInJson(line));
-                        tmpEvent.setName(retrieveFeidInJson(line));
-                        while (null != (line = br.readLine())) {
-                            if(line.matches("([ ]*)(\"description\":)(.*)")){
-                                System.out.println("event desc:"+retrieveFeidInJson(line));
-                                tmpEvent.setDescription(retrieveFeidInJson(line));
-                                desc=true;
-                            }
-                            if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
-                                if(!desc){
-                                    tmpEvent.setDescription("");
-                                    System.out.println("event desc:"+ "empty descp");
-                                }
-                                tmpEvent.setStartTime(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
-                                tmpEvent.setId(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
-                                System.out.println("event StartTime:"+retrieveFeidInJson(line));
-                                break;
-                            }
-
-                        }
-                        while (null != (line = br.readLine())) {
-                            if(line.matches("([ ]*)(\"dateTime\":)(.*)")){
-                                System.out.println("event EndTime:"+retrieveFeidInJson(line));
-                                tmpEvent.setEndTime(Long.toString(RFC5545ToLong(retrieveFeidInJson(line))));
-                                desc=false;
-                                events.add(tmpEvent);
-                                System.out.println(tmpEvent.toString());
-                                break;
-                            }
-                        }
-
-                    }
+                String end=node.path("end").path("dateTime").asText();
+                if(end == ""){
+                    end=node.path("end").path("date").asText()+"T00:00:00+03:00";
                 }
+               // System.out.println("subject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
+                Event event=new Event();
+                event.setStartTime(Long.toString(RFC5545ToLong(start)));
+                event.setId(Long.toString(RFC5545ToLong(start)));
+                event.setName(subject);
+                event.setDescription(bodyPreview);
+              //  event.setStartTime(Long.toString(RFC5545ToLong(start)));
+                event.setEndTime(Long.toString(RFC5545ToLong(end)));
+                event.setPulses(new ArrayList<Pulse>());
+                event.setKindOfEvent(GOOGLE_EVENT);
+                events.add(event);
+
+                //Setting the event tag by calling NLP
+            //    event.setTag(NLP.RunNLP(event.getName()));
+
             }
+
         }
         catch (Exception e){
             System.out.println(e.toString());
@@ -154,6 +113,8 @@ public class GoogleCalendar implements CalendarI {
 
         System.out.println(events
                 .toString());
+        System.out.println("now we have google Calendar events ");
         return  events;
     }
+
 }

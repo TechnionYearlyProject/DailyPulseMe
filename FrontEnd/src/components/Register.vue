@@ -1,6 +1,10 @@
 <template>
-      <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="../images/logo.png" />
+     <div  style="margin-top:50px;">
+        <b-container fluid style="width:350px;">
+ <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
+  width:350px; height:430px; margin-top:-20px; margin-left:-15px;"></div>
+            <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
+
             <form class="form-signin" @submit.prevent="register">
                 <span id="reauth-email" class="reauth-email"></span>
                 <p v-if="err" style="color:red"> {{errMsg}} </p>
@@ -11,6 +15,7 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
                 <!-- <button class="btn btn-lg btn-primary btn-block btn-signin" @click="register" type="submit">Sign Up</button> -->
             </form><!-- /form -->
+          </b-container>
         </div><!-- /card-container -->
 </template>
 <script type="application/json">

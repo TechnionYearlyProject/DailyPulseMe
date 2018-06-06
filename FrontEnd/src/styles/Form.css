@@ -8,6 +8,8 @@
 body, html {
     height: 100%;
     background-repeat: no-repeat;
+      font-family: 'Roboto', Georgia, Times, serif;
+
     /*background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
 }
 
@@ -144,4 +146,17 @@ body, html {
 .forgot-password:active,
 .forgot-password:focus{
     color: rgb(12, 97, 33);
+}
+.pre{
+  color:white;
+  position: absolute;
+  margin-top: 15px;
+  right:30px;
+  letter-spacing: 0px;
+  word-spacing: 1.4px;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  opacity: 0.95;
 }

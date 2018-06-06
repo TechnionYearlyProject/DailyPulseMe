@@ -1,9 +1,9 @@
-
 <script>
-import {Line} from 'vue-chartjs'
+
+import {Line, Bar} from 'vue-chartjs'
 export default {
-  name: 'Events',
-  extends: Line,
+  name: 'eventsGraph',
+  extends: Bar,
   created: function () {
     this.getEvents();
         },
@@ -16,18 +16,23 @@ export default {
       isempty: true
     }
   },
+
   methods:{
     graphClickEvent(event, array){
       var points = this.getElementAtEvent(event)
       },
       getEvents () {
-           this.$http.post('http://localhost:8081/users/getEvents',{
-             "first": 1515103200000,
-             "second": 1516399200000
+           this.$http.post('http://localhost:8081/users/getAllEventsWhichHavePulses',{
+             "first": '0',
+             "second": 151639920000000
            }
             ,{headers: {'Content-Type': 'application/json',
              'Authorization': localStorage.getItem('token'),}
            }).then((res) => {
+
+             var eventsArr = res.body;
+             var arrayLength = eventsArr.length;
+              if(arrayLength==0) location.replace('/addevent');
              // res.body = array of event object
              var eventsArr = res.body;
                var arrayLength = eventsArr.length;
@@ -46,43 +51,43 @@ export default {
                }
                for (var i = 0; i < arrayLength; i++) {
                    var evnt = eventsArr[i];
+				   if(evnt.tag == null){
+					   evnt.tag = "Rest";
+				   }
                  this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
                }
            })
        }
  },
   mounted () {
-    this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-    this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-    this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)')
-    this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
-    this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
-    this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
-    this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.35)');
-    this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
+
     this.renderChart({
       labels: this.datesList,
       datasets: [
         {
-          label: 'Events',
-          borderColor: 'black',
-          pointBackgroundColor: 'white',
-          pointBorderColor: 'gray',
+        //  color: 'FF3333',
+            label: 'Events',
+          //  borderColor: '#FC2525',
+            pointBackgroundColor: 'black',
+
+            pointBorderColor: 'black',
+        //  borderColor: ' #FFFFFF',
+         // pointBackgroundColor: '#f11',
+       //   pointBorderColor: 'gray',
+       //   fillColor : '#48A497',
           borderWidth: 1,
-          backgroundColor: 'rgba(51,122,183,0.7)',
+       //   borderColor: 'FF3333',
+          gradient : "['#ffbe88', '#ff93df']",
+          backgroundColor: "#800517",
+          growDuration: 10,
           data: this.avgList
          },
-      ]
-    ,
-     options: {
-        scales: {
-            xAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
+      ] ,
+        options: {
+    scales: {
+         },
+    responsive:false,
+  }
   }
     //
      ,{ onClick: function(event){
@@ -92,10 +97,10 @@ export default {
     var label = this.data.labels[firstPoint._index];
     var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
     var location = "eventGraph?id=" + value.id;
-     window.open(location, 'event graph', "height=500px,width=600px");
+     window.open(location, 'event graph', "height=600px,width=700px");
     }
        }
-      , responsive: true, maintainAspectRatio: false,fontColor: '#66226',
+      , responsive: true, maintainAspectRatio: false,fontColor: '#FFFFFF',
     tooltips: {
                 enabled: true,
                 mode: 'single',
@@ -116,10 +121,10 @@ export default {
                           if(rate <= 70){
                             return "Normal activity, heart rate indicates you're in above average shape."
                           }
-                          if(rate <= 75){
+                          if(rate <= 90){
                             return "Normal activity, heart rate indicates you're in average shape."
                           }
-                          if(rate <= 81){
+                          if(rate <= 100){
                             return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
                           }
                           return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
@@ -162,23 +167,24 @@ export default {
                         }
                       };
                       function sportHeartStats(rate, age){
-                        maxRate = 220 - age;
+                       var maxRate = 220 - age;
                         if(rate < 0.5*maxRate){
                           return "Heart rate is too low, we recommend you to be more active in this session."
                         }
                         if(rate >=0.5*maxRate && rate < 0.6*maxRate){
-                          return "This activity is great for low intensity sports and is recommended to do often to generally stay in shape."
+                          return "This activity is great is recommended to do often to generally stay in shape."
                         }
                         if(rate >=0.6*maxRate && rate < 0.7*maxRate){
-                          return "This activity is great for for weight loss and calorie burn, ideal for burning fat with preserving as much muscle mass as possible."
+                          return "This activity is great forburning fat with preserving as much muscle mass as possible."
                         }
                         if(rate >=0.7*maxRate && rate < 0.8*maxRate){
-                          return "This activity is great improving aerobic and cardio fitness, ideal for increasing endurance over long distances."
+                          return "This activity is great improving aerobic and cardio fitness,\n ideal for increasing endurance over long distances."
                         }
                         if(rate >=0.8*maxRate && rate < 0.9*maxRate){
-                          return "This activity is great improving anaerobic fitness and muscle strength, ideal if you are trying to build muscle."
+                          return "This activity is great improving anaerobic fitness and muscle strength,\n ideal if you are trying to build muscle."
                         }
-                        return "This activity is great improving maximum performance and speed, ideal for short bursts of intense activity and shouldn't be done over a long period of time."
+                        return "This activity is great improving maximum performance and speed,\n ideal for short bursts of intense activity and shouldn't be done over a long period of time."
+
                       };
                       function heartStats(type, rate, age){
                         if(type == "Rest"){

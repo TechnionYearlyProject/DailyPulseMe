@@ -1,9 +1,10 @@
 <template>
-<div class="container">
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="../images/logo.png"/>
+<div style="margin-top:50px;">
+  <b-container fluid style="width:350px;">
+  <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
+  width:350px; height:400px; margin-top:-20px; margin-left:-15px;"></div>
+            <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
             <form class="form-signin" @submit.prevent="login">
-            	      <p v-if="authFailed" style="color:red">Invalid Username and Password</p>
                 <span id="reauth-email" class="reauth-email"></span>
                 <input class="form-control" v-model="user.username" type="email" placeholder="Email Address" id="inputEmail" required autofocus style="    text-align: center;"/>
                 <input type="password" id="inputPassword" v-model="user.password" class="form-control" placeholder="Password" required style="text-align: center;">
@@ -13,15 +14,16 @@
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-
+<!-- Here!!!! -->
             </form><!-- /form -->
               <router-link to="/register">Create an account
             </router-link>
             <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
-
-        </div><!-- /card-container -->
+  <p v-if="authFailed" style="color:red">Invalid Username and Password</p>
+        
+  </b-container>
     </div>
 </template>
 <script type="text/javascript">
@@ -64,3 +66,28 @@
 
   </script>
 <style src="../styles/Form.css"></style>
+<style scoped>
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: white;
+}
+body {
+    font: normal 10px Verdana, Arial, sans-serif;
+}
+</style>
+<style>
+.mid{
+  color: #eaeaea;
+  font-size: 4.5em;
+  font-weight: normal;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin: 0 0 0.05em 0;
+  text-align: center;
+  /*text-transform: uppercase;*/
+       text-shadow: 0px 1px blue;
+}
+</style>

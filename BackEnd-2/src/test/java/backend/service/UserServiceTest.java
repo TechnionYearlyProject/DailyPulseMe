@@ -11,7 +11,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,11 +43,11 @@ public class UserServiceTest {
         event.setEndTime(endTime);
         event.setTag(tag);
         event.setDescription(description);
-		ArrayList<Pulse> listPulses=new ArrayList<Pulse>();
-		for(int i=0;i<5;i++) {
+        ArrayList<Pulse> listPulses=new ArrayList<Pulse>();
+        for(int i=0;i<5;i++) {
             listPulses.add(new Pulse(i + 90));
         }
-		//updating the list of pulses
+        //updating the list of pulses
         event.setPulses(listPulses);
         return event;
     }
@@ -137,16 +136,16 @@ public class UserServiceTest {
     }
     @Test
     public void getEvents() {
-		//create N events , their times [100,150] , [200,250] ..
-		int N=5;
-		 for (int i = 1; i <= N; i++) {
-		service.addEvent(user,CreateEvent(Integer.toString(i),
+        //create N events , their times [100,150] , [200,250] ..
+        int N=5;
+        for (int i = 1; i <= N; i++) {
+            service.addEvent(user,CreateEvent(Integer.toString(i),
                     "Event 1 for testing", Integer.toString(100*i),  Integer.toString(100*i+50), "boring Event", Sport));
-		 
-		 }
-		 //now the user have 5 events with the same list of Pulses 
-		 
-		 
+
+        }
+        //now the user have 5 events with the same list of Pulses
+
+
         TwoStrings s1 = new TwoStrings(); //all the events are in this time
         s1.setFirst(Integer.toString(100));
         s1.setSecond(Integer.toString(550));
@@ -168,30 +167,30 @@ public class UserServiceTest {
         s2.setFirst(Integer.toString(100));
         s2.setSecond(Integer.toString(150));
 
-		 //in this time interval , getEvents should return only the first event. 
-		 result = service.getEvents(user,s2);
-		  assertTrue(result.size()==1);
-		  
-		  //there is only one event so this should pass 
-		  for(Event event: (ArrayList<Event>) result)
-		   assertTrue(event.getStartTime().equals(Integer.toString(100)));
+        //in this time interval , getEvents should return only the first event.
+        result = service.getEvents(user,s2);
+        assertTrue(result.size()==1);
+
+        //there is only one event so this should pass
+        for(Event event: (ArrayList<Event>) result)
+            assertTrue(event.getStartTime().equals(Integer.toString(100)));
 
 
-            TwoStrings s3 = new TwoStrings(); //all the events are in this time
-            s3.setFirst(Integer.toString(105));
-            s3.setSecond(Integer.toString(256));
+        TwoStrings s3 = new TwoStrings(); //all the events are in this time
+        s3.setFirst(Integer.toString(105));
+        s3.setSecond(Integer.toString(256));
 
-		   //there is only the second event in this time interval 
-		    result = service.getEvents(user,s3);
-		  assertTrue(result.size()==1);
-		  
-		  //there is only one event so this should pass 
-		  for(Event event : (ArrayList<Event>) result)
-		   assertTrue(event.getStartTime().equals(Integer.toString(200)));
+        //there is only the second event in this time interval
+        result = service.getEvents(user,s3);
+        assertTrue(result.size()==1);
+
+        //there is only one event so this should pass
+        for(Event event : (ArrayList<Event>) result)
+            assertTrue(event.getStartTime().equals(Integer.toString(200)));
 
 
 
-		
+
     }
 
     @Test
@@ -201,20 +200,20 @@ public class UserServiceTest {
         s1.setFirst("thisIsAccessToken");
         s1.setSecond("thisIsRefreshToken");
 
-		service.updateTokens(user,s1);
-		//assert it is updated
-		assertTrue(user.getGoogleFitAccessToken().equals("thisIsAccessToken"));
-		assertTrue(user.getGoogleFitRefreshToken().equals("thisIsRefreshToken"));
+        service.updateTokens(user,s1);
+        //assert it is updated
+        assertTrue(user.getAccessToken().equals("thisIsAccessToken"));
+        assertTrue(user.getRefreshToken().equals("thisIsRefreshToken"));
 
         TwoStrings s2 = new TwoStrings(); //all the events are in this time
         s2.setFirst("newAccessToken");
         s2.setSecond("newRefreshToken");
-		service.updateTokens(user,s2);
-		
-		assertTrue(user.getGoogleFitAccessToken().equals("newAccessToken"));
-		assertTrue(user.getGoogleFitRefreshToken().equals("newRefreshToken"));
-		
-		
-		
+        service.updateTokens(user,s2);
+
+        assertTrue(user.getAccessToken().equals("newAccessToken"));
+        assertTrue(user.getRefreshToken().equals("newRefreshToken"));
+
+
+
     }
 }

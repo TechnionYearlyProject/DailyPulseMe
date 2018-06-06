@@ -4,10 +4,10 @@ import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
 import backend.entity.RefreshTokenExpiredException;
-import backend.googleFitApi.GoogleCallParser;
+import backend.entity.*;
+import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,7 +47,9 @@ public class UserService {
  @return true , if the specific event exists in the user list event , otherwise false
   */
     public static boolean deleteEvent(AppUser user, String eventID) {
-
+if(user.getEvents()==null){
+    return false;
+}
         Event event_ = null;
         boolean isExist=false;
         List<Event> tmp = user.getEvents();//temp list of the user's events
@@ -80,22 +82,29 @@ public class UserService {
  */
     public static List<Event> getEvents(AppUser user, TwoStrings time) {
 
-
         List<Event> events = user.getEvents();
         List<Event> filter = new ArrayList<Event>();
         for (Event event : events) {//getting all events within time period
-            if (event.getStartTime().compareTo(time.getFirst()) >= 0 && event.getEndTime().compareTo(time.getSecond()) <= 0) {
+            if (Long.valueOf(event.getStartTime())>=Long.valueOf(time.getFirst())  && Long.valueOf(event.getEndTime())<=Long.valueOf(time.getSecond())) {
                 filter.add(event);
             }
         }
         List<Event> result = new ArrayList<Event>(); //filter contains the events in the given time interval
         List<Pulse> eventPulses;
-		
 
         for (Event event : filter) {//for all the events we should get the pulses
+
+
+            if(user.getAccessToken()==null || user.getAccessToken().compareTo("")==0 ||
+                    user.getAccessToken().compareTo(" ")==0){ //the user is not connected to google API
+                break;
+            }
+
             if (event.getPulses().size() == 0) {	//if it's pulses list is empty  , we should ask google to give us the pulses
                 try {
-                    eventPulses = GoogleCallParser.getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
+                    //getCallParser will return either FitBit or Google callParser
+                    eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
+
                 } catch (RefreshTokenExpiredException e) {
                     return null;
                 }
@@ -103,21 +112,39 @@ public class UserService {
                 event.setAverage();
             }
         }
-        System.out.println("Filter size: "+filter.size());
+
         return filter;
     }
 
-
     /*
-        This function updates Token
+        This function updates the tokens
         @param user which for him the token will be updated
         @param accessTokens which contains both access token and refresh token
         @return true , if the updating process passed okey, otherwise false
      */
     public static boolean updateTokens(AppUser user, TwoStrings accessTokens){
         //update token fields 
-        user.setGoogleFitAccessToken(accessTokens.getFirst());
-        user.setGoogleFitRefreshToken(accessTokens.getSecond());
+        user.setAccessToken(accessTokens.getFirst());
+        user.setRefreshToken(accessTokens.getSecond());
+        return true;
+    }
+
+    public static boolean verifyAndRefresh(AppUser user) {
+        return user.getCallParser().verifyAndRefresh(user);
+    }
+
+    public static void refreshToken(AppUser user) {
+        user.getCallParser().refreshToken(user);
+    }
+    /*
+    @auother: Anadil
+    update outlookToken's access token and refresh token of Microsoft outlook ,
+    @param auth which by it the user will be retrieved
+    @param accessToken which contains the new access token and refresh token
+    @return true
+    */
+    public static boolean updateOutLookTokens(AppUser user, TwoStrings accessTokens){
+        user.setOutlookToken(accessTokens.getFirst());
         return true;
     }
 }

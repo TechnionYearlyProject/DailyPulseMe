@@ -1,48 +1,102 @@
 <template>
-  <div class="hello">
+  <div>
     <!-- <h1 style="  margin-top:50px;">Good Evening,<b>{{ msg }}</b> (: </br></h1> -->
-   <div style=" width:70%; margin:auto; margin-top: 20px;">
-     <b-jumbotron style="background-color: rgba(44,144,205,0.4)" text-variant="white" border-variant="dark">
-  <template slot="header">
-    Welcome to DailyPulse!
-  </template>
-  <template slot="lead">
-    This webapp will help you track your heart rate within events.
-  </template>
-  <hr class="my-4">
-  <p>
-    It uses Google fit and Google calander in order to get your data.
-  </p>
-</b-jumbotron>
-   </div>
-  </br>
-  </br>
-<!--     <Chart id="chart" style="width:50%;   margin:  0 auto;
-  background-color: rgba(33,39,51,0.25);
-  border-radius: 25px;
-  width:50%;
-  height:20%;
-    "></Chart> -->
-      </br>
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+<b-container fluid style="margin-top:150px;">
+    <b-row>
+        <b-col style="color:white;
+      font-family: Open Sans;" class="mid"><div v-if="!this.loggedin">LIVE A BETTER LIFE <br>
+      <div class="mid-inside" >DAILYPULSE will analyze your heart pulse<br>
+        using your fitness band and your calendar.<br>
+         <b-button variant="primary" href="/login">START NOW</b-button>
+      </div>
+    </div>
+    <div v-else>Good Evening {{this.msg.slice(1, this.msg.length-1)}} <br>
+      <div class="mid-inside" >You can now start using our AMAZING tools!
+
+      </div>
+    </div>
+  </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+     
+    </b-col>
+    </b-row>
+</b-container>
+
+    </div>
   </div>
 </template>
 
+<style>
+.div1 {
+    margin:2.5em 0 10em 0;
+    width: 100%;
+    height: 500px;
+    background: white;
+    opacity: 0.25;
+    -webkit-box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
+    -moz-box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
+    box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
+    border-radius: 2px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&0.65+0,0+98 */
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); 
+}
+.mid{
+  color: #374248;
+  font-size: 5em;
+  font-weight: normal;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin: 0 0 0.05em 0;
+  text-align: center;
+  /*text-transform: uppercase;*/
+       text-shadow: 1.5px 2px #007afd;
+}
+.mid-inside{
+       text-shadow: 1px 0px #007afd;
 
+  font-family:'Gothic A1', sans-serif;;
+  color:white;
+  font-size: 0.3em;
+  font-weight: normal;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  margin: 0 0 0.05em 0;
+  text-align: center;
+  /*text-transform: uppercase;*/
+}
+.pre{
+  position: absolute;
+  margin-top: 15px;
+  right:30px;
+  letter-spacing: 0px;
+  word-spacing: 1.4px;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  opacity: 0.95
+}
+</style>
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueResource from 'vue-resource'
-import BootstrapVue from 'bootstrap-vue'
 export default {
   name: 'HelloWorld',
   components: {  },
   data () {
     return {
       msg: '',
-      token: localStorage.getItem('token')
+      token: localStorage.getItem('token'),
+      loggedin: false
     }
   },
    created: function () {
+          this.checkToken()
           this.getMessages();
         },
   methods : {
@@ -56,21 +110,17 @@ export default {
               console.log(err);
           })
         },
+    checkToken(){
+   var self = this;
+    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}
+         }).then((res) => {
+            this.loggedin = true
+            })
+    },
   logout () {
-    localStorage.setItem('loggedIn', 'false');
-    localStorage.setItem('username', '');
     localStorage.setItem('token', 'false');
     location.reload();
-    // let url = "http://localhost:8081/logout";
-    // this.$http.get(url).then((res) => {
-    //   localStorage.setItem('loggedIn', 'false');
-    //   localStorage.setItem('username', '');
-    // 	localStorage.setItem('token', 'false');
-    //   location.reload();
-    // 	this.$store.dispatch(types.LOGOUT);
-    // 	token: ''
-    // 	username: ''
-    // });
   }
   }
 }
@@ -78,21 +128,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+
 li {
   display: inline-block;
   margin: 0 10px;
+    font-family: 'Roboto', Georgia, Times, serif;
+
+
 }
 a {
-  color: #42b983;
+  color: white;
 }
 </style>
-<style src="../styles/Form.css"></style>
 <!-- <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
 <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script> -->
