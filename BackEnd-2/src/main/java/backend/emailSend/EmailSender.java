@@ -13,11 +13,14 @@ public class EmailSender {
     private static String RECIPIENT = "rober.shhock@gmail.com";
 
     public static void sendMail(ArrayList<Subscription> to) {
+        if(to.size() == 0) {
+            return;
+        }
         String from = USER_NAME;
         String pass = PASSWORD;
         // list of recipient email addresses
         String subject = "Java send mail example";
-        String body = "Welcome to JavaMail!";
+        String body = "Welcome to DailyPulse!";
 
         sendFromGMail(from, pass, to, subject, body);
     }

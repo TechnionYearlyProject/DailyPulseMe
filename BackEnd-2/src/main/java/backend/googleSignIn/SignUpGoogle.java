@@ -10,8 +10,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
 
-import static javafx.application.Platform.exit;
-
 public class SignUpGoogle {
     private static final String CLIENT_SECRET_FILE = "src/main/resources/clientSecret.json";
     private static final String redirectUrl="http://localhost:8080/token";

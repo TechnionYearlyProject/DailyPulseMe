@@ -57,9 +57,11 @@ public class UserController {
     Constructor which gets two params , the appUserRepository and  bCryptPasswordEncoder
      */
     public UserController(UserRepository applicationUserRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+                          BCryptPasswordEncoder bCryptPasswordEncoder,
+                          SubscribedRepository subscribedRepository) {
         this.appUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.subscribedUserRepository = subscribedRepository;
     }
 
 
@@ -69,7 +71,7 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(AppUser user) {
+    public boolean signUp(@RequestBody AppUser user) {
         try {
             //System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist

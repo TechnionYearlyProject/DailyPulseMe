@@ -158,13 +158,13 @@ public class UserControllerTest {
     @Test
     public void subscribeUserTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(null);
-        Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
+        //Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
         this.mockMvc.perform(post("/users/subscribe").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void unsubscribeUserTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(null);
-        Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
+        //Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
         this.mockMvc.perform(post("/users/unsubscribe").with(user("user"))).andExpect(status().isOk());
     }
     @Test

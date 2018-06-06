@@ -5,7 +5,7 @@ package backend.entity;
 public class Subscription {
     private String name;
     private String email;
-    public Subscription(String name, String email){
+    public Subscription(String email, String name){
         this.name = name;
         this.email = email;
     }
