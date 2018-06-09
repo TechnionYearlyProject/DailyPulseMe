@@ -1,2 +1,6 @@
 ignore:
   - "BackEnd-2/src/main/java/backend/security/*.java"  #ignore the JWT that thier tests we are making manually
+  - "BackEnd-2/src/main/java/backend/googleSignIn/*.java"  #we cannot test this automatic because we need to take authtoken every time and it for use just once but we test it manually
+  - "BackEnd-2/src/main/java/backend/CallParser/*.java"  #we cannot test this automatic because we need call google api everytime but we test it manually
+  - "BackEnd-2/src/main/java/backend/emaiSend/*.java"  #we cannot test this automatic because we need to call google api everytime but we test it manually
+  
