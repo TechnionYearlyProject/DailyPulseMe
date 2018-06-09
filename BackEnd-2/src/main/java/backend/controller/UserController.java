@@ -73,8 +73,9 @@ public class UserController {
     @PostMapping("/sign-up")
     public boolean signUp(@RequestBody AppUser user) {
         try {
-            //System.out.println("heyyyy signup");
+            System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
+                System.out.println("bye signup");
                 return false;
             }
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
@@ -87,9 +88,11 @@ public class UserController {
             user.setCallParser(new GoogleCallParser());
 
             appUserRepository.save(user); //saving the user in the user's repository
+            System.out.println("heyyyy signup 2");
             return true;
         }
         catch (Exception e){
+            System.out.println("bye signup 2");
             DailyPulseApp.LOGGER.info("error from backend " + e.toString());
             return false;
         }
@@ -147,12 +150,14 @@ public class UserController {
      */
     @PostMapping("/updateTokens")
     public boolean updateTokens(Authentication auth,TwoStrings tokens) {
-
+         System.out.println("heeyyy tokents");
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
+            System.out.println("heeyyy tokents22");
             return  false;
         }
         UserService.updateTokens(user,tokens); //calling for Service function
+        System.out.println("byeeee tokents");
         appUserRepository.save(user);
         return true;
     }
@@ -284,6 +289,7 @@ public class UserController {
 
         System.out.println("2222222222222222222222222");
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
+        System.out.println("3333333");
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
@@ -358,7 +364,7 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
-                    event.setTag(NLP.RunNLP(event.getName()));
+                   event.setTag(NLP.RunNLP(event.getName()));
                     tmp.add(event);
                 }
                 isNewEvent=true;
