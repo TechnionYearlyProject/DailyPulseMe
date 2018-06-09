@@ -4,4 +4,5 @@ ignore:
   - "BackEnd-2/src/main/java/backend/CallParser/FitBitCallParser.java"  #we dont need to test this because we are not using it
   - "BackEnd-2/src/main/java/backend/emaiSend/*.java"  #we cannot test this automatic because we need to call google api everytime but we test it manually
   - "BackEnd-2/src/main/java/backend/Calendar/*.java"#we cannot test this automatic because we need to call apis but we test mannually
+  - "BackEnd-2/src/main/java/backend/controller/*.java"#i cannot test it mannualy because the Frontt end request a requestbody and i dont have it
   
