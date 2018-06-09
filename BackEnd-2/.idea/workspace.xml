@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8933eb7-9615-4dec-a918-954895ab9412" name="Default" comment="" />
+    <list default="true" id="f8933eb7-9615-4dec-a918-954895ab9412" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/WebConfig/ApplicationConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/AuxMethods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/GoogleCalendar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/OutlookCalendar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/CallParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/FitBitCallParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/GoogleCallParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/DailyPulseApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/NLP/NLP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Outlook/Outlook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/emailSend/EmailSender.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/DailyPulseMeException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/EventTag.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Pulse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/RefreshTokenExpiredException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Subscription.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/googleSignIn/SignUpGoogle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/BandType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/KindOfEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/TwoStrings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/EventRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/SubscribedRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/TokenRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthorizationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/RequestFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/SecurityConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/UserAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/WebSecurity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/service/UserDetailsServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/clientSecret.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/outlook.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/CallParser/GoogleCallParserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/controller/UserControllerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,99 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+      <file leaf-file-name="FitBitCallParser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/FitBitCallParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="366" column="19" selection-start-line="366" selection-start-column="19" selection-end-line="366" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NLP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/NLP/NLP.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubscribedRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/repository/SubscribedRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/repository/UserRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmailSender.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/emailSend/EmailSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DailyPulseApp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Subscription.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Subscription.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-              <folding>
-                <element signature="e#504#505#0" expanded="true" />
-                <element signature="e#532#533#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignUpGoogle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="28" selection-start-column="16" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoogleCallParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/GoogleCallParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="169" lean-forward="true" selection-start-line="169" selection-end-line="169" />
+            <state relative-caret-position="17">
+              <caret line="18" column="29" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -218,6 +178,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="CallParser" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -371,7 +340,7 @@
       <workItem from="1527337394437" duration="10836000" />
       <workItem from="1527373999708" duration="69000" />
       <workItem from="1528308527168" duration="1941000" />
-      <workItem from="1528547490937" duration="3487000" />
+      <workItem from="1528547490937" duration="4637000" />
     </task>
     <servers />
   </component>
@@ -402,10 +371,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16333000" />
+    <option name="totallyTimeSpent" value="17483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -570,13 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/FitBitCallParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/helperClasses/BandType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -693,27 +656,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/LogFile.log.1">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LogFile.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LogFile.log.lck">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="366" column="19" selection-start-line="366" selection-start-column="19" selection-end-line="366" selection-end-column="19" />
+        <state relative-caret-position="109">
+          <caret line="236" column="19" lean-forward="true" selection-start-line="236" selection-start-column="19" selection-end-line="236" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -721,6 +679,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/emailSend/EmailSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -738,10 +717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/emailSend/EmailSender.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/FitBitCallParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+        <state relative-caret-position="17">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="29" />
         </state>
       </provider>
     </entry>
