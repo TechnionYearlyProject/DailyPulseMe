@@ -115,18 +115,70 @@ export default {
                         }
                         return this.sportHeartStats(rate, age);
                       },
+		  HRVStats(type, value){
+			if(type != "Rest"){
+			  return "";
+			}
+			if(value < 0.3){
+				return "Your HRV value indicates you are quite calm, this is wonderful!"
+			}
+			if(value < 0.5){
+				return "Your HRV value indicates your sterss level is not zero but it isnt very high either"
+			}
+			if(value < 0.7){
+				return "Your HRV value indicates your sterss level is medium, we recomend you try to avoid such activities in the future"
+			}
+			return "Your HRV value indicates your sterss level is high, this is bad for your health, we strongly recomend you to avoid such activities in the future"
+		  },	  
+       getAvg(id) {
+            var avgList = [];
+            var timeList = [];
+            this.$http.post('http://localhost:8081/users/getEvent',{"id": id}
+             ,{headers: {'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('token'),}
+            }).then((res) => {
+              var pulsesArr = res.body.pulses;
+			  var sum = 0;
+              var numofpulses = pulsesArr.length;
+              var startTime = parseInt(res.body.startTime) + 5000
+                for (var i = 0; i < numofpulses; i++) {
+                  var date = new Date(startTime)
+                  var hours = date.getHours()
+                  hours = ("0" + hours).slice(-2);
+                  var minutes = date.getMinutes()
+                  minutes = ("0" + minutes).slice(-2);
+                  var str = hours + ":" + minutes;
+                  timeList.push(str);
+                  startTime = startTime + 5000;
+                }
+                for (var i = 0; i < numofpulses-1; i++) {
+                    var pulse = pulsesArr[i];
+                    this.avgList.push({label: evnt.name,y:evnt.pulseAverage});
+                  avgList.push({y: Math.abs(pulsesArr[i+1].value - pulse.value)/60});
+                }
+				avgList.push({y: Math.abs((pulsesArr[numofpulses-1].value - pulsesArr[numofpulses-2].value)/60)});
+            })
+			 for (var i = 0; i < numofpulses; i++) {
+				 sum += avgList[i];
+			 }
+			 return sum / numofpulses;
+        },					  
     handleDayChanged (data) {
         var p = document.getElementsByClassName("desc")
       var len = p.length
       if(len == data.events.length){
       for (var i = 0; i < data.events.length; i++) {
+		  
         var title = data.events[i].title;
+		//var pooo = this.getAvg(data.events[i].id);
         var location = "eventGraph?id=" + data.events[i].id;
+		var location2 = "HRVGraph?id=" + data.events[i].id;
         var str = p[i].innerHTML
         console.log(data.events[i])
          p[i].innerHTML  = 'Average heart rate :' + data.events[i].avg +'. Type: ' + data.events[i].tag + '<br>' +
          this.heartStats(data.events[i].tag, data.events[i].avg, 30) +
-          '<br><a href="'+ location+'" target="_blank">'+'Click here to watch graph'+'</a>'
+          '<br><a href="'+ location+'" target="_blank">'+'Click here to watch heart rate graph'+'</a>'
+		  + ' ' + '<br><a href="'+location2+'" target="_blank">'+'Click here to watch HRV graph'+'</a>'
        }
       }
     },
@@ -149,9 +201,9 @@ export default {
            for (var i = 0; i < arrayLength; i++) {
 
 				var date = new Date(parseInt(eventsArr[i].startTime))
-
+				var avgH = 0;//this.getAvg(eventsArr[i].id);
 				var x = {date:`${date.getFullYear()}/${4 + 1}/${date.getDate()}`,
-                title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag,
+                title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag, avgHRV: avgH,
 				desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag + '.\n' + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0)
                 x.desc = 'NO DATA'
                this.datesList.push(x);

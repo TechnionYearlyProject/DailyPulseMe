@@ -7,6 +7,7 @@ import Config from '../components/Config'
 import Addevent from '../components/Addevent'
 import eventsWrapper from '../components/eventsWrapper'
 import Event from '../components/eventGraph'
+import HRVEvent from '../components/HRVGraph'
 import GoogleFit from '../components/GoogleFit'
 import MicrosoftFit from '../components/MicrosoftFit'
 import RemoveEvent from '../components/RemoveEvent'
@@ -93,6 +94,12 @@ const router = new Router({
       path: '/eventGraph',
       name: 'Event',
       component: Event,
+      beforeEnter: requireAuth
+    },
+	{
+      path: '/HRVGraph',
+      name: 'HRVEvent',
+      component: HRVEvent,
       beforeEnter: requireAuth
     },
     {
