@@ -16,7 +16,6 @@
 <script>
 let today = new Date()
 import Spinner from 'vue-simple-spinner'
-
 export default {
   name: 'app',
   components:{Spinner},
@@ -132,8 +131,6 @@ export default {
     },
     handleMonthChanged (data) {
       console.log('month-changed', data)
-
-
     },
     getEvents () {
        this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
@@ -161,7 +158,6 @@ export default {
            this.timeup = true
 		   // + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30)
        })
-
     }
   }
 }
@@ -190,5 +186,4 @@ li {
 a {
   color: #42b983;
 }
-
 </style>
