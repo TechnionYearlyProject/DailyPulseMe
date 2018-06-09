@@ -1,55 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8933eb7-9615-4dec-a918-954895ab9412" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WebConfig/ApplicationConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/AuxMethods.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/GoogleCalendar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Calendar/OutlookCalendar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/CallParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/FitBitCallParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/CallParser/GoogleCallParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/DailyPulseApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/NLP/NLP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Outlook/Outlook.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/emailSend/EmailSender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/AppUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/DailyPulseMeException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Event.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/EventTag.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Pulse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/RefreshTokenExpiredException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/entity/Subscription.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/googleSignIn/SignUpGoogle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/BandType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/KindOfEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/TwoStrings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/EventRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/SubscribedRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/TokenRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/JWTAuthorizationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/RequestFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/SecurityConstants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/UserAuthenticationFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/security/WebSecurity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/service/UserDetailsServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/clientSecret.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/outlook.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/CallParser/GoogleCallParserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/controller/UserControllerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/AppUserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/entity/EventTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/backend/service/UserServiceTest.class" beforeDir="false" />
-    </list>
+    <list default="true" id="f8933eb7-9615-4dec-a918-954895ab9412" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,8 +15,8 @@
       <file leaf-file-name="FitBitCallParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/FitBitCallParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="29" />
+            <state relative-caret-position="170">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -340,7 +292,7 @@
       <workItem from="1527337394437" duration="10836000" />
       <workItem from="1527373999708" duration="69000" />
       <workItem from="1528308527168" duration="1941000" />
-      <workItem from="1528547490937" duration="4637000" />
+      <workItem from="1528547490937" duration="5076000" />
     </task>
     <servers />
   </component>
@@ -371,11 +323,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17483000" />
+    <option name="totallyTimeSpent" value="17922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -395,7 +346,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" id="Run" order="9" visible="true" weight="0.32798833" />
+      <window_info anchor="bottom" id="Run" order="9" weight="0.32798833" />
       <window_info anchor="bottom" id="Spring" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.25217974" />
@@ -719,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/FitBitCallParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="29" />
+        <state relative-caret-position="170">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
