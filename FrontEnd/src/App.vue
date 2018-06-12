@@ -12,7 +12,7 @@
       <b-nav-item href="/">Home</b-nav-item>
       <b-nav-item href="/eventsgraph">Graphs</b-nav-item>
       <b-nav-item href="/calendar">Calendar</b-nav-item>
-      <b-nav-item href="/config">Settings</b-nav-item>
+      <b-nav-item href="/settings">Settings</b-nav-item>
       <b-nav-item @click="logout">Logout</b-nav-item>
     </div>
       <div v-else>
@@ -29,7 +29,9 @@
     <router-view id="router-view"></router-view>
 </b-container> <br>
   </div>
+
 </template>
+
   <script>
   export default {
     name: 'app',

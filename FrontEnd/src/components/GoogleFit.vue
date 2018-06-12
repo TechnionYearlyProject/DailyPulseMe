@@ -18,6 +18,7 @@ export default {
     let route = this.$route.fullPath;
     var x = route.split('=')[1];
     this.accessCode = decodeURIComponent(x);
+    console.log(this.accessCode)
     this.getTokens();
 }
   },
@@ -27,6 +28,7 @@ export default {
        this.$http.post(url, {code: this.accessCode, client_id: '895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com', client_secret: 'FGLsX3PBtIHEypj88z7UkI6R', redirect_uri: 'http://localhost:8080/token', grant_type: 'authorization_code'}).then((res)=>{
           console.log(res)
         if(res.ok != 'false'){
+          console.log(res.body)
        this.$http.post('http://localhost:8081/users/updateTokens',{
               "first": res.body.access_token.toString() ,
               "second": res.body.refresh_token.toString()
@@ -35,7 +37,7 @@ export default {
               'Authorization': localStorage.getItem('token'),}
             }).then((res) =>{
               this.$router.push('/');
-              close();
+              // close();
               console.log(res);
             },(err) =>{
               console.log(err);
@@ -43,11 +45,11 @@ export default {
           }
           else{
           	console.log('hi')
-          	close();
+          	// close();
           }
                  this.succesful = true;
             },(err) =>{
-       close();
+       // close();
      });
         // console.log(this.succesful)
      }
