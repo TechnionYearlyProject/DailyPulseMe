@@ -13,6 +13,7 @@ import MicrosoftFit from '../components/MicrosoftFit'
 import RemoveEvent from '../components/RemoveEvent'
 import Calendar from '../components/Calendar'
 import Wizard from '../components/Wizard'
+import HRVGraph from '../components/HRVGraph'
 
 function checkAccount(push1,push2){
          var self = this;
@@ -87,6 +88,13 @@ const router = new Router({
       path: '/eventsGraph',
       name: 'eventsWrapper',
       component: eventsWrapper,
+      beforeEnter: checkWizard,
+      beforeEnter: requireAuth
+    },
+    {
+      path: '/HRVGraph',
+      name: 'HRVGraph',
+      component: HRVGraph,
       beforeEnter: checkWizard,
       beforeEnter: requireAuth
     },
