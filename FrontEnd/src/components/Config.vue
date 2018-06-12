@@ -20,12 +20,12 @@
     </b-col>
     <b-col col lg="2"></b-col>
     <b-col class="text-center" col lg="5">
-      <b-card style="background-color: rgba(255, 255, 255, 0.7); height:265px;" text-variant="dark" title="Change or Add Accounts" >
+      <b-card style="background-color: rgba(255, 255, 255, 0.7); height:265px;" text-variant="dark" title="Change your calendar account" >
          <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="google" >Google</b-btn>
             <br><br>
-     <!--  <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>  
-      <br><br> -->
-              <b-btn v-b-toggle.collapse1 variant="primary" >Fitbit</b-btn>
+      <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>  
+      <br><br>
+              <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit</b-btn>
       </b-card>
            
    
@@ -67,6 +67,11 @@ export default {
         })
       }
     },
+     fitbit(){
+          let url = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22CKWG&redirect_uri=http%3A%2F%2Fwww.cs.technion.ac.il%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800'
+         var win = window.open(url, "windowname1", 'width=800, height=600');
+
+   },
     microsoft(){
          let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=http://localhost:8080/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
         var win = window.open(url, "windowname1", 'width=800, height=600'); 

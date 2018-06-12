@@ -7,6 +7,7 @@
                   @on-loading="setLoading"
                   @on-validate="handleValidation"
                   @on-error="handleErrorMessage"
+                        :start-index="1"
                         shape="circle"
                         color="#007bff"
                         title="DailyPulse"
@@ -19,12 +20,12 @@
     </div>
     </b-modal>
       <tab-content title="Google Account"
-                   :before-change="validateAsync">
+                   :before-change="validateAsync" >
     <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="google" >Google</b-btn>
       </tab-content>
-       <!-- <tab-content title="Microsoft Account">
+       <tab-content title="Microsoft Account">
           <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>
-      </tab-content> -->
+      </tab-content>
       <tab-content title="Fitbit Account">
         <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit" >Fitbit</b-btn>
       </tab-content>
@@ -32,25 +33,28 @@
         You can now start using DailyPulse! </div>
       </tab-content>
   </form-wizard>
+              <b-button v-if="isAccount" style="margin-top:40px" variant="danger" href="/">Skip</b-button>
+
 </div>
 </div>
-</template>
+</template> 
 <script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>
 
 <script>
-  import Connect from './Connect'
 export default {
-  components:{ Connect },
     name:'Wizard',
     data(){
       return {
          loadingWizard: false,
          errorMsg: null,
          count: 0,
-         isAccount: false
+         isAccount: 2
         }
       }
     ,
+    created: function () {
+      this.account()
+    },
      methods: {
       showModal () {
       this.$refs.myModalRef.show()
@@ -65,7 +69,8 @@ export default {
           this.$http.get('http://localhost:8081/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
-              this.isAccount = res.body
+          if(res.body)
+              this.isAccount++
             })
         },
         fitbit(){
@@ -93,12 +98,11 @@ export default {
         }
         },
        validateAsync() {
-        this.account()
           return new Promise((resolve, reject) => {
             setTimeout(() => {
                       // this.account();
 
-              if(this.isAccount == false){
+              if(this.isAccount == 0){
                   reject('You must connect to Connect for Google Calendar')
               }else{
                resolve(true)
@@ -109,20 +113,6 @@ export default {
        }
       }
 </script>
-<!-- validateAsync() {
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              if(this.count < 4){
-               this.count ++
-                  reject('You must connect to AT LEAST one calendar account')
-              }else{
-               this.count = 5
-               resolve(true)
-              }
-            }, 1000)
-          })
-         } -->
-<!-- <style src="../styles/Form.css"></style> -->
 <style scoped>
 body{
   font-family: 'Roboto', Georgia, Times, serif;

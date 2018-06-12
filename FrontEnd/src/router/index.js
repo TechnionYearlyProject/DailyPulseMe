@@ -7,8 +7,8 @@ import Config from '../components/Config'
 import Addevent from '../components/Addevent'
 import eventsWrapper from '../components/eventsWrapper'
 import Event from '../components/eventGraph'
-import HRVEvent from '../components/HRVGraph'
 import GoogleFit from '../components/GoogleFit'
+import GoogleAuth from '../components/GoogleAuth'
 import MicrosoftFit from '../components/MicrosoftFit'
 import RemoveEvent from '../components/RemoveEvent'
 import Calendar from '../components/Calendar'
@@ -87,8 +87,8 @@ const router = new Router({
       path: '/eventsGraph',
       name: 'eventsWrapper',
       component: eventsWrapper,
-      beforeEnter: requireAuth,
-      beforeEnter: checkWizard
+      beforeEnter: checkWizard,
+      beforeEnter: requireAuth
     },
     {
       path: '/eventGraph',
@@ -96,25 +96,18 @@ const router = new Router({
       component: Event,
       beforeEnter: requireAuth
     },
-	{
-      path: '/HRVGraph',
-      name: 'HRVEvent',
-      component: HRVEvent,
-      beforeEnter: requireAuth
-    },
     {
       path: '/',
       alias: '/home',
       name: 'Home',
       component: Home,
-      // beforeEnter: requireAuth
     },
     {
       path: '/calendar',
       name: 'Calendar',
       component: Calendar,
-      beforeEnter: requireAuth,
-      beforeEnter: checkWizard
+      beforeEnter: checkWizard,
+      beforeEnter: requireAuth
     },
     {
       path: '/Wizard',
@@ -123,11 +116,11 @@ const router = new Router({
       beforeEnter: requireAuth
     },
      {
-      path: '/config',
+      path: '/settings',
       name: 'Config',
       component: Config,
-      beforeEnter: requireAuth,
-      beforeEnter: checkWizard
+      beforeEnter: checkWizard,
+      beforeEnter: requireAuth
     },
     {
      path: '/addevent',
@@ -135,6 +128,12 @@ const router = new Router({
      component: Addevent,
      beforeEnter: requireAuth
    },{
+      path: '/googleauth',
+      name: 'GoogleAuth',
+      component: GoogleAuth,
+      beforeEnter: loginRedirect
+    },
+    {
       path: '/token',
       name: 'Token',
       component: GoogleFit,
