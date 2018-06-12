@@ -22,6 +22,8 @@ import backend.repository.SubscribedRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.http.auth.AUTH;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +46,8 @@ import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
 import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
 import static backend.helperClasses.KindOfEvent.OUR_EVENT;
 import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
+import static backend.security.SecurityConstants.EXPIRATION_TIME;
+import static backend.security.SecurityConstants.SECRET;
 
 
 @RestController
@@ -71,7 +76,7 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp(@RequestBody AppUser user) {
+    public boolean signUp( AppUser user) {
         try {
             System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
@@ -98,13 +103,24 @@ public class UserController {
         }
     }
     @PostMapping("/sign-up-google")
-    public boolean signUp(@RequestBody String authToken) {
-       AppUser user=SignUpGoogle.getGoogleUser(authToken);
-       if(user==null){
-           return false;
-       }
-       return signUp(user);
+    public String signUpViaGoogle(String authToken) {
+        AppUser user=SignUpGoogle.getGoogleUser(authToken);
+        if(user==null){ //sign in via google failed
+            return null;
+        }
 
+        if (appUserRepository.findByUsername(user.getUsername()) == null) { // user already exists
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
+            user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
+            user.setActiveBandType(BandType.GOOGLEFIT_BAND);
+            user.setCallParser(new GoogleCallParser());
+            appUserRepository.save(user); //first time --> add new user to the Repo.
+        }
+        return JSONObject.quote(Jwts.builder()
+                .setSubject(user.getUsername())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
+                .compact());
     }
 
     /*
@@ -364,7 +380,7 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
-                   event.setTag(NLP.RunNLP(event.getName()));
+//                   event.setTag(NLP.RunNLP(event.getName()));
                     tmp.add(event);
                 }
                 isNewEvent=true;
