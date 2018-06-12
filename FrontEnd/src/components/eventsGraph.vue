@@ -32,7 +32,6 @@ export default {
 
              var eventsArr = res.body;
              var arrayLength = eventsArr.length;
-              if(arrayLength==0) location.replace('/addevent');
              // res.body = array of event object
              var eventsArr = res.body;
                var arrayLength = eventsArr.length;
