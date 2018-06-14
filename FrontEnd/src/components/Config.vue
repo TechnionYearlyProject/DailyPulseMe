@@ -26,11 +26,13 @@
 			</div>
 			<p class="text-secondary">You are currently not subscribed. What are you waiting for?</p> 
 		</template>
-		<template v-if="subscribed === 1">
+		<template v-else-if="subscribed === 1">
 			<div style ="width:50%; margin:5px auto;">
 				<b-button variant="primary" v-on:click="unsubscribe" v-b-popover.hover="'Unsubscribe from our weekly email updates!'">Unsubscribe</b-button>
 			</div>
 			<p class="text-secondary">You are currently subscribed. Wise choice.</p> 
+		</template>
+		<template v-else>
 		</template>
 		</b-card>
     </b-col>	
@@ -111,7 +113,7 @@ export default {
 		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}    
          });
-		this.subscribed = true;			
+		this.subscribed = 1;			
 	},
 	unsubscribe(){
 		let r = confirm('Are you sure you want to unsubscribe from our weekly emails?');
@@ -121,7 +123,7 @@ export default {
 		let url = 'http://localhost:8081/users/unsubscribe';
 		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
 		'Authorization': localStorage.getItem('token')}});
-	  	this.subscribed = false;
+	  	this.subscribed = 0;
 	}  
   }
 }
