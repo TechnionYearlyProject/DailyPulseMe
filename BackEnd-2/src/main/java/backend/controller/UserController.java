@@ -489,8 +489,10 @@ public class UserController {
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
             //user already unsubscribed
+            System.out.println("zzzzzzzzz");
             return false;
         }
+        System.out.println("wwwwwwwwww");
         subscribedUserRepository.deleteByEmail(user.getUsername());
         return true;
     }
@@ -506,5 +508,16 @@ public class UserController {
         ArrayList<Subscription> subcribers = new ArrayList<>();
         subcribers.addAll(subscribedUserRepository.findAll());
         EmailSender.sendMail(subcribers);
+    }
+
+    @GetMapping("/isSubscribed")
+    private boolean isSubscribed(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
+            System.out.println("xxxxxxxxx");
+            return false;
+        }
+        System.out.println("yyyyyyyyyy");
+        return true;
     }
 }
