@@ -1,12 +1,12 @@
 <template>
-  <b-container style="width:70%;">
+  <b-container style="width:100%;">
     <b-row>
       <b-col>
   <h1 style="font-family: Open Sans; margin-top:10px;">Settings</h1>
   </b-col>
   </b-row>
   <b-row class="text-center" style=" border-radius: 5px 7px;">
-    <b-col class="text-center" col lg="5">
+    <b-col class="text-center" col lg="4"> 
            <b-card style="background-color: rgba(255, 255, 255, 0.7); height:265px;" text-variant="dark" title="Enter Your Desired Password And Confirm It" >
              <form class="form-signin" @submit.prevent="changePass">
              <p v-if="toggleMsg" style="color:red"> {{msg}}</p>
@@ -18,8 +18,25 @@
            </form>
            </b-card>
     </b-col>
-    <b-col col lg="2"></b-col>
-    <b-col class="text-center" col lg="5">
+	<b-col class="text-center" col lg="4">
+		<b-card  style="background-color: rgba(255, 255, 255, 0.7); height:265px;" text-variant="dark" title="Stay alerted! Subscribe to our weekly email updates and receive weekly summaries of your activities!">
+		<template v-if="subscribed === 0">
+			<div style ="width:50%; margin:5px auto;">
+				<b-button variant="primary" v-on:click="subscribe" v-b-popover.hover="'Subscribe to our weekly email updates'">Subscribe</b-button>
+			</div>
+			<p class="text-secondary">You are currently not subscribed. What are you waiting for?</p> 
+		</template>
+		<template v-else-if="subscribed === 1">
+			<div style ="width:50%; margin:5px auto;">
+				<b-button variant="primary" v-on:click="unsubscribe" v-b-popover.hover="'Unsubscribe from our weekly email updates!'">Unsubscribe</b-button>
+			</div>
+			<p class="text-secondary">You are currently subscribed. Wise choice.</p> 
+		</template>
+		<template v-else>
+		</template>
+		</b-card>
+    </b-col>	
+    <b-col class="text-center" col lg="4">
       <b-card style="background-color: rgba(255, 255, 255, 0.7); height:265px;" text-variant="dark" title="Change your calendar account" >
          <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="google" >Google</b-btn>
             <br><br>
@@ -28,7 +45,7 @@
               <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit</b-btn>
       </b-card>
            
-   
+  
     </b-col>
   </b-row>
 <!-- <div class="Change Password" style="margin-top:10px"> -->
@@ -46,10 +63,21 @@ export default {
       rePassword : '',
       toggleMsg : false,
       msg : '',
-      toshow: false
+      toshow: false,
+	  subscribed: 2
     }
   },
-  
+  created: function () {
+	  this.$http.get('http://localhost:8081/users/isSubscribed',{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}    
+         }).then((res) => {
+		 if(res.body == true){
+			this.subscribed = 1;
+			} else {
+			this.subscribed = 0;
+			}
+		 })
+  },
     methods: {
     changePass() {
       this.toggleMsg = true
@@ -79,7 +107,24 @@ export default {
        },google(){
       let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
       var win = window.open(url, "windowname1", 'width=800, height=600'); 
-       }  
+       },
+	subscribe() {
+		let url = 'http://localhost:8081/users/subscribe';
+		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')}    
+         });
+		this.subscribed = 1;			
+	},
+	unsubscribe(){
+		let r = confirm('Are you sure you want to unsubscribe from our weekly emails?');
+		if(r == false) {
+			return;
+		}
+		let url = 'http://localhost:8081/users/unsubscribe';
+		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
+		'Authorization': localStorage.getItem('token')}});
+	  	this.subscribed = 0;
+	}  
   }
 }
 

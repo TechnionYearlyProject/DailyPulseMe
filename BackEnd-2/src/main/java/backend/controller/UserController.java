@@ -78,9 +78,7 @@ public class UserController {
     @PostMapping("/sign-up")
     public boolean signUp( AppUser user) {
         try {
-            System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
-                System.out.println("bye signup");
                 return false;
             }
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
@@ -93,11 +91,9 @@ public class UserController {
             user.setCallParser(new GoogleCallParser());
 
             appUserRepository.save(user); //saving the user in the user's repository
-            System.out.println("heyyyy signup 2");
             return true;
         }
         catch (Exception e){
-            System.out.println("bye signup 2");
             DailyPulseApp.LOGGER.info("error from backend " + e.toString());
             return false;
         }
@@ -166,14 +162,11 @@ public class UserController {
      */
     @PostMapping("/updateTokens")
     public boolean updateTokens(Authentication auth,TwoStrings tokens) {
-         System.out.println("heeyyy tokents");
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
-            System.out.println("heeyyy tokents22");
             return  false;
         }
         UserService.updateTokens(user,tokens); //calling for Service function
-        System.out.println("byeeee tokents");
         appUserRepository.save(user);
         return true;
     }
@@ -286,7 +279,6 @@ public class UserController {
     * */
     @GetMapping("/getEvents")
     public List<Event> getEvents(Authentication auth) {
-        System.out.println("333333333333333333333");
         TwoStrings time=new TwoStrings();
         time.setFirst("0");
         return getEventsBetweenInterval(auth,time);
@@ -303,9 +295,7 @@ public class UserController {
     @PostMapping("/getEventsBetweenInterval")
     public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
 
-        System.out.println("2222222222222222222222222");
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
-        System.out.println("3333333");
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
         appUserRepository.save(user);
@@ -330,15 +320,14 @@ public class UserController {
                     }
                 }).collect(Collectors.toList());
             }
-            for(Event event : toReturn){
-                System.out.println("here is an event : "+ event.getStartTime());
-            }
+            //for(Event event : toReturn){
+            //    System.out.println("here is an event : "+ event.getStartTime());
+            //}
             return toReturn;
     }
 
     @RequestMapping("/GoogleCalendarEvents")
     public ArrayList<Event> getEventsGoogleCalendar(Authentication auth)  {
-        System.out.println("GoogleCalendarEvents\n");
         ArrayList<Event> tmp=null;
         AppUser user = appUserRepository.findByUsername(auth.getName());
         try{
@@ -359,7 +348,6 @@ public class UserController {
      */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
-        System.out.println("11111111111111111111");
         ArrayList<Event> tmp_=null;
         ArrayList<Event> tmp=new ArrayList<Event>();
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -506,5 +494,14 @@ public class UserController {
         ArrayList<Subscription> subcribers = new ArrayList<>();
         subcribers.addAll(subscribedUserRepository.findAll());
         EmailSender.sendMail(subcribers);
+    }
+
+    @GetMapping("/isSubscribed")
+    private boolean isSubscribed(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
+            return false;
+        }
+        return true;
     }
 }
