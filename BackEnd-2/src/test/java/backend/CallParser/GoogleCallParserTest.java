@@ -36,7 +36,7 @@ public class GoogleCallParserTest {
         user2.setUsername("anadil2@anadil");
         user2.setEvents(new ArrayList<Event>());
     }
-    @Test
+    //@Test
     public void verifyAndRefresh() throws Exception {
         assertTrue(user.getCallParser().verifyAndRefresh(user));
         assertTrue(!user.getCallParser().verifyAndRefresh(user2));

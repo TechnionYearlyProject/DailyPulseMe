@@ -17,41 +17,44 @@ public class NLP {
         String line="";
         try {
             // set up the command and parameter
-            String pythonScriptPath = "C:\\Users\\USER\\Desktop\\tria1.py";
-            String[] cmd = new String[2];
-            cmd[0] = "python"; // check version of installed python: python -V
-            cmd[1] = pythonScriptPath;
-            //   cmd[2]=eventName;
-            // create runtime to execute external command
-            Runtime rt = Runtime.getRuntime();
-            Process pr = rt.exec(cmd);
-
-            // retrieve output from python script
-            BufferedReader bfr = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            // read the output
-            line =  bfr.readLine();
-//
-            //  while ((line = bfr.readLine()) != null) {
-            //       tmp += line;
-            // }
+            String lastLine="";
+            ProcessBuilder pb = new ProcessBuilder("D:\\home\\python364x86\\python.exe","D:\\home\\python364x86\\NLP.py","\""+eventName+"\"");
+            Process p = pb.start();BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while((line = in.readLine())!=null){
+                lastLine = line;
+            }
+            return lastLine.compareTo("1")==0 ? Sport : Rest;
 
 
         }
         catch (Exception e){
             System.out.println(e.toString());
         }
-        return line.compareTo("1") == 0 ? Sport : Rest;
+
+        return EventTag.Rest;
+
     }
 
-    public static void TestingRunNLP(){
+    public static String TestingRunNLP(String eventName){
+
+        String line="";
 
         try {
-            System.out.println(RunNLP("NLP here").toString());
-        }
-        catch (Exception e){
+            String lastLine = "";
+            ProcessBuilder pb = new ProcessBuilder("D:\\home\\python364x86\\python.exe", "D:\\home\\python364x86\\NLP.py", "\"" + eventName + "\"");
+            Process p = pb.start();
+            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            while ((line = in.readLine()) != null) {
+                lastLine += line;
+
+            }
+            return lastLine;
+
+    }catch (Exception e){
             System.out.println(e.toString());
         }
 
+        return "here";
     }
 }
 

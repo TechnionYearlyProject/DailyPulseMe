@@ -292,8 +292,9 @@ public class UserController {
      @param time which contains the startTiming and endTiming
      @return list of events which were taken place between time1 until time2
      */
+
     @PostMapping("/getEventsBetweenInterval")
-    public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
+    public List<Event> getEventsBetweenInterval(Authentication auth,@RequestBody TwoStrings time) {
 
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -368,7 +369,7 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
-//                   event.setTag(NLP.RunNLP(event.getName()));
+                   event.setTag(NLP.RunNLP(event.getName()));
                     tmp.add(event);
                 }
                 isNewEvent=true;
@@ -503,5 +504,15 @@ public class UserController {
             return false;
         }
         return true;
+    }
+
+
+    @PostMapping("/NLP")
+    private EventTag getNLPres(@RequestBody String name) {
+        try {
+            return NLP.RunNLP(name);
+        } catch (Exception e) {
+        }
+        return EventTag.Rest;
     }
 }

@@ -100,7 +100,7 @@ public class UserControllerTest {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
         this.mockMvc.perform(get("/users/username").with(user("user"))).andExpect(status().isOk());
     }
-    @Test
+   // @Test
     public void signUpWithGoogleTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
         this.mockMvc.perform(post("/users/sign-up-google").content("4/AACFanFsDbi7_1uHgzwNzpfvtKKvlfBqNNPfxvcpWawSKTq66u7gBwFqGoD-acw34vFjqoI5xxoZUhLLuvSS2Iw").contentType(MediaType.APPLICATION_JSON)

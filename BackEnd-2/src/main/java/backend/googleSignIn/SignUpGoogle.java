@@ -13,7 +13,7 @@ import java.util.Collections;
 
 public class SignUpGoogle {
     private static final String CLIENT_SECRET_FILE = "src/main/resources/clientSecret.json";
-    private static final String redirectUrl="http://localhost:8080/googleauth";
+    private static final String redirectUrl="https://dailypulse.azurewebsites.net/googleauth";
     public static AppUser getGoogleUser(String authCode){
         GoogleClientSecrets clientSecrets = null;
         {
