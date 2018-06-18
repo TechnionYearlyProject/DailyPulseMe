@@ -53,7 +53,7 @@
 </b-container>
 </template>
 <script>
-import Connect from './Connect'
+
 export default {
   name: 'Config',
   components:{ Connect },

@@ -4,13 +4,11 @@ import Home from '../components/Home'
 import Login from '../components/Login'
 import Register from '../components/register'
 import Config from '../components/Config'
-import Addevent from '../components/Addevent'
 import eventsWrapper from '../components/eventsWrapper'
 import Event from '../components/eventGraph'
 import GoogleFit from '../components/GoogleFit'
 import GoogleAuth from '../components/GoogleAuth'
 import MicrosoftFit from '../components/MicrosoftFit'
-import RemoveEvent from '../components/RemoveEvent'
 import Calendar from '../components/Calendar'
 import Wizard from '../components/Wizard'
 import HRVGraph from '../components/HRVGraph'
@@ -129,13 +127,7 @@ const router = new Router({
       component: Config,
       beforeEnter: checkWizard,
       beforeEnter: requireAuth
-    },
-    {
-     path: '/addevent',
-     name: 'Addevent',
-     component: Addevent,
-     beforeEnter: requireAuth
-   },{
+    },{
       path: '/googleauth',
       name: 'GoogleAuth',
       component: GoogleAuth,
@@ -152,13 +144,6 @@ const router = new Router({
       component: MicrosoftFit,
       beforeEnter: requireAuth
     },
-    {
-     path: '/removeevent',
-     name: 'RemoveEvent',
-     component: RemoveEvent,
-     beforeEnter: requireAuth
-   },
-
   ]
 })
 router.beforeEach((to, from, next) => {
