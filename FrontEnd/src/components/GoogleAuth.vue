@@ -1,3 +1,7 @@
+<!--
+This is for the authentication and connection with google.
+With this connection we bring the users events from google calendar.
+-->
 <template>
 </template>
 <script>
@@ -10,9 +14,7 @@ export default {
       succesful: false
     }
   },created: function () {
-    // console.log(this.succesful)
     if(this.succesful){
-      // this.$router.push('/') 
     }else{
     let route = this.$route.fullPath;
     var x = route.split('=')[1];
@@ -30,7 +32,7 @@ export default {
               console.log(res)
             localStorage.setItem('token', this.jwttoken);
             location.reload();
-            
+
         }, (err) => {
           console.log(res.body)
         });

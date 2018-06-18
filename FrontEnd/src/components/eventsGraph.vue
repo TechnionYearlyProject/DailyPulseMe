@@ -1,3 +1,9 @@
+<!--
+In this page we present the user's graph of all his events,
+with the data being brought from the back,
+for every event we show by hover the events name, average rate and rate analysis.
+Clicking on the event leads to the events graph.
+-->
 <script>
 
 import {Line, Bar} from 'vue-chartjs'
@@ -32,7 +38,6 @@ export default {
 
              var eventsArr = res.body;
              var arrayLength = eventsArr.length;
-             // res.body = array of event object
              var eventsArr = res.body;
                var arrayLength = eventsArr.length;
                for (var i = 0; i < arrayLength; i++) {
@@ -64,18 +69,11 @@ export default {
       labels: this.datesList,
       datasets: [
         {
-        //  color: 'FF3333',
             label: 'Events',
-          //  borderColor: '#FC2525',
             pointBackgroundColor: 'black',
 
             pointBorderColor: 'black',
-        //  borderColor: ' #FFFFFF',
-         // pointBackgroundColor: '#f11',
-       //   pointBorderColor: 'gray',
-       //   fillColor : '#48A497',
           borderWidth: 1,
-       //   borderColor: 'FF3333',
           gradient : "['#ffbe88', '#ff93df']",
           backgroundColor: "#800517",
           growDuration: 10,
@@ -88,7 +86,6 @@ export default {
     responsive:false,
   }
   }
-    //
      ,{ onClick: function(event){
       var activePoints = this.getElementAtEvent(event)
        var firstPoint = activePoints[0];

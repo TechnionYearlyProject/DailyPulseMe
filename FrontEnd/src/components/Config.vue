@@ -1,3 +1,7 @@
+<!--
+In this page the user can change his password,
+subscribe to weekly email updates and change his calendar account.
+-->
 <template>
   <b-container style="width:100%;">
     <b-row>
@@ -48,12 +52,11 @@
 
     </b-col>
   </b-row>
-<!-- <div class="Change Password" style="margin-top:10px"> -->
+
 
 </b-container>
 </template>
 <script>
-
 export default {
   name: 'Config',
   components:{ Connect },

@@ -1,19 +1,21 @@
+<!--
+This is a wrapper for the events graph page.
+We use it for visual design and the spinner that appears till the page loads. 
+-->
 <template>
   <b-container style="margin-top:30px;width:60%;">
 
-      <div class="card card-container" style="z-index:-2; background: #00000E; position:absolute; opacity:0.9; 
+      <div class="card card-container" style="z-index:-2; background: #00000E; position:absolute; opacity:0.9;
   width:60%; height:400px; margin-left:-15px;" </div>
   <eventsGraph v-if="!isempty"></eventsGraph>
     <Spinner size="massive" v-if="!timeup" style="z-index:1; margin-top:30px;">Loading..</Spinner>
-
-    <!-- </b-row> -->
   </b-container>
 </template>
 
 <script>
 import eventsGraph from './eventsGraph'
 import Spinner from 'vue-simple-spinner'
-export default {  
+export default {
   name: 'eventsWrapper',
   components: { eventsGraph,Spinner },
   created: function(){
