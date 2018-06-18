@@ -1,5 +1,4 @@
 <template>
-  <!-- <div id="app" style="margin-top:20px;"> -->
       <b-container fluid style="margin-top:20px; background-color: rgba(255, 255, 255, 0.6); ;width:75%;border-raduis:4px;">
         <b-row>
     <vue-event-calendar
@@ -14,6 +13,12 @@
 </template>
 
 <script>
+/*
+  In this page we have the user's calendar,
+  that is shown with the events from the google calendar of the user.
+  For each event we show its type, average heart rate, heart rate analysis,
+  link to heart rate graph and to HRV graph and analysis.
+*/
 let today = new Date()
 import Spinner from 'vue-simple-spinner'
 
@@ -29,8 +34,6 @@ export default {
   },
   created: function () {
     this.getEvents();
-    // console.log(this.datesList)
-    // console.log(this.avgList)
         },
   methods: {
             restHeartStats(rate, age){
@@ -109,6 +112,8 @@ export default {
                         return "This activity is great improving maximum performance and speed, ideal for short bursts of intense activity and shouldn't be done over a long period of time."
 
                       },
+              /*In this method we produce the heart rate analysis
+              based on the type of event, average rate and age.*/
                heartStats(type, rate, age){
                         if(type == "Rest"){
                           return this.restHeartStats(rate, age);
@@ -170,7 +175,6 @@ export default {
       for (var i = 0; i < data.events.length; i++) {
 
         var title = data.events[i].title;
-    //var pooo = this.getAvg(data.events[i].id);
         var location = "eventGraph?id=" + data.events[i].id;
     var location2 = "HRVGraph?id=" + data.events[i].id;
         var str = p[i].innerHTML
@@ -195,13 +199,12 @@ export default {
         ,{headers: {'Content-Type': 'application/json',
          'Authorization': localStorage.getItem('token'),}
        }).then((res) => {
-         // res.body = array of event object
          var eventsArr = res.body;
            var arrayLength = eventsArr.length;
            for (var i = 0; i < arrayLength; i++) {
 
         var date = new Date(parseInt(eventsArr[i].startTime))
-        var avgH = 0;//this.getAvg(eventsArr[i].id);
+        var avgH = 0;
         var x = {date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
                 title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag, avgHRV: avgH,
         desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag + '.\n' + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0)
@@ -209,7 +212,6 @@ export default {
                this.datesList.push(x);
            }
            this.timeup = true
-       // + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30)
        })
 
     }
