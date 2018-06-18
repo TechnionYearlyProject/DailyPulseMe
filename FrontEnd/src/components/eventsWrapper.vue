@@ -30,7 +30,7 @@ export default {
       console.log('Carousel Updated!')
     },
     getEvents(){
-       this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
+       this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getEventsBetweenInterval',{
              "first": '0',
              "second": 151639920000000
            },{headers: {'Content-Type': 'application/json',

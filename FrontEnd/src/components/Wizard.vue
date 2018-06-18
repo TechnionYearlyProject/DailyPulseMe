@@ -1,7 +1,8 @@
 <template>
   <div style="width:50%; margin-top:100px; margin-left:26%;">
-     <div class="card card-container" style="z-index:-2;  position:absolute; opacity:1;  background:white;
-  width:685px; height:350px; margin:auto; margin-right:50px;"></div>
+   
+   <b-card style="z-index:-2;  position:absolute; opacity:0.8;  background:white;
+  width:685px; height:350px; margin:auto; margin-right:50px;"></b-card>
   <div style="z-index:2;  position:absolute; width:700px;">
   <form-wizard @on-complete="onComplete"
                   @on-loading="setLoading"
@@ -34,7 +35,6 @@
       </tab-content>
   </form-wizard>
               <b-button v-if="isAccount" style="margin-top:40px" variant="danger" href="/">Skip</b-button>
-
 </div>
 </div>
 </template> 
@@ -66,7 +66,7 @@ export default {
         this.$router.push('/');
        },
        account(){
-          this.$http.get('http://localhost:8081/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
+          this.$http.get('https://webapp-180506135919.azurewebsites.net/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
           if(res.body)
@@ -79,11 +79,11 @@ export default {
 
        },
        microsoft(){
-         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=http://localhost:8080/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
+         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
         var win = window.open(url, "windowname1", 'width=800, height=600');
 
        },google(){
-      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
+      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=https://dailypulse.azurewebsites.net/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
       var win = window.open(url, "windowname1", 'width=800, height=600');
        }, setLoading: function(value) {
             this.loadingWizard = value

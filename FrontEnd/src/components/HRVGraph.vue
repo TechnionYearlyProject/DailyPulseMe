@@ -9,11 +9,16 @@ export default {
 //Chart.defaults.global.defaultFontColor = 'red',
   name: 'HRVEvent', 
   extends: Line,
+created: function () {
+		this.getTime();
+        },
   data () {
     return {
       gradient: null,
       gradient2: null,
-      name: '',
+	  avgList: [],
+	  timeList: [],
+      name: ['HRV graph:'],
 	  goo: ''
     }
   },
@@ -36,9 +41,9 @@ export default {
 			}
 			return "Your HRV value indicates your sterss level is high, this is bad for your health, we strongly recomend you to avoid such activities in the future"
 		  },		  
-       getTime (putName) {
-            var avgList = [];
-            var timeList = [];
+       getTime () {
+            //var avgList = [];
+            //var timeList = [];
             var id = this.$route.query.id;
 			var ret = [];
 			var sum = [];
@@ -52,7 +57,7 @@ export default {
 			  type.push({y: String(res.body.tag)});
               var pulsesArr = res.body.pulses;
               var numofpulses = pulsesArr.length;
-              var startTime = parseInt(res.body.startTime) + 5000
+              var startTime = parseInt(res.body.startTime) + 60000
                 for (var i = 0; i < numofpulses; i++) {
                   var date = new Date(startTime)
                   var hours = date.getHours()
@@ -60,16 +65,16 @@ export default {
                   var minutes = date.getMinutes()
                   minutes = ("0" + minutes).slice(-2);
                   var str = hours + ":" + minutes;
-                  timeList.push(str);
-                  startTime = startTime + 5000;
+                  this.timeList.push(str);
+                  startTime = startTime + 60000;
                 }
                 for (var i = 0; i < numofpulses-1; i++) {
                     var pulse = pulsesArr[i];
                     // this.avgList.push({label: evnt.name,y:evnt.pulseAverage});
-                  avgList.push({y: Math.abs(pulsesArr[i+1].value - pulse.value)/60});
-				  sum[0] += avgList[i].y;
+                  this.avgList.push({y: Math.abs(pulsesArr[i+1].value - pulse.value)/60});
+				  sum[0] += this.avgList[i].y;
                 }
-				avgList.push({y: Math.abs((pulsesArr[numofpulses-1].value - pulsesArr[numofpulses-2].value)/60)});
+				this.avgList.push({y: Math.abs((pulsesArr[numofpulses-1].value - pulsesArr[numofpulses-2].value)/60)});
 				sum[0] += Math.abs((pulsesArr[numofpulses-1].value - pulsesArr[numofpulses-2].value)/60);
 				sum[0] = sum[0] / numofpulses;
 			var avg = sum[0];
@@ -79,10 +84,11 @@ export default {
 			   type[0].y = "Rest";
 		   }			
 			//window.alert(this.HRVStats(type, avg));
-			name = this.HRVStats(type[0].y, avg);
+			this.name[0] += this.HRVStats(type[0].y, avg);
             })
 			//window.alert(type[0].y);
-			return [avgList,timeList, name];
+			//console.log([avgList,timeList, name])
+			//return [this.avgList,this.timeList, this.name];
         }
   },
   mounted () {
@@ -97,18 +103,18 @@ export default {
     this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
     this.renderChart({
       // labels: ['16/12', '17/12', '18 /12', '19/12', '20/12', '21/12', '22/12', '23/12'],
-      labels: this.getTime(this.putName)[1],
+      labels: this.timeList,
       datasets: [
         {
 		fontColor: '#000000',
-          label: this.getTime(this.putName)[2],
+          label: this.name, //this.getTime()[2]
 		  
           borderColor: 'black',
           pointBackgroundColor: 'white',
           pointBorderColor: 'gray',
           borderWidth: 1,
           backgroundColor:'rgba(51,36,183,0.7)',
-          data: this.getTime(this.putName)[0]
+          data: this.avgList,
          },
         // ,{
          

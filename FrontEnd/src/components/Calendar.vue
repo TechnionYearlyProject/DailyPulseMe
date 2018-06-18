@@ -129,11 +129,11 @@ export default {
         return "Your HRV value indicates your sterss level is medium, we recomend you try to avoid such activities in the future"
       }
       return "Your HRV value indicates your sterss level is high, this is bad for your health, we strongly recomend you to avoid such activities in the future"
-      },    
+      },
        getAvg(id) {
             var avgList = [];
             var timeList = [];
-            this.$http.post('http://localhost:8081/users/getEvent',{"id": id}
+            this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getEvent',{"id": id}
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {
@@ -162,13 +162,13 @@ export default {
          sum += avgList[i];
        }
        return sum / numofpulses;
-        },            
+        },
     handleDayChanged (data) {
         var p = document.getElementsByClassName("desc")
       var len = p.length
       if(len == data.events.length){
       for (var i = 0; i < data.events.length; i++) {
-      
+
         var title = data.events[i].title;
     //var pooo = this.getAvg(data.events[i].id);
         var location = "eventGraph?id=" + data.events[i].id;
@@ -188,7 +188,7 @@ export default {
 
     },
     getEvents () {
-       this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
+       this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getEventsBetweenInterval',{
          "first": 1515103200000,
          "second": new Date().getTime()
        }
@@ -202,7 +202,7 @@ export default {
 
         var date = new Date(parseInt(eventsArr[i].startTime))
         var avgH = 0;//this.getAvg(eventsArr[i].id);
-        var x = {date:`${date.getFullYear()}/${4 + 1}/${date.getDate()}`,
+        var x = {date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
                 title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag, avgHRV: avgH,
         desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag + '.\n' + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0)
                 x.desc = 'NO DATA'

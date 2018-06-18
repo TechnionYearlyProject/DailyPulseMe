@@ -24,7 +24,7 @@ export default {
   },
    methods : {
     sendAuth(){
-             this.$http.post('http://localhost:8081/users/sign-up-google', {authToken:this.accessCode}).then((res) => {
+             this.$http.post('https://webapp-180506135919.azurewebsites.net/users/sign-up-google', {authToken:this.accessCode}).then((res) => {
               this.jwttoken = 'Bearer ' + res.body
               this.succesful = true
               console.log(res)
