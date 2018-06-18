@@ -21,7 +21,7 @@ export default {
             var avgList = [];
             var timeList = [];
             var id = this.$route.query.id;
-            this.$http.post('http://localhost:8081/users/getEvent',{"id": id}
+            this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getEvent',{"id": id}
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {

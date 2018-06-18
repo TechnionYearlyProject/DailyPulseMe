@@ -17,7 +17,7 @@ import HRVGraph from '../components/HRVGraph'
 
 function checkAccount(push1,push2){
          var self = this;
-    Vue.http.get('http://localhost:8081/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
+    Vue.http.get('https://webapp-180506135919.azurewebsites.net/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
               if(res.body == false)
@@ -62,7 +62,7 @@ const loginRedirectToWizard = (to, from, next) => {
 Vue.use(Router)
 function checkToken(funcYes,funcNo){
    var self = this;
-    Vue.http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+    Vue.http.get('https://webapp-180506135919.azurewebsites.net/users/authenticateToken',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
           funcYes()

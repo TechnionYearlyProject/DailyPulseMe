@@ -48,7 +48,7 @@
         } else {
           this.errMsg = ''
           this.err = false
-          let url = 'http://localhost:8081/users/sign-up'
+          let url = 'https://webapp-180506135919.azurewebsites.net/users/sign-up'
           this.$http.post(url, this.user,{credentials: true, headers: {'Content-Type': 'application/json'}}).then((res) => {
 
             if(String(res.body).localeCompare('false')==0){

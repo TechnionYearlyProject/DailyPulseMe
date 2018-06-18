@@ -81,7 +81,7 @@
 
     },
     created: function(){
-      this.$http.get('http://localhost:8081/users/verifyAccessToken'
+      this.$http.get('https://webapp-180506135919.azurewebsites.net/users/verifyAccessToken'
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {
@@ -108,7 +108,7 @@
         }
         let input = {"name": this.name, "startTime": String(datesta.getTime()),"endTime": String(dateend.getTime()), "description": this.description, "tag": this.tag,"pulses": []};
         input = JSON.stringify(input);
-        let url = 'http://localhost:8081/users/addEvent'
+        let url = 'https://webapp-180506135919.azurewebsites.net/users/addEvent'
         this.$http.post(url, input,{headers: {'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')}} ).then((res) => {
             //check if event collides with another

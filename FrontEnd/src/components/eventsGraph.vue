@@ -22,7 +22,7 @@ export default {
       var points = this.getElementAtEvent(event)
       },
       getEvents () {
-           this.$http.post('http://localhost:8081/users/getAllEventsWhichHavePulses',{
+           this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getAllEventsWhichHavePulses',{
              "first": '0',
              "second": 151639920000000
            }
