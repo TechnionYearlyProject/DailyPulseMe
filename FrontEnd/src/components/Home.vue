@@ -1,6 +1,10 @@
+<!--
+This is the page a user see's immediately when he goes into the site.
+If the user is not logged in we show a short explanation of the product.
+If he is we show a personal greeting.
+-->
 <template>
   <div>
-    <!-- <h1 style="  margin-top:50px;">Good Evening,<b>{{ msg }}</b> (: </br></h1> -->
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -24,7 +28,7 @@
     </b-row>
     <b-row>
       <b-col>
-     
+
     </b-col>
     </b-row>
 </b-container>
@@ -44,8 +48,7 @@
     -moz-box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
     box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
     border-radius: 2px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&0.65+0,0+98 */
-    background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); 
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%);
 }
 .mid{
   color: #374248;
@@ -55,7 +58,6 @@
   line-height: 1.2;
   margin: 0 0 0.05em 0;
   text-align: center;
-  /*text-transform: uppercase;*/
        text-shadow: 1.5px 2px #007afd;
 }
 .mid-inside{
@@ -69,7 +71,6 @@
   line-height: 1.2;
   margin: 0 0 0.05em 0;
   text-align: center;
-  /*text-transform: uppercase;*/
 }
 .pre{
   position: absolute;
@@ -126,19 +127,14 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 li {
   display: inline-block;
   margin: 0 10px;
     font-family: 'Roboto', Georgia, Times, serif;
-
-
 }
 a {
   color: white;
 }
 </style>
-<!-- <script src="//unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
-<script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script> -->

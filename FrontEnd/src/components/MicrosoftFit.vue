@@ -1,3 +1,7 @@
+<!--
+This is for the authentication and connection with microsoft.
+With this connection we bring the users events from outlook calendar.
+-->
 <template>
 </template>
 <script>
@@ -22,14 +26,11 @@ export default {
        ,{headers: {'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),}
       }).then((res) =>{
-        
         console.log(res);
       },(err) =>{
-        close();  
+        close();
         console.log(err);
       })
-    // this.getTokens();
-
   }
 }
 </script>

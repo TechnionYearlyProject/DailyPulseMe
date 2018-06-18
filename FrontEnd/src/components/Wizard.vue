@@ -1,6 +1,12 @@
+<!--
+In this page we lead the user through the process of connecting
+to the outsource services that are needed for the use of our product.
+These are optionally google and microsoft.
+ -->
+
 <template>
   <div style="width:50%; margin-top:100px; margin-left:26%;">
-   
+
    <b-card style="z-index:-2;  position:absolute; opacity:0.8;  background:white;
   width:685px; height:350px; margin:auto; margin-right:50px;"></b-card>
   <div style="z-index:2;  position:absolute; width:700px;">
@@ -37,7 +43,7 @@
               <b-button v-if="isAccount" style="margin-top:40px" variant="danger" href="/">Skip</b-button>
 </div>
 </div>
-</template> 
+</template>
 <script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>
 
 <script>
@@ -100,7 +106,6 @@ export default {
        validateAsync() {
           return new Promise((resolve, reject) => {
             setTimeout(() => {
-                      // this.account();
 
               if(this.isAccount == 0){
                   reject('You must connect to Connect for Google Calendar')

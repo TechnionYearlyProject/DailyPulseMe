@@ -1,7 +1,14 @@
+<!--
+In this page we perform the registration process of the user.
+This includes taking all the necessary information from him,
+and check it is validwith help from the backend:
+the email/username does not already exist, the email is valid,
+the password is long enough and matches the repeat.
+ -->
 <template>
      <div  style="margin-top:50px;">
         <b-container fluid style="width:350px;">
- <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
+ <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05;
   width:350px; height:430px; margin-top:-20px; margin-left:-15px;"></div>
             <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
 
@@ -13,10 +20,9 @@
                 <input v-model="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required style="text-align: center;">
                 <input v-model="rePassword" type="password" id="inputPasswordAgain" class="form-control" placeholder="Password Again" required style="text-align: center;">
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
-                <!-- <button class="btn btn-lg btn-primary btn-block btn-signin" @click="register" type="submit">Sign Up</button> -->
-            </form><!-- /form -->
+            </form>
           </b-container>
-        </div><!-- /card-container -->
+        </div>
 </template>
 <script type="application/json">
   export default{

@@ -1,3 +1,7 @@
+<!--
+This is for the authentication and connection with google FIt.
+With this connection we bring the heart rate data.
+-->
 <template>
 </template>
 <script>
@@ -11,7 +15,6 @@ export default {
       succesful: false
     }
   },created: function () {
-    // console.log(this.succesful)
     if(this.succesful){
       console.log('second time ?')
     }else{
@@ -37,7 +40,6 @@ export default {
               'Authorization': localStorage.getItem('token'),}
             }).then((res) =>{
               this.$router.push('/');
-              // close();
               console.log(res);
             },(err) =>{
               console.log(err);
@@ -45,13 +47,10 @@ export default {
           }
           else{
           	console.log('hi')
-          	// close();
           }
                  this.succesful = true;
             },(err) =>{
-       // close();
      });
-        // console.log(this.succesful)
      }
   }
 }
