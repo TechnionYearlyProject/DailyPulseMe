@@ -98,11 +98,14 @@ public class UserController {
             return false;
         }
     }
+
     @PostMapping("/sign-up-google")
     public String signUpViaGoogle(String authToken) {
         AppUser user=SignUpGoogle.getGoogleUser(authToken);
+
+        //System.out.println("heeeeere"+user.getUsername());
         if(user==null){ //sign in via google failed
-            return null;
+            return "user here is NULL";
         }
 
         if (appUserRepository.findByUsername(user.getUsername()) == null) { // user already exists
@@ -112,13 +115,15 @@ public class UserController {
             user.setCallParser(new GoogleCallParser());
             appUserRepository.save(user); //first time --> add new user to the Repo.
         }
+        return "yes";
+        /*
         return JSONObject.quote(Jwts.builder()
                 .setSubject(user.getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
                 .compact());
+                */
     }
-
     /*
     @auother: Anadil
     update outlookToken's access token and refresh token of Microsoft outlook ,
@@ -206,7 +211,7 @@ public class UserController {
     @return true if the adding process passed OK ,otherwise false
      */
     @PostMapping("/addEvent")
-    public boolean addEvent(Authentication auth, @RequestBody Event event) {
+    public boolean addEvent(Authentication auth,  Event event) {
         event.setKindOfEvent(OUR_EVENT);
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(!UserService.addEvent(user,event)){
@@ -294,7 +299,7 @@ public class UserController {
      */
 
     @PostMapping("/getEventsBetweenInterval")
-    public List<Event> getEventsBetweenInterval(Authentication auth,@RequestBody TwoStrings time) {
+    public List<Event> getEventsBetweenInterval(Authentication auth, TwoStrings time) {
 
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
@@ -490,7 +495,7 @@ public class UserController {
         return subscribedUserRepository.findAll();
     }
 
-    @PostMapping("/sendMails")
+    @GetMapping("/sendEmails")
     public void sendMail() {
         ArrayList<Subscription> subcribers = new ArrayList<>();
         subcribers.addAll(subscribedUserRepository.findAll());
@@ -508,11 +513,11 @@ public class UserController {
 
 
     @PostMapping("/NLP")
-    private EventTag getNLPres(@RequestBody String name) {
+    private String getNLPres(@RequestBody String name) {
         try {
-            return NLP.RunNLP(name);
+            return NLP.TestingRunNLP(name);
         } catch (Exception e) {
         }
-        return EventTag.Rest;
+        return "FYUCJl";
     }
 }

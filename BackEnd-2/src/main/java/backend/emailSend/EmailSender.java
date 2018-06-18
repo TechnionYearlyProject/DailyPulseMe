@@ -10,7 +10,6 @@ public class EmailSender {
 
     private static String USER_NAME = "dailypulseme18";  // GMail user name (just the part before "@gmail.com")
     private static String PASSWORD = "Dailypulseme2018"; // GMail password
-    private static String RECIPIENT = "rober.shhock@gmail.com";
 
     public static void sendMail(ArrayList<Subscription> to) {
         if(to.size() == 0) {
@@ -19,9 +18,8 @@ public class EmailSender {
         String from = USER_NAME;
         String pass = PASSWORD;
         // list of recipient email addresses
-        String subject = "Java send mail example";
-        String body = "Welcome to DailyPulse!";
-
+        String subject = "DailyPulseMe weekly reminder";
+        String body = "Hello, We hope that you stayed healthy this week!\nCome check our website DailyPulse.me to see if you have been doing well this week too!\n We know that you can do it!";
         sendFromGMail(from, pass, to, subject, body);
     }
 
@@ -49,6 +47,7 @@ public class EmailSender {
 
             for( int i = 0; i < toAddress.length; i++) {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
+
             }
 
             message.setSubject(subject);
