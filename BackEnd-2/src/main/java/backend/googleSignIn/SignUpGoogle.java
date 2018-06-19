@@ -12,19 +12,20 @@ import java.util.Collections;
 
 
 public class SignUpGoogle {
-    private static final String CLIENT_SECRET_FILE = "src/main/resources/clientSecret.json";
+  //  private static final String CLIENT_SECRET_FILE = "src/main/resources/clientSecret.json";
     private static final String redirectUrl="https://dailypulse.azurewebsites.net/googleauth";
-    public static AppUser getGoogleUser(String authCode){
-        GoogleClientSecrets clientSecrets = null;
+    public static AppUser getGoogleUser(String authCode)throws Exception{
+        System.out.println("authCode : "+authCode);
+     /*   GoogleClientSecrets clientSecrets = null;
         {
             try {
                 clientSecrets = GoogleClientSecrets.load(
                         JacksonFactory.getDefaultInstance(), new FileReader(CLIENT_SECRET_FILE));
             } catch (IOException e) {
-                e.printStackTrace();
+                throw e;
             }
         }
-
+*/
         GoogleTokenResponse tokenResponse=null;
 
         {
@@ -33,16 +34,16 @@ public class SignUpGoogle {
                         new NetHttpTransport(),
                         JacksonFactory.getDefaultInstance(),
                         "https://www.googleapis.com/oauth2/v4/token",
-                        clientSecrets.getDetails().getClientId(),
-                        clientSecrets.getDetails().getClientSecret(),
+                        "895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com",
+                        "FGLsX3PBtIHEypj88z7UkI6R",
                         authCode,
                         redirectUrl)  // Specify the same redirect URI that you use with your web
                         //                    // app. If you don't have a web version of your app, you can
                         // specify an empty string.
                         .execute();
             } catch (IOException e) {
-                e.printStackTrace();
-                return null;
+                throw e;
+
             }
         }
 
@@ -58,7 +59,7 @@ public class SignUpGoogle {
             try {
                 idToken = tokenResponse.parseIdToken();
             } catch (IOException e) {
-                e.printStackTrace();
+                throw e;
             }
         }
 

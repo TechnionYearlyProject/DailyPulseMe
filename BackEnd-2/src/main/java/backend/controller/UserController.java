@@ -101,28 +101,38 @@ public class UserController {
 
     @PostMapping("/sign-up-google")
     public String signUpViaGoogle(String authToken) {
-        AppUser user=SignUpGoogle.getGoogleUser(authToken);
+        AppUser user=null;
+        try {
+            user = SignUpGoogle.getGoogleUser(authToken);
+        }
+        catch(Exception e){
+            return "sign up via google faild :( see get GoogleUser "+e.toString();
+        }
 
         //System.out.println("heeeeere"+user.getUsername());
         if(user==null){ //sign in via google failed
             return "user here is NULL";
         }
 
-        if (appUserRepository.findByUsername(user.getUsername()) == null) { // user already exists
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
-            user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
-            user.setActiveBandType(BandType.GOOGLEFIT_BAND);
-            user.setCallParser(new GoogleCallParser());
-            appUserRepository.save(user); //first time --> add new user to the Repo.
+        try {
+            if (appUserRepository.findByUsername(user.getUsername()) == null) { // user already exists
+                user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
+                user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
+                user.setActiveBandType(BandType.GOOGLEFIT_BAND);
+                user.setCallParser(new GoogleCallParser());
+                appUserRepository.save(user); //first time --> add new user to the Repo.
+            }
         }
-        return "yes";
-        /*
+        catch (Exception e){
+            return "o0ops maybe caused by mongo"+e.toString();
+        }
+
         return JSONObject.quote(Jwts.builder()
                 .setSubject(user.getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
                 .compact());
-                */
+
     }
     /*
     @auother: Anadil
