@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="backend.controller.UserControllerTest" time="2.167" tests="15" errors="0" skipped="0" failures="0">
+<testsuite name="backend.controller.UserControllerTest" time="1.712" tests="15" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2017.3.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -61,19 +61,19 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="logInTestWithoutPermission" classname="backend.controller.UserControllerTest" time="0.139"/>
-  <testcase name="loginTest" classname="backend.controller.UserControllerTest" time="0.074"/>
-  <testcase name="setGoogleFitBandTest" classname="backend.controller.UserControllerTest" time="0.03"/>
-  <testcase name="verifyAccessTokenTest" classname="backend.controller.UserControllerTest" time="1.06"/>
-  <testcase name="updateTokensTest" classname="backend.controller.UserControllerTest" time="0.05"/>
-  <testcase name="refreshAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.695"/>
-  <testcase name="subscribeUserTest" classname="backend.controller.UserControllerTest" time="0.01"/>
-  <testcase name="setFitbitBandTest" classname="backend.controller.UserControllerTest" time="0.016"/>
-  <testcase name="getActiveBandTest" classname="backend.controller.UserControllerTest" time="0.023"/>
-  <testcase name="getOutlookTokenTest" classname="backend.controller.UserControllerTest" time="0.004"/>
-  <testcase name="getEventTest" classname="backend.controller.UserControllerTest" time="0.036"/>
-  <testcase name="getOutlookTokennotWorkingTest" classname="backend.controller.UserControllerTest" time="0.009"/>
-  <testcase name="givenWac_whenServletContext_thenItProvidesuserController" classname="backend.controller.UserControllerTest" time="0.003"/>
-  <testcase name="deleteEventTest" classname="backend.controller.UserControllerTest" time="0.009"/>
-  <testcase name="unsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.009"/>
+  <testcase name="logInTestWithoutPermission" classname="backend.controller.UserControllerTest" time="0.16"/>
+  <testcase name="loginTest" classname="backend.controller.UserControllerTest" time="0.102"/>
+  <testcase name="setGoogleFitBandTest" classname="backend.controller.UserControllerTest" time="0.021"/>
+  <testcase name="verifyAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.657"/>
+  <testcase name="updateTokensTest" classname="backend.controller.UserControllerTest" time="0.086"/>
+  <testcase name="refreshAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.49"/>
+  <testcase name="subscribeUserTest" classname="backend.controller.UserControllerTest" time="0.013"/>
+  <testcase name="setFitbitBandTest" classname="backend.controller.UserControllerTest" time="0.039"/>
+  <testcase name="getActiveBandTest" classname="backend.controller.UserControllerTest" time="0.022"/>
+  <testcase name="getOutlookTokenTest" classname="backend.controller.UserControllerTest" time="0.016"/>
+  <testcase name="getEventTest" classname="backend.controller.UserControllerTest" time="0.052"/>
+  <testcase name="getOutlookTokennotWorkingTest" classname="backend.controller.UserControllerTest" time="0.014"/>
+  <testcase name="givenWac_whenServletContext_thenItProvidesuserController" classname="backend.controller.UserControllerTest" time="0.008"/>
+  <testcase name="deleteEventTest" classname="backend.controller.UserControllerTest" time="0.016"/>
+  <testcase name="unsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.016"/>
 </testsuite>

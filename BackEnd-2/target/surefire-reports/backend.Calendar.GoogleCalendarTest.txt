@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: backend.Calendar.GoogleCalendarTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.698 sec <<< FAILURE! - in backend.Calendar.GoogleCalendarTest
+GoogleEventTest(backend.Calendar.GoogleCalendarTest)  Time elapsed: 0.577 sec  <<< ERROR!
+java.lang.NoSuchMethodError: backend.Calendar.AuxMethods.RFC5545ToLong(Ljava/lang/String;)J
+	at backend.Calendar.GoogleCalendar.GoogleEvent(GoogleCalendar.java:49)
+	at backend.Calendar.GoogleCalendarTest.GoogleEventTest(GoogleCalendarTest.java:83)
+

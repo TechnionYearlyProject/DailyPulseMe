@@ -1,5 +1,6 @@
 package backend.Calendar;
 
+import backend.CallParser.GoogleCallParser;
 import backend.NLP.NLP;
 import backend.entity.AppUser;
 import backend.entity.Event;
@@ -27,12 +28,42 @@ import static backend.Calendar.AuxMethods.retrieveFeidInJson;
 import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
 
 public class GoogleCalendar {
-
+    static  int count=0;
     /*
     @author :Anadil
-    @param : the user who his events will be extract from Google Calender
-    @return :getting on the events from the User's google Calendar
+   this methods get JsonGoogleFormat and extract from it the event
     */
+    public static Event GoogleEvent(JsonNode GoogleEventJson){
+        Event event = new Event();
+        String subject = GoogleEventJson.path("summary").asText();
+        String bodyPreview=GoogleEventJson.path("description").asText();
+        String start=GoogleEventJson.path("start").path("dateTime").asText();
+        if(start==""){
+            start=GoogleEventJson.path("start").path("date").asText()+"T00:00:00+03:00";
+        }
+        String end=GoogleEventJson.path("end").path("dateTime").asText();
+        if(end == ""){
+            end=GoogleEventJson.path("end").path("date").asText()+"T00:00:00+03:00";
+        }
+        // System.out.println("subject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
+        event.setStartTime(Long.toString(RFC5545ToLong(start)));
+        event.setId(Long.toString(RFC5545ToLong(start)));
+        event.setName(subject);
+        event.setDescription(bodyPreview);
+        //  event.setStartTime(Long.toString(RFC5545ToLong(start)));
+        event.setEndTime(Long.toString(RFC5545ToLong(end)));
+        event.setPulses(new ArrayList<Pulse>());
+        event.setKindOfEvent(GOOGLE_EVENT);
+
+        return event;
+    }
+
+
+    /*
+   @author :Anadil
+   @param : the user who his events will be extract from Google Calender
+   @return :getting on the events from the User's google Calendar
+   */
     static public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
 
        // System.out.println(user.getGoogleFitAccessToken()+"*******\n"+user.getGoogleFitRefreshToken());
@@ -54,55 +85,36 @@ public class GoogleCalendar {
         HttpResponse response = null;
         try {
             response = client.execute(get_);
-          //  System.out.println("status "+response.getStatusLine().getStatusCode());
+
             /*if the token is not valid , we generate new one using the refresh and call the function again with the new token*/
-                if (response.getStatusLine().getStatusCode() != 200) {
-                accessToken = user.getCallParser().refreshToken(user);
+            if (response.getStatusLine().getStatusCode() != 200) {
+                GoogleCallParser GCP=new GoogleCallParser();
+                   accessToken = GCP.refreshToken(user);
                 if (accessToken.compareTo("Refresh token expired") == 0) {
-                    System.out.println("step66"); //TODO : LOGGER
+                    System.out.println("step66");
                     throw new RefreshTokenExpiredException();
                 } else {
+                    if(count>1){
+                        return null;
+                    }
+                    count++;
                     System.out.println("step555");
                     user.setAccessToken(accessToken);
                     return getEvents(user);
                 }
             }
             String result= EntityUtils.toString(response.getEntity());
-            //System.out.println("the http response is :"+ result);
-           // System.out.println("lets starts extracting the events");
+
             //now extracting the events from the respon
             /*************************************************************/
-
+            System.out.println(result.toString());
             ObjectMapper mapper=new ObjectMapper();
             //	mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
             JsonNode root = mapper.readTree(result);
             JsonNode eventsNode = root.path("items");
             for (JsonNode node : eventsNode) {
-                String subject = node.path("summary").asText();
-                String bodyPreview=node.path("description").asText();
-                String start=node.path("start").path("dateTime").asText();
-                if(start==""){
-                    start=node.path("start").path("date").asText()+"T00:00:00+03:00";
-                }
-                String end=node.path("end").path("dateTime").asText();
-                if(end == ""){
-                    end=node.path("end").path("date").asText()+"T00:00:00+03:00";
-                }
-               // System.out.println("subject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
-                Event event=new Event();
-                event.setStartTime(Long.toString(RFC5545ToLong(start)));
-                event.setId(Long.toString(RFC5545ToLong(start)));
-                event.setName(subject);
-                event.setDescription(bodyPreview);
-              //  event.setStartTime(Long.toString(RFC5545ToLong(start)));
-                event.setEndTime(Long.toString(RFC5545ToLong(end)));
-                event.setPulses(new ArrayList<Pulse>());
-                event.setKindOfEvent(GOOGLE_EVENT);
-                events.add(event);
-
-                //Setting the event tag by calling NLP
-            //    event.setTag(NLP.RunNLP(event.getName()));
-
+                System.out.println(node.asText());
+                events.add(GoogleEvent(node));
             }
 
         }

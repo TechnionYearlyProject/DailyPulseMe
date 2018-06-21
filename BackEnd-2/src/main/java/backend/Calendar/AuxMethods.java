@@ -1,11 +1,19 @@
 package backend.Calendar;
 
 import backend.entity.AppUser;
+import backend.entity.Event;
+import backend.entity.Pulse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.api.client.json.Json;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.logging.SimpleFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
+import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
 
 public class AuxMethods {
 

@@ -35,9 +35,30 @@ Extracting events from outlook Calendar
 public class OutlookCalendar {
 
 
-    /*
-    @aouther : Anadil
 
+    public  static Event OutlookEvent(JsonNode OutlookEventJson){
+        String subject = OutlookEventJson.path("subject").asText();
+        String bodyPreview=OutlookEventJson.path("bodyPreview").asText();
+        String start=OutlookEventJson.path("start").path("dateTime").asText();
+        String end=OutlookEventJson.path("end").path("dateTime").asText();
+        //   System.out.println("sunject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
+        Event event=new Event();
+        event.setStartTime(Long.toString(RFC5545ToLong(start)));
+        event.setId(Long.toString(RFC5545ToLong(start)));
+        event.setName(subject);
+        event.setDescription(bodyPreview);
+        //      event.setStartTime(Long.toString(RFC5545ToLong(start)));
+        event.setEndTime(Long.toString(RFC5545ToLong(end)));
+        event.setPulses(new ArrayList<Pulse>());
+        event.setKindOfEvent(OUTLOOK_EVENT);
+        return  event;
+    }
+
+
+     /*
+     @author :Anadil
+     @param : the user who his events will be extract from OutlookCalender
+     @return :getting on the events from the User's OutlookCalendar
      */
      static public ArrayList<Event> getEvents(AppUser user) throws RefreshTokenExpiredException {
 
@@ -46,7 +67,7 @@ public class OutlookCalendar {
         String accessToken=user.getOutlookToken();
         System.out.println("Now DailyPulsMe will bring your Outlook Calendar Events (Azure&Microsoft)");
         HttpGet get_=new HttpGet("https://graph.microsoft.com/v1.0/me/events?&$select=subject,bodyPreview,Start,End&body-content-type=text");
-      //  get_.addHeader("Content-Type","application/json");
+
         get_.addHeader("Authorization" , "Bearer " +user.getOutlookToken());
         HttpClient client = HttpClientBuilder.create().build();
         HttpResponse response = null;
@@ -58,15 +79,8 @@ public class OutlookCalendar {
                  throw  new RefreshTokenExpiredException();
             }
 
-        /*    BufferedReader br = new BufferedReader( //putting the response in buffer
-                    new InputStreamReader(
-                            (response.getEntity().getContent())
-                    )
-            );*/
-
             String result= EntityUtils.toString(response.getEntity());
-           // System.out.println("the http response is :"+ result);
-          //  System.out.println("lets starts extracting the events");
+
             //now extracting the events from the respon
             /*************************************************************/
             /* The next part is about fetching the events from the response*/
@@ -76,25 +90,8 @@ public class OutlookCalendar {
             JsonNode root = mapper.readTree(result);
             JsonNode eventsNode = root.path("value");
             for (JsonNode node : eventsNode) {
-                String subject = node.path("subject").asText();
-                String bodyPreview=node.path("bodyPreview").asText();
-                String start=node.path("start").path("dateTime").asText();
-                String end=node.path("end").path("dateTime").asText();
-             //   System.out.println("sunject :"+subject+" bodyPreview :"+bodyPreview+" start :"+start+" end :"+end);
-                Event event=new Event();
-                event.setStartTime(Long.toString(RFC5545ToLong(start)));
-                event.setId(Long.toString(RFC5545ToLong(start)));
-                event.setName(subject);
-                event.setDescription(bodyPreview);
-          //      event.setStartTime(Long.toString(RFC5545ToLong(start)));
-                event.setEndTime(Long.toString(RFC5545ToLong(end)));
-                event.setPulses(new ArrayList<Pulse>());
-                event.setKindOfEvent(OUTLOOK_EVENT);
-                events.add(event);
 
-
-                //Setting the event tag by calling NLP
-          //      event.setTag(NLP.RunNLP(event.getName()));
+                events.add(OutlookEvent(node));
 
             }
         }

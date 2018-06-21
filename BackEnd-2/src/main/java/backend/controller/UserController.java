@@ -99,6 +99,9 @@ public class UserController {
         }
     }
 
+    /*
+    @author:Anadil
+     */
     @PostMapping("/sign-up-google")
     public String signUpViaGoogle(String authToken) {
         AppUser user=null;
@@ -115,12 +118,18 @@ public class UserController {
         }
 
         try {
-            if (appUserRepository.findByUsername(user.getUsername()) == null) { // user already exists
+            AppUser appUsr=appUserRepository.findByUsername(user.getUsername());
+            if (appUsr == null) { // user already exists
                 user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
                 user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
                 user.setActiveBandType(BandType.GOOGLEFIT_BAND);
                 user.setCallParser(new GoogleCallParser());
                 appUserRepository.save(user); //first time --> add new user to the Repo.
+            }
+            else{
+                appUsr.setAccessToken(user.getAccessToken());
+                appUsr.setRefreshToken(user.getRefreshToken());
+                appUserRepository.save(appUsr);
             }
         }
         catch (Exception e){
@@ -134,6 +143,7 @@ public class UserController {
                 .compact());
 
     }
+
     /*
     @auother: Anadil
     update outlookToken's access token and refresh token of Microsoft outlook ,
@@ -241,6 +251,16 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
 
+    @PostMapping("/changePassword")
+    public boolean ChangePassword(Authentication auth,String newPassword){
+        AppUser user=appUserRepository.findByUsername(auth.getName());
+        if(user==null){
+            return false;
+        }
+        user.setPassword(bCryptPasswordEncoder.encode(newPassword)); //decoding the password
+        appUserRepository.save(user);
+        return true;
+    }
 
     /*
      Getting Events between Interval Time and with pulses between Interval
@@ -384,7 +404,7 @@ public class UserController {
                     }
                 }
                 if(isNewEvent){
-                   event.setTag(NLP.RunNLP(event.getName()));
+                   event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
                     tmp.add(event);
                 }
                 isNewEvent=true;

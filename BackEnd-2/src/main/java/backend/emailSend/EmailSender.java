@@ -19,8 +19,14 @@ public class EmailSender {
         String pass = PASSWORD;
         // list of recipient email addresses
         String subject = "DailyPulseMe weekly reminder";
-        String body = "Hello, We hope that you stayed healthy this week!\nCome check our website DailyPulse.me to see if you have been doing well this week too!\n We know that you can do it!";
-        sendFromGMail(from, pass, to, subject, body);
+        String body = "We hope that you stayed healthy this week!\nCome check our website https://dailypulse.azurewebsites.net/ to see if you have been doing well this week too!\n We know that you can do it!";
+        ArrayList<Subscription> oneRec =  new ArrayList<Subscription>();
+        for(Subscription sub : to) {
+            oneRec.add(sub);
+            sendFromGMail(from, pass,oneRec , subject, "Hello "+sub.getName()+",\n"+body);
+            oneRec.remove(0);
+            System.out.println("GOT HERE - SEND EMAILS");
+        }
     }
 
     public static void sendFromGMail(String from, String pass, ArrayList<Subscription> to, String subject, String body) {
@@ -45,9 +51,9 @@ public class EmailSender {
                 toAddress[i] = new InternetAddress(to.get(i).getEmail());
             }
 
+            System.out.println("to adress length "+ toAddress.length);
             for( int i = 0; i < toAddress.length; i++) {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
-
             }
 
             message.setSubject(subject);
