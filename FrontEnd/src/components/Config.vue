@@ -12,7 +12,7 @@
              <p></p>
              <input v-model="rePassword" type="password" id="inputPasswordAgain" class="form-control" placeholder="Password Again" required style="text-align: center;">
              <p></p>
-              <p v-if="toggleMsg" style="color:black"> {{msg1}}</p>
+              <p v-if="toggleMsg1" style="color:black"> {{msg1}}</p>
               <p v-if="toggleMsg" style="color:red"> {{msg}}</p>
              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Change Password</button>
            </form>
@@ -87,15 +87,15 @@ export default {
               this.toggleMsg1 = false
         this.msg = 'Passwords Must Match'
       } else if (this.password.length < 6){
-                      this.toggleMsg1 = false
               this.toggleMsg = true
+              this.toggleMsg1 = false
         this.msg = 'Password Length Must Be At Least 6'
       } else {
         let url = 'https://webapp-180506135919.azurewebsites.net/users/changePassword'
         this.$http.post(url,{"newPassword": this.password}, {headers: {'Content-Type': 'application/json',
           'Authorization': localStorage.getItem('token')}}).then((res) => {
             if(res.body = true){
-                            this.toggleMsg = false
+                this.toggleMsg = false
               this.toggleMsg1 = true
           this.msg1 = 'Password Changed Succefully'
             }

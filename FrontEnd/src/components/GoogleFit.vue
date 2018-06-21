@@ -45,7 +45,7 @@ export default {
           }
           else{
           	console.log('hi')
-          	// close();
+          	close();
           }
                  this.succesful = true;
             },(err) =>{
