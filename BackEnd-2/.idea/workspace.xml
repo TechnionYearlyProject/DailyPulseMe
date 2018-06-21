@@ -2,28 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8933eb7-9615-4dec-a918-954895ab9412" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/backend/emailSend/EmailSenderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Outlook/Outlook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/DailyPulse-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/DailyPulse-1.0-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/helperClasses/KindOfEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/helperClasses/KindOfEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-backend.CallParser.GoogleCallParserTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-backend.controller.UserControllerTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-backend.entity.AppUserTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-backend.entity.EventTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-backend.service.UserServiceTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/backend.CallParser.GoogleCallParserTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/backend.controller.UserControllerTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/backend.entity.AppUserTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/backend.entity.EventTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/backend.service.UserServiceTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../codecov.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../codecov.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,17 +16,58 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/DailyPulse$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1529605293802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>backend.controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/DailyPulse$AppUserTest.ic" NAME="AppUserTest Coverage Results" MODIFIED="1529596653120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>backend.entity.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DailyPulse$UserControllerTest_isConnectedtoTest.ic" NAME="UserControllerTest.isConnectedtoTest Coverage Results" MODIFIED="1529602421951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>backend.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DailyPulse$UserControllerTest_getEventsTest.ic" NAME="UserControllerTest.getEventsTest Coverage Results" MODIFIED="1529604325308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>backend.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DailyPulse$UserControllerTest_updateTokensTest.ic" NAME="UserControllerTest.updateTokensTest Coverage Results" MODIFIED="1529602609592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>backend.controller.*</FILTER>
     </SUITE>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OutlookCalendar.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-815">
-              <caret line="41" column="45" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="45" />
+            <state relative-caret-position="140">
+              <caret line="498" column="20" selection-start-line="498" selection-start-column="16" selection-end-line="498" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7909#7910#0" expanded="true" />
+                <element signature="e#7951#7952#0" expanded="true" />
+                <element signature="e#19478#19479#0" expanded="true" />
+                <element signature="e#19535#19536#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+              <folding>
+                <element signature="e#1543#1544#0" expanded="true" />
+                <element signature="e#1575#1576#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="231" column="71" selection-start-line="231" selection-start-column="71" selection-end-line="231" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,20 +75,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoogleCalendar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
+      <file leaf-file-name="AppUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuxMethods.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/AuxMethods.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="66" column="16" lean-forward="true" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+            <state relative-caret-position="409">
+              <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+              <folding>
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#855#856#0" expanded="true" />
+                <element signature="e#2802#2803#0" expanded="true" />
+                <element signature="e#2834#2835#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,12 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GOOGLEFIT_BAND</find>
-      <find>activeBandType</find>
-      <find>now we have google Calendar events</find>
-      <find>Pre-flight</find>
-      <find>body</find>
-      <find>2222222222222222222222222</find>
       <find>getCalendarsEvents</find>
       <find>sign-up-g0</find>
       <find>subscribed</find>
@@ -112,6 +126,12 @@
       <find>clientSe</find>
       <find>CLIENT_SECRET_FILE</find>
       <find>clientSecrets</find>
+      <find>reques</find>
+      <find>updateTokensTest</find>
+      <find>getOutlookToken</find>
+      <find>getAllEventsWhichHavePulses</find>
+      <find>getEventsBetweenInterval</find>
+      <find>addEventTest</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\USER\Desktop\DailyPulseMe\azure-version\DailyPulseMefinal\DailyPulseMe\BackEnd-2</dir>
@@ -135,20 +155,21 @@
         <option value="$PROJECT_DIR$/src/main/java/backend/security/RequestFilter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/NLP/NLP.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/emailSend/EmailSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/security/WebSecurity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/googleSignIn/SignUpGoogle.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/entity/Event.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/entity/EventTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/entity/Subscription.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/entity/SubscriptionTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/helperClasses/KindOfEvent.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/emailSend/EmailSenderTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" />
       </list>
     </option>
   </component>
@@ -212,6 +233,32 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="WebConfig" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -233,6 +280,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -267,7 +322,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in DailyPulse">
+  <component name="RunManager" selected="JUnit.UserControllerTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -306,35 +361,18 @@
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
     </configuration>
-    <configuration name="All in DailyPulse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DailyPulse" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.entity.*" />
+          <option name="PATTERN" value="backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.entity" />
-      <option name="MAIN_CLASS_NAME" value="backend.entity.AppUserTest" />
+      <option name="PACKAGE_NAME" value="backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="backend.controller.UserControllerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -346,42 +384,19 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="EmailSenderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest.issubscripedRepoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.emailSend.*" />
+          <option name="PATTERN" value="backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.emailSend" />
-      <option name="MAIN_CLASS_NAME" value="backend.emailSend.EmailSenderTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="EventTest.equalsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DailyPulse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.entity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.entity" />
-      <option name="MAIN_CLASS_NAME" value="backend.entity.EventTest" />
-      <option name="METHOD_NAME" value="equalsTest" />
+      <option name="PACKAGE_NAME" value="backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="backend.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="issubscripedRepoTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -392,20 +407,66 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="UserDetailsServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest.notissubscripedRepoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.service.*" />
+          <option name="PATTERN" value="backend.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.service" />
-      <option name="MAIN_CLASS_NAME" value="backend.service.UserDetailsServiceImplTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="backend.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="notissubscripedRepoTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="UserControllerTest.sendEmailsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="backend.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="sendEmailsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="UserControllerTest.succunsubscribeUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="backend.controller" />
+      <option name="MAIN_CLASS_NAME" value="backend.controller.UserControllerTest" />
+      <option name="METHOD_NAME" value="succunsubscribeUserTest" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -570,19 +631,19 @@
     </configuration>
     <list>
       <item itemvalue="Azure Web App.Azure Web App: DailyPulse:DailyPulse" />
-      <item itemvalue="JUnit.AppUserTest" />
-      <item itemvalue="JUnit.EventTest.equalsTest" />
-      <item itemvalue="JUnit.UserDetailsServiceImplTest" />
-      <item itemvalue="JUnit.EmailSenderTest" />
-      <item itemvalue="JUnit.All in DailyPulse" />
+      <item itemvalue="JUnit.UserControllerTest" />
+      <item itemvalue="JUnit.UserControllerTest.issubscripedRepoTest" />
+      <item itemvalue="JUnit.UserControllerTest.sendEmailsTest" />
+      <item itemvalue="JUnit.UserControllerTest.notissubscripedRepoTest" />
+      <item itemvalue="JUnit.UserControllerTest.succunsubscribeUserTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in DailyPulse" />
-        <item itemvalue="JUnit.EmailSenderTest" />
-        <item itemvalue="JUnit.UserDetailsServiceImplTest" />
-        <item itemvalue="JUnit.EventTest.equalsTest" />
-        <item itemvalue="JUnit.AppUserTest" />
+        <item itemvalue="JUnit.UserControllerTest" />
+        <item itemvalue="JUnit.UserControllerTest.succunsubscribeUserTest" />
+        <item itemvalue="JUnit.UserControllerTest.notissubscripedRepoTest" />
+        <item itemvalue="JUnit.UserControllerTest.sendEmailsTest" />
+        <item itemvalue="JUnit.UserControllerTest.issubscripedRepoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -620,7 +681,7 @@
       <workItem from="1529351565088" duration="2969000" />
       <workItem from="1529355751894" duration="523000" />
       <workItem from="1529356392985" duration="6337000" />
-      <workItem from="1529595714453" duration="3762000" />
+      <workItem from="1529595714453" duration="9448000" />
     </task>
     <task id="LOCAL-00001" summary="NLP script tested on Azure">
       <created>1529257676565</created>
@@ -633,42 +694,43 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AppUserTest - 2018.06.21 at 18h 53m 56s.xml">
-      <configuration name="AppUserTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_getAllEventsTest - 2018.06.21 at 21h 00m 30s.xml">
+      <configuration name="UserControllerTest.getAllEventsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppUserTest_test2 - 2018.06.21 at 18h 55m 10s.xml">
-      <configuration name="AppUserTest.test2" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_gettalleventsTest - 2018.06.21 at 21h 01m 10s.xml">
+      <configuration name="UserControllerTest.gettalleventsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppUserTest_test2 - 2018.06.21 at 18h 55m 37s.xml">
-      <configuration name="AppUserTest.test2" configurationId="JUnit" />
+    <history-entry file="UserControllerTest - 2018.06.21 at 21h 01m 23s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppUserTest - 2018.06.21 at 18h 56m 42s.xml">
-      <configuration name="AppUserTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_getEventsTest - 2018.06.21 at 21h 05m 21s.xml">
+      <configuration name="UserControllerTest.getEventsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AppUserTest - 2018.06.21 at 18h 57m 34s.xml">
-      <configuration name="AppUserTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_getEventsTest - 2018.06.21 at 21h 05m 31s.xml">
+      <configuration name="UserControllerTest.getEventsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EventTest_equalsTest - 2018.06.21 at 19h 08m 23s.xml">
-      <configuration name="EventTest.equalsTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest - 2018.06.21 at 21h 06m 24s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EventTest_equalsTest - 2018.06.21 at 19h 11m 48s.xml">
-      <configuration name="EventTest.equalsTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest - 2018.06.21 at 21h 06m 34s.xml">
+      <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EventTest_equalsTest - 2018.06.21 at 19h 12m 12s.xml">
-      <configuration name="EventTest.equalsTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_issubscripedRepoTest - 2018.06.21 at 21h 15m 28s.xml">
+      <configuration name="UserControllerTest.issubscripedRepoTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UserDetailsServiceImplTest - 2018.06.21 at 19h 25m 33s.xml">
-      <configuration name="UserDetailsServiceImplTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_sendEmailsTest - 2018.06.21 at 21h 17m 08s.xml">
+      <configuration name="UserControllerTest.sendEmailsTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EmailSenderTest - 2018.06.21 at 19h 40m 11s.xml">
-      <configuration name="EmailSenderTest" configurationId="JUnit" />
+    <history-entry file="UserControllerTest_notissubscripedRepoTest - 2018.06.21 at 21h 19m 08s.xml">
+      <configuration name="UserControllerTest.notissubscripedRepoTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58603000" />
+    <option name="totallyTimeSpent" value="64289000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="11" />
       <window_info id="Azure Explorer" order="9" />
@@ -684,18 +746,18 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39941692" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49707174" weight="0.21711569" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49707174" weight="0.21574344" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="HDInsight Spark Submission" order="14" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8931186" visible="true" weight="0.25510204" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8931186" visible="true" weight="0.25510204" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.3293092" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26626426" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26626426" />
       <window_info anchor="right" id="Bean Validation" order="7" />
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Remote Spark Job in Cluster" order="9" />
@@ -734,7 +796,7 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -742,13 +804,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/emailSend/EmailSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1512">
@@ -868,13 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.9.RELEASE/spring-web-4.3.9.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -918,16 +966,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="114" column="9" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -956,17 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="25" />
-          <folding>
-            <element signature="e#2802#2803#0" expanded="true" />
-            <element signature="e#2834#2835#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/DailyPulseApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -985,13 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="103" column="31" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1041,16 +1061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="52" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/backend/emailSend/EmailSenderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1077,26 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserDetailsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="21" column="72" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Outlook/Outlook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1110,7 +1100,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/AuxMethods.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
-          <caret line="66" column="16" lean-forward="true" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1123,8 +1113,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/OutlookCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-815">
+        <state relative-caret-position="-640">
           <caret line="41" column="45" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserDetailsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="24" column="63" lean-forward="true" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/AppUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding>
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#2802#2803#0" expanded="true" />
+            <element signature="e#2834#2835#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/entity/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+          <folding>
+            <element signature="e#1543#1544#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="575" column="19" selection-start-line="575" selection-start-column="19" selection-end-line="575" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="498" column="20" selection-start-line="498" selection-start-column="16" selection-end-line="498" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7909#7910#0" expanded="true" />
+            <element signature="e#7951#7952#0" expanded="true" />
+            <element signature="e#19478#19479#0" expanded="true" />
+            <element signature="e#19535#19536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="231" column="71" selection-start-line="231" selection-start-column="71" selection-end-line="231" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
