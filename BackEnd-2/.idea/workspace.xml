@@ -267,7 +267,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EmailSenderTest">
+  <component name="RunManager" selected="JUnit.All in DailyPulse">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -306,6 +306,23 @@
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
     </configuration>
+    <configuration name="All in DailyPulse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="AppUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
       <extension name="coverage">
@@ -320,29 +337,6 @@
       <option name="MAIN_CLASS_NAME" value="backend.entity.AppUserTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="AppUserTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DailyPulse" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="backend.entity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.entity" />
-      <option name="MAIN_CLASS_NAME" value="backend.entity.AppUserTest" />
-      <option name="METHOD_NAME" value="test2" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -576,19 +570,19 @@
     </configuration>
     <list>
       <item itemvalue="Azure Web App.Azure Web App: DailyPulse:DailyPulse" />
-      <item itemvalue="JUnit.AppUserTest.test2" />
       <item itemvalue="JUnit.AppUserTest" />
       <item itemvalue="JUnit.EventTest.equalsTest" />
       <item itemvalue="JUnit.UserDetailsServiceImplTest" />
       <item itemvalue="JUnit.EmailSenderTest" />
+      <item itemvalue="JUnit.All in DailyPulse" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in DailyPulse" />
         <item itemvalue="JUnit.EmailSenderTest" />
         <item itemvalue="JUnit.UserDetailsServiceImplTest" />
         <item itemvalue="JUnit.EventTest.equalsTest" />
         <item itemvalue="JUnit.AppUserTest" />
-        <item itemvalue="JUnit.AppUserTest.test2" />
       </list>
     </recent_temporary>
   </component>

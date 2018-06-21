@@ -13,7 +13,6 @@ import backend.Calendar.AuxMethods;
 import backend.Calendar.GoogleCalendar;
 import backend.Calendar.OutlookCalendar;
 import backend.DailyPulseApp;
-import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleSignIn.SignUpGoogle;
 import backend.helperClasses.KindOfEvent;
