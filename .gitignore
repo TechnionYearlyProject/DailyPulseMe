@@ -1,0 +1,4 @@
+#gitignorefile
+*.class
+*.jar
+.idea
