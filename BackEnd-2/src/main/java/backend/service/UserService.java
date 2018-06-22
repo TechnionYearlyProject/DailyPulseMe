@@ -1,5 +1,6 @@
 package backend.service;
 
+import backend.NLP.NLP;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
@@ -104,7 +105,14 @@ if(user.getEvents()==null){
                 try {
                     //getCallParser will return either FitBit or Google callParser
                     eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
-
+                    //Calling NLP here
+                    try {
+                        if(eventPulses.size()>0){
+                            event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
+                        }
+                    }catch (Exception e){
+                        System.out.println("calling NLP +"+e.toString());
+                    }
                 } catch (RefreshTokenExpiredException e) {
                     return null;
                 }

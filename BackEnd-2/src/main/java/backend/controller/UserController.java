@@ -94,6 +94,7 @@ public class UserController {
             user.setCallParser(new GoogleCallParser());
 
             appUserRepository.save(user); //saving the user in the user's repository
+            subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
             return true;
         }
         catch (Exception e){
@@ -127,11 +128,13 @@ public class UserController {
                 user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
                 user.setActiveBandType(BandType.GOOGLEFIT_BAND);
                 user.setCallParser(new GoogleCallParser());
+                subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
                 appUserRepository.save(user); //first time --> add new user to the Repo.
             }
             else{
                 appUsr.setAccessToken(user.getAccessToken());
                 appUsr.setRefreshToken(user.getRefreshToken());
+                subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
                 appUserRepository.save(appUsr);
             }
         }
@@ -408,7 +411,7 @@ if(time.getFirst()==null){
                     }
                 }
                 if(isNewEvent){
-                   event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
+                    //event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
                     tmp.add(event);
                 }
                 isNewEvent=true;
