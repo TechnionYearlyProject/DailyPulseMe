@@ -15,7 +15,7 @@ export default {
     let route = this.$route.fullPath;
     var x = route.split('=')[1];
     this.accessToken = decodeURIComponent(x);
-    this.$http.post('http://localhost:8081/users/getOutlookToken',{
+    this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getOutlookToken',{
         "first": this.accessToken,
         "second": ''
       }

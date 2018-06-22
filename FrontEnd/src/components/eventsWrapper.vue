@@ -1,19 +1,17 @@
 <template>
   <b-container style="margin-top:30px;width:60%;">
-
-      <div class="card card-container" style="z-index:-2; background: #00000E; position:absolute; opacity:0.9; 
-  width:60%; height:400px; margin-left:-15px;" </div>
-  <eventsGraph v-if="!isempty"></eventsGraph>
+  		<b-card style="z-index:-2; background: #00000E; position:absolute; opacity:0.3;
+  width:60%; height:420px; margin-left:-15px; margin-top:-10px;">
+</b-card>
+<eventsGraph v-if="!isempty"  style="z-index:1; height:380px; width:50%;"></eventsGraph>
     <Spinner size="massive" v-if="!timeup" style="z-index:1; margin-top:30px;">Loading..</Spinner>
-
-    <!-- </b-row> -->
   </b-container>
 </template>
 
 <script>
 import eventsGraph from './eventsGraph'
 import Spinner from 'vue-simple-spinner'
-export default {  
+export default {
   name: 'eventsWrapper',
   components: { eventsGraph,Spinner },
   created: function(){
@@ -30,9 +28,9 @@ export default {
       console.log('Carousel Updated!')
     },
     getEvents(){
-       this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
-             "first": '0',
-             "second": 151639920000000
+       this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getAllEventsWhichHavePulses',{
+             "first": 1515103200000,
+             "second": new Date().getTime()
            },{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {

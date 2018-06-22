@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <b-container fluid class="bv-example-row bv-example-row-flex-cols"> 
+  <b-container fluid class="bv-example-row bv-example-row-flex-cols">
   <b-row >
     <b-col cols="1">
   <a href="/">
@@ -8,17 +8,15 @@
 </b-col>
 <b-col>
   <b-nav class="pre">
+
     <div v-if="this.loggedin">
       <b-nav-item href="/">Home</b-nav-item>
       <b-nav-item href="/eventsgraph">Graphs</b-nav-item>
-      <b-nav-item href="/calendar">Calendar</b-nav-item>
+      <b-nav-item href="/Calendar">Calendar</b-nav-item>
       <b-nav-item href="/settings">Settings</b-nav-item>
       <b-nav-item @click="logout">Logout</b-nav-item>
     </div>
-      <div v-else>
-        <b-nav-item href="/login">SIGN IN</b-nav-item>
-    <b-nav-item>ABOUT US</b-nav-item>
-      </div>
+
   </b-nav>
 </b-col>
 </b-row>
@@ -46,7 +44,7 @@
     methods:{
       checkToken(){
    var self = this;
-    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+    this.$http.get('https://webapp-180506135919.azurewebsites.net/users/authenticateToken',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
             this.loggedin = true
@@ -56,7 +54,7 @@
     localStorage.setItem('token', 'false');
     location.reload();
     }
-    
+
   }
   }
 </script>
@@ -87,8 +85,12 @@ background-position: center center;
     -moz-box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
     box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
     border-radius: 2px;
+    background-image: linear-gradient(to top , rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&0.65+0,0+98 */
-background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+/* background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, 100%); /* FF3.6-15 */
+/* background: -webkit-linear-gradient(top,  rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, 100%); /* Chrome10-25,Safari5.1-6 */
+/* background: linear-gradient(to bottom,  rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
 }
 .pre{
   color:white;

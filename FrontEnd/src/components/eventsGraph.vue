@@ -1,30 +1,42 @@
+
+ <template>
+  <b-container style="margin-top:30px;width:60%;" fluid>
+      <b-card style="z-index:-2; background: #FFFFFF; position:absolute; opacity:0.5;
+  width:60%; height:520px; margin-left:-15px; margin-top:-10px;">
+</b-card>
+    <line-chart :chart-data="datacollection" style="z-index:1 position:fixed;height:500px;"></line-chart>
+        <Spinner size="massive" v-if="!timeup" style="z-index:1; margin-top:-500px;"></Spinner>
+
+  </b-container>
+</template>
 <script>
+  import Spinner from 'vue-simple-spinner'
+  import LineChart from './eventsChart.js'
+  export default {
+    name:'eventsGraphs',
+    components: {
+      LineChart,
+      Spinner
+    },
+    data () {
+      return {
+        datacollection: null,
+        datesList : [],
+        avgList: [],
+        timeup: false
+      }
+    },
+    mounted () {
+      this.fillData()
+    },
 
-import {Line, Bar} from 'vue-chartjs'
-export default {
-  name: 'eventsGraph',
-  extends: Bar,
-  created: function () {
-    this.getEvents();
-        },
-  data () {
-    return {
-      gradient: null,
-      gradient2: null,
-      datesList : [],
-      avgList: [],
-      isempty: true
-    }
-  },
-
-  methods:{
-    graphClickEvent(event, array){
-      var points = this.getElementAtEvent(event)
-      },
-      getEvents () {
-           this.$http.post('http://localhost:8081/users/getAllEventsWhichHavePulses',{
-             "first": '0',
-             "second": 151639920000000
+    methods: {
+      fillData () {
+        var aList =[]
+        var dList = []
+         this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getAllEventsWhichHavePulses',{
+             "first": 1515103200000,
+             "second": new Date().getTime()
            }
             ,{headers: {'Content-Type': 'application/json',
              'Authorization': localStorage.getItem('token'),}
@@ -46,159 +58,33 @@ export default {
                  minutes = ("0" + minutes).slice(-2);
                  var str = day;
                  var str = day + "." + (month + 1) + "." + year +" - " + hours + ":" + minutes
-                   this.datesList.push(str);
+                   dList.push(str);
                }
                for (var i = 0; i < arrayLength; i++) {
                    var evnt = eventsArr[i];
-				   if(evnt.tag == null){
-					   evnt.tag = "Rest";
-				   }
-                 this.avgList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
+               if(evnt.tag == null){
+                 evnt.tag = "Rest";
                }
+                 aList.push({label: evnt.name,y: evnt.pulseAverage ,tag: evnt.tag, id: evnt.id });
+               }
+               this.datacollection = {
+          labels: dList,
+          datasets: [
+            {
+              label: 'Events',
+              gradient : "['#ffbe88', '#ff93df']",
+              backgroundColor: "#800517",
+              growDuration: 10,
+              data: aList
+          }]
+        }
+        this.timeup = true
            })
-       }
- },
-  mounted () {
-
-    this.renderChart({
-      labels: this.datesList,
-      datasets: [
-        {
-        //  color: 'FF3333',
-            label: 'Events',
-          //  borderColor: '#FC2525',
-            pointBackgroundColor: 'black',
-
-            pointBorderColor: 'black',
-        //  borderColor: ' #FFFFFF',
-         // pointBackgroundColor: '#f11',
-       //   pointBorderColor: 'gray',
-       //   fillColor : '#48A497',
-          borderWidth: 1,
-       //   borderColor: 'FF3333',
-          gradient : "['#ffbe88', '#ff93df']",
-          backgroundColor: "#800517",
-          growDuration: 10,
-          data: this.avgList
-         },
-      ] ,
-        options: {
-    scales: {
-         },
-    responsive:false,
-  }
-  }
-    //
-     ,{ onClick: function(event){
-      var activePoints = this.getElementAtEvent(event)
-       var firstPoint = activePoints[0];
-  if(firstPoint !== undefined){
-    var label = this.data.labels[firstPoint._index];
-    var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
-    var location = "eventGraph?id=" + value.id;
-     window.open(location, 'event graph', "height=600px,width=700px");
+        
+      },
+      getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      }
     }
-       }
-      , responsive: true, maintainAspectRatio: false,fontColor: '#FFFFFF',
-    tooltips: {
-                enabled: true,
-                mode: 'single',
-                callbacks: {
-                   title: function(tooltipItems, data) {
-                    var evnt = data.datasets[0].data[tooltipItems[0].index].label;
-                    return evnt
-                  },
-                    label: function(tooltipItems, data) {
-                      function restHeartStats(rate, age){
-                        if(age <= 35){
-                          if(rate <= 45){
-                            return "Your heart rate is dangerously low, we recommend you consult a doctor immediately!"
-                          }
-                          if(rate <= 61){
-                            return "Normal activity, heart rate indicates you're in excellent shape."
-                          }
-                          if(rate <= 70){
-                            return "Normal activity, heart rate indicates you're in above average shape."
-                          }
-                          if(rate <= 90){
-                            return "Normal activity, heart rate indicates you're in average shape."
-                          }
-                          if(rate <= 100){
-                            return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
-                          }
-                          return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
-                        }
-                        if(age >= 36 && age <= 55){
-                          if(rate <= 49){
-                            return "Your heart rate is dangerously low, we recommend you consult a doctor immediately!"
-                          }
-                          if(rate <= 63){
-                            return "Normal activity, heart rate indicates you're in excellent shape."
-                          }
-                          if(rate <= 72){
-                            return "Normal activity, heart rate indicates you're in above average shape."
-                          }
-                          if(rate <= 77){
-                            return "Normal activity, heart rate indicates you're in average shape."
-                          }
-                          if(rate <= 83){
-                            return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
-                          }
-                          return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
-                        }
-                        if(age >= 56){
-                          if(rate <= 50){
-                            return "Your heart rate is dangerously low, we recommend you consult a doctor immediately!"
-                          }
-                          if(rate <= 66){
-                            return "Normal activity, heart rate indicates you're in excellent shape."
-                          }
-                          if(rate <= 74){
-                            return "Normal activity, heart rate indicates you're in above average shape."
-                          }
-                          if(rate <= 78){
-                            return "Normal activity, heart rate indicates you're in average shape."
-                          }
-                          if(rate <= 84){
-                            return "Your heart rate should be lower, activity might be too stressful or you need to be in better shape in case you're seeing this message consistently."
-                          }
-                          return "Heart rate is dangerously high, we recommend you eliminate this activity as soon as possible."
-                        }
-                      };
-                      function sportHeartStats(rate, age){
-                       var maxRate = 220 - age;
-                        if(rate < 0.5*maxRate){
-                          return "Heart rate is too low, we recommend you to be more active in this session."
-                        }
-                        if(rate >=0.5*maxRate && rate < 0.6*maxRate){
-                          return "This activity is great is recommended to do often to generally stay in shape."
-                        }
-                        if(rate >=0.6*maxRate && rate < 0.7*maxRate){
-                          return "This activity is great forburning fat with preserving as much muscle mass as possible."
-                        }
-                        if(rate >=0.7*maxRate && rate < 0.8*maxRate){
-                          return "This activity is great improving aerobic and cardio fitness,\n ideal for increasing endurance over long distances."
-                        }
-                        if(rate >=0.8*maxRate && rate < 0.9*maxRate){
-                          return "This activity is great improving anaerobic fitness and muscle strength,\n ideal if you are trying to build muscle."
-                        }
-                        return "This activity is great improving maximum performance and speed,\n ideal for short bursts of intense activity and shouldn't be done over a long period of time."
-
-                      };
-                      function heartStats(type, rate, age){
-                        if(type == "Rest"){
-                          return restHeartStats(rate, age);
-                        }
-                        return sportHeartStats(rate, age);
-                      };
-                       var avg = 'Average heart: ' + [tooltipItems.yLabel];
-                       var evnt = 'Type: ' + data.datasets[0].data[tooltipItems.index].tag;
-                       var stats = heartStats(data.datasets[0].data[tooltipItems.index].tag, [tooltipItems.yLabel], 30);
-                        return [avg,evnt,stats];
-                    },
-                }
-            }
-          })
-}
 }
 </script>

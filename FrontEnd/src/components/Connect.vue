@@ -24,7 +24,7 @@ export default {
   },
    methods : {
    checkToken(){
-    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+    this.$http.get('https://webapp-180506135919.azurewebsites.net/users/authenticateToken',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}    
          }).then((res) => {
           this.islogin = true
@@ -32,7 +32,7 @@ export default {
           this.islogin = false
           })
     },checkGoogleToken(){
-      this.$http.get('http://localhost:8081/users/verifyAccessToken',{headers: {'Content-Type': 'application/json',
+      this.$http.get('https://webapp-180506135919.azurewebsites.net/users/verifyAccessToken',{headers: {'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token')}    
                }).then((res) => {
                 console.log(res)
@@ -47,12 +47,12 @@ export default {
      return this.islogin
     },
      googlefit() {
-      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=http://localhost:8080/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
+      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=https://dailypulse.azurewebsites.net/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
       location.assign(url);
     },
     microsoftfit() {
-      // let url = 'https://login.microsoftonline.com/common/oauth2/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=code&redirect_uri=http://localhost:8080/token1&state=12345&scope=Calendars.Read Calendars.ReadWrite'
-      let url2 = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=http://localhost:8080/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
+      // let url = 'https://login.microsoftonline.com/common/oauth2/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=code&redirect_uri=https://dailypulse.azurewebsites.net/token1&state=12345&scope=Calendars.Read Calendars.ReadWrite'
+      let url2 = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
       location.assign(url2);
     }
   }

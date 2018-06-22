@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static backend.entity.EventTag.Rest;
 import static backend.entity.EventTag.Sport;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class EventTest {
@@ -302,6 +302,16 @@ public class EventTest {
         for(int i=0;i<100;i++){
             assertTrue(events.get(i).getPulseAverage()==i);
         }
+
+    }
+    @Test
+    public void equalsTest() {
+
+        assertFalse(events.get(0).equals(null));
+        assertFalse(events.get(0).equals(new AppUser()));
+        Event tmp = new Event();
+        tmp.setPulses(new ArrayList<>());
+        tmp.setAverage();
 
     }
 }

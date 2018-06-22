@@ -1,7 +1,7 @@
 <template>
      <div  style="margin-top:50px;">
         <b-container fluid style="width:350px;">
- <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05; 
+ <div class="card card-container" style="z-index:-2;  position:absolute; opacity:0.05;
   width:350px; height:430px; margin-top:-20px; margin-left:-15px;"></div>
             <img id="profile-img" class="profile-img-card" src="../images/logo3.png" style="width:60%;"/>
 
@@ -12,7 +12,7 @@
                 <input v-model="user.name" class="form-control" type="text" placeholder="User Name" id="inputUsername" required autofocus style="    text-align: center;"/>
                 <input v-model="user.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required style="text-align: center;">
                 <input v-model="rePassword" type="password" id="inputPasswordAgain" class="form-control" placeholder="Password Again" required style="text-align: center;">
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign Up</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"  v-on:click="checkEmail">Sign Up</button>
                 <!-- <button class="btn btn-lg btn-primary btn-block btn-signin" @click="register" type="submit">Sign Up</button> -->
             </form><!-- /form -->
           </b-container>
@@ -35,6 +35,15 @@
       }
     },
     methods: {
+    checkEmail() {
+    var email = document.getElementById('inputEmail');
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (!filter.test(email.value)) {
+    email.focus;
+    return false;
+  }
+ },
       toggleLoginType () {
         this.loginType === 'username' ? this.loginType = 'email' : this.loginType = 'username'
       },
@@ -48,7 +57,7 @@
         } else {
           this.errMsg = ''
           this.err = false
-          let url = 'http://localhost:8081/users/sign-up'
+          let url = 'https://webapp-180506135919.azurewebsites.net/users/sign-up'
           this.$http.post(url, this.user,{credentials: true, headers: {'Content-Type': 'application/json'}}).then((res) => {
 
             if(String(res.body).localeCompare('false')==0){

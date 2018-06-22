@@ -1,31 +1,46 @@
-<style scoped>
-  body {background: white;}
-</style>
+
+ <template>
+  <b-container style="margin-top:30px;width:60%;" fluid>
+      <b-card style="z-index:-2; background: white; position:absolute; opacity:0.5;
+  width:60%; height:520px; margin-left:-15px; margin-top:-10px;">
+</b-card>
+    <line-chart :chart-data="datacollection" style="z-index:1 position:fixed;height:500px;"></line-chart>
+        <Spinner size="massive" v-if="!timeup" style="z-index:1; margin-top:-500px;"></Spinner>
+        
+  </b-container>
+</template>
 <script>
-import {Line} from 'vue-chartjs'
-export default { 
-  name: 'Event', 
-  extends: Line,
-  data () {
-    return {
-      gradient: null,
-      gradient2: null,
-      name: ''
-    }
-  },
-  methods:{
-    graphClickEvent(event, array){
-      var points = this.getElementAtEvent(event)
-      },
-       getTime (putName) {
-            var avgList = [];
-            var timeList = [];
-            var id = this.$route.query.id;
-            this.$http.post('http://localhost:8081/users/getEvent',{"id": id}
+  import Spinner from 'vue-simple-spinner'
+  import LineChart from './singleChart.js'
+  export default {
+    name:'Event',
+    components: {
+      LineChart,
+      Spinner
+    },
+    data () {
+      return {
+        datacollection: null,
+        datesList : [],
+        avgList: [],
+        timeup: false
+      }
+    },
+    mounted () {
+      this.fillData()
+    },
+
+    methods: {
+      fillData () {
+        var name = ['']
+        var id = this.$route.query.id;
+        var aList =[]
+        var dList = []
+            this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getEvent',{"id": id}
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {
-              // res.body = array of event object
+              name[0] = res.body.name
               var pulsesArr = res.body.pulses;
               var numofpulses = pulsesArr.length;
               var startTime = parseInt(res.body.startTime) + 60000
@@ -36,96 +51,31 @@ export default {
                   var minutes = date.getMinutes()
                   minutes = ("0" + minutes).slice(-2);
                   var str = hours + ":" + minutes;
-                  timeList.push(str);
+                  dList.push(str);
                   startTime = startTime + 60000;
                 }
                 for (var i = 0; i < numofpulses; i++) {
                     var pulse = pulsesArr[i];
-                    // this.avgList.push({label: evnt.name,y:evnt.pulseAverage});
-                  avgList.push({y: pulse.value});
+                  aList.push({y: pulse.value});
                 }
-            })
-            return [avgList,timeList];
+                this.datacollection = {
+          labels: dList,
+          datasets: [
+            {
+              label: name[0],
+              backgroundColor: '#007afd',
+              growDuration: 10,
+              data: aList
+          }]
         }
-  },
-  mounted () {
-    this.gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-    this.gradient2 = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 450)
-    this.gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)')
-    this.gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
-    this.gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
-    
-    this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
-    this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.35)');
-    this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
-    this.renderChart({
-      // labels: ['16/12', '17/12', '18 /12', '19/12', '20/12', '21/12', '22/12', '23/12'],
-      labels: this.getTime(this.putName)[1],
-      datasets: [
-        {
-          label: 'Event',
-          borderColor: 'black',
-          pointBackgroundColor: 'white',
-          pointBorderColor: 'gray',
-          borderWidth: 1,
-          backgroundColor:'rgba(51,36,183,0.7)',
-          data: this.getTime(this.putName)[0]
-         },
-        // ,{
-         
-        //   label: 'Eran',
-        //   borderColor: '#FC2525',
-        //   pointBackgroundColor: 'white',
-        //   borderWidth: 2,
-        //   pointBorderColor: 'white',
-        //   backgroundColor: this.gradient,
-        //   data: [65, 75, 50, 125, 65, 60, 65]
-        // }
-      ]
-    ,
-     options: {
-        scales: {
-            xAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-  }
-     
-    //
-     ,{ onClick: function(event){
-      var activePoints = this.getElementAtEvent(event)
-       var firstPoint = activePoints[0];
-  if(firstPoint !== undefined){
-    var label = this.data.labels[firstPoint._index];
-    var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
-    // window.location.href = "/";  
-    }
-       }
-      , responsive: true, maintainAspectRatio: false,fontColor: '#66226',
-    tooltips: {
-                enabled: true,
-                mode: 'single',
-                callbacks: {
-                   title: function(tooltipItems, data) {
-                    var evnt = data.datasets[0].data[tooltipItems[0].index].label;
-                    return evnt
-                  },
-                    label: function(tooltipItems, data) { 
-                       var avg = 'Average heart: ' + [tooltipItems.yLabel];
-                       // var evnt = 'Type: ' + data.datasets[0].data[tooltipItems.index].type;
-                        return avg;
-                    }
-        //             ,
-        //             afterLabel: function(tooltipItems, data) {
-        //   var evnt = 'Event name: ' + data.datasets[0].data[tooltipItems.index].label;
-        //                 return evnt;
-        // }
-                }
+          this.timeup = true
             }
-          })
-}
+            )
+           
+      },
+      getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      }
+    }
 }
 </script>

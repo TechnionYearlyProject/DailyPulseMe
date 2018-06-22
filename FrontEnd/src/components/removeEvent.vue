@@ -39,7 +39,7 @@ export default {
                  return str
           },
            getEvents () {
-            this.$http.get('http://localhost:8081/users/getAllEvents'
+            this.$http.get('https://webapp-180506135919.azurewebsites.net/users/getAllEvents'
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             }).then((res) => {
@@ -58,7 +58,7 @@ export default {
             })
         },
         RemoveEvent(){
-            this.$http.post('http://localhost:8081/users/deleteEvent',{"eventId": this.retvalue}
+            this.$http.post('https://webapp-180506135919.azurewebsites.net/users/deleteEvent',{"eventId": this.retvalue}
              ,{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token'),}
             })

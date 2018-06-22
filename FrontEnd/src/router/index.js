@@ -5,7 +5,7 @@ import Login from '../components/Login'
 import Register from '../components/register'
 import Config from '../components/Config'
 import Addevent from '../components/Addevent'
-import eventsWrapper from '../components/eventsWrapper'
+import eventsGraph from '../components/eventsGraph'
 import Event from '../components/eventGraph'
 import GoogleFit from '../components/GoogleFit'
 import GoogleAuth from '../components/GoogleAuth'
@@ -17,19 +17,21 @@ import HRVGraph from '../components/HRVGraph'
 
 function checkAccount(push1,push2){
          var self = this;
-    Vue.http.get('http://localhost:8081/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
+    Vue.http.get('https://webapp-180506135919.azurewebsites.net/users/isConnectedToGoogleCalendar',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
+           console.log(res.body)
               if(res.body == false)
                 push2()
               else
                 push1()
+              }, (err) => {
+          push2()
             })
         }
 const requireAuth = (to, from, next) => {
  checkToken(function(){
             next()
-
     },function(){
                router.push('/login');
 
@@ -37,32 +39,31 @@ const requireAuth = (to, from, next) => {
 }
 const checkWizard = (to, from, next) => {
  checkAccount(function(){
-            next()
-
+            next();
     },function(){
-               router.push('/wizard');
+      router.push('/wizard');
 
     });
 }
 const loginRedirect = (to, from, next) => {
    checkToken(function(){
-    router.push('/wizard');
+    loginRedirectToWizard(to,from,next);
     },function(){
     next()
     });
 }
 const loginRedirectToWizard = (to, from, next) => {
    checkAccount(function(){
-    router.push('/wizard');
-    },function(){
     router.push('/');
+    },function(){
+    router.push('/wizard');
     });
 }
 
 Vue.use(Router)
 function checkToken(funcYes,funcNo){
    var self = this;
-    Vue.http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+    Vue.http.get('https://webapp-180506135919.azurewebsites.net/users/authenticateToken',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
           funcYes()
@@ -86,36 +87,38 @@ const router = new Router({
     },
     {
       path: '/eventsGraph',
-      name: 'eventsWrapper',
-      component: eventsWrapper,
-      beforeEnter: checkWizard,
-      beforeEnter: requireAuth
-    },
-    {
-      path: '/HRVGraph',
-      name: 'HRVGraph',
-      component: HRVGraph,
-      beforeEnter: checkWizard,
-      beforeEnter: requireAuth
+      name: 'eventsGraph',
+      component: eventsGraph,
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
       path: '/eventGraph',
       name: 'Event',
       component: Event,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
+    },
+    {
+      path: '/hrvgraph',
+      name: 'HRVGraph',
+      component: HRVGraph,
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
       path: '/',
       alias: '/home',
       name: 'Home',
       component: Home,
+      beforeEnter: requireAuth
     },
     {
       path: '/calendar',
       name: 'Calendar',
       component: Calendar,
-      beforeEnter: checkWizard,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
       path: '/Wizard',
@@ -127,15 +130,10 @@ const router = new Router({
       path: '/settings',
       name: 'Config',
       component: Config,
-      beforeEnter: checkWizard,
-      beforeEnter: requireAuth
+      beforeEnter: requireAuth,
+      beforeEnter: checkWizard
     },
     {
-     path: '/addevent',
-     name: 'Addevent',
-     component: Addevent,
-     beforeEnter: requireAuth
-   },{
       path: '/googleauth',
       name: 'GoogleAuth',
       component: GoogleAuth,
@@ -152,12 +150,6 @@ const router = new Router({
       component: MicrosoftFit,
       beforeEnter: requireAuth
     },
-    {
-     path: '/removeevent',
-     name: 'RemoveEvent',
-     component: RemoveEvent,
-     beforeEnter: requireAuth
-   },
 
   ]
 })

@@ -46,6 +46,7 @@ public class AppUser {
         this.name = name;
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+        this.events=new ArrayList<>();
     }
 
     public String getId() {
@@ -158,6 +159,12 @@ public class AppUser {
 
     public void setCallParser(CallParser callParser) {
         this.callParser = callParser;
+    }
+    public static AppUser getUserforTesting(){
+        AppUser user= new AppUser();
+        user.setPassword("123");
+        user.setUsername("abd");
+        return user;
     }
 }
 

@@ -12,7 +12,7 @@ export default {
   },created: function () {
     // console.log(this.succesful)
     if(this.succesful){
-      // this.$router.push('/') 
+      // this.$router.push('/')
     }else{
     let route = this.$route.fullPath;
     var x = route.split('=')[1];
@@ -24,13 +24,13 @@ export default {
   },
    methods : {
     sendAuth(){
-             this.$http.post('http://localhost:8081/users/sign-up-google', {authToken:this.accessCode}).then((res) => {
+             this.$http.post('https://webapp-180506135919.azurewebsites.net/users/sign-up-google', {authToken:this.accessCode}).then((res) => {
               this.jwttoken = 'Bearer ' + res.body
               this.succesful = true
               console.log(res)
             localStorage.setItem('token', this.jwttoken);
-            location.reload();
-            
+             location.reload();
+
         }, (err) => {
           console.log(res.body)
         });

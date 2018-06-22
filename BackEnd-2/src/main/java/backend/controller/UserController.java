@@ -13,7 +13,6 @@ import backend.Calendar.AuxMethods;
 import backend.Calendar.GoogleCalendar;
 import backend.Calendar.OutlookCalendar;
 import backend.DailyPulseApp;
-import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleSignIn.SignUpGoogle;
 import backend.helperClasses.KindOfEvent;
@@ -76,11 +75,15 @@ public class UserController {
     @return true if the user doesn't exist in the repo, otherwise false
      */
     @PostMapping("/sign-up")
-    public boolean signUp( AppUser user) {
+    public boolean signUp(AppUser user) {
+        if(user.getUsername()==null){
+            user=AppUser.getUserforTesting();
+        }
         try {
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
+
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
             user.setAccessToken(" ");
@@ -206,18 +209,12 @@ public class UserController {
         //authenticates JWT token.
         return true;
     }
-    //testing
-    @GetMapping("/private")
-    public String privatee() {
-        return "THIS IS PRIVATE!!";
-    }
 
 
     /*Aux Testing Method
      @param auth , which by it the user will be retrieved
      @return user name
      */
-    //TODO: Delete this?
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         String str = appUserRepository.findByUsername(auth.getName()).getName();
@@ -234,8 +231,10 @@ public class UserController {
     public boolean addEvent(Authentication auth,  Event event) {
         event.setKindOfEvent(OUR_EVENT);
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        if(!UserService.addEvent(user,event)){
-            return false;
+        if(event.getStartTime()!=null) {
+            if (!UserService.addEvent(user, event)) {
+                return false;
+            }
         }
         appUserRepository.save(user);
         return true;
@@ -268,7 +267,9 @@ public class UserController {
      */
     @PostMapping("/getAllEventsWhichHavePulses")
     public List<Event> getAllEventsWhichHavePulses(Authentication auth,TwoStrings time){
-
+if(time.getFirst()==null){
+      time=new TwoStrings("0","11220");
+}
 
         AppUser user=appUserRepository.findByUsername(auth.getName());
         List<Event> filter_=new ArrayList<Event>();
