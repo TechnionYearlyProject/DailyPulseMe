@@ -1,10 +1,10 @@
 package backend.Calendar;
 
 import backend.entity.AppUser;
-import org.jboss.arquillian.test.spi.annotation.TestScoped;
-import org.junit.Test;
 
-import static backend.Calendar.AuxMethods.RFC5545ToLong;
+
+import org.junit.Test;
+import static backend.Calendar.AuxMethods.isUserConnectedToCalendar;
 
 
 public class AuxMethodsTest {
@@ -37,6 +37,19 @@ public class AuxMethodsTest {
         assert (AuxMethods.IsConnectedToOutlookCalendar(user)==false);
         user.setOutlookToken("");
         assert (AuxMethods.IsConnectedToOutlookCalendar(user)==false);
+
+    }
+
+    @Test
+    public  void isUserConnectedToCalendarTest(){
+        assert(isUserConnectedToCalendar(null)==false);
+        AppUser user=new AppUser();
+        user.setId("123456");
+        user.setName("Anadil");
+        user.setUsername("Anadil@hussein");
+        user.setOutlookToken(null);
+        user.setAccessToken(null);
+        assert (isUserConnectedToCalendar(user)==false);
 
     }
 }
