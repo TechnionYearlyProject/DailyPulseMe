@@ -111,7 +111,7 @@ export default {
 
    },
     microsoft(){
-         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=c8b9175b-e478-4c52-b8e6-178246c03006&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
+         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=b08ad020-dc60-41e8-a397-b9a172573bc5&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
         var win = window.open(url, "windowname1", 'width=800, height=600');
 
        },google(){
