@@ -557,4 +557,16 @@ if(time.getFirst()==null){
         }
         return "FYUCJl";
     }
+
+    @GetMapping("/eventsCount")
+    private int getEventsCount(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user.getEvents()==null){
+            return 0;
+        }
+
+      return  user.getEvents().size();
+
+
+    }
 }
