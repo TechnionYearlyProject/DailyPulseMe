@@ -266,7 +266,17 @@ public class UserControllerTest {
         this.mockMvc.perform(post("/users/addEvent").content(asJsonString(event)).contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
     }
-
+    @Test
+    public void changePasswordTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/changePassword").content(asJsonString("123")).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void changePasswordFailTest() throws Exception {
+        this.mockMvc.perform(post("/users/changePassword").content(asJsonString("123")).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
+    }
 
     public static String asJsonString(final Object obj) {
         try {

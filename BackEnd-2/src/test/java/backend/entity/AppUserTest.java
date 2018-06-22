@@ -95,6 +95,18 @@ public class AppUserTest {
 
     }
     @Test
+    public  void test4(){
+
+      AppUser tmp=new AppUser();
+
+        tmp.getEvent("1");
+        tmp.deleteEvent("1");
+        Pulse pulse=new Pulse(5);
+        pulse.setValue(1);
+
+
+    }
+    @Test
     public void getOutlookTokenTest(){
         user.setOutlookToken("123");
         assertEquals("123",user.getOutlookToken());

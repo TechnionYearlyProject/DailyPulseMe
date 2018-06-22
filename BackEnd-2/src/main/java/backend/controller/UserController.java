@@ -385,9 +385,12 @@ if(time.getFirst()==null){
      */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
-        ArrayList<Event> tmp_=null;
-        ArrayList<Event> tmp=new ArrayList<Event>();
+        ArrayList<Event> tmp_=new ArrayList<>();
+        ArrayList<Event> tmp=new ArrayList<>();
+
         AppUser user = appUserRepository.findByUsername(auth.getName());
+
+
         try{
             if(IsConnectedToGoogleCalendar(user)){
                 tmp_= GoogleCalendar.getEvents(user);
