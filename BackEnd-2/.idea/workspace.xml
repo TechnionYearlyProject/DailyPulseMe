@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3682ef1-3c7f-4167-b8fc-f8f48a07898a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,22 +12,45 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/DailyPulse$UserServiceTest_testForFail.ic" NAME="UserServiceTest.testForFail Coverage Results" MODIFIED="1529673790932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>backend.service.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="167" column="50" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="50" />
+              <caret line="167" column="62" selection-start-line="167" selection-start-column="58" selection-end-line="167" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="237" column="49" selection-start-line="237" selection-start-column="49" selection-end-line="237" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="105" column="31" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="442" column="29" selection-start-line="442" selection-start-column="12" selection-end-line="442" selection-end-column="29" />
+            <state relative-caret-position="68">
+              <caret line="420" column="38" selection-start-line="420" selection-start-column="38" selection-end-line="420" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -48,8 +69,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>chan</find>
-      <find>getEvents</find>
       <find>getAllEvents</find>
+      <find>getEvents</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -61,6 +82,7 @@
         <option value="$PROJECT_DIR$/src/test/java/backend/entity/AppUserTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" />
       </list>
     </option>
   </component>
@@ -239,7 +261,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest.getEventsTest">
+  <component name="RunManager" selected="JUnit.UserServiceTest.testForFail">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -329,6 +351,29 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="UserServiceTest.testForFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DailyPulse" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="backend.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="backend.service" />
+      <option name="MAIN_CLASS_NAME" value="backend.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testForFail" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -372,9 +417,11 @@
       <item itemvalue="JUnit.UserControllerTest.changePasswordTest" />
       <item itemvalue="JUnit.UserControllerTest.changePasswordFailTest" />
       <item itemvalue="JUnit.UserControllerTest.getEventsTest" />
+      <item itemvalue="JUnit.UserServiceTest.testForFail" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceTest.testForFail" />
         <item itemvalue="JUnit.UserControllerTest.getEventsTest" />
         <item itemvalue="JUnit.UserControllerTest.changePasswordFailTest" />
         <item itemvalue="JUnit.UserControllerTest.changePasswordTest" />
@@ -392,32 +439,44 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1529669778806</updated>
-      <workItem from="1529669821344" duration="2361000" />
+      <workItem from="1529669821344" duration="3870000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_DailyPulse - 2018.06.22 at 15h 20m 44s.xml">
-      <configuration name="All in DailyPulse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_DailyPulse - 2018.06.22 at 15h 20m 59s.xml">
-      <configuration name="All in DailyPulse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_DailyPulse - 2018.06.22 at 15h 25m 57s.xml">
-      <configuration name="All in DailyPulse" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserControllerTest_changePasswordTest - 2018.06.22 at 15h 46m 19s.xml">
-      <configuration name="UserControllerTest.changePasswordTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserControllerTest_changePasswordFailTest - 2018.06.22 at 15h 46m 49s.xml">
-      <configuration name="UserControllerTest.changePasswordFailTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserControllerTest_getEventsTest - 2018.06.22 at 15h 49m 57s.xml">
       <configuration name="UserControllerTest.getEventsTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserControllerTest_getEventsTest - 2018.06.22 at 16h 00m 12s.xml">
+      <configuration name="UserControllerTest.getEventsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 13m 54s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 14m 23s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 15m 17s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 15m 24s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 16m 35s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 17m 04s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 17m 46s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserServiceTest_testForFail - 2018.06.22 at 16h 17m 50s.xml">
+      <configuration name="UserServiceTest.testForFail" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2361000" />
+    <option name="totallyTimeSpent" value="3870000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -445,9 +504,10 @@
       <window_info anchor="bottom" id="HDInsight Spark Submission" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32944608" />
+      <window_info active="true" anchor="right" id="Coverage" side_tool="true" visible="true" weight="0.3293092" />
       <window_info anchor="bottom" id="Spring" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24949698" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24949698" />
       <window_info anchor="right" id="Bean Validation" />
       <window_info id="Web" side_tool="true" />
       <window_info anchor="bottom" id="Remote Spark Job in Cluster" />
@@ -467,6 +527,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserDetailsServiceImplTest.java">
@@ -511,13 +576,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="167" column="50" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -527,8 +585,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="442" column="29" selection-start-line="442" selection-start-column="12" selection-end-line="442" selection-end-column="29" />
+        <state relative-caret-position="68">
+          <caret line="420" column="38" selection-start-line="420" selection-start-column="38" selection-end-line="420" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="167" column="62" selection-start-line="167" selection-start-column="58" selection-end-line="167" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="105" column="31" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="237" column="49" selection-start-line="237" selection-start-column="49" selection-end-line="237" selection-end-column="49" />
         </state>
       </provider>
     </entry>
