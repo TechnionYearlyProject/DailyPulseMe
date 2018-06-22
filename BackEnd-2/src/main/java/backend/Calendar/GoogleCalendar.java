@@ -24,7 +24,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static backend.Calendar.AuxMethods.RFC5545ToLong;
-import static backend.Calendar.AuxMethods.retrieveFeidInJson;
 import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
 
 public class GoogleCalendar {

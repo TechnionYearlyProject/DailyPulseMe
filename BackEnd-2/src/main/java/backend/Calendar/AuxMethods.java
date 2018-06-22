@@ -17,23 +17,6 @@ import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
 
 public class AuxMethods {
 
-    /*
-@author :Anadil
-@param String with the format "zzzzz" : "xxxxx",
-@return value : the field value ,eg "zzzzz" : "xxxx" , it will return xxxxx
- */
-    public static String retrieveFeidInJson(String str){
-        //System.out.println(str);
-        Pattern pattern= Pattern.compile("( )*(\")(.*)(\")(.*)(: \")(.*)(\")(.)*");
-        Matcher m= pattern.matcher(str);
-        String str_="";
-        if (m.matches()) {
-            str_=m.group(7); //: "zzzzz"
-        }
-        //System.out.println(str_);
-        return str_;
-    }
-
 
     /*
     @author :Anadil

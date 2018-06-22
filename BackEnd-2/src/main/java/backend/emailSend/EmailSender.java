@@ -19,7 +19,7 @@ public class EmailSender {
         String pass = PASSWORD;
         // list of recipient email addresses
         String subject = "DailyPulseMe weekly reminder";
-        String body = "We hope that you stayed healthy this week!\nCome check our website https://dailypulse.azurewebsites.net/ to see if you have been doing well this week too!\n We know that you can do it!";
+        String body = "We hope that you are staying healthy!\nCome check our website https://dailypulse.azurewebsites.net/ for updates on your activities to see if you've been leading a healthy life this week too!\nYou can discover which events were healthy for you at the Graphs tab and watch your events analysis on the Calendar tab.\nWe know that you can do it!\n\nThe DailyPulse Team.";
         ArrayList<Subscription> oneRec =  new ArrayList<Subscription>();
         for(Subscription sub : to) {
             oneRec.add(sub);
