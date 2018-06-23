@@ -573,4 +573,28 @@ if(time.getFirst()==null){
         }
         return "FYUCJl";
     }
+
+
+    @GetMapping("/eventsCount")
+    private int getEventsCount(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user.getEvents()==null){
+                return 0;
+           }
+       return  user.getEvents().size();
+    }
+
+
+    /*@auother: Anadil
+   this function return true if the user sign in to his outlook calender
+       */
+    @GetMapping("/isConnectedToOutlookCalendar")
+    public boolean isConnectedToOutlookCalendar(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null){
+            return  false;
+        }
+        return  IsConnectedToOutlookCalendar(user);
+    }
+
 }

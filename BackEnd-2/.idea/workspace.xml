@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3682ef1-3c7f-4167-b8fc-f8f48a07898a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/backend/controller/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/backend/controller/UserController.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +52,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2146">
-              <caret line="442" column="88" lean-forward="false" selection-start-line="442" selection-start-column="81" selection-end-line="442" selection-end-column="88" />
+            <state relative-caret-position="163">
+              <caret line="595" column="9" lean-forward="true" selection-start-line="595" selection-start-column="9" selection-end-line="595" selection-end-column="9" />
               <folding>
                 <element signature="e#11411#11412#0" expanded="true" />
                 <element signature="e#11484#11485#0" expanded="true" />
@@ -155,6 +153,7 @@
       <find>IsConnectedTo</find>
       <find>/IsConnectedTo</find>
       <find>outlook</find>
+      <find>isCo</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\USER\Desktop\DailyPulseMe\azure-Sprint2-last\DailyPulseMe\BackEnd-2</dir>
@@ -194,7 +193,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="555" />
     <option name="width" value="1390" />
     <option name="height" value="790" />
@@ -627,7 +626,7 @@
       <updated>1529669778806</updated>
       <workItem from="1529669821344" duration="3870000" />
       <workItem from="1529677668944" duration="3738000" />
-      <workItem from="1529742288098" duration="1326000" />
+      <workItem from="1529742288098" duration="1952000" />
     </task>
     <servers />
   </component>
@@ -664,10 +663,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8934000" />
+    <option name="totallyTimeSpent" value="9560000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -963,8 +962,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2146">
-          <caret line="442" column="88" lean-forward="false" selection-start-line="442" selection-start-column="81" selection-end-line="442" selection-end-column="88" />
+        <state relative-caret-position="163">
+          <caret line="595" column="9" lean-forward="true" selection-start-line="595" selection-start-column="9" selection-end-line="595" selection-end-column="9" />
           <folding>
             <element signature="e#11411#11412#0" expanded="true" />
             <element signature="e#11484#11485#0" expanded="true" />
