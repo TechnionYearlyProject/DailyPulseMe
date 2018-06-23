@@ -8,8 +8,10 @@
       @month-changed="handleMonthChanged">
     <template slot-scope="props">
        <div v-for="(event, index) in props.showEvents" class="event-item">
-         
-          <h3 style="text-shadow: 2px 2px 2px rgba(164,164,164,0.43);">{{event.title}}</h3>
+          <h3 style="text-shadow: 2px 2px 2px rgba(164,164,164,0.43);">{{event.title}} 
+          <img v-if="event.kind == 'GOOGLE_EVENT'" src="../images/googlelogo.png" style="width:16%; margin-left:-2px;"/>
+          <img v-if="event.kind == 'OUTLOOK_EVENT'" src="../images/microsoftlogo.png" style="width:19%;margin-top:-2px;"/>
+          </h3>
           {{event.date2}}
          <div v-if="event.avg>0">
          {{event.desc0}}<br>
@@ -23,7 +25,8 @@
        </div>
      </template>
   </vue-event-calendar>
-
+      <div v-if="this.toggle" style="margin-left:49%; margin-top:10%; z-index:2; position:absolute;">
+        <h1 style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);color:white;">{{this.msg}}</h1></div>
       <Spinner size="massive" v-if="!timeup" style="margin-left:50%; margin-top:10%; z-index:2; position:absolute;"></Spinner>
 </b-row>
 </b-container>
@@ -40,12 +43,13 @@ export default {
     return {
       datesList : [],
       pList: [],
-      timeup: false
+      timeup: false,
+      msg: 'No events!',
+      toggle: false
     }
   },
   created: function () {
     this.getEvents();
-    console.log('hello')
   },
   methods: {
 
@@ -165,19 +169,25 @@ export default {
          // res.body = array of event object
          var eventsArr = res.body;
            var arrayLength = eventsArr.length;
+           if(arrayLength == 0) {
+            this.toggle = true
+            this.timeup = true
+           }
+           else{
            for (var i = 0; i < arrayLength; i++) {
 
         var date = new Date(parseInt(eventsArr[i].startTime))
-        var avgH = 0;//this.getAvg(eventsArr[i].id);
+        var avgH = 0;
 
         var x = {date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`, 
         date2: date.getDate() + '/' + parseInt(date.getMonth()+1) + '/' + date.getFullYear(),
                 title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag, avgHRV: avgH,
         desc0:'Average heart rate :' + eventsArr[i].pulseAverage, desc1:'Type: ' + eventsArr[i].tag,desc2:this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id,
-      graphId: 'eventGraph?id='+eventsArr[i].id, hrvId:"hrvgraph?id="+eventsArr[i].id };
+      graphId: 'eventGraph?id='+eventsArr[i].id, hrvId:"hrvgraph?id="+eventsArr[i].id , kind:eventsArr[i].kindOfEvent};
                this.datesList.push(x);
            }
            this.timeup = true
+         }
        })
 
     }

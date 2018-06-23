@@ -16,20 +16,17 @@ export default {
     var x = route.split('=')[1];
     this.accessToken = decodeURIComponent(x);
     this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getOutlookToken',{
-        "first": this.accessToken,
+        "first": this.accessToken.split("&token_type")[0],
         "second": ''
       }
        ,{headers: {'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token'),}
       }).then((res) =>{
-        
-        console.log(res);
+                close();  
       },(err) =>{
         close();  
         console.log(err);
       })
-    // this.getTokens();
-
   }
 }
 </script>

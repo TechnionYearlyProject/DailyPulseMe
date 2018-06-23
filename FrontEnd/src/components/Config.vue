@@ -38,11 +38,10 @@
     </b-col>
     <b-col class="text-center" col lg="4">
       <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Change your calendar account" >
-         <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="google" >Google</b-btn>
-            <br><br>
-      <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>
-      <br><br>
-              <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit</b-btn>
+        <br><br>
+              <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit Fitness Band</b-btn>
+      <br><br><br>
+              <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft Calendar</b-btn>
       </b-card>
 
 
@@ -110,10 +109,9 @@ export default {
          var win = window.open(url, "windowname1", 'width=800, height=600');
 
    },
-    microsoft(){
-         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=b08ad020-dc60-41e8-a397-b9a172573bc5&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
+   microsoft(){
+         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=cfe8cb7c-42e5-496d-815e-448f2aa30f5e&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
         var win = window.open(url, "windowname1", 'width=800, height=600');
-
        },google(){
       let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=https://dailypulse.azurewebsites.net/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
       var win = window.open(url, "windowname1", 'width=800, height=600');

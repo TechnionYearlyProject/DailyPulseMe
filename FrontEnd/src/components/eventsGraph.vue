@@ -6,7 +6,8 @@
 </b-card>
     <line-chart :chart-data="datacollection" style="z-index:1 position:fixed;height:500px;"></line-chart>
         <Spinner size="massive" v-if="!timeup" style="z-index:1; margin-top:-500px;"></Spinner>
-
+    <div v-if="this.toggle" style="z-index:1; margin-top:-500px;">
+        <h1 style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);color:black;">{{this.msg}}</h1></div>
   </b-container>
 </template>
 <script>
@@ -23,7 +24,9 @@
         datacollection: null,
         datesList : [],
         avgList: [],
-        timeup: false
+        timeup: false,
+        msg: 'No events!',
+        toggle: false
       }
     },
     mounted () {
@@ -47,6 +50,11 @@
              // res.body = array of event object
              var eventsArr = res.body;
                var arrayLength = eventsArr.length;
+               if(arrayLength == 0){
+                this.timeup = true
+                this.toggle = true
+               }
+               else{
                for (var i = 0; i < arrayLength; i++) {
                  var date = new Date(parseInt(eventsArr[i].startTime))
                  var day = date.getDate()
@@ -71,7 +79,7 @@
           labels: dList,
           datasets: [
             {
-              label: 'Events',
+              label: 'All Events',
               gradient : "['#ffbe88', '#ff93df']",
               backgroundColor: "#800517",
               growDuration: 10,
@@ -79,7 +87,8 @@
           }]
         }
         this.timeup = true
-           })
+           }
+         })
         
       },
       getRandomInt () {
