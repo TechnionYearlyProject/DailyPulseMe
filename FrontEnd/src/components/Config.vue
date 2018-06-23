@@ -1,3 +1,7 @@
+<!--
+In this page the user can change his password,
+subscribe to weekly email updates and change his calendar account.
+-->
 <template>
   <b-container style="width:100%;">
     <b-row>
@@ -26,114 +30,128 @@
 			</div>
 			<p class="text-secondary">You are currently not subscribed. What are you waiting for?</p>
 		</template>
-		<template v-else-if="subscribed === 1">
+<template v-else-if="subscribed === 1">
 			<div style ="width:50%; margin:5px auto;">
 				<b-button variant="primary" v-on:click="unsubscribe" v-b-popover.hover="'Unsubscribe from our weekly email updates!'">Unsubscribe</b-button>
 			</div>
 			<p class="text-secondary">You are currently subscribed. Wise choice.</p>
 		</template>
-		<template v-else>
+<template v-else>
 		</template>
-		</b-card>
-    </b-col>
-    <b-col class="text-center" col lg="4">
-      <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Change your calendar account" >
+</b-card>
+</b-col>
+<b-col class="text-center" col lg="4">
+    <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Change your calendar account">
         <br><br>
-              <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit Fitness Band</b-btn>
-      <br><br><br>
-              <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft Calendar</b-btn>
-      </b-card>
-
-
-    </b-col>
-  </b-row>
-<!-- <div class="Change Password" style="margin-top:10px"> -->
+        <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit Fitness Band</b-btn>
+        <br><br><br>
+        <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft Calendar</b-btn>
+    </b-card>
+</b-col>
+</b-row>
 
 </b-container>
 </template>
 <script>
-import Connect from './Connect'
-export default {
-  name: 'Config',
-  components:{ Connect },
-  data() {
-    return {
-      password : '',
-      rePassword : '',
-      toggleMsg : false,
-      msg : '',
-      toshow: false,
-      msg1: '',
-      toggleMsg1: false,
-	  subscribed: 2
-    }
-  },
-  created: function () {
-	  this.$http.get('https://webapp-180506135919.azurewebsites.net/users/isSubscribed',{headers: {'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')}
-         }).then((res) => {
-		 if(res.body == true){
-			this.subscribed = 1;
-			} else {
-			this.subscribed = 0;
-			}
-		 })
-  },
-    methods: {
-    changePass() {
-      if (this.password.localeCompare(this.rePassword) != 0){
-              this.toggleMsg = true
-              this.toggleMsg1 = false
-        this.msg = 'Passwords Must Match'
-      } else if (this.password.length < 6){
-              this.toggleMsg = true
-              this.toggleMsg1 = false
-        this.msg = 'Password Length Must Be At Least 6'
-      } else {
-        let url = 'https://webapp-180506135919.azurewebsites.net/users/changePassword'
-        this.$http.post(url,{"newPassword": this.password}, {headers: {'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('token')}}).then((res) => {
-            if(res.body = true){
-                this.toggleMsg = false
-              this.toggleMsg1 = true
-          this.msg1 = 'Password Changed Succefully'
+    export default {
+        name: 'Config',
+        components: {
+            Connect
+        },
+        data() {
+            return {
+                password: '',
+                rePassword: '',
+                toggleMsg: false,
+                msg: '',
+                toshow: false,
+                msg1: '',
+                toggleMsg1: false,
+                subscribed: 2
             }
-        }, (err) => {
-          console.log(err)
-          console.log('Error')
-        })
-      }
-    },
-     fitbit(){
-          let url = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22CKWG&redirect_uri=http%3A%2F%2Fwww.cs.technion.ac.il%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800'
-         var win = window.open(url, "windowname1", 'width=800, height=600');
+        },
+        created: function() {
+            this.$http.get('https://webapp-180506135919.azurewebsites.net/users/isSubscribed', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then((res) => {
+                if (res.body == true) {
+                    this.subscribed = 1;
+                } else {
+                    this.subscribed = 0;
+                }
+            })
+        },
+        methods: {
+            changePass() {
+                if (this.password.localeCompare(this.rePassword) != 0) {
+                    this.toggleMsg = true
+                    this.toggleMsg1 = false
+                    this.msg = 'Passwords Must Match'
+                } else if (this.password.length < 6) {
+                    this.toggleMsg = true
+                    this.toggleMsg1 = false
+                    this.msg = 'Password Length Must Be At Least 6'
+                } else {
+                    let url = 'https://webapp-180506135919.azurewebsites.net/users/changePassword'
+                    this.$http.post(url, {
+                        "newPassword": this.password
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': localStorage.getItem('token')
+                        }
+                    }).then((res) => {
+                        if (res.body = true) {
+                            this.toggleMsg = false
+                            this.toggleMsg1 = true
+                            this.msg1 = 'Password Changed Succefully'
+                        }
+                    }, (err) => {
+                        console.log(err)
+                        console.log('Error')
+                    })
+                }
+            },
+            fitbit() {
+                let url = 'https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=22CKWG&redirect_uri=http%3A%2F%2Fwww.cs.technion.ac.il%2F&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800'
+                var win = window.open(url, "windowname1", 'width=800, height=600');
 
-   },
-   microsoft(){
-         let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=cfe8cb7c-42e5-496d-815e-448f2aa30f5e&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
-        var win = window.open(url, "windowname1", 'width=800, height=600');
-       },google(){
-      let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=https://dailypulse.azurewebsites.net/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
-      var win = window.open(url, "windowname1", 'width=800, height=600');
-       },
-	subscribe() {
-		let url = 'https://webapp-180506135919.azurewebsites.net/users/subscribe';
-		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('token')}
-         });
-		this.subscribed = 1;
-	},
-	unsubscribe(){
-		let r = confirm('Are you sure you want to unsubscribe from our weekly emails?');
-		if(r == false) {
-			return;
-		}
-		let url = 'https://webapp-180506135919.azurewebsites.net/users/unsubscribe';
-		this.$http.post(url,{},{headers: {'Content-Type': 'application/json',
-		'Authorization': localStorage.getItem('token')}});
-	  	this.subscribed = 0;
-	}
-  }
-}
-
+            },
+            microsoft() {
+                let url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=cfe8cb7c-42e5-496d-815e-448f2aa30f5e&response_type=token&redirect_uri=https://dailypulse.azurewebsites.net/token1&scope=Calendars.Read Calendars.ReadWrite&response_mode=fragment&state=12345&nonce=678910'
+                var win = window.open(url, "windowname1", 'width=800, height=600');
+            },
+            google() {
+                let url = 'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.login+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fplus.me+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffitness.body.read&access_type=offline&redirect_uri=https://dailypulse.azurewebsites.net/token&response_type=code&client_id=895714867508-2t0rmc94tp81bfob19lre1lot6djoiuu.apps.googleusercontent.com'
+                var win = window.open(url, "windowname1", 'width=800, height=600');
+            },
+            subscribe() {
+                let url = 'https://webapp-180506135919.azurewebsites.net/users/subscribe';
+                this.$http.post(url, {}, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('token')
+                    }
+                });
+                this.subscribed = 1;
+            },
+            unsubscribe() {
+                let r = confirm('Are you sure you want to unsubscribe from our weekly emails?');
+                if (r == false) {
+                    return;
+                }
+                let url = 'https://webapp-180506135919.azurewebsites.net/users/unsubscribe';
+                this.$http.post(url, {}, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('token')
+                    }
+                });
+                this.subscribed = 0;
+            }
+        }
+    }
 </script>
