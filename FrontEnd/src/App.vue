@@ -10,10 +10,10 @@
   <b-nav class="pre">
 
     <div v-if="this.loggedin">
-      <b-nav-item href="/">Home</b-nav-item>
-      <b-nav-item href="/eventsgraph">Graphs</b-nav-item>
-      <b-nav-item href="/Calendar">Calendar</b-nav-item>
-      <b-nav-item href="/settings">Settings</b-nav-item>
+      <b-nav-item> <router-link to="/">Home</router-link></b-nav-item>
+      <b-nav-item> <router-link to="/eventsgraph">Graphs</router-link></b-nav-item>
+      <b-nav-item><router-link to="/Calendar">Calendar</router-link></b-nav-item>
+      <b-nav-item><router-link to="/settings">Settings</router-link></b-nav-item>
       <b-nav-item @click="logout">Logout</b-nav-item>
     </div>
 
