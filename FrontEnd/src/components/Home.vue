@@ -19,6 +19,12 @@
     <div>NAJEEB WRITE HERE. YOU CAN USE Date().gethours{{this.msg.slice(1, this.msg.length-1)}} <br> {{new Date().getHours()}}
       <div class="mid-inside" >You can now start using our AMAZING tools!
           Write explanation
+		  What is HRV and why should I care?
+		  Heart rate variability (HRV) is the physiological phenomenon of variation in the time interval between heartbeats.
+		  It is measured by the variation in the beat-to-beat interval.
+		  HRV is interesting because it was discovered that there is a high correlation between a high rate of variability and change between heart beats to feelings of emotional stress.
+		  In the site you could see in the HRV graph page your measured values and their implications on your stress level.
+
       </div>
     </div>
   </b-col>
