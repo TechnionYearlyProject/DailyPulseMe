@@ -16,7 +16,7 @@ export default {
     var label = this.data.labels[firstPoint._index];
     var value = this.data.datasets[firstPoint._datasetIndex].data[firstPoint._index];
     var loc = "eventGraph?id=" + value.id;
-	window.location = loc;    
+	window.location = loc;
 	}
    },responsive: true, maintainAspectRatio: false,fontColor: '#FFFFFF',
    legend: {
@@ -117,14 +117,14 @@ export default {
                         }
                         return sportHeartStats(rate, age);
                       };
-                       var avg = 'Average heart: ' + [tooltipItems.yLabel];
+                       var avg = 'Average heart rate: ' + [tooltipItems.yLabel];
                        var evnt = 'Type: ' + data.datasets[0].data[tooltipItems.index].tag;
                        var stats = heartStats(data.datasets[0].data[tooltipItems.index].tag, [tooltipItems.yLabel], 30);
                         return [avg,evnt,stats];
                     }
                 }
             }
-                    
+
         })
   }
 }
