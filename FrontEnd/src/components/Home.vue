@@ -16,22 +16,21 @@
          <b-button variant="primary" href="/login">START NOW</b-button>
       </div>
     </div> -->
-    <div>NAJEEB WRITE HERE. YOU CAN USE Date().gethours{{this.msg.slice(1, this.msg.length-1)}} <br> {{new Date().getHours()}}
-      <div class="mid-inside" >You can now start using our AMAZING tools!
-          Write explanation
-		  What is HRV and why should I care?
-		  Heart rate variability (HRV) is the physiological phenomenon of variation in the time interval between heartbeats.
-		  It is measured by the variation in the beat-to-beat interval.
-		  HRV is interesting because it was discovered that there is a high correlation between a high rate of variability and change between heart beats to feelings of emotional stress.
-		  In the site you could see in the HRV graph page your measured values and their implications on your stress level.
-
+    <div>Welcome {{this.msg.slice(1, this.msg.length-1)}}, <br>
+      Feel free to use our excellent tools.
+      <div class="mid-inside" >
+          You can view our <router-link to="/Calendar">Calendar</router-link> section where you can add events from your favorite calendar <br>
+          at times where you wore your connected fitness band and it will be automatically <br> synchronized and shown
+          to you in a comprehensive way with the help of our NLP, HRV and Pulse analysis.
+          <br>
+          You can also view our <router-link to="/eventsgraph">Graphs</router-link> section which gives a more of an overall look on your data and your progress.
       </div>
     </div>
   </b-col>
     </b-row>
     <b-row>
       <b-col>
-     
+
     </b-col>
     </b-row>
 </b-container>
@@ -52,7 +51,7 @@
     box-shadow: 10px 10px 53px -44px rgba(0,0,0,0.48);
     border-radius: 2px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100&0.65+0,0+98 */
-    background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%); 
+    background: -moz-linear-gradient(top, rgba(255,255,255,0.7) 0%, rgba(5,5,5,0) 98%, rgba(0,0,0,0) 100%);
 }
 .mid{
   color: #374248;

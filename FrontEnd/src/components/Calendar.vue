@@ -8,7 +8,7 @@
       @month-changed="handleMonthChanged">
     <template slot-scope="props">
        <div v-for="(event, index) in props.showEvents" class="event-item">
-          <h3 style="text-shadow: 2px 2px 2px rgba(164,164,164,0.43);">{{event.title}} 
+          <h3 style="text-shadow: 2px 2px 2px rgba(164,164,164,0.43);">{{event.title}}
           <img v-if="event.kind == 'GOOGLE_EVENT'" src="../images/googlelogo.png" style="width:16%; margin-left:-2px;"/>
           <img v-if="event.kind == 'OUTLOOK_EVENT'" src="../images/microsoftlogo.png" style="width:19%;margin-top:-2px;"/>
           </h3>
@@ -17,11 +17,11 @@
          {{event.desc0}}<br>
           {{event.desc1}}<br>
          {{event.desc2}}<br>
-         <a :href="event.graphId" target="_blank">Pulses Graph</a><br>
+         <a :href="event.graphId" target="_blank" >Pulses Graph</a><br>
          <div v-if="event.tag.includes('Rest')">
-         <a :href="event.hrvId" target="_blank">HRV Analysis &amp; Graph</a></div>
+         <a :href="event.hrvId" target="_blank" v-b-tooltip title="A special analysis of your stress levels">HRV Analysis &amp; Graph</a></div>
        </div>
-         <div v-else>There is no heart data.</div>
+         <div v-else>There is no data.</div>
        </div>
      </template>
   </vue-event-calendar>
@@ -179,7 +179,7 @@ export default {
         var date = new Date(parseInt(eventsArr[i].startTime))
         var avgH = 0;
 
-        var x = {date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`, 
+        var x = {date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
         date2: date.getDate() + '/' + parseInt(date.getMonth()+1) + '/' + date.getFullYear(),
                 title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag, avgHRV: avgH,
         desc0:'Average heart rate :' + eventsArr[i].pulseAverage, desc1:'Type: ' + eventsArr[i].tag,desc2:this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id,
