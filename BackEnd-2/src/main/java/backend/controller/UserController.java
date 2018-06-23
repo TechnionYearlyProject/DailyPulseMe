@@ -381,6 +381,21 @@ if(time.getFirst()==null){
     }
 
 
+    /*
+    testing method
+     */
+    @RequestMapping("/OutlookCalendarEvents")
+    public ArrayList<Event> getEventsOutlookCalendar(Authentication auth)  {
+        ArrayList<Event> tmp=null;
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            tmp=OutlookCalendar.getEvents(user);
+        }catch (Exception e){
+            // System.out.println("line 188 user cON");
+        }
+        return tmp;
+    }
+
 
     /*
     @author :Anadil
@@ -405,7 +420,8 @@ if(time.getFirst()==null){
             boolean isNewEvent=true;
             for(Event event : tmp_){
                 for (Event userEvent : user.getEvents()){
-                    if(userEvent.getId().compareTo(event.getId())==0  && userEvent.getEndTime().compareTo(event.getEndTime())==0){
+                    if(userEvent.getId().compareTo(event.getId())==0  && userEvent.getEndTime().compareTo(event.getEndTime())==0
+                            && userEvent.getKindOfEvent()==event.getKindOfEvent()){
                         isNewEvent=false;
                         break;
                     }
