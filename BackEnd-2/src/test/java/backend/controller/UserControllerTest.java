@@ -175,6 +175,13 @@ public class UserControllerTest {
         this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
     }
     @Test
+    public void GoogleCalendarEventsTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        tmpUser.setAccessToken("ya29.GlvkBfu357KYXg8kDaHFk_n4mrmkzTD5r6MGdxKKGbo0idBPMwN0nTkIo4cqQbO8RlTuBsioe_CB7NuI0_d-ZmCID1UrI-YDKmtL2-gwZMPOTCDi4D64hIyXIN0c");
+        tmpUser.setRefreshToken("1/PjHKgEDAlvCtmmWt6JfA2daUGLQAwe2Ui4HQ8pBIfo0");
+        this.mockMvc.perform(get("/users/GoogleCalendarEvents").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
     public void isConnectedToOutlookCalendarnullTest() throws Exception {
         this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
     }
