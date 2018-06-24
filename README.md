@@ -4,4 +4,4 @@
 [![codecov](https://codecov.io/gh/TechnionYearlyProject/DailyPulseMe/branch/master/graph/badge.svg)](https://codecov.io/gh/TechnionYearlyProject/DailyPulseMe)
 
 
-* [DailyPulseMe Wiki](https://github.com/TechnionYearlyProject/DailyPulseMe/wiki)
+ [DailyPulseMe Wiki](https://github.com/TechnionYearlyProject/DailyPulseMe/wiki)
