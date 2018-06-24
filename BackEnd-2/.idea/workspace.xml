@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3682ef1-3c7f-4167-b8fc-f8f48a07898a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="d3682ef1-3c7f-4167-b8fc-f8f48a07898a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +30,8 @@
       <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="267" column="53" selection-start-line="267" selection-start-column="32" selection-end-line="267" selection-end-column="53" />
+            <state relative-caret-position="494">
+              <caret line="268" column="39" selection-start-line="268" selection-start-column="39" selection-end-line="268" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="172" column="44" lean-forward="true" selection-start-line="172" selection-start-column="44" selection-end-line="172" selection-end-column="44" />
+            <state relative-caret-position="142">
+              <caret line="186" column="17" selection-start-line="180" selection-start-column="57" selection-end-line="186" selection-end-column="17" />
               <folding>
                 <element signature="e#6097#6098#0" expanded="true" />
                 <element signature="e#6163#6164#0" expanded="true" />
@@ -66,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoogleCalendar.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GoogleCalendar.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="105" column="13" lean-forward="true" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+            <state relative-caret-position="154">
+              <caret line="72" column="43" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -126,8 +121,8 @@
         <option value="$PROJECT_DIR$/src/test/java/backend/CallParser/GoogleCallParserTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java" />
+        <option value="$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java" />
       </list>
     </option>
   </component>
@@ -152,7 +147,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="555" />
     <option name="width" value="1390" />
     <option name="height" value="790" />
@@ -483,7 +478,7 @@
       <workItem from="1529828953933" duration="1719000" />
       <workItem from="1529831216343" duration="719000" />
       <workItem from="1529836206585" duration="105000" />
-      <workItem from="1529836420963" duration="2989000" />
+      <workItem from="1529836420963" duration="3274000" />
     </task>
     <servers />
   </component>
@@ -520,10 +515,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19726000" />
+    <option name="totallyTimeSpent" value="20011000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="11" />
@@ -904,21 +899,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="172" column="44" lean-forward="true" selection-start-line="172" selection-start-column="44" selection-end-line="172" selection-end-column="44" />
-          <folding>
-            <element signature="e#6097#6098#0" expanded="true" />
-            <element signature="e#6163#6164#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="154">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="267" column="53" selection-start-line="267" selection-start-column="32" selection-end-line="267" selection-end-column="53" />
+        <state relative-caret-position="494">
+          <caret line="268" column="39" selection-start-line="268" selection-start-column="39" selection-end-line="268" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -932,10 +923,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/Calendar/GoogleCalendar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="105" column="13" lean-forward="true" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+        <state relative-caret-position="142">
+          <caret line="186" column="17" selection-start-line="180" selection-start-column="57" selection-end-line="186" selection-end-column="17" />
+          <folding>
+            <element signature="e#6097#6098#0" expanded="true" />
+            <element signature="e#6163#6164#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
