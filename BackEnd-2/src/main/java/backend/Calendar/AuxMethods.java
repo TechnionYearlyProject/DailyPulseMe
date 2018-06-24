@@ -33,7 +33,7 @@ public class AuxMethods {
         }
        // System.out.println(str_);
         Timestamp ts = Timestamp.valueOf(str_);
-        return ts.getTime();
+        return ts.getTime()-10800000;
     }
 
     /*

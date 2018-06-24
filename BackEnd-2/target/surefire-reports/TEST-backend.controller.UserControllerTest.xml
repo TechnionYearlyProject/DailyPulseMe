@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="backend.controller.UserControllerTest" time="3.432" tests="34" errors="0" skipped="0" failures="0">
+<testsuite name="backend.controller.UserControllerTest" time="2.639" tests="34" errors="0" skipped="0" failures="0">
   <properties>
     <property name="idea.version" value="2017.3.5"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -61,38 +61,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="isConnectedtoTest" classname="backend.controller.UserControllerTest" time="0.294"/>
-  <testcase name="updateTokensFailedTest" classname="backend.controller.UserControllerTest" time="0.061"/>
-  <testcase name="logInTestWithoutPermission" classname="backend.controller.UserControllerTest" time="0.022"/>
-  <testcase name="loginTest" classname="backend.controller.UserControllerTest" time="0.088"/>
-  <testcase name="succunsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.015"/>
-  <testcase name="setGoogleFitBandTest" classname="backend.controller.UserControllerTest" time="0.021"/>
-  <testcase name="signUpTest" classname="backend.controller.UserControllerTest" time="0.065"/>
-  <testcase name="verifyAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.538"/>
-  <testcase name="updateTokensTest" classname="backend.controller.UserControllerTest" time="0.029"/>
-  <testcase name="refreshAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.489"/>
-  <testcase name="getSubTest" classname="backend.controller.UserControllerTest" time="0.017"/>
-  <testcase name="sendEmailsTest" classname="backend.controller.UserControllerTest" time="0.043"/>
-  <testcase name="getAllEventsTest" classname="backend.controller.UserControllerTest" time="0.015"/>
-  <testcase name="subscribeUserTest" classname="backend.controller.UserControllerTest" time="0.015"/>
+  <testcase name="isConnectedtoTest" classname="backend.controller.UserControllerTest" time="0.215"/>
+  <testcase name="updateTokensFailedTest" classname="backend.controller.UserControllerTest" time="0.071"/>
+  <testcase name="logInTestWithoutPermission" classname="backend.controller.UserControllerTest" time="0.026"/>
+  <testcase name="loginTest" classname="backend.controller.UserControllerTest" time="0.024"/>
+  <testcase name="succunsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.01"/>
+  <testcase name="setGoogleFitBandTest" classname="backend.controller.UserControllerTest" time="0.009"/>
+  <testcase name="signUpTest" classname="backend.controller.UserControllerTest" time="0.041"/>
+  <testcase name="verifyAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.757"/>
+  <testcase name="updateTokensTest" classname="backend.controller.UserControllerTest" time="0.013"/>
+  <testcase name="refreshAccessTokenTest" classname="backend.controller.UserControllerTest" time="0.418"/>
+  <testcase name="getSubTest" classname="backend.controller.UserControllerTest" time="0.01"/>
+  <testcase name="sendEmailsTest" classname="backend.controller.UserControllerTest" time="0.019"/>
+  <testcase name="getAllEventsTest" classname="backend.controller.UserControllerTest" time="0.008"/>
+  <testcase name="subscribeUserTest" classname="backend.controller.UserControllerTest" time="0.012"/>
   <testcase name="getNameTest" classname="backend.controller.UserControllerTest" time="0.013"/>
-  <testcase name="succsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.015"/>
-  <testcase name="addEventTest" classname="backend.controller.UserControllerTest" time="0.027"/>
-  <testcase name="setFitbitBandTest" classname="backend.controller.UserControllerTest" time="0.072"/>
-  <testcase name="getActiveBandTest" classname="backend.controller.UserControllerTest" time="0.006"/>
-  <testcase name="getOutlookTokenTest" classname="backend.controller.UserControllerTest" time="0.014"/>
-  <testcase name="getEventTest" classname="backend.controller.UserControllerTest" time="0.121"/>
-  <testcase name="changePasswordTest" classname="backend.controller.UserControllerTest" time="0.021"/>
-  <testcase name="signUpWithGoogleTest" classname="backend.controller.UserControllerTest" time="0.092"/>
-  <testcase name="getOutlookTokennotWorkingTest" classname="backend.controller.UserControllerTest" time="0.043"/>
-  <testcase name="givenWac_whenServletContext_thenItProvidesuserController" classname="backend.controller.UserControllerTest" time="0.001"/>
-  <testcase name="getEventsTest" classname="backend.controller.UserControllerTest" time="1.029"/>
-  <testcase name="gettalleventsTest" classname="backend.controller.UserControllerTest" time="0.157"/>
-  <testcase name="deleteEventTest" classname="backend.controller.UserControllerTest" time="0.015"/>
-  <testcase name="notissubscripedRepoTest" classname="backend.controller.UserControllerTest" time="0.004"/>
-  <testcase name="notisConnectedtoTest" classname="backend.controller.UserControllerTest" time="0.013"/>
-  <testcase name="changePasswordFailTest" classname="backend.controller.UserControllerTest" time="0.002"/>
-  <testcase name="issubscripedRepoTest" classname="backend.controller.UserControllerTest" time="0.003"/>
-  <testcase name="unsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.013"/>
-  <testcase name="signUpTestWithSameUserExist" classname="backend.controller.UserControllerTest" time="0.059"/>
+  <testcase name="succsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.011"/>
+  <testcase name="addEventTest" classname="backend.controller.UserControllerTest" time="0.018"/>
+  <testcase name="setFitbitBandTest" classname="backend.controller.UserControllerTest" time="0.01"/>
+  <testcase name="getActiveBandTest" classname="backend.controller.UserControllerTest" time="0.01"/>
+  <testcase name="getOutlookTokenTest" classname="backend.controller.UserControllerTest" time="0.009"/>
+  <testcase name="getEventTest" classname="backend.controller.UserControllerTest" time="0.017"/>
+  <testcase name="changePasswordTest" classname="backend.controller.UserControllerTest" time="0.008"/>
+  <testcase name="signUpWithGoogleTest" classname="backend.controller.UserControllerTest" time="0.058"/>
+  <testcase name="getOutlookTokennotWorkingTest" classname="backend.controller.UserControllerTest" time="0.008"/>
+  <testcase name="givenWac_whenServletContext_thenItProvidesuserController" classname="backend.controller.UserControllerTest" time="0.006"/>
+  <testcase name="getEventsTest" classname="backend.controller.UserControllerTest" time="0.741"/>
+  <testcase name="gettalleventsTest" classname="backend.controller.UserControllerTest" time="0.013"/>
+  <testcase name="deleteEventTest" classname="backend.controller.UserControllerTest" time="0.02"/>
+  <testcase name="notissubscripedRepoTest" classname="backend.controller.UserControllerTest" time="0.011"/>
+  <testcase name="notisConnectedtoTest" classname="backend.controller.UserControllerTest" time="0.006"/>
+  <testcase name="changePasswordFailTest" classname="backend.controller.UserControllerTest" time="0.01"/>
+  <testcase name="issubscripedRepoTest" classname="backend.controller.UserControllerTest" time="0.014"/>
+  <testcase name="unsubscribeUserTest" classname="backend.controller.UserControllerTest" time="0.01"/>
+  <testcase name="signUpTestWithSameUserExist" classname="backend.controller.UserControllerTest" time="0.013"/>
 </testsuite>

@@ -40,34 +40,6 @@ public class OutlookCalendarTest {
                 "    \"useDefault\": true\n" +
                 "   }\n" +
                 "  }";
-        String str2 = "  {\n" +
-                "   \"kind\": \"calendar#event\",\n" +
-                "   \"etag\": \"\\\"2996154144504000\\\"\",\n" +
-                "   \"id\": \"6spo4pvm002qg83csflp7cbbta\",\n" +
-                "   \"status\": \"confirmed\",\n" +
-                "   \"updated\": \"2017-06-21T20:31:12.252Z\",\n" +
-                "   \"subject\": \"Anadil\",\n" +
-                "   \"creator\": {\n" +
-                "    \"email\": \"anadilhussein@gmail.com\",\n" +
-                "    \"displayName\": \"anadil hussein\",\n" +
-                "    \"self\": true\n" +
-                "   },\n" +
-                "   \"organizer\": {\n" +
-                "    \"email\": \"anadilhussein@gmail.com\",\n" +
-                "    \"displayName\": \"anadil hussein\",\n" +
-                "    \"self\": true\n" +
-                "   },\n" +
-                "   \"start\": {\n" +
-                "    \"date\": \"2018-10-24\"\n" +
-                "   },\n" +
-                "   \"end\": {\n" +
-                "    \"date\": \"2018-10-24\"\n" +
-                "   },\n" +
-                "   \"sequence\": 0,\n" +
-                "   \"reminders\": {\n" +
-                "    \"useDefault\": true\n" +
-                "   }\n" +
-                "  }";
         try
 
         {
@@ -77,21 +49,8 @@ public class OutlookCalendarTest {
             assert (event.getDescription().equals(""));
             assert (event.getName().equals("Anadil"));
             System.out.println(event.getStartTime());
-            assert (event.getStartTime().equals("1540332061000"));
-            assert (event.getEndTime().equals("1540332061000"));
-            System.out.println(event.toString());
-
-
-            /*****************************************************/
-           //  1540328400000
-            mapper = new ObjectMapper();
-            root = mapper.readTree(str2);
-            event = OutlookCalendar.OutlookEvent(root);
-            assert (event.getName().equals("Anadil"));
-            assert (event.getDescription().equals(""));
-            System.out.println(event.getStartTime());
-            assert (event.getStartTime().equals("1540328400000"));
-            assert (event.getEndTime().equals("1540328400000"));
+            assert (event.getStartTime().equals("1540321261000"));
+            assert (event.getEndTime().equals("1540321261000"));
             System.out.println(event.toString());
 
         } catch (Exception e)

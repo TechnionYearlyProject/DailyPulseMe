@@ -84,8 +84,8 @@ public class GoogleCalendarTest {
             assert(event.getName().equals("Anadil"));
             assert (event.getDescription().equals(""));
             System.out.println(event.getStartTime());
-            assert (event.getStartTime().equals("1540332061000"));
-            assert (event.getEndTime().equals("1540332061000"));
+            assert (event.getStartTime().equals("1540321261000"));
+            assert (event.getEndTime().equals("1540321261000"));
             System.out.println(event.toString());
 
 
@@ -97,8 +97,8 @@ public class GoogleCalendarTest {
             assert(event.getName().equals("Anadil"));
             assert (event.getDescription().equals(""));
             System.out.println(event.getStartTime());
-            assert (event.getStartTime().equals("1540328400000"));
-            assert (event.getEndTime().equals("1540328400000"));
+            assert (event.getStartTime().equals("1540317600000"));
+            assert (event.getEndTime().equals("1540317600000"));
             System.out.println(event.toString());
 
         }
