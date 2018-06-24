@@ -219,7 +219,7 @@ if(user.getEvents()==null){
             tmp.addAll(userEvents);
         }
         catch (Exception e){
-
+             e.printStackTrace();
         }
         return tmp;
     }

@@ -404,10 +404,9 @@ if(time.getFirst()==null){
      */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
-        ArrayList<Event> tmp=new ArrayList<>();
 
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        tmp= UserService.getCalendarsEvents_(user);
+        ArrayList<Event> tmp= UserService.getCalendarsEvents_(user);
         user.setEvents(tmp);
         appUserRepository.save(user);
         return tmp;
