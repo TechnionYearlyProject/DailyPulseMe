@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d3682ef1-3c7f-4167-b8fc-f8f48a07898a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +16,7 @@
     <SUITE FILE_PATH="coverage/DailyPulse$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1529831852341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>backend.controller.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/DailyPulse$UserServiceTest_calendarTest.ic" NAME="UserServiceTest.calendarTest Coverage Results" MODIFIED="1529830127220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DailyPulse$UserServiceTest_calendarTest.ic" NAME="UserServiceTest.calendarTest Coverage Results" MODIFIED="1529836651402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>backend.service.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/DailyPulse$UserServiceTest_testForFail.ic" NAME="UserServiceTest.testForFail Coverage Results" MODIFIED="1529673790932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -26,30 +25,21 @@
     <SUITE FILE_PATH="coverage/DailyPulse$All_in_DailyPulse.ic" NAME="All in DailyPulse Coverage Results" MODIFIED="1529831429316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="129" column="38" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="169" column="52" selection-start-line="169" selection-start-column="52" selection-end-line="169" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="267" column="78" selection-start-line="267" selection-start-column="78" selection-end-line="267" selection-end-column="78" />
+            <state relative-caret-position="281">
+              <caret line="251" column="18" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="167" column="59" selection-start-line="167" selection-start-column="59" selection-end-line="167" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -120,6 +110,13 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
@@ -133,8 +130,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -147,75 +144,6 @@
               <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
               <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="CallParser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyPulse" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BackEnd-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -240,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest">
+  <component name="RunManager" selected="JUnit.UserServiceTest.calendarTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -330,19 +258,19 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="UserControllerTest.eventsCountsuTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.calendarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DailyPulse" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="backend.controller.*" />
+          <option name="PATTERN" value="backend.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="backend.controller" />
-      <option name="MAIN_CLASS_NAME" value="backend.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="eventsCountsuTest" />
+      <option name="PACKAGE_NAME" value="backend.service" />
+      <option name="MAIN_CLASS_NAME" value="backend.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="calendarTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -417,18 +345,18 @@
     <list>
       <item itemvalue="Azure Web App.Azure Web App: DailyPulse:DailyPulse" />
       <item itemvalue="JUnit.All in DailyPulse" />
-      <item itemvalue="JUnit.UserControllerTest.eventsCountsuTest" />
       <item itemvalue="JUnit.UserControllerTest.eventsCountTest" />
       <item itemvalue="JUnit.UserControllerTest.GoogleCalendarEventsTest" />
       <item itemvalue="JUnit.UserControllerTest" />
+      <item itemvalue="JUnit.UserServiceTest.calendarTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceTest.calendarTest" />
+        <item itemvalue="JUnit.All in DailyPulse" />
         <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.UserControllerTest.GoogleCalendarEventsTest" />
-        <item itemvalue="JUnit.All in DailyPulse" />
         <item itemvalue="JUnit.UserControllerTest.eventsCountTest" />
-        <item itemvalue="JUnit.UserControllerTest.eventsCountsuTest" />
       </list>
     </recent_temporary>
   </component>
@@ -453,13 +381,12 @@
       <workItem from="1529824638276" duration="3535000" />
       <workItem from="1529828953933" duration="1719000" />
       <workItem from="1529831216343" duration="719000" />
+      <workItem from="1529836206585" duration="105000" />
+      <workItem from="1529836420963" duration="264000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserServiceTest_calendarTest - 2018.06.24 at 11h 43m 44s.xml">
-      <configuration name="UserServiceTest.calendarTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserServiceTest_calendarTest - 2018.06.24 at 11h 47m 01s.xml">
       <configuration name="UserServiceTest.calendarTest" configurationId="JUnit" />
     </history-entry>
@@ -487,9 +414,12 @@
     <history-entry file="UserControllerTest - 2018.06.24 at 12h 17m 45s.xml">
       <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_DailyPulse - 2018.06.24 at 13h 31m 34s.xml">
+      <configuration name="All in DailyPulse" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16632000" />
+    <option name="totallyTimeSpent" value="17001000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
@@ -517,10 +447,10 @@
       <window_info anchor="bottom" id="HDInsight Spark Submission" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3265306" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" visible="true" weight="0.3293092" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.3293092" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25217974" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25888667" />
       <window_info anchor="right" id="Bean Validation" order="9" />
       <window_info id="Web" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Remote Spark Job in Cluster" order="14" />
@@ -552,10 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
           <caret line="122" column="23" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="23" />
-          <folding>
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2801#2802#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -591,10 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2431">
           <caret line="167" column="36" selection-start-line="167" selection-start-column="36" selection-end-line="167" selection-end-column="36" />
-          <folding>
-            <element signature="e#3690#3697#0" expanded="true" />
-            <element signature="e#4032#4039#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -616,10 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1411">
           <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
-          <folding>
-            <element signature="e#3690#3697#0" expanded="true" />
-            <element signature="e#4032#4039#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -690,10 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
           <caret line="114" column="21" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
-          <folding>
-            <element signature="e#3690#3697#0" expanded="true" />
-            <element signature="e#4032#4039#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -750,10 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1615">
           <caret line="105" column="31" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="31" />
-          <folding>
-            <element signature="e#3690#3697#0" expanded="true" />
-            <element signature="e#4032#4039#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -831,10 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
           <caret line="122" column="23" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="23" />
-          <folding>
-            <element signature="e#2772#2773#0" expanded="true" />
-            <element signature="e#2801#2802#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -890,17 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="202" column="36" selection-start-line="202" selection-start-column="31" selection-end-line="202" selection-end-column="36" />
-          <folding>
-            <element signature="e#3690#3697#0" expanded="true" />
-            <element signature="e#4032#4039#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/backend/CallParser/GoogleCallParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
@@ -908,24 +803,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="267" column="78" selection-start-line="267" selection-start-column="78" selection-end-line="267" selection-end-column="78" />
+        <state relative-caret-position="159">
+          <caret line="374" column="40" selection-start-line="374" selection-start-column="31" selection-end-line="374" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/backend/controller/UserControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
-          <caret line="169" column="52" selection-start-line="169" selection-start-column="52" selection-end-line="169" selection-end-column="52" />
+        <state relative-caret-position="204">
+          <caret line="141" column="38" lean-forward="true" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/backend/controller/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/backend/service/UserServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="129" column="38" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="38" />
+        <state relative-caret-position="281">
+          <caret line="251" column="18" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/backend/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="167" column="59" selection-start-line="167" selection-start-column="59" selection-end-line="167" selection-end-column="59" />
         </state>
       </provider>
     </entry>
