@@ -191,8 +191,8 @@ link to heart rate graph and to HRV graph and analysis.
                             var str2 = ''
                             var Edate = new Date(parseInt(eventsArr[i].endTime))
                             var date = new Date(parseInt(eventsArr[i].startTime))
-                            var strE = ("0" + Edate.getHours() - 3).slice(-2) + ":" + ("0" + Edate.getMinutes()).slice(-2);
-                            var strS = ("0" + date.getHours() - 3).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+                            var strE = ("0" + Edate.getHours()).slice(-2) + ":" + ("0" + Edate.getMinutes()).slice(-2);
+                            var strS = ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
                             var str = strS + ' - ' + strE
 
                             var avgH = 0;

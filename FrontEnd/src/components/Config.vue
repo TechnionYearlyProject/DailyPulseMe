@@ -56,12 +56,8 @@ subscribe to weekly email updates and change his calendar account.
 </b-container>
 </template>
 <script>
-    import Connect from './Connect'
     export default {
         name: 'Config',
-        components: {
-            Connect
-        },
         data() {
             return {
                 password: '',
