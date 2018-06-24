@@ -1,6 +1,7 @@
 package backend.service;
 
 
+import backend.Calendar.OutlookCalendar;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.EventTag;
@@ -11,11 +12,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
 import static backend.entity.EventTag.Sport;
-import static org.junit.Assert.assertTrue;
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
+import static backend.service.UserService.getCalendarsEvents_;
+import static org.junit.Assert.*;
 
 
 public class UserServiceTest {
@@ -212,6 +216,58 @@ public class UserServiceTest {
 
         assertTrue(user.getAccessToken().equals("newAccessToken"));
         assertTrue(user.getRefreshToken().equals("newRefreshToken"));
+
+
+
+    }
+    @Test
+    public void testForFail() {
+        TwoStrings s1 = new TwoStrings(); //all the events are in this time
+        s1.setFirst("0");
+        s1.setSecond("10000000000000000");
+        AppUser tmp=new AppUser();
+        assertFalse(UserService.deleteEvent(tmp,"1"));
+          Event event=new Event();
+        event.setStartTime("5");
+        event.setEndTime("100");
+        ArrayList<Pulse> listPulses=new ArrayList<>();
+        event.setPulses(listPulses);
+        List<Event> events=new ArrayList<>();
+        events.add(event);
+        tmp.setEvents(events);
+      UserService.getEvents(tmp,s1);
+      tmp.setAccessToken("11");
+        tmp.setRefreshToken("11");
+        assertNull(UserService.getEvents(tmp,s1));
+        tmp.setRefreshToken("1/3qCL9J5Qr7Ou_PidxdOuNAlN0swZ3nr-5C290pgpfMo");
+        assertNotNull(UserService.getEvents(tmp,s1));
+
+
+    }
+    @Test
+    public  void calendarTest(){
+        AppUser user=new AppUser();
+        user.setId("123");
+        user.setUsername("m@m");
+        user.setName("mohamad");
+        ArrayList<Event> tmp=new ArrayList<>();
+        Event event=new Event();
+        event.setKindOfEvent(GOOGLE_EVENT);
+        event.setId("1529407800000");
+        event.setStartTime("1529407800000");
+        event.setEndTime("1529411400000");
+        tmp.add(event);
+        Event event2=new Event();
+        event2.setKindOfEvent(GOOGLE_EVENT);
+        event2.setId("11");
+        event2.setStartTime("11");
+        event2.setEndTime("1600");
+        tmp.add(event2);
+        user.setEvents(tmp);
+        user.setAccessToken("ya29.GlvkBfu357KYXg8kDaHFk_n4mrmkzTD5r6MGdxKKGbo0idBPMwN0nTkIo4cqQbO8RlTuBsioe_CB7NuI0_d-ZmCID1UrI-YDKmtL2-gwZMPOTCDi4D64hIyXIN0c");
+        user.setRefreshToken("1/PjHKgEDAlvCtmmWt6JfA2daUGLQAwe2Ui4HQ8pBIfo0");
+         tmp=getCalendarsEvents_(user);
+        assertNotNull(tmp);
 
 
 

@@ -8,7 +8,4 @@ public enum KindOfEvent {
     KindOfEvent(int kindOfEVent) {
         this.kindOfEvent=kindOfEVent;
     }
-    public int getKindOfEventAsInt() {
-        return this.kindOfEvent;
-    }
 }

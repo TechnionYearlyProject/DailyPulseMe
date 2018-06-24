@@ -15,7 +15,6 @@ public class Event {
     private KindOfEvent KindOfEvent;
     private int pulseAverage;
     private List<Pulse> pulses;
-    // private PulseRepository pulses;
 
 
     public KindOfEvent getKindOfEvent() {

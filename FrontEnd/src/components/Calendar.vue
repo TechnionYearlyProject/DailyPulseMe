@@ -5,10 +5,26 @@
     <vue-event-calendar
       :events="datesList"
       @day-changed="handleDayChanged"
-      @month-changed="handleMonthChanged"
-    ></vue-event-calendar>
-      <Spinner size="massive" v-if="!timeup" style="margin-left:50%; margin-top:10%; z-index:2; position:absolute;">Loading..</Spinner>
+      @month-changed="handleMonthChanged">
+    <template slot-scope="props">
+       <div v-for="(event, index) in props.showEvents" class="event-item">
+         
+          <h3 style="text-shadow: 2px 2px 2px rgba(164,164,164,0.43);">{{event.title}}</h3>
+          {{event.date2}}
+         <div v-if="event.avg>0">
+         {{event.desc0}}<br>
+          {{event.desc1}}<br>
+         {{event.desc2}}<br>
+         <a :href="event.graphId" target="_blank">Pulses Graph</a><br>
+         <div v-if="event.tag.includes('Rest')">
+         <a :href="event.hrvId" target="_blank">HRV Analysis &amp; Graph</a></div>
+       </div>
+         <div v-else>There is no heart data.</div>
+       </div>
+     </template>
+  </vue-event-calendar>
 
+      <Spinner size="massive" v-if="!timeup" style="margin-left:50%; margin-top:10%; z-index:2; position:absolute;"></Spinner>
 </b-row>
 </b-container>
 </template>
@@ -18,7 +34,7 @@ let today = new Date()
 import Spinner from 'vue-simple-spinner'
 
 export default {
-  name: 'app',
+  name: 'Calendar',
   components:{Spinner},
   data () {
     return {
@@ -29,10 +45,10 @@ export default {
   },
   created: function () {
     this.getEvents();
-    // console.log(this.datesList)
-    // console.log(this.avgList)
-        },
+    console.log('hello')
+  },
   methods: {
+
             restHeartStats(rate, age){
                         if(age <= 35){
                           if(rate <= 45){
@@ -115,20 +131,23 @@ export default {
                         }
                         return this.sportHeartStats(rate, age);
                       },
-    handleDayChanged (data) {
-        var p = document.getElementsByClassName("desc")
-      var len = p.length
-      if(len == data.events.length){
-      for (var i = 0; i < data.events.length; i++) {
-        var title = data.events[i].title;
-        var location = "eventGraph?id=" + data.events[i].id;
-        var str = p[i].innerHTML
-        console.log(data.events[i])
-         p[i].innerHTML  = 'Average heart rate :' + data.events[i].avg +'. Type: ' + data.events[i].tag + '<br>' +
-         this.heartStats(data.events[i].tag, data.events[i].avg, 30) +
-          '<br><a href="'+ location+'" target="_blank">'+'Click here to watch graph'+'</a>'
-       }
+      HRVStats(type, value){
+      if(type != "Rest"){
+        return "";
       }
+      if(value < 0.3){
+        return "Your HRV value indicates you are quite calm, this is wonderful!"
+      }
+      if(value < 0.5){
+        return "Your HRV value indicates your sterss level is not zero but it isnt very high either"
+      }
+      if(value < 0.7){
+        return "Your HRV value indicates your sterss level is medium, we recomend you try to avoid such activities in the future"
+      }
+      return "Your HRV value indicates your sterss level is high, this is bad for your health, we strongly recomend you to avoid such activities in the future"
+    },
+    handleDayChanged (data) {
+      console.log(data.events)
     },
     handleMonthChanged (data) {
       console.log('month-changed', data)
@@ -136,7 +155,7 @@ export default {
 
     },
     getEvents () {
-       this.$http.post('http://localhost:8081/users/getEventsBetweenInterval',{
+       this.$http.post('https://webapp-180506135919.azurewebsites.net/users/getEventsBetweenInterval',{
          "first": 1515103200000,
          "second": new Date().getTime()
        }
@@ -148,16 +167,17 @@ export default {
            var arrayLength = eventsArr.length;
            for (var i = 0; i < arrayLength; i++) {
 
-				var date = new Date(parseInt(eventsArr[i].startTime))
+        var date = new Date(parseInt(eventsArr[i].startTime))
+        var avgH = 0;//this.getAvg(eventsArr[i].id);
 
-				var x = {date:`${date.getFullYear()}/${4 + 1}/${date.getDate()}`,
-                title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag,
-				desc: 'Average heart rate :' + eventsArr[i].pulseAverage + '. \n Type: ' + eventsArr[i].tag + '.\n' + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id};     if(eventsArr[i].pulseAverage == 0)
-                x.desc = 'NO DATA'
+        var x = {date:`${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`, 
+        date2: date.getDate() + '/' + parseInt(date.getMonth()+1) + '/' + date.getFullYear(),
+                title: eventsArr[i].name, avg: eventsArr[i].pulseAverage,tag:eventsArr[i].tag, avgHRV: avgH,
+        desc0:'Average heart rate :' + eventsArr[i].pulseAverage, desc1:'Type: ' + eventsArr[i].tag,desc2:this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30), id:eventsArr[i].id,
+      graphId: 'eventGraph?id='+eventsArr[i].id, hrvId:"hrvgraph?id="+eventsArr[i].id };
                this.datesList.push(x);
            }
            this.timeup = true
-		   // + this.heartStats(eventsArr[i].tag, eventsArr[i].pulseAverage, 30)
        })
 
     }

@@ -72,11 +72,45 @@ public class AppUserTest {
         Event event=new Event();
         event.setId("1");
         event.setStartTime("1");
+        events.add(event);
+        user.saveAll(events);
+        user.getEvents();
+        user.getEvent("1");
+        user.deleteEvent("1");
+        user.addEvents(events);
+
+    }
+    @Test
+    public  void test3(){
+
+        ArrayList<Event> events=new ArrayList<Event>();
+        Event event=new Event();
+        event.setId("1");
+        event.setStartTime("1");
         user.saveAll(events);
         user.getEvents();
         user.getEvent("1");
         user.deleteEvent("1");
 
+
     }
+    @Test
+    public  void test4(){
+
+      AppUser tmp=new AppUser();
+
+        tmp.getEvent("1");
+        tmp.deleteEvent("1");
+        Pulse pulse=new Pulse(5);
+        pulse.setValue(1);
+
+
+    }
+    @Test
+    public void getOutlookTokenTest(){
+        user.setOutlookToken("123");
+        assertEquals("123",user.getOutlookToken());
+    }
+
 }
 

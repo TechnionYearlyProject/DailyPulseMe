@@ -1,30 +1,21 @@
 package backend.Calendar;
 
 import backend.entity.AppUser;
+import backend.entity.Event;
+import backend.entity.Pulse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.api.client.json.Json;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.logging.SimpleFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AuxMethods {
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
+import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
 
-    /*
-@author :Anadil
-@param String with the format "zzzzz" : "xxxxx",
-@return value : the field value ,eg "zzzzz" : "xxxx" , it will return xxxxx
- */
-    public static String retrieveFeidInJson(String str){
-        //System.out.println(str);
-        Pattern pattern= Pattern.compile("( )*(\")(.*)(\")(.*)(: \")(.*)(\")(.)*");
-        Matcher m= pattern.matcher(str);
-        String str_="";
-        if (m.matches()) {
-            str_=m.group(7); //: "zzzzz"
-        }
-        //System.out.println(str_);
-        return str_;
-    }
+public class AuxMethods {
 
 
     /*

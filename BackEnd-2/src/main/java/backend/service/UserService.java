@@ -1,5 +1,8 @@
 package backend.service;
 
+import backend.Calendar.GoogleCalendar;
+import backend.Calendar.OutlookCalendar;
+import backend.NLP.NLP;
 import backend.entity.AppUser;
 import backend.entity.Event;
 import backend.entity.Pulse;
@@ -7,10 +10,17 @@ import backend.entity.RefreshTokenExpiredException;
 import backend.entity.*;
 import backend.helperClasses.BandType;
 import backend.helperClasses.TwoStrings;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static backend.Calendar.AuxMethods.IsConnectedToGoogleCalendar;
+import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
+import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
+import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
 
 public class UserService {
     private static final String MinInMs = "60000";
@@ -104,7 +114,14 @@ if(user.getEvents()==null){
                 try {
                     //getCallParser will return either FitBit or Google callParser
                     eventPulses = user.getCallParser().getPulses(user, event.getStartTime(), event.getEndTime(), MinInMs);//get the pulses in this specific time
-
+                    //Calling NLP here
+                    try {
+                        if(eventPulses.size()>0){
+                            event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
+                        }
+                    }catch (Exception e){
+                        System.out.println("calling NLP +"+e.toString());
+                    }
                 } catch (RefreshTokenExpiredException e) {
                     return null;
                 }
@@ -146,5 +163,64 @@ if(user.getEvents()==null){
     public static boolean updateOutLookTokens(AppUser user, TwoStrings accessTokens){
         user.setOutlookToken(accessTokens.getFirst());
         return true;
+    }
+
+    public static  ArrayList<Event> getCalendarsEvents_(AppUser user) {
+        ArrayList<Event> tmp_=new ArrayList<>();
+        ArrayList<Event> tmp=new ArrayList<>();
+        try {
+            if (IsConnectedToGoogleCalendar(user)) {
+                tmp_ = GoogleCalendar.getEvents(user);
+            }
+            if (IsConnectedToOutlookCalendar(user)) {
+                tmp_.addAll(OutlookCalendar.getEvents(user));
+            }
+
+            boolean isNewEvent = true;
+            for (Event event : tmp_) {
+                for (Event userEvent : user.getEvents()) {
+                    if (userEvent.getId().compareTo(event.getId()) == 0 && userEvent.getEndTime().compareTo(event.getEndTime()) == 0
+                            && userEvent.getKindOfEvent() == event.getKindOfEvent()) {
+                        isNewEvent = false;
+                        break;
+                    }
+                }
+                if (isNewEvent) {
+                    //event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
+                    tmp.add(event);
+                }
+                isNewEvent = true;
+            }
+            ////// mohamad abd code
+            boolean isconnectedToGoogle = IsConnectedToGoogleCalendar(user);
+            boolean isconnectedToOutlook = IsConnectedToOutlookCalendar(user);
+            List<Event> userEvents = user.getEvents();
+            List<Event> userEventsToremove = new ArrayList<>();
+            boolean eventDeleted = true;
+            for (Event userEvent : userEvents) {// check if the event has been deleted
+                if ((userEvent.getKindOfEvent() == GOOGLE_EVENT && isconnectedToGoogle) ||
+                        (userEvent.getKindOfEvent() == OUTLOOK_EVENT && isconnectedToOutlook)) {
+                    for (Event event : tmp_) {
+                        if (userEvent.getId().equals(event.getId()) && userEvent.getEndTime().equals(event.getEndTime())) {
+                            eventDeleted = false;
+                            break;
+                        }
+                    }
+                    if (eventDeleted) {
+                        userEventsToremove.add(userEvent);
+                    }
+                }
+                eventDeleted = true;
+            }
+            ///////// end of mohamad abd code
+            for (Event j : userEventsToremove) {
+                userEvents.remove(j);
+            }
+            tmp.addAll(userEvents);
+        }
+        catch (Exception e){
+             e.printStackTrace();
+        }
+        return tmp;
     }
 }

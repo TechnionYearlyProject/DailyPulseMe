@@ -60,7 +60,7 @@ export default {
         },
   methods : {
   checkToken(){
-    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+    this.$http.get('https://webapp-180506135919.azurewebsites.net/users/authenticateToken',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
           this.islogin = true
@@ -72,7 +72,7 @@ export default {
      return this.islogin
     },
       getMessages () {
-            this.$http.get('http://localhost:8081/users/username',{headers: {'Content-Type': 'application/json',
+            this.$http.get('https://webapp-180506135919.azurewebsites.net/users/username',{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token')}
             }).then((res) => {
               this.name = res.bodyText;

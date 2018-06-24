@@ -13,7 +13,6 @@ import backend.Calendar.AuxMethods;
 import backend.Calendar.GoogleCalendar;
 import backend.Calendar.OutlookCalendar;
 import backend.DailyPulseApp;
-import backend.Outlook.Outlook;
 import backend.entity.*;
 import backend.googleSignIn.SignUpGoogle;
 import backend.helperClasses.KindOfEvent;
@@ -22,6 +21,8 @@ import backend.repository.SubscribedRepository;
 import backend.repository.UserRepository;
 import backend.service.UserService;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.http.auth.AUTH;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +46,8 @@ import static backend.Calendar.AuxMethods.IsConnectedToOutlookCalendar;
 import static backend.helperClasses.KindOfEvent.GOOGLE_EVENT;
 import static backend.helperClasses.KindOfEvent.OUR_EVENT;
 import static backend.helperClasses.KindOfEvent.OUTLOOK_EVENT;
+import static backend.security.SecurityConstants.EXPIRATION_TIME;
+import static backend.security.SecurityConstants.SECRET;
 
 
 @RestController
@@ -57,9 +62,11 @@ public class UserController {
     Constructor which gets two params , the appUserRepository and  bCryptPasswordEncoder
      */
     public UserController(UserRepository applicationUserRepository,
-                          BCryptPasswordEncoder bCryptPasswordEncoder) {
+                          BCryptPasswordEncoder bCryptPasswordEncoder,
+                          SubscribedRepository subscribedRepository) {
         this.appUserRepository = applicationUserRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.subscribedUserRepository = subscribedRepository;
     }
 
 
@@ -70,11 +77,14 @@ public class UserController {
      */
     @PostMapping("/sign-up")
     public boolean signUp(AppUser user) {
+        if(user.getUsername()==null){
+            user=AppUser.getUserforTesting();
+        }
         try {
-            //System.out.println("heyyyy signup");
             if (appUserRepository.findByUsername(user.getUsername()) != null) { //checking if the username already exist
                 return false;
             }
+
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
             user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
             user.setAccessToken(" ");
@@ -85,6 +95,7 @@ public class UserController {
             user.setCallParser(new GoogleCallParser());
 
             appUserRepository.save(user); //saving the user in the user's repository
+            subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
             return true;
         }
         catch (Exception e){
@@ -92,13 +103,51 @@ public class UserController {
             return false;
         }
     }
+
+    /*
+    @author:Anadil
+     */
     @PostMapping("/sign-up-google")
-    public boolean signUp(@RequestBody String authToken) {
-       AppUser user=SignUpGoogle.getGoogleUser(authToken);
-       if(user==null){
-           return false;
-       }
-       return signUp(user);
+    public String signUpViaGoogle(String authToken) {
+        AppUser user=null;
+        try {
+            user = SignUpGoogle.getGoogleUser(authToken);
+        }
+        catch(Exception e){
+            return "sign up via google faild :( see get GoogleUser "+e.toString();
+        }
+
+        //System.out.println("heeeeere"+user.getUsername());
+        if(user==null){ //sign in via google failed
+            return "user here is NULL";
+        }
+
+        try {
+            AppUser appUsr=appUserRepository.findByUsername(user.getUsername());
+            if (appUsr == null) { // user already exists
+                user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); //decoding the password
+                user.setEvents(new ArrayList<>()); //initializing the events list for an empty one
+                user.setActiveBandType(BandType.GOOGLEFIT_BAND);
+                user.setCallParser(new GoogleCallParser());
+                subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
+                appUserRepository.save(user); //first time --> add new user to the Repo.
+            }
+            else{
+                appUsr.setAccessToken(user.getAccessToken());
+                appUsr.setRefreshToken(user.getRefreshToken());
+                subscribedUserRepository.save(new Subscription(user.getUsername(),user.getName()));
+                appUserRepository.save(appUsr);
+            }
+        }
+        catch (Exception e){
+            return "o0ops maybe caused by mongo"+e.toString();
+        }
+
+        return JSONObject.quote(Jwts.builder()
+                .setSubject(user.getUsername())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())
+                .compact());
 
     }
 
@@ -145,7 +194,6 @@ public class UserController {
      */
     @PostMapping("/updateTokens")
     public boolean updateTokens(Authentication auth,TwoStrings tokens) {
-
         AppUser user = appUserRepository.findByUsername(auth.getName());
         if(user == null){
             return  false;
@@ -165,18 +213,12 @@ public class UserController {
         //authenticates JWT token.
         return true;
     }
-    //testing
-    @GetMapping("/private")
-    public String privatee() {
-        return "THIS IS PRIVATE!!";
-    }
 
 
     /*Aux Testing Method
      @param auth , which by it the user will be retrieved
      @return user name
      */
-    //TODO: Delete this?
     @GetMapping("/username")
     public String getUsername(Authentication auth) {
         String str = appUserRepository.findByUsername(auth.getName()).getName();
@@ -190,11 +232,13 @@ public class UserController {
     @return true if the adding process passed OK ,otherwise false
      */
     @PostMapping("/addEvent")
-    public boolean addEvent(Authentication auth, @RequestBody Event event) {
+    public boolean addEvent(Authentication auth,  Event event) {
         event.setKindOfEvent(OUR_EVENT);
         AppUser user = appUserRepository.findByUsername(auth.getName());
-        if(!UserService.addEvent(user,event)){
-            return false;
+        if(event.getStartTime()!=null) {
+            if (!UserService.addEvent(user, event)) {
+                return false;
+            }
         }
         appUserRepository.save(user);
         return true;
@@ -210,6 +254,16 @@ public class UserController {
         return appUserRepository.findByUsername(auth.getName()).getEvents();
     }
 
+    @PostMapping("/changePassword")
+    public boolean ChangePassword(Authentication auth,String newPassword){
+        AppUser user=appUserRepository.findByUsername(auth.getName());
+        if(user==null){
+            return false;
+        }
+        user.setPassword(bCryptPasswordEncoder.encode(newPassword)); //decoding the password
+        appUserRepository.save(user);
+        return true;
+    }
 
     /*
      Getting Events between Interval Time and with pulses between Interval
@@ -217,7 +271,9 @@ public class UserController {
      */
     @PostMapping("/getAllEventsWhichHavePulses")
     public List<Event> getAllEventsWhichHavePulses(Authentication auth,TwoStrings time){
-
+if(time.getFirst()==null){
+      time=new TwoStrings("0","11220");
+}
 
         AppUser user=appUserRepository.findByUsername(auth.getName());
         List<Event> filter_=new ArrayList<Event>();
@@ -263,7 +319,6 @@ public class UserController {
     * */
     @GetMapping("/getEvents")
     public List<Event> getEvents(Authentication auth) {
-        System.out.println("333333333333333333333");
         TwoStrings time=new TwoStrings();
         time.setFirst("0");
         return getEventsBetweenInterval(auth,time);
@@ -277,10 +332,10 @@ public class UserController {
      @param time which contains the startTiming and endTiming
      @return list of events which were taken place between time1 until time2
      */
-    @PostMapping("/getEventsBetweenInterval")
-    public List<Event> getEventsBetweenInterval(Authentication auth,TwoStrings time) {
 
-        System.out.println("2222222222222222222222222");
+    @PostMapping("/getEventsBetweenInterval")
+    public List<Event> getEventsBetweenInterval(Authentication auth, TwoStrings time) {
+
         getCalendarsEvents(auth); //TODO :Refresh (we dont need to bring what is Already Exist)
         AppUser user = appUserRepository.findByUsername(auth.getName());
         List<Event> filter = UserService.getEvents(user,time);
@@ -306,15 +361,14 @@ public class UserController {
                     }
                 }).collect(Collectors.toList());
             }
-            for(Event event : toReturn){
-                System.out.println("here is an event : "+ event.getStartTime());
-            }
+            //for(Event event : toReturn){
+            //    System.out.println("here is an event : "+ event.getStartTime());
+            //}
             return toReturn;
     }
 
     @RequestMapping("/GoogleCalendarEvents")
     public ArrayList<Event> getEventsGoogleCalendar(Authentication auth)  {
-        System.out.println("GoogleCalendarEvents\n");
         ArrayList<Event> tmp=null;
         AppUser user = appUserRepository.findByUsername(auth.getName());
         try{
@@ -328,6 +382,21 @@ public class UserController {
     }
 
 
+    /*
+    testing method
+     */
+    @RequestMapping("/OutlookCalendarEvents")
+    public ArrayList<Event> getEventsOutlookCalendar(Authentication auth)  {
+        ArrayList<Event> tmp=null;
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        try{
+            tmp=OutlookCalendar.getEvents(user);
+        }catch (Exception e){
+            // System.out.println("line 188 user cON");
+        }
+        return tmp;
+    }
+
 
     /*
     @author :Anadil
@@ -335,63 +404,11 @@ public class UserController {
      */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
-        System.out.println("11111111111111111111");
-        ArrayList<Event> tmp_=null;
-        ArrayList<Event> tmp=new ArrayList<Event>();
-        AppUser user = appUserRepository.findByUsername(auth.getName());
-        try{
-            if(IsConnectedToGoogleCalendar(user)){
-                tmp_= GoogleCalendar.getEvents(user);
-            }
-            if(IsConnectedToOutlookCalendar(user)) {
-                tmp_.addAll( OutlookCalendar.getEvents(user));
-            }
 
-            boolean isNewEvent=true;
-            for(Event event : tmp_){
-                for (Event userEvent : user.getEvents()){
-                    if(userEvent.getId().compareTo(event.getId())==0  && userEvent.getEndTime().compareTo(event.getEndTime())==0){
-                        isNewEvent=false;
-                        break;
-                    }
-                }
-                if(isNewEvent){
-                    event.setTag(NLP.RunNLP(event.getName()));
-                    tmp.add(event);
-                }
-                isNewEvent=true;
-            }
-            ////// mohamad abd code
-            boolean isconnectedToGoogle=IsConnectedToGoogleCalendar(user);
-            boolean isconnectedToOutlook=IsConnectedToOutlookCalendar(user);
-            List<Event> userEvents=user.getEvents();
-            List<Event> userEventsToremove=new ArrayList<>();
-            boolean eventDeleted=true;
-            for (Event userEvent :userEvents){// check if the event has been deleted
-              if((userEvent.getKindOfEvent()==GOOGLE_EVENT && isconnectedToGoogle) ||
-                      (userEvent.getKindOfEvent()==OUTLOOK_EVENT && isconnectedToOutlook)){
-                  for(Event event : tmp_){
-                      if(userEvent.getId().equals(event.getId()) && userEvent.getEndTime().equals(event.getEndTime())){
-                          eventDeleted=false;
-                          break;
-                      }
-                  }
-                  if(eventDeleted){
-                      userEventsToremove.add(userEvent);
-                  }
-              }
-                eventDeleted=true;
-            }
-            ///////// end of mohamad abd code
-              for(Event j : userEventsToremove){
-                userEvents.remove(j);
-             }
-            tmp.addAll(userEvents);
-            user.setEvents(tmp);
-            appUserRepository.save(user);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        ArrayList<Event> tmp= UserService.getCalendarsEvents_(user);
+        user.setEvents(tmp);
+        appUserRepository.save(user);
         return tmp;
     }
 
@@ -477,10 +494,53 @@ public class UserController {
         return subscribedUserRepository.findAll();
     }
 
-    @PostMapping("/sendMails")
+    @GetMapping("/sendEmails")
     public void sendMail() {
         ArrayList<Subscription> subcribers = new ArrayList<>();
         subcribers.addAll(subscribedUserRepository.findAll());
         EmailSender.sendMail(subcribers);
     }
+
+    @GetMapping("/isSubscribed")
+    private boolean isSubscribed(Authentication auth){
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null || subscribedUserRepository.findByEmail(user.getUsername()) == null){
+            return false;
+        }
+        return true;
+    }
+
+
+    @PostMapping("/NLP")
+    private String getNLPres(@RequestBody String name) {
+        try {
+            return NLP.TestingRunNLP(name);
+        } catch (Exception e) {
+        }
+        return "FYUCJl";
+    }
+
+
+    @GetMapping("/eventsCount")
+    private int getEventsCount(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user.getEvents()==null){
+                return 0;
+           }
+       return  user.getEvents().size();
+    }
+
+
+    /*@auother: Anadil
+   this function return true if the user sign in to his outlook calender
+       */
+    @GetMapping("/isConnectedToOutlookCalendar")
+    public boolean isConnectedToOutlookCalendar(Authentication auth) {
+        AppUser user = appUserRepository.findByUsername(auth.getName());
+        if(user == null){
+            return  false;
+        }
+        return  IsConnectedToOutlookCalendar(user);
+    }
+
 }

@@ -26,7 +26,7 @@ public class DailyPulseApp {
         SimpleFormatter formatter = new SimpleFormatter();
         fh.setFormatter(formatter);
         SpringApplication.run(DailyPulseApp.class,args);
-        NLP.TestingRunNLP();
+//        NLP.TestingRunNLP();
     }
 
 }

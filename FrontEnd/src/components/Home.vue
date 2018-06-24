@@ -9,15 +9,16 @@
 <b-container fluid style="margin-top:150px;">
     <b-row>
         <b-col style="color:white;
-      font-family: Open Sans;" class="mid"><div v-if="!this.loggedin">LIVE A BETTER LIFE <br>
+      font-family: Open Sans;" class="mid">
+    <!--   <div v-if="!this.loggedin">LIVE A BETTER LIFE <br>
       <div class="mid-inside" >DAILYPULSE will analyze your heart pulse<br>
         using your fitness band and your calendar.<br>
          <b-button variant="primary" href="/login">START NOW</b-button>
       </div>
-    </div>
-    <div v-else>Good Evening {{this.msg.slice(1, this.msg.length-1)}} <br>
+    </div> -->
+    <div>NAJEEB WRITE HERE. YOU CAN USE Date().gethours{{this.msg.slice(1, this.msg.length-1)}} <br> {{new Date().getHours()}}
       <div class="mid-inside" >You can now start using our AMAZING tools!
-
+          Write explanation
       </div>
     </div>
   </b-col>
@@ -101,7 +102,7 @@ export default {
         },
   methods : {
      getMessages () {
-            this.$http.get('http://localhost:8081/users/username',{headers: {'Content-Type': 'application/json',
+            this.$http.get('https://webapp-180506135919.azurewebsites.net/users/username',{headers: {'Content-Type': 'application/json',
               'Authorization': localStorage.getItem('token')}
             }).then((res) => {
               this.msg = res.bodyText;
@@ -112,7 +113,7 @@ export default {
         },
     checkToken(){
    var self = this;
-    this.$http.get('http://localhost:8081/users/authenticateToken',{headers: {'Content-Type': 'application/json',
+    this.$http.get('https://webapp-180506135919.azurewebsites.net/users/authenticateToken',{headers: {'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')}
          }).then((res) => {
             this.loggedin = true

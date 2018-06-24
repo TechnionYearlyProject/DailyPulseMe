@@ -56,7 +56,8 @@ public class UserControllerTest {
     @MockBean
     private UserDetailsService userService;
     @MockBean
-    private SubscribedRepository subRepo;
+    private SubscribedRepository subscribedUserRepository;
+
     @Before
     public void setup() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).apply(springSecurity()).build();
@@ -68,28 +69,28 @@ public class UserControllerTest {
     Assert.assertTrue(servletContext instanceof MockServletContext);
     Assert.assertNotNull(wac.getBean("userController"));
     }
-//    @Test /// in this tests i need requested body in the signature of the method in the controller
-//    public void signUpTestWithSameUserExist() throws Exception {
-//        Mockito.when(mockRepo.findByUsername("abd")).thenReturn(tmpUser);
-//        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(tmpUser))
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-//
-//        Mockito.verify(mockRepo).findByUsername(tmpUser.getUsername());
-//          Mockito.verify(mockRepo,Mockito.times(0)).save(any(tmpUser.getClass()));
-//
-//
-//    }
-//    @Test /// in this tests i need requested body in the signature of the method in the controller
-//    public void signUpTest() throws Exception {
-//        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(tmpUser))
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
-//        Mockito.verify(mockRepo).findByUsername(tmpUser.getUsername());
-//        Mockito.verify(mockRepo,Mockito.times(1)).save(any(tmpUser.getClass()));
-//
-//
-//    }
+    @Test /// in this tests i need requested body in the signature of the method in the controller
+    public void signUpTestWithSameUserExist() throws Exception {
+        Mockito.when(mockRepo.findByUsername("abd")).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(tmpUser))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+
+        Mockito.verify(mockRepo).findByUsername(tmpUser.getUsername());
+          Mockito.verify(mockRepo,Mockito.times(0)).save(any(tmpUser.getClass()));
+
+
+    }
+    @Test
+    public void signUpTest() throws Exception {
+        this.mockMvc.perform(post("/users/sign-up").content(asJsonString(tmpUser))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+        Mockito.verify(mockRepo).findByUsername(tmpUser.getUsername());
+        Mockito.verify(mockRepo,Mockito.times(1)).save(any(tmpUser.getClass()));
+
+
+    }
     @Test
     public void logInTestWithoutPermission() throws Exception {
         this.mockMvc.perform(get("/users/username")).andExpect(status().isForbidden());
@@ -127,11 +128,64 @@ public class UserControllerTest {
                 .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
     }
     @Test
+    public void updateTokensFailedTest() throws Exception {
+        TwoStrings tmp=new TwoStrings("firstForTest","secondForTest");
+        this.mockMvc.perform(post("/users/updateTokens").content(asJsonString(tmp)).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void gettalleventsTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/getAllEventsWhichHavePulses").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
     public void verifyAccessTokenTest() throws Exception {
         tmpUser.setCallParser(new GoogleCallParser());
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
 
         this.mockMvc.perform(get("/users/verifyAccessToken").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void getNameTest() throws Exception {
+        tmpUser.setCallParser(new GoogleCallParser());
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+
+        this.mockMvc.perform(get("/users/username").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void isConnectedtoTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+
+        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void eventsCountTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+         tmpUser.setEvents(null);
+        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void eventsCountsuTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void isConnectedToOutlookCalendarTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void isConnectedToOutlookCalendarnullTest() throws Exception {
+        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void notisConnectedtoTest() throws Exception {
+        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void getEventsTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(get("/users/getEvents").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void refreshAccessTokenTest() throws Exception {
@@ -156,16 +210,53 @@ public class UserControllerTest {
         this.mockMvc.perform(get("/users/getActiveBand").with(user("user"))).andExpect(status().isOk());
     }
     @Test
+    public void getAllEventsTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(get("/users/getAllEvents").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void issubscripedRepoTest() throws Exception {
+        Mockito.when(subscribedUserRepository.findByEmail(any())).thenReturn(null);
+        this.mockMvc.perform(get("/users/isSubscribed").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void notissubscripedRepoTest() throws Exception {
+        Mockito.when(subscribedUserRepository.findByEmail(any())).thenReturn(null);
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(null);
+        this.mockMvc.perform(get("/users/isSubscribed").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void sendEmailsTest() throws Exception {
+        Mockito.when(subscribedUserRepository.findAll()).thenReturn(new ArrayList<>());
+        this.mockMvc.perform(get("/users/sendEmails").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void getSubTest() throws Exception {
+        Mockito.when(subscribedUserRepository.findAll()).thenReturn(new ArrayList<>());
+        this.mockMvc.perform(get("/users/getSubscribedUsers").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
     public void subscribeUserTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(null);
-        Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
+        //Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
         this.mockMvc.perform(post("/users/subscribe").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void unsubscribeUserTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(null);
-        Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
+        //Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
         this.mockMvc.perform(post("/users/unsubscribe").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void succunsubscribeUserTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/unsubscribe").with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void succsubscribeUserTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        //Mockito.when(subRepo.findByEmail(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/subscribe").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void getEventTest() throws Exception {
@@ -195,15 +286,17 @@ public class UserControllerTest {
         this.mockMvc.perform(post("/users/addEvent").content(asJsonString(event)).contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
     }
-//    @Test /// in this tests i need requested body in the signature of the method in the controller
-//    public void getEventsTest() throws Exception {
-//        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
-//        tmpUser.setEvents(new ArrayList<>());
-//        TwoStrings tmp=new TwoStrings("0","1000000000000");
-//        this.mockMvc.perform(post("/users/getEventsBetweenInterval").content(asJsonString(tmp)).contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
-//    }
-
+    @Test
+    public void changePasswordTest() throws Exception {
+        Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
+        this.mockMvc.perform(post("/users/changePassword").content(asJsonString("123")).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
+    }
+    @Test
+    public void changePasswordFailTest() throws Exception {
+        this.mockMvc.perform(post("/users/changePassword").content(asJsonString("123")).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON).with(user("user"))).andExpect(status().isOk());
+    }
 
     public static String asJsonString(final Object obj) {
         try {
