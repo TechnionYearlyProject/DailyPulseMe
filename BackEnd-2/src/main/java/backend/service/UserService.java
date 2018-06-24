@@ -201,7 +201,7 @@ if(user.getEvents()==null){
                 if ((userEvent.getKindOfEvent() == GOOGLE_EVENT && isconnectedToGoogle) ||
                         (userEvent.getKindOfEvent() == OUTLOOK_EVENT && isconnectedToOutlook)) {
                     for (Event event : tmp_) {
-                        if (userEvent.getId().equals(event.getId()) && userEvent.getEndTime().equals(event.getEndTime())) {
+                        if (userEvent.getId().equals(event.getId()) && userEvent.getEndTime().equals(event.getEndTime()) && userEvent.getKindOfEvent()==event.getKindOfEvent()) {
                             eventDeleted = false;
                             break;
                         }
@@ -212,10 +212,11 @@ if(user.getEvents()==null){
                 }
                 eventDeleted = true;
             }
-            ///////// end of mohamad abd code
+
             for (Event j : userEventsToremove) {
                 userEvents.remove(j);
             }
+            ///////// end of mohamad abd code
             tmp.addAll(userEvents);
         }
         catch (Exception e){
