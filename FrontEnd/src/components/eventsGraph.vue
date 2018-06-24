@@ -70,7 +70,7 @@ Clicking on the event leads to the events graph.
                             var minutes = date.getMinutes()
                             minutes = ("0" + minutes).slice(-2);
                             var str = day;
-                            var str = day + "." + (month + 1) + "." + year + " - " + hours + ":" + minutes
+                            var str = day + "." + (month + 1) + "." + year;
                             dList.push(str);
                         }
                         for (var i = 0; i < arrayLength; i++) {
