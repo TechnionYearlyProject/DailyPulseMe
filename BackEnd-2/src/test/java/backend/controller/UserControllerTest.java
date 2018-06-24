@@ -162,17 +162,17 @@ public class UserControllerTest {
     public void eventsCountTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
          tmpUser.setEvents(null);
-        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+        this.mockMvc.perform(get("/users/eventsCount").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void eventsCountsuTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
-        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+        this.mockMvc.perform(get("/users/eventsCount").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void isConnectedToOutlookCalendarTest() throws Exception {
         Mockito.when(mockRepo.findByUsername(any())).thenReturn(tmpUser);
-        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+        this.mockMvc.perform(get("/users/isConnectedToOutlookCalendar").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void GoogleCalendarEventsTest() throws Exception {
@@ -183,7 +183,7 @@ public class UserControllerTest {
     }
     @Test
     public void isConnectedToOutlookCalendarnullTest() throws Exception {
-        this.mockMvc.perform(get("/users/isConnectedToGoogleCalendar").with(user("user"))).andExpect(status().isOk());
+        this.mockMvc.perform(get("/users/isConnectedToOutlookCalendar").with(user("user"))).andExpect(status().isOk());
     }
     @Test
     public void notisConnectedtoTest() throws Exception {
