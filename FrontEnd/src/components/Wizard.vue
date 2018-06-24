@@ -43,11 +43,7 @@ These are optionally google and microsoft.
 <script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>
 
 <script>
-    import Connect from './Connect'
     export default {
-        components: {
-            Connect
-        },
         name: 'Wizard',
         data() {
             return {
