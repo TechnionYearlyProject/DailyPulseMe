@@ -33,7 +33,7 @@ export default {
                             return evnt
                         },
                         label: function(tooltipItems, data) {
-                            var avg = 'Average heart: ' + [tooltipItems.yLabel];
+                            var avg = 'HRV value: ' + [tooltipItems.yLabel];
                             return avg;
                         }
                     }
