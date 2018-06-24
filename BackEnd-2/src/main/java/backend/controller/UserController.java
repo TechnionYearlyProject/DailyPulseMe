@@ -31,6 +31,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -403,66 +404,12 @@ if(time.getFirst()==null){
      */
     @RequestMapping("/GetCalendarsEvents")
     public ArrayList<Event> getCalendarsEvents(Authentication auth)  {
-        ArrayList<Event> tmp_=new ArrayList<>();
         ArrayList<Event> tmp=new ArrayList<>();
 
         AppUser user = appUserRepository.findByUsername(auth.getName());
-
-
-        try{
-            if(IsConnectedToGoogleCalendar(user)){
-                tmp_= GoogleCalendar.getEvents(user);
-            }
-            if(IsConnectedToOutlookCalendar(user)) {
-                tmp_.addAll( OutlookCalendar.getEvents(user));
-            }
-
-            boolean isNewEvent=true;
-            for(Event event : tmp_){
-                for (Event userEvent : user.getEvents()){
-                    if(userEvent.getId().compareTo(event.getId())==0  && userEvent.getEndTime().compareTo(event.getEndTime())==0
-                            && userEvent.getKindOfEvent()==event.getKindOfEvent()){
-                        isNewEvent=false;
-                        break;
-                    }
-                }
-                if(isNewEvent){
-                    //event.setTag(NLP.RunNLP(event.getName())); //TODO: nlp place , call it only when we have pulses
-                    tmp.add(event);
-                }
-                isNewEvent=true;
-            }
-            ////// mohamad abd code
-            boolean isconnectedToGoogle=IsConnectedToGoogleCalendar(user);
-            boolean isconnectedToOutlook=IsConnectedToOutlookCalendar(user);
-            List<Event> userEvents=user.getEvents();
-            List<Event> userEventsToremove=new ArrayList<>();
-            boolean eventDeleted=true;
-            for (Event userEvent :userEvents){// check if the event has been deleted
-              if((userEvent.getKindOfEvent()==GOOGLE_EVENT && isconnectedToGoogle) ||
-                      (userEvent.getKindOfEvent()==OUTLOOK_EVENT && isconnectedToOutlook)){
-                  for(Event event : tmp_){
-                      if(userEvent.getId().equals(event.getId()) && userEvent.getEndTime().equals(event.getEndTime())){
-                          eventDeleted=false;
-                          break;
-                      }
-                  }
-                  if(eventDeleted){
-                      userEventsToremove.add(userEvent);
-                  }
-              }
-                eventDeleted=true;
-            }
-            ///////// end of mohamad abd code
-              for(Event j : userEventsToremove){
-                userEvents.remove(j);
-             }
-            tmp.addAll(userEvents);
-            user.setEvents(tmp);
-            appUserRepository.save(user);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        tmp= UserService.getCalendarsEvents_(user);
+        user.setEvents(tmp);
+        appUserRepository.save(user);
         return tmp;
     }
 

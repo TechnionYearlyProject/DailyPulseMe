@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: backend.Calendar.GoogleCalendarTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.15 sec - in backend.Calendar.GoogleCalendarTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.647 sec - in backend.Calendar.GoogleCalendarTest
