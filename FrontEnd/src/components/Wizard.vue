@@ -25,12 +25,15 @@ These are optionally google and microsoft.
     </b-modal>
       <tab-content title="Google Account"
                    :before-change="validateAsync">
+                   <p>Connect your Google account in order for us to access your pulse and calendar data</p>
     <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="google" >Google</b-btn>
       </tab-content>
        <tab-content title="Microsoft Account">
+         <p>Connect with your Microsoft account if you would like to use their calendar aswell</p>
           <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft</b-btn>
       </tab-content>
       <tab-content title="Fitbit Account">
+        <p>Connect with your Fitbit if you would like an additional fitness band</p>
         <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit" >Fitbit</b-btn>
       </tab-content>
       <tab-content title="Last step"> <div style="color:black;">
@@ -43,7 +46,11 @@ These are optionally google and microsoft.
 <script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>
 
 <script>
+    import Connect from './Connect'
     export default {
+        components: {
+            Connect
+        },
         name: 'Wizard',
         data() {
             return {
@@ -101,6 +108,7 @@ These are optionally google and microsoft.
                 this.account()
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
+                        // this.account();
                         if (this.isAccount == false) {
                             reject('You must connect to Connect for Google Calendar')
                         } else {

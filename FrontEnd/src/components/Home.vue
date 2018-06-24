@@ -17,11 +17,11 @@ If he is we show a personal greeting.
     <div>Welcome {{this.msg.slice(1, this.msg.length-1)}}, <br>
       Feel free to use our excellent tools.
       <div class="mid-inside" >
-          You can view our <router-link to="/Calendar">Calendar</router-link> section where you can add events from your favorite calendar <br>
+          You can view our <router-link to="/Calendar" style="color:#4d94ff">Calendar</router-link> section where you can add events from your favorite calendar <br>
           at times where you wore your connected fitness band and it will be automatically <br> synchronized and shown
-          to you in a comprehensive way with the help of our NLP, HRV and Pulse analysis.
+          to you in a comprehensive way with the help of our <br><a href="https://en.wikipedia.org/wiki/Heart_rate_variability" target="_blank" style="color:#4d94ff">NLP</a> algorithim which we use to learn about your event, <a href="https://en.wikipedia.org/wiki/Heart_rate_variability" target="_blank" style="color:#4d94ff">HRV</a> and Pulse analysis.
           <br>
-          You can also view our <router-link to="/eventsgraph">Graphs</router-link> section which gives a more of an overall look on your data and your progress.
+          You can also view our <router-link to="/eventsgraph" style="color:#4d94ff">Graphs</router-link> section which gives a more of an overall look on your data and your progress.
       </div>
     </div>
   </b-col>
@@ -139,7 +139,6 @@ If he is we show a personal greeting.
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     li {
         display: inline-block;

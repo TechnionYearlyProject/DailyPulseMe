@@ -5,6 +5,7 @@ For each event we show its type, average heart rate, heart rate analysis,
 link to heart rate graph and to HRV graph and analysis.
 -->
 <template>
+  <!-- <div id="app" style="margin-top:20px;"> -->
       <b-container fluid style="margin-top:20px; background-color: rgba(255, 255, 255, 0.6); ;width:75%;border-raduis:4px;">
         <b-row>
     <vue-event-calendar
@@ -14,10 +15,10 @@ link to heart rate graph and to HRV graph and analysis.
     <template slot-scope="props">
        <div v-for="(event, index) in props.showEvents" class="event-item">
           <h3 style="text-shadow: 2px 2px 2px rgba(164,164,164,0.43);">{{event.title}}
-          <img v-if="event.kind == 'GOOGLE_EVENT'" src="../images/googlelogo.png" style="width:16%; margin-left:-2px;"/>
+          <img v-if="event.kind == 'GOOGLE_EVENT'" src="../images/googlelogo.png" style="width:16%; "/>
           <img v-if="event.kind == 'OUTLOOK_EVENT'" src="../images/microsoftlogo.png" style="width:19%;margin-top:-2px;"/>
           </h3>
-          {{event.date2}}
+          {{event.date2}} at {{event.time}}
          <div v-if="event.avg>0">
          {{event.desc0}}<br>
           {{event.desc1}}<br>
@@ -53,7 +54,9 @@ link to heart rate graph and to HRV graph and analysis.
                 pList: [],
                 timeup: false,
                 msg: 'No events!',
-                toggle: false
+                toggle: false,
+                start: '',
+                end: ''
             }
         },
         created: function() {
@@ -176,6 +179,7 @@ link to heart rate graph and to HRV graph and analysis.
                         'Authorization': localStorage.getItem('token'),
                     }
                 }).then((res) => {
+                    // res.body = array of event object
                     var eventsArr = res.body;
                     var arrayLength = eventsArr.length;
                     if (arrayLength == 0) {
@@ -183,8 +187,14 @@ link to heart rate graph and to HRV graph and analysis.
                         this.timeup = true
                     } else {
                         for (var i = 0; i < arrayLength; i++) {
-
+                            var str1 = ''
+                            var str2 = ''
+                            var Edate = new Date(parseInt(eventsArr[i].endTime))
                             var date = new Date(parseInt(eventsArr[i].startTime))
+                            var strE = ("0" + Edate.getHours() - 3).slice(-2) + ":" + ("0" + Edate.getMinutes()).slice(-2);
+                            var strS = ("0" + date.getHours() - 3).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2);
+                            var str = strS + ' - ' + strE
+
                             var avgH = 0;
 
                             var x = {
@@ -200,7 +210,8 @@ link to heart rate graph and to HRV graph and analysis.
                                 id: eventsArr[i].id,
                                 graphId: 'eventGraph?id=' + eventsArr[i].id,
                                 hrvId: "hrvgraph?id=" + eventsArr[i].id,
-                                kind: eventsArr[i].kindOfEvent
+                                kind: eventsArr[i].kindOfEvent,
+                                time: str
                             };
                             this.datesList.push(x);
                         }

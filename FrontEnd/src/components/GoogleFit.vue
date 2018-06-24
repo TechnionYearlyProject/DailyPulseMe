@@ -16,6 +16,7 @@ With this connection we bring the heart rate data.
             }
         },
         created: function() {
+            // console.log(this.succesful)
             if (this.succesful) {
                 console.log('second time ?')
             } else {

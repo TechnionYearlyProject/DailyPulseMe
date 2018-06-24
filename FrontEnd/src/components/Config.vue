@@ -10,7 +10,7 @@ subscribe to weekly email updates and change his calendar account.
   </b-row>
   <b-row class="text-center" style=" border-radius: 5px 7px;">
     <b-col class="text-center" col lg="4">
-           <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Enter Your Desired Password And Confirm It" >
+           <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Change your password" >
              <form class="form-signin" @submit.prevent="changePass">
              <input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required style="text-align: center;">
              <p></p>
@@ -23,7 +23,7 @@ subscribe to weekly email updates and change his calendar account.
            </b-card>
     </b-col>
 	<b-col class="text-center" col lg="4">
-		<b-card  style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Stay alerted! Subscribe to our weekly email updates and receive weekly summaries of your activities!">
+		<b-card  style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Stay alerted! subscribe to our weekly email updates and receive weekly summaries of your activities!">
 		<template v-if="subscribed === 0">
 			<div style ="width:50%; margin:5px auto;">
 				<b-button variant="primary" v-on:click="subscribe" v-b-popover.hover="'Subscribe to our weekly email updates'">Subscribe</b-button>
@@ -41,18 +41,22 @@ subscribe to weekly email updates and change his calendar account.
 </b-card>
 </b-col>
 <b-col class="text-center" col lg="4">
-    <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Change your calendar account">
+    <b-card style="background-color: rgba(255, 255, 255, 0.7); height:380px;" text-variant="dark" title="Change your microsft account or your fitbit band">
         <br><br>
         <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="fitbit">Fitbit Fitness Band</b-btn>
         <br><br><br>
         <b-btn v-b-toggle.collapse1 variant="primary" v-on:click="microsoft">Microsoft Calendar</b-btn>
     </b-card>
+
+
 </b-col>
 </b-row>
+<!-- <div class="Change Password" style="margin-top:10px"> -->
 
 </b-container>
 </template>
 <script>
+    import Connect from './Connect'
     export default {
         name: 'Config',
         components: {
