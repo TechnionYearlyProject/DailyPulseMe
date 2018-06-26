@@ -264,8 +264,8 @@ public class UserServiceTest {
         event2.setEndTime("1600");
         tmp.add(event2);
         user.setEvents(tmp);
-        user.setAccessToken("ya29.GlvkBTXH5z21WunsD7z5JTj8FciLNY793msyLYd5gSVZbspW2l3Z6RxcsRBPS2jBsW2uYJY6ngqHSvKZ65eT6gTPu6Y2TW_3ULz7VYPCxbxq17sz80JI9kJwVCFP");
-        user.setRefreshToken("1/UuRTaTj3TXTp61kTT36Wo-KoQFcvqWK0kdxG3ID6UZA");
+        user.setAccessToken("ya29.GlvmBTpgpuvP_f0sRkCFhpXQ1vmKElVHzOGYITEbwpEYfFLf_qfu8wP5gFRIzyLiq4JwA_3io7T4gsWF1KCZzZgHfss6LY4tGGHFP1f-9lwtdnoZrCF68gMGZxHc");
+        user.setRefreshToken("1/PSlKT705-5ALSeTzQDMD6HxXHpEej5iR3Rx0FJj7KgY");
          tmp=getCalendarsEvents_(user);
         assertNotNull(tmp);
 
